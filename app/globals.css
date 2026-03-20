@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colors */
+  --color-brand: #FA6E43;
+  --color-dark: #0D0D0D;
+  --color-card: #212225;
+  --color-light-black: #1a1820;
+  --color-very-light: #f4f3f6;
+  --color-dark-light: #e4dfe6;
+  --color-secondary: #C0C0C0;
+  --color-bleed: #888891;
+  
+  --color-gray: #a6a3af;
+  --color-mid-gray: #797681;
+  --color-dark-gray: #4b4852;
+  --color-black: #121014;
+
+  /* Radius */
+  --radius-card: 12px;
+
+  /* Fonts */
+  --font-inter: var(--font-inter);
+  --font-bebas: var(--font-bebas);
+  --font-manrope: var(--font-manrope);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Global styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-dark);
+  color:#f4f3f6 ;
+  font-family: var(--font-manrope), sans-serif;
+}
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: #f4f3f6;
+}
+
+::-webkit-selection {
+  background-color: var(--color-brand);
+  color: #f4f3f6;
+}
+
+.highlighted-word::selection {
+  color: black;
+
 }
