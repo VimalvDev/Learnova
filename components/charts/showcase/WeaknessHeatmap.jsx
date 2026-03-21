@@ -64,8 +64,16 @@ export default function WeaknessHeatmap() {
   return (
     <ResponsiveHeatMap
       data={data}
-      theme={nivoTheme}
-      margin={{ top: 24, right: 12, bottom: 32, left: 100 }}
+  theme={{
+        ...nivoTheme,
+        labels: {
+          text: {
+            fontSize: 11,
+            fontWeight: 400,
+            fill: "rgba(255,255,255,0.7)",
+          },
+        },
+      }}      margin={{ top: 24, right: 12, bottom: 32, left: 100 }}
       minValue={0}
       maxValue={100}
       borderRadius={5}
@@ -92,12 +100,20 @@ export default function WeaknessHeatmap() {
       }}
       axisRight={null}
       axisBottom={null}
-      tooltip={({ cell }) => (
-        <div className="bg-[#1a1b1e] border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
-          <span className="text-[#FA6E43] font-bold">{cell.serieId}</span> ·{" "}
-          {cell.data.x}: {cell.value}%
-        </div>
-      )}
+     tooltip={({ cell }) => (
+  <div style={{
+    background: "#212225",
+    borderRadius: "8px",
+    padding: "6px 10px",
+    fontSize: "11px",
+    color: "#fff",
+    whiteSpace: "nowrap",
+  }}>
+    <span style={{ color: "#FA6E43", fontWeight: 600 }}>{cell.serieId}</span>
+    {" · "}
+    {cell.data.x}: {cell.value}%
+  </div>
+)}
     />
   );
 }

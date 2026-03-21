@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function AdaptiveQuiz() {
   return (
-    <section className="py-[4em] relative overflow-hidden">
+    <section id="adaptive-quiz" className="py-[4em] relative overflow-hidden">
       <Heading text="adaptive quiz" />
       <SectionHeader
         num="006"

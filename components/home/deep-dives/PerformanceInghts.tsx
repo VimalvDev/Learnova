@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function PerformanceInsights() {
   return (
-    <section className="py-[4em] relative overflow-hidden">
+    <section id="performance-insights" className="py-[4em] relative overflow-hidden">
       <Heading text="performance insights" />
       <SectionHeader
         num="008"

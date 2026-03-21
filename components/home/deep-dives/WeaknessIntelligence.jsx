@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function WeaknessIntelligence() {
   return (
-    <section className="py-[4em] relative overflow-hidden">
+    <section id="weakness-intelligence" className="py-[4em] relative overflow-hidden">
       <Heading text="weakness detection" />
       <SectionHeader
         num="004"

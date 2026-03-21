@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function AskFromNotes() {
   return (
-    <section className="py-[4em] relative overflow-hidden">
+    <section id="ask-your-notes" className="py-[4em] relative overflow-hidden">
       <Heading text="ask your notes" />
       <SectionHeader
         num="005"

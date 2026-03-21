@@ -7,7 +7,7 @@ const showcaseItems = [
   { label: "Weakness Intelligence",      num: "02", href: "#weakness-intelligence"  },
   { label: "Ask Your Notes",             num: "03", href: "#ask-your-notes"         },
   { label: "Adaptive Quiz Engine",       num: "04", href: "#adaptive-quiz"          },
-  { label: "Spaced Revision Scheduler",  num: "05", href: "#revision-scheduler"     },
+  { label: "Revision Scheduler",  num: "05", href: "#revision-scheduler"     },
   { label: "Performance Insights",       num: "06", href: "#performance-insights"   },
 ]
 

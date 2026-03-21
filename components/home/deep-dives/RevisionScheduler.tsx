@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function RevisionScheduler() {
   return (
-    <section className="py-[4em] relative overflow-hidden">
+    <section id="revision-scheduler" className="py-[4em] relative overflow-hidden">
       <Heading text="revision scheduler" />
       <SectionHeader
         num="007"
