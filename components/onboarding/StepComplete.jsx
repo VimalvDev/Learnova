@@ -1,105 +1,127 @@
-import Link from "next/link"
-import OnboardingCard from "./OnboardingCard"
-
-const nextActions = [
-  {
-    icon: "▶",
-    title: "Start your first adaptive quiz",
-    subtitle: "Establish your mastery baseline immediately",
-    action: "Start →",
-    href: "/dashboard/quizzes",
-  },
-  {
-    icon: "💬",
-    title: "Ask a question from your notes",
-    subtitle: "Test the RAG engine with your uploaded material",
-    action: "Open Chat →",
-    href: "/dashboard/chat",
-  },
-  {
-    icon: "📅",
-    title: "View your revision schedule",
-    subtitle: "See when Learnova has planned your first session",
-    action: "View →",
-    href: "/dashboard/revision",
-  },
-]
+"use client"
+import { useRouter } from "next/navigation"
+import { RiCheckLine, RiBrainLine, RiCalendarTodoLine, RiChat3Line, RiArrowRightLine } from "react-icons/ri"
 
 export default function StepComplete({ formData }) {
+  const router = useRouter()
+
+  const summary = [
+    { label: "Subject",      value: formData.primarySubject   || "DBMS — Semester 4" },
+    { label: "Daily Study",  value: `${formData.dailyHours}h / day`                  },
+    { label: "Confidence",   value: formData.confidenceLevel  || "Intermediate"      },
+    { label: "Course",       value: formData.courseName       || "My First Course"   },
+  ]
+
+  const unlocked = [
+    { icon: RiBrainLine,        label: "Adaptive Quiz Engine"      },
+    { icon: RiCalendarTodoLine, label: "Spaced Revision Scheduler" },
+    { icon: RiChat3Line,        label: "Ask Your Notes"            },
+  ]
+
   return (
-    <OnboardingCard>
+    <div className="min-h-screen bg-[#161719] flex flex-col">
 
-      {/* Completion mark */}
-      <div className="flex flex-col items-center text-center mb-6">
-        <div className="w-16 h-16 rounded-full bg-[#FA6E43]/12 border border-[#FA6E43]/25 flex items-center justify-center mb-4">
-          <span className="text-[#FA6E43] text-[28px]">◈</span>
-        </div>
-        <h2 className="text-[24px] font-bold text-white">Your Learning System Is Ready.</h2>
-        <p className="text-[14px] text-[#888] mt-2 leading-[1.7] max-w-[400px]">
-          Learnova has configured your adaptive engine based on your profile.
-          Your first mastery baseline will be established after your first quiz session.
-        </p>
-      </div>
-
-      {/* Summary */}
-      <div className="bg-[#2A2B2F] border border-white/[0.06] rounded-xl overflow-hidden mb-5">
-        {[
-          ["Course created",         formData.courseName || "—"],
-          ["Documents processed",    formData.uploadedFile ? `1 file · Ready` : "No file uploaded"],
-          ["Revision schedule",      "Active from today"],
-          ["First quiz",             "Ready to generate"],
-        ].map(([label, value]) => (
-          <div
-            key={label}
-            className="flex items-center justify-between px-4 py-3 border-b border-white/[0.05] last:border-0"
-          >
-            <span className="text-[12px] text-[#555]">{label}</span>
-            <span className="text-[13px] text-white font-medium">{value}</span>
+      {/* Header */}
+      <header className="h-[56px] flex items-center px-6 lg:px-12 border-b border-white/[0.05]">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 bg-[#FA6E43] rounded-lg flex items-center justify-center">
+            <svg viewBox="0 0 10 10" fill="none" className="w-3.5 h-3.5">
+              <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
           </div>
-        ))}
-      </div>
-
-      {/* Next actions */}
-      <div className="mb-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#FA6E43] mb-3">
-          Recommended Next Steps
-        </p>
-        <div className="flex flex-col gap-2">
-          {nextActions.map(({ icon, title, subtitle, action, href }) => (
-            <Link
-              key={title}
-              href={href}
-              className="flex items-center gap-3 px-4 py-3 bg-[#2A2B2F] border border-white/[0.06] rounded-xl hover:border-white/[0.12] transition-all group"
-            >
-              <span className="text-[#FA6E43] text-[14px] flex-shrink-0">{icon}</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-[13px] text-white font-medium">{title}</p>
-                <p className="text-[11px] text-[#555]">{subtitle}</p>
-              </div>
-              <span className="text-[12px] text-[#FA6E43] flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                {action}
-              </span>
-            </Link>
-          ))}
+          <span className="text-[15px] font-bold text-white">Learnova</span>
         </div>
-      </div>
+      </header>
 
-      {/* CTA buttons */}
-      <div className="flex items-center gap-3">
-        <Link
-          href="/dashboard"
-          className="flex-1 h-[48px] bg-[#FA6E43] text-white text-[14px] font-bold rounded-xl flex items-center justify-center hover:brightness-110 transition-all"
-        >
-          Go to Dashboard
-        </Link>
-        <Link
-          href="/dashboard/quizzes"
-          className="flex-1 h-[48px] bg-[#2A2B2F] border border-white/[0.08] text-white text-[14px] font-medium rounded-xl flex items-center justify-center hover:bg-[#2A2B2F] hover:border-white/[0.16] transition-all"
-        >
-          Generate First Quiz
-        </Link>
-      </div>
+      {/* Content */}
+      <div className="flex-1 flex flex-col lg:flex-row">
 
-    </OnboardingCard>
+        {/* Left */}
+        <div className="flex-1 flex flex-col justify-center px-8 lg:px-16 xl:px-24 py-12 lg:py-0">
+          <div className="max-w-[480px]">
+
+            {/* Success badge */}
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8"
+              style={{ background: "rgba(250,110,67,0.12)", border: "1.5px solid rgba(250,110,67,0.3)" }}
+            >
+              <RiCheckLine className="text-[#FA6E43] text-[32px]" />
+            </div>
+
+            <h1 className="text-[40px] lg:text-[48px] font-black text-white leading-tight mb-4">
+              You're all set.
+            </h1>
+            <p className="text-[15px] text-[#888891] leading-relaxed mb-10">
+              Your learning system has been configured. Learnova is ready to track your
+              mastery and generate personalised content from your material.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="px-8 h-[50px] bg-[#FA6E43] text-white text-[14px] font-bold rounded-2xl hover:brightness-110 transition-all flex items-center gap-2"
+              >
+                Go to Dashboard
+                <RiArrowRightLine className="text-[16px]" />
+              </button>
+              <button
+                onClick={() => router.push("/dashboard/courses")}
+                className="px-6 h-[50px] bg-[#212225] text-[#C0C0C0] text-[13px] font-medium rounded-2xl hover:text-white hover:bg-[#2a2b2f] transition-all"
+              >
+                Upload a document first
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Right — summary + features */}
+        <div className="hidden lg:flex w-[420px] xl:w-[480px] flex-shrink-0 flex-col justify-center px-12 xl:px-16 py-16 border-l border-white/[0.05] gap-6">
+
+          {/* Summary card */}
+          <div className="bg-[#212225] rounded-2xl overflow-hidden">
+            <div className="px-5 py-3.5 border-b border-white/[0.05]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#FA6E43]/70">
+                Your Setup Summary
+              </p>
+            </div>
+            {summary.map(({ label, value }, i) => (
+              <div
+                key={label}
+                className={`flex items-center justify-between px-5 py-3.5 ${
+                  i < summary.length - 1 ? "border-b border-white/[0.05]" : ""
+                }`}
+              >
+                <span className="text-[12px] text-[#555]">{label}</span>
+                <span className="text-[13px] font-semibold text-white">{value}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Unlocked features */}
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#FA6E43]/70 mb-3">
+              Features Unlocked
+            </p>
+            <div className="flex flex-col gap-2.5">
+              {unlocked.map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-3 px-4 py-3 bg-[#212225] rounded-xl"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-[#FA6E43]/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-[#FA6E43] text-[15px]" />
+                  </div>
+                  <span className="text-[13px] text-[#C0C0C0]">{label}</span>
+                  <RiCheckLine className="text-[#4ADE80] text-[14px] ml-auto flex-shrink-0" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
   )
 }

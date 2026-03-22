@@ -108,8 +108,8 @@ export default function DashboardTopBar() {
             onClick={() => { setUserOpen(!userOpen); setNotifOpen(false) }}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <div className="text-right hidden md:block">
-              <p className="text-[12px] font-semibold text-white leading-none">Alex M.</p>
+            <div className="text-right hidden md:block capitalize ">
+              <p className="text-[12px] font-semibold text-white leading-none">Vimal verma</p>
               <p className="text-[10px] text-[#555] mt-0.5">Student</p>
             </div>
             <div className="w-8 h-8 rounded-full bg-[#FA6E43] flex items-center justify-center flex-shrink-0">

@@ -11,25 +11,22 @@ import {
 const weaknesses = [
   {
     name: "Database Normalization",
-    sub: "DBMS · Confidence: 42%",
-    mastery: 42,
-    status: "CRITICAL",
+    sub:  "DBMS · Confidence: 42%",
+    mastery: 42, status: "CRITICAL",
     statusColor: "#F87171",
     icon: RiAlertFill,
   },
   {
     name: "Functional Dependency",
-    sub: "DBMS · Confidence: 61%",
-    mastery: 61,
-    status: "MODERATE",
+    sub:  "DBMS · Confidence: 61%",
+    mastery: 61, status: "MODERATE",
     statusColor: "#FBBF24",
     icon: RiArrowDownLine,
   },
   {
     name: "Transaction Management",
-    sub: "DBMS · Confidence: 71%",
-    mastery: 71,
-    status: "STABLE",
+    sub:  "DBMS · Confidence: 71%",
+    mastery: 71, status: "STABLE",
     statusColor: "#4ADE80",
     icon: RiEqualLine,
   },
@@ -51,16 +48,10 @@ export default function WeaknessSection() {
                 </span>
               </div>
             </div>
-            <p className="text-[15px] font-semibold text-white/90">
-              Weakness Detection Engine
-            </p>
+            <p className="text-[14px] font-medium text-white/70">Weakness Detection Engine</p>
           </div>
-          <Link
-            href="/dashboard/analytics"
-            className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-1"
-          >
-            View Full Report
-            <RiArrowRightSLine className="text-[13px]" />
+          <Link href="/dashboard/analytics" className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-1">
+            View Full Report <RiArrowRightSLine className="text-[13px]" />
           </Link>
         </div>
 
@@ -105,7 +96,7 @@ export default function WeaknessSection() {
         <div>
           <div className="flex items-center gap-2 mb-2">
             <RiSparklingLine className="text-[#FA6E43] text-[16px] flex-shrink-0" />
-            <p className="text-[14px] font-semibold text-white/90">AI Learning Insight</p>
+            <p className="text-[14px] font-medium text-white/90">AI Learning Insight</p>
           </div>
           <p className="text-[12px] text-[#888] leading-relaxed">
             Your performance in{" "}
@@ -121,11 +112,7 @@ export default function WeaknessSection() {
             Recommended Path
           </p>
           <div className="flex items-center gap-2">
-            {[
-              { num: "1", active: true  },
-              { num: "2", active: false },
-              { num: "3", active: false },
-            ].map(({ num, active }) => (
+            {[{ num: "1", active: true }, { num: "2", active: false }, { num: "3", active: false }].map(({ num, active }) => (
               <div
                 key={num}
                 className={`w-8 h-8 rounded-lg flex items-center justify-center text-[13px] font-bold ${

@@ -1,8 +1,7 @@
 "use client"
 import Link from "next/link"
-import { RiArrowRightSLine } from "react-icons/ri"
 import FullHeatmap from "@/components/charts/full/FullHeatmap"
-import FullRadar from "@/components/charts/full/FullRadar"
+import FullRadar   from "@/components/charts/full/FullRadar"
 
 const revisionItems = [
   { name: "Normalization",    due: "Today",     dot: "#F87171" },
@@ -22,13 +21,12 @@ export default function HeatmapRow() {
       >
         <div className="flex items-center justify-between mb-3">
           <div>
-            <p className="text-[15px] font-semibold text-white/90">Performance Heatmap</p>
+            <p className="text-[14px] font-medium text-white/70">Performance Heatmap</p>
             <p className="text-[11px] text-[#666] mt-0.5">Topic mastery over 6 weeks</p>
           </div>
-          <div className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-            View Details
-            <RiArrowRightSLine className="text-[13px]" />
-          </div>
+          <span className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity">
+            View Details →
+          </span>
         </div>
         <div className="flex-1 min-h-[200px]">
           <FullHeatmap />
@@ -36,12 +34,7 @@ export default function HeatmapRow() {
         <div className="flex items-center justify-between mt-3 pt-2">
           <span className="text-[10px] text-[#444]">Less Intense</span>
           <div className="flex items-center gap-1">
-            {[
-              "rgba(250,110,67,0.1)",
-              "rgba(250,110,67,0.3)",
-              "rgba(250,110,67,0.6)",
-              "#FA6E43",
-            ].map((c, i) => (
+            {["rgba(250,110,67,0.1)","rgba(250,110,67,0.3)","rgba(250,110,67,0.6)","#FA6E43"].map((c, i) => (
               <div key={i} className="w-5 h-3 rounded-sm" style={{ background: c }} />
             ))}
           </div>
@@ -52,13 +45,11 @@ export default function HeatmapRow() {
       {/* Revision Planner */}
       <div className="col-span-3 bg-[#171717] rounded-2xl p-5 flex flex-col">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[15px] font-semibold text-white/90">Revision Planner</p>
-          <Link href="/dashboard/revision" className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-1">
-            View All
-            <RiArrowRightSLine className="text-[13px]" />
+          <p className="text-[14px] font-medium text-white/70">Revision Planner</p>
+          <Link href="/dashboard/revision" className="text-[11px] text-[#FA6E43] hover:underline">
+            View All →
           </Link>
         </div>
-
         <div className="flex flex-col gap-2 flex-1">
           {revisionItems.map(({ name, due, dot }) => (
             <Link
@@ -71,19 +62,14 @@ export default function HeatmapRow() {
                 <p className="text-[12px] font-medium text-white truncate">{name}</p>
                 <p className="text-[10px] text-[#555] mt-0.5">{due}</p>
               </div>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#555"
+              <svg viewBox="0 0 24 24" fill="none" stroke="#555"
                 className="w-3.5 h-3.5 flex-shrink-0 group-hover:stroke-[#FA6E43] transition-colors"
-                strokeWidth="2"
-              >
+                strokeWidth="2">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </Link>
           ))}
         </div>
-
         <Link
           href="/dashboard/revision"
           className="w-full h-9 mt-3 bg-[#111] text-[#666] text-[11px] font-medium rounded-xl flex items-center justify-center hover:text-white transition-all"
@@ -99,7 +85,7 @@ export default function HeatmapRow() {
       >
         <div className="flex items-center justify-between mb-1">
           <div>
-            <p className="text-[15px] font-semibold text-white/90">Performance</p>
+            <p className="text-[14px] font-medium text-white/70">Performance</p>
             <p className="text-[11px] text-[#666] mt-0.5">6 dimension overview</p>
           </div>
           <div className="text-right">

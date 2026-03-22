@@ -1,7 +1,4 @@
 "use client"
-import OnboardingCard from "./OnboardingCard"
-import StepLabel from "./StepLabel"
-import StepFooter from "./StepFooter"
 
 const levels = [
   {
@@ -20,7 +17,8 @@ const levels = [
     desc: "I have some foundation but gaps remain. I want to strengthen understanding and fill in missing concepts.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-4 h-4" strokeWidth="2">
-        <rect x="2" y="14" width="4" height="7" /><rect x="9" y="9" width="4" height="12" />
+        <rect x="2" y="14" width="4" height="7" />
+        <rect x="9" y="9" width="4" height="12" />
         <rect x="16" y="4" width="4" height="17" strokeOpacity="0.3" />
       </svg>
     ),
@@ -31,54 +29,69 @@ const levels = [
     desc: "I'm familiar with most concepts and reviewing for an exam or reinforcing mastery before a deadline.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-4 h-4" strokeWidth="2">
-        <rect x="2" y="14" width="4" height="7" /><rect x="9" y="9" width="4" height="12" />
+        <rect x="2" y="14" width="4" height="7" />
+        <rect x="9" y="9" width="4" height="12" />
         <rect x="16" y="4" width="4" height="17" />
       </svg>
     ),
   },
 ]
 
-export default function StepConfidence({ formData, update, onNext, onBack }) {
+export default function StepConfidence({ formData, update }) {
   return (
-    <OnboardingCard>
+    <div className="max-w-[640px]">
 
-      <StepLabel text="Step 3 of 6 — Confidence Level" />
+      {/* Heading — replaces StepLabel */}
+      <div className="mb-8">
+        <h2 className="text-[32px] lg:text-[38px] font-black text-white leading-tight mb-2">
+          How Familiar Are You?
+        </h2>
+        <p className="text-[14px] text-[#888891] leading-relaxed">
+          This calibrates your starting difficulty level and initial mastery baseline.
+        </p>
+      </div>
 
-      <h2 className="text-[22px] font-bold text-white">How Familiar Are You?</h2>
-      <p className="text-[13px] text-[#888] mt-1 mb-6 leading-relaxed">
-        This calibrates your starting difficulty level and initial mastery baseline.
-      </p>
-
-      <div className="flex flex-col gap-3 mb-5">
+      <div className="flex flex-col gap-3 mb-6">
         {levels.map(({ id, title, desc, icon }) => {
           const selected = formData.confidenceLevel === id
           return (
             <button
               key={id}
               onClick={() => update("confidenceLevel", id)}
-              className={`w-full text-left flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 ${
-                selected
-                  ? "bg-[#FA6E43]/[0.06] border-[#FA6E43] border-l-[3px]"
-                  : "bg-[#2A2B2F] border-white/[0.06] hover:border-white/[0.12]"
-              }`}
+              className="w-full text-left flex items-start gap-4 p-5 rounded-2xl transition-all duration-200"
+              style={{
+                background: selected ? "rgba(250,110,67,0.06)" : "#212225",
+                border: selected
+                  ? "1.5px solid rgba(250,110,67,0.4)"
+                  : "1px solid rgba(255,255,255,0.05)",
+              }}
             >
               <div
-                className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all ${
-                  selected ? "bg-[#FA6E43]/15 text-[#FA6E43]" : "bg-white/[0.05] text-[#555]"
-                }`}
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
+                style={{
+                  background: selected ? "rgba(250,110,67,0.15)" : "rgba(255,255,255,0.04)",
+                  color: selected ? "#FA6E43" : "#555",
+                }}
               >
                 {icon}
               </div>
               <div className="flex-1 min-w-0">
-                <p className={`text-[14px] font-medium transition-colors ${selected ? "text-white" : "text-[#aaa]"}`}>
+                <p
+                  className="text-[15px] font-semibold mb-1 transition-colors"
+                  style={{ color: selected ? "#fff" : "#C0C0C0" }}
+                >
                   {title}
                 </p>
-                <p className="text-[12px] text-[#888] mt-0.5 leading-relaxed">{desc}</p>
+                <p className="text-[13px] text-[#888891] leading-relaxed">{desc}</p>
               </div>
               <div
-                className={`w-[18px] h-[18px] rounded-full border flex-shrink-0 mt-0.5 flex items-center justify-center transition-all ${
-                  selected ? "bg-[#FA6E43] border-[#FA6E43]" : "border-[#3a3b3f]"
-                }`}
+                className="w-5 h-5 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center transition-all"
+                style={{
+                  background: selected ? "#FA6E43" : "transparent",
+                  border: selected
+                    ? "1.5px solid #FA6E43"
+                    : "1.5px solid rgba(255,255,255,0.12)",
+                }}
               >
                 {selected && <div className="w-2 h-2 rounded-full bg-white" />}
               </div>
@@ -87,17 +100,19 @@ export default function StepConfidence({ formData, update, onNext, onBack }) {
         })}
       </div>
 
-      {/* Context note */}
-      <div className="flex items-start gap-2 bg-[#141414] rounded-xl px-4 py-3 text-[11px] text-[#555]">
-        <span className="text-[#FA6E43] mt-0.5">◈</span>
+      {/* Note */}
+      <div
+        className="flex items-start gap-2.5 px-4 py-3.5 rounded-xl text-[12px] text-[#888891] leading-relaxed"
+        style={{ background: "#212225", border: "1px solid rgba(255,255,255,0.05)" }}
+      >
+        <span className="text-[#FA6E43] flex-shrink-0 mt-0.5">◈</span>
         <span>
-          This sets your starting quiz difficulty only.
-          Learnova recalibrates automatically as you progress.
+          This sets your starting quiz difficulty only. Learnova recalibrates automatically as you progress.
         </span>
       </div>
 
-      <StepFooter onNext={onNext} onBack={onBack} disabled={!formData.confidenceLevel} />
+      {/* No StepFooter — page.jsx footer handles Back + Continue */}
 
-    </OnboardingCard>
+    </div>
   )
 }

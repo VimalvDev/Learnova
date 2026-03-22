@@ -32,7 +32,7 @@ const navSections = [
   {
     label: "Learning",
     items: [
-      { icon: RiChat3Line,        label: "Ask Your Notes", href: "/dashboard/chat"           },
+      { icon: RiChat3Line,        label: "Ask Your Notes", href: "/chat"           },
       { icon: RiBrainLine,        label: "Quiz Center",    href: "/dashboard/quizzes"        },
       { icon: RiCalendarTodoLine, label: "Revision",       href: "/dashboard/revision"       },
       { icon: RiMapLine,          label: "Knowledge Map",  href: "/dashboard/knowledge-map", badge: "Soon" },

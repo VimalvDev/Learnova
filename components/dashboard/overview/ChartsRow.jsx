@@ -1,12 +1,11 @@
 "use client"
 import { useState } from "react"
 import Link from "next/link"
-import { RiArrowRightSLine } from "react-icons/ri"
-import FullBarChart from "@/components/charts/full/FullBarChart"
+import FullBarChart  from "@/components/charts/full/FullBarChart"
 import FullLineChart from "@/components/charts/full/FullLineChart"
 
 export default function ChartsRow() {
-  const [trendRange, setTrendRange] = useState("30D")
+  const [trendRange,   setTrendRange]   = useState("30D")
   const [visibleLines, setVisibleLines] = useState(["Overall Mastery", "Quiz Accuracy"])
 
   const lineColors = {
@@ -20,7 +19,7 @@ export default function ChartsRow() {
     )
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+    <div className="grid grid-cols-12 gap-4">
 
       {/* Bar chart */}
       <Link
@@ -29,27 +28,26 @@ export default function ChartsRow() {
       >
         <div className="flex items-start justify-between mb-1">
           <div>
-            <p className="text-[14px] font-medium text-white/90">Concept Mastery</p>
-            <p className="text-[11px] text-[#555] mt-0.5">Per-topic breakdown</p>
+            <p className="text-[14px] font-medium text-white/70">Concept Mastery</p>
+            <p className="text-[11px] text-[#666] mt-0.5">Per-topic breakdown</p>
           </div>
-          <div className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity mt-1 flex items-center gap-1">
-            View All
-            <RiArrowRightSLine className="text-[13px]" />
-          </div>
+          <span className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity mt-1">
+            View All →
+          </span>
         </div>
         <div className="flex-1 min-h-[260px] mt-2">
           <FullBarChart />
         </div>
       </Link>
 
-      {/* Trend chart */}
+      {/* Line chart */}
       <Link
         href="/dashboard/analytics"
         className="col-span-7 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
       >
         <div className="flex items-start justify-between mb-3">
           <div>
-            <p className="text-[15px] font-semibold text-white/90">Mastery Trend</p>
+            <p className="text-[14px] font-medium text-white/70">Mastery Trend</p>
             <p className="text-[11px] text-[#666] mt-0.5">Cross-subject proficiency over time</p>
           </div>
           <div className="flex items-center gap-3">

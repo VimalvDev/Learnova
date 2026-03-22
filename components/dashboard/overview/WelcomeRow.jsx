@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { RiDownloadLine, RiAddLine } from "react-icons/ri"
 
 export default function WelcomeRow() {
   const hour     = new Date().getHours()
@@ -15,14 +16,16 @@ export default function WelcomeRow() {
         </p>
       </div>
       <div className="flex items-center gap-3">
-        <button className="px-4 py-2 bg-[#171717] text-white text-[12px] font-medium rounded-xl hover:bg-[#1c1c1c] transition-all">
+        <button className="flex items-center gap-2 px-4 py-2 bg-[#171717] text-white text-[12px] font-medium rounded-xl hover:bg-[#1c1c1c] transition-all">
+          <RiDownloadLine className="text-[14px]" />
           Download Report
         </button>
         <Link
           href="/dashboard/quizzes"
           className="flex items-center gap-2 px-4 py-2 bg-[#FA6E43] text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all"
         >
-          + New Session
+          <RiAddLine className="text-[14px]" />
+          New Session
         </Link>
       </div>
     </div>

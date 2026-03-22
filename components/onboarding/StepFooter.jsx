@@ -1,22 +1,25 @@
-export default function StepFooter({ onNext, onBack, nextLabel = "Continue →", disabled = false, showBack = true }) {
+export default function StepFooter({ onBack, onNext, nextLabel = "Continue", step }) {
   return (
-    <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/[0.06]">
-      {showBack ? (
+    <div className="flex items-center justify-between pt-8 mt-8 border-t border-white/[0.06]">
+      {step > 1 ? (
         <button
           onClick={onBack}
-          className="text-[12px] text-[#666] hover:text-white transition-colors"
+          className="flex items-center gap-2 text-[13px] text-[#555] hover:text-white transition-colors"
         >
-          ← Back
+          <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
+            <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          Back
         </button>
-      ) : (
-        <div />
-      )}
+      ) : <div />}
       <button
         onClick={onNext}
-        disabled={disabled}
-        className="h-[44px] px-8 bg-[#FA6E43] text-white text-[13px] font-semibold rounded-xl hover:brightness-110 hover:scale-[1.01] active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+        className="flex items-center gap-2 px-7 h-[44px] bg-[#FA6E43] text-white text-[13px] font-bold rounded-xl hover:brightness-110 transition-all"
       >
         {nextLabel}
+        <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
       </button>
     </div>
   )

@@ -8,12 +8,11 @@ import {
   RiMagicLine,
 } from "react-icons/ri"
 
-
 const activities = [
-  { dot: "#4ADE80", title: "Completed Quiz — DBMS Unit 3",    sub: "Score: 71% · +12% improvement",     time: "2h ago"    },
-  { dot: "#FA6E43", title: "AI Chat — Functional Dependency", sub: "Asked 3 questions · Avg conf: 87%", time: "4h ago"    },
-  { dot: "#888",    title: "Uploaded OS_Lecture_Notes.pdf",   sub: "42 pages · 380 concepts extracted",  time: "Yesterday" },
-  { dot: "#FBBF24", title: "Revision Session — SQL Joins",    sub: "8 concepts reviewed · All mastered", time: "Yesterday" },
+  { dot: "#4ADE80", title: "Completed Quiz — DBMS Unit 3",      sub: "Score: 71% · +12% improvement",     time: "2h ago"    },
+  { dot: "#FA6E43", title: "AI Chat — Functional Dependency",   sub: "Asked 3 questions · Avg conf: 87%", time: "4h ago"    },
+  { dot: "#888",    title: "Uploaded OS_Lecture_Notes.pdf",     sub: "42 pages · 380 concepts extracted",  time: "Yesterday" },
+  { dot: "#FBBF24", title: "Revision Session — SQL Joins",      sub: "8 concepts reviewed · All mastered", time: "Yesterday" },
 ]
 
 const quickActions = [
@@ -23,7 +22,6 @@ const quickActions = [
   { icon: RiChat3Line,     label: "AI Chat",      href: "/dashboard/chat",    color: "#FA6E43" },
 ]
 
-
 export default function ActivityRow() {
   return (
     <div className="grid grid-cols-12 gap-4">
@@ -31,10 +29,9 @@ export default function ActivityRow() {
       {/* Activity */}
       <div className="col-span-8 bg-[#171717] rounded-2xl p-5">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-[15px] font-semibold text-white/90">Recent Activity</p>
-          <button className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-1">
-            View All
-            <RiArrowRightSLine className="text-[13px]" />
+          <p className="text-[14px] font-medium text-white/70">Recent Activity</p>
+          <button className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-0.5">
+            View All <RiArrowRightSLine className="text-[13px]" />
           </button>
         </div>
         <div className="flex flex-col">
@@ -56,7 +53,7 @@ export default function ActivityRow() {
 
       {/* Quick Actions */}
       <div className="col-span-4 bg-[#171717] rounded-2xl p-5">
-        <p className="text-[15px] font-semibold text-white/90 mb-4">Quick Actions</p>
+        <p className="text-[14px] font-medium text-white/70 mb-4">Quick Actions</p>
 
         <div className="grid grid-cols-2 gap-2 mb-3">
           {quickActions.map(({ icon: Icon, label, href, color }) => (
@@ -83,10 +80,9 @@ export default function ActivityRow() {
             <p className="text-[12px] font-medium text-white">Continue: DBMS Unit 3</p>
             <p className="text-[10px] text-[#555]">Question 7 of 18 · 2h ago</p>
           </div>
-          <div className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 flex items-center gap-0.5">
-            Resume
-            <RiArrowRightSLine className="text-[13px]" />
-          </div>
+          <span className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+            Resume →
+          </span>
         </Link>
       </div>
 

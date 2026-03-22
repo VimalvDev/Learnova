@@ -1,48 +1,48 @@
 import Link from "next/link"
-import { RiArrowRightSLine } from "react-icons/ri"
 import FullMasteryRing from "@/components/charts/full/FullMasteryRing"
 
 const cards = [
   {
-    label: "Overall Mastery",
-    href: "/dashboard/analytics",
-    type: "ring",
-    ringValue: 84,
-    value: "84%",
-    change: "↑ 3% this week",
+    label:       "Overall Mastery",
+    href:        "/dashboard/analytics",
+    type:        "ring",
+    ringValue:   84,
+    value:       "84%",
+    change:      "↑ 3% this week",
     changeColor: "#4ADE80",
   },
   {
-    label: "Concepts Mastered",
-    href: "/dashboard/analytics",
-    value: "32",
-    change: "+5",
-    changeColor: "#4ADE80",
-    sub: "of 58 total concepts",
-    progress: 55,
-    progressColor: "#FA6E43",
+    label:        "Concepts Mastered",
+    href:         "/dashboard/analytics",
+    value:        "32",
+    valueColor:   "#fff",
+    change:       "+5",
+    changeColor:  "#4ADE80",
+    sub:          "of 58 total concepts",
+    progress:     55,
+    progressColor:"#FA6E43",
   },
   {
-    label: "Needs Revision",
-    href: "/dashboard/revision",
-    value: "6",
-    valueColor: "#FBBF24",
-    change: "+2",
-    changeColor: "#FBBF24",
-    sub: "concepts flagged",
-    progress: 10,
-    progressColor: "#FBBF24",
+    label:        "Needs Revision",
+    href:         "/dashboard/revision",
+    value:        "6",
+    valueColor:   "#FBBF24",
+    change:       "+2",
+    changeColor:  "#FBBF24",
+    sub:          "concepts flagged",
+    progress:     10,
+    progressColor:"#FBBF24",
   },
   {
-    label: "Critical Weakness",
-    href: "/dashboard/analytics",
-    value: "2",
-    valueColor: "#F87171",
-    change: "-1",
-    changeColor: "#4ADE80",
-    sub: "concepts below 40%",
-    progress: 3,
-    progressColor: "#F87171",
+    label:        "Critical Weakness",
+    href:         "/dashboard/analytics",
+    value:        "2",
+    valueColor:   "#F87171",
+    change:       "-1",
+    changeColor:  "#4ADE80",
+    sub:          "concepts below 40%",
+    progress:     3,
+    progressColor:"#F87171",
   },
 ]
 
@@ -59,7 +59,7 @@ export default function StatCards() {
             <span className="text-[10px] font-medium uppercase tracking-widest text-[#FA6E43]/80">
               {label}
             </span>
-            <RiArrowRightSLine className="text-[#333] text-[14px] group-hover:text-[#FA6E43] transition-colors" />
+            <span className="text-[#333] text-[12px] group-hover:text-[#FA6E43] transition-colors">→</span>
           </div>
 
           {type === "ring" ? (
@@ -75,7 +75,7 @@ export default function StatCards() {
           ) : (
             <div className="mt-3">
               <div className="flex items-end gap-2">
-                <p className="text-[40px] font-black leading-none" style={{ color: valueColor || "#fff" }}>
+                <p className="text-[40px] font-black leading-none" style={{ color: valueColor }}>
                   {value}
                 </p>
                 <p className="text-[13px] font-bold mb-1.5" style={{ color: changeColor }}>

@@ -1,75 +1,86 @@
 "use client"
-import OnboardingCard from "./OnboardingCard"
-import StepLabel from "./StepLabel"
-import StepFooter from "./StepFooter"
+import { RiFlashlightLine, RiRadarLine, RiCalendar2Line, RiPercentLine, RiListOrdered2 } from "react-icons/ri"
 
-const featureList = [
+const features = [
   {
     key: "adaptiveDifficulty",
+    icon: RiFlashlightLine,
     title: "Adaptive Quiz Difficulty",
     desc: "Quiz difficulty adjusts automatically based on your real-time accuracy and mastery scores.",
-    impact: "Higher mastery gain · Avoids boredom",
-    icon: "⚡",
+    impact: ["Higher mastery gain", "Avoids boredom"],
   },
   {
     key: "weaknessPriority",
+    icon: RiRadarLine,
     title: "Weakness Prioritization",
     desc: "Quizzes and plans automatically focus on concepts where your mastery is weakest or declining.",
-    impact: "Faster recovery · Systematic gap closing",
-    icon: "◎",
+    impact: ["Faster recovery", "Systematic gap closing"],
   },
   {
     key: "spacedRepetition",
+    icon: RiCalendar2Line,
     title: "Spaced Repetition Scheduler",
     desc: "Revision sessions are scheduled based on performance, not fixed intervals. Weak topics return sooner.",
-    impact: "Long-term retention · Prevents decay",
-    icon: "📅",
+    impact: ["Long-term retention", "Prevents decay"],
   },
   {
     key: "confidenceScore",
+    icon: RiPercentLine,
     title: "Confidence Score on AI Answers",
     desc: "Every AI response shows a similarity score so you can judge answer reliability before trusting it.",
-    impact: "Transparent AI · No guessing",
-    icon: "%",
+    impact: ["Transparent AI", "No guessing"],
   },
   {
     key: "prerequisiteOrder",
-    title: "Prerequisite-Aware Learning Order",
-    desc: "Foundational concepts are always covered before advanced ones, even if you upload materials out of order.",
-    impact: "Structured progression · No gaps",
-    icon: "⛓",
+    icon: RiListOrdered2,
+    title: "Prerequisite-Based Ordering",
+    desc: "Topics are ordered so foundational concepts are mastered before advanced ones are introduced.",
+    impact: ["Structured learning", "No knowledge gaps"],
   },
 ]
 
-export default function StepFeatures({ formData, update, onNext, onBack }) {
+function Toggle({ on, onChange }) {
+  return (
+    <button
+      onClick={onChange}
+      className="w-11 h-6 rounded-full flex-shrink-0 relative transition-all duration-300"
+      style={{ background: on ? "#FA6E43" : "rgba(255,255,255,0.08)" }}
+    >
+      <div
+        className="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all duration-300"
+        style={{ left: on ? "22px" : "2px" }}
+      />
+    </button>
+  )
+}
+
+export default function StepFeatures({ formData, update }) {
   const allOn = Object.values(formData.features).every(Boolean)
 
-  const toggle = (key) =>
+  const toggleFeature = (key) =>
     update("features", { ...formData.features, [key]: !formData.features[key] })
 
   const toggleAll = () => {
-    const val = !allOn
-    const newFeatures = {}
-    featureList.forEach(({ key }) => { newFeatures[key] = val })
-    update("features", newFeatures)
+    const newVal = !allOn
+    update("features", Object.fromEntries(Object.keys(formData.features).map((k) => [k, newVal])))
   }
 
   return (
-    <OnboardingCard>
+    <div className="max-w-[640px]">
+      <div className="mb-6">
+        <h2 className="text-[32px] lg:text-[38px] font-black text-white leading-tight mb-2">
+          Configure Your Learning Intelligence.
+        </h2>
+        <p className="text-[14px] text-[#888891] leading-relaxed">
+          These features form the core of Learnova's adaptive engine. All are recommended for first-time setup.
+        </p>
+      </div>
 
-      <StepLabel text="Step 4 of 6 — Intelligence Features" />
-
-      <h2 className="text-[22px] font-bold text-white">Configure Your Learning Intelligence</h2>
-      <p className="text-[13px] text-[#888] mt-1 mb-5 leading-relaxed">
-        These features form the core of Learnova's adaptive engine.
-        All are recommended for first-time setup.
-      </p>
-
-      {/* Select all row */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2 text-[12px] text-[#888]">
-          <span className="text-[#4ADE80]">✓</span>
-          {allOn ? "All features enabled (recommended)" : "Some features disabled"}
+      {/* All enabled row */}
+      <div className="flex items-center justify-between mb-4 px-1">
+        <div className="flex items-center gap-2">
+          <span className="text-[#FA6E43] text-[12px]">✓</span>
+          <span className="text-[12px] text-[#888891]">All features enabled (recommended)</span>
         </div>
         <button
           onClick={toggleAll}
@@ -79,46 +90,46 @@ export default function StepFeatures({ formData, update, onNext, onBack }) {
         </button>
       </div>
 
-      <div className="flex flex-col gap-2 mb-2">
-        {featureList.map(({ key, title, desc, impact, icon }) => {
-          const enabled = formData.features[key]
+      <div className="flex flex-col gap-3">
+        {features.map(({ key, icon: Icon, title, desc, impact }) => {
+          const on = formData.features[key]
           return (
             <div
               key={key}
-              className={`flex items-start gap-4 p-4 rounded-xl border border-white/[0.06] bg-[#2A2B2F] transition-all duration-200 ${
-                !enabled ? "opacity-50" : ""
-              }`}
+              className="flex items-start gap-4 p-5 rounded-2xl transition-all"
+              style={{
+                background: on ? "rgba(250,110,67,0.04)" : "#212225",
+                border: on
+                  ? "1px solid rgba(250,110,67,0.2)"
+                  : "1px solid rgba(255,255,255,0.05)",
+              }}
             >
-              <div className="w-8 h-8 rounded-lg bg-[#FA6E43]/10 flex items-center justify-center flex-shrink-0 text-[14px]">
-                {icon}
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
+                style={{
+                  background: on ? "rgba(250,110,67,0.12)" : "rgba(255,255,255,0.04)",
+                  color: on ? "#FA6E43" : "#444",
+                }}
+              >
+                <Icon className="text-[18px]" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-[13px] font-semibold text-white">{title}</p>
-                <p className="text-[12px] text-[#888] mt-0.5 leading-relaxed">{desc}</p>
-                <p className="text-[11px] text-[#4ADE80] mt-1.5">
-                  <span className="text-[#666]">Impact: </span>{impact}
-                </p>
+                <p className="text-[14px] font-semibold text-white mb-1">{title}</p>
+                <p className="text-[12px] text-[#888891] leading-relaxed mb-2">{desc}</p>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[10px] text-[#555]">Impact:</span>
+                  {impact.map((tag, i) => (
+                    <span key={tag} className="text-[10px] font-semibold text-[#FA6E43]">
+                      {tag}{i < impact.length - 1 ? " ·" : ""}
+                    </span>
+                  ))}
+                </div>
               </div>
-              {/* Toggle */}
-              <button
-                onClick={() => toggle(key)}
-                className={`w-10 h-6 rounded-full flex-shrink-0 mt-0.5 transition-all duration-200 relative ${
-                  enabled ? "bg-[#FA6E43]" : "bg-[#3a3b3f]"
-                }`}
-              >
-                <div
-                  className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${
-                    enabled ? "left-5" : "left-1"
-                  }`}
-                />
-              </button>
+              <Toggle on={on} onChange={() => toggleFeature(key)} />
             </div>
           )
         })}
       </div>
-
-      <StepFooter onNext={onNext} onBack={onBack} />
-
-    </OnboardingCard>
+    </div>
   )
 }
