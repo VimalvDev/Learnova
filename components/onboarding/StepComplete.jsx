@@ -65,7 +65,7 @@ export default function StepComplete({ formData }) {
                 <RiArrowRightLine className="text-[16px]" />
               </button>
               <button
-                onClick={() => router.push("/dashboard/courses")}
+                onClick={() => router.push("/courses")}
                 className="px-6 h-[50px] bg-[#212225] text-[#C0C0C0] text-[13px] font-medium rounded-2xl hover:text-white hover:bg-[#2a2b2f] transition-all"
               >
                 Upload a document first

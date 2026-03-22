@@ -11,10 +11,10 @@ import StepComplete   from "@/components/onboarding/StepComplete"
 
 const stepMeta = [
   { num: 1, label: "Learning Focus",   desc: "Subject and academic level"  },
-  { num: 2, label: "Study Timeline",   desc: "Target date and daily hours" },
+  { num: 2, label: "First Course",     desc: "Upload your material"        },
   { num: 3, label: "Confidence Level", desc: "Your starting difficulty"    },
-  { num: 4, label: "Intelligence",     desc: "Adaptive engine settings"    },
-  { num: 5, label: "First Course",     desc: "Upload your material"        },
+  { num: 4, label: "Study Timeline",   desc: "Target date and daily hours" },
+  { num: 5, label: "Intelligence",     desc: "Adaptive engine settings"    },
   { num: 6, label: "Processing",       desc: "System configuration"        },
 ]
 
@@ -117,14 +117,14 @@ export default function OnboardingPage() {
                   {done && num === 1 && formData.primarySubject && (
                     <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 truncate">{formData.primarySubject}</p>
                   )}
-                  {done && num === 2 && (
-                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1">{formData.dailyHours}h / day</p>
+                  {done && num === 2 && formData.courseName && (
+                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 truncate">{formData.courseName}</p>
                   )}
                   {done && num === 3 && formData.confidenceLevel && (
                     <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 capitalize">{formData.confidenceLevel}</p>
                   )}
-                  {done && num === 5 && formData.courseName && (
-                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 truncate">{formData.courseName}</p>
+                  {done && num === 4 && (
+                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1">{formData.dailyHours}h / day</p>
                   )}
                 </div>
               </div>
@@ -196,10 +196,10 @@ export default function OnboardingPage() {
         <main className="flex-1 overflow-y-auto px-8 lg:px-16 xl:px-24 py-10 pb-32">
           <div className="max-w-2xl">
             {step === 1 && <StepFocus      formData={formData} update={update} onNext={next} onBack={back} />}
-            {step === 2 && <StepTimeline   formData={formData} update={update} onNext={next} onBack={back} />}
+            {step === 2 && <StepCourse     formData={formData} update={update} onNext={next} onBack={back} />}
             {step === 3 && <StepConfidence formData={formData} update={update} onNext={next} onBack={back} />}
-            {step === 4 && <StepFeatures   formData={formData} update={update} onNext={next} onBack={back} />}
-            {step === 5 && <StepCourse     formData={formData} update={update} onNext={next} onBack={back} />}
+            {step === 4 && <StepTimeline   formData={formData} update={update} onNext={next} onBack={back} />}
+            {step === 5 && <StepFeatures   formData={formData} update={update} onNext={next} onBack={back} />}
             {step === 6 && (
               <StepProcessing
                 formData={formData} update={update}

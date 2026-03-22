@@ -1,9 +1,9 @@
 const steps = [
   { num: 1, label: "Learning Focus",     desc: "Subject and academic level"      },
-  { num: 2, label: "Study Timeline",     desc: "Target date and daily hours"     },
+  { num: 2, label: "First Course",       desc: "Upload your study material"      },
   { num: 3, label: "Confidence Level",   desc: "Your starting difficulty"        },
-  { num: 4, label: "Intelligence",       desc: "Adaptive engine settings"        },
-  { num: 5, label: "First Course",       desc: "Upload your study material"      },
+  { num: 4, label: "Study Timeline",     desc: "Target date and daily hours"     },
+  { num: 5, label: "Intelligence",       desc: "Adaptive engine settings"        },
   { num: 6, label: "Done",              desc: "System is being configured"      },
 ]
 
@@ -93,9 +93,9 @@ export default function OnboardingSidebar({ currentStep, formData }) {
                     {formData.primarySubject}
                   </p>
                 )}
-                {isCompleted && num === 2 && formData.targetDate && (
-                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium">
-                    {formData.dailyHours}h/day · {new Date(formData.targetDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                {isCompleted && num === 2 && formData.courseName && (
+                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium truncate">
+                    {formData.courseName}
                   </p>
                 )}
                 {isCompleted && num === 3 && formData.confidenceLevel && (
@@ -103,9 +103,9 @@ export default function OnboardingSidebar({ currentStep, formData }) {
                     {formData.confidenceLevel}
                   </p>
                 )}
-                {isCompleted && num === 5 && formData.courseName && (
-                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium truncate">
-                    {formData.courseName}
+                {isCompleted && num === 4 && formData.targetDate && (
+                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium">
+                    {formData.dailyHours}h/day · {new Date(formData.targetDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                   </p>
                 )}
               </div>
