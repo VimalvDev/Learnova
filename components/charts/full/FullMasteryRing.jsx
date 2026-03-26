@@ -5,7 +5,7 @@ export default function FullMasteryRing({
   value = 84,
   size = 120,
   strokeWidth = 8,
-  color = "#FA6E43",
+  color = "var(--color-brand)",
   label = null,
 }) {
   const [animated, setAnimated] = useState(0);

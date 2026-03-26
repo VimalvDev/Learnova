@@ -15,7 +15,7 @@ export default function OnboardingSidebar({ currentStep, formData }) {
 
       {/* Header */}
       <div className="mb-10">
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FA6E43] mb-1">
+        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand mb-1">
           Setup Progress
         </p>
         <p className="text-[13px] text-[#666]">
@@ -25,7 +25,7 @@ export default function OnboardingSidebar({ currentStep, formData }) {
         {/* Progress bar */}
         <div className="mt-4 w-full h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
           <div
-            className="h-full bg-[#FA6E43] rounded-full transition-all duration-500 ease-out"
+            className="h-full bg-brand rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -43,7 +43,7 @@ export default function OnboardingSidebar({ currentStep, formData }) {
             <div
               key={num}
               className={`flex items-start gap-3 px-3 py-3 rounded-xl transition-all duration-200 ${
-                isActive ? "bg-[#FA6E43]/[0.06] border border-[#FA6E43]/20" : "border border-transparent"
+                isActive ? "bg-brand/[0.06] border border-brand/20" : "border border-transparent"
               }`}
             >
               {/* Step indicator */}
@@ -51,9 +51,9 @@ export default function OnboardingSidebar({ currentStep, formData }) {
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-200 ${
                     isCompleted
-                      ? "bg-[#FA6E43] text-white"
+                      ? "bg-brand text-white"
                       : isActive
-                      ? "bg-[#FA6E43]/20 border-2 border-[#FA6E43] text-[#FA6E43]"
+                      ? "bg-brand/20 border-2 border-brand text-brand"
                       : "bg-white/[0.04] border border-white/[0.08] text-[#444]"
                   }`}
                 >
@@ -67,10 +67,11 @@ export default function OnboardingSidebar({ currentStep, formData }) {
                 </div>
                 {/* Connector line */}
                 {num < steps.length && (
-                  <div
-                    className="w-px h-6 transition-all duration-300"
-                    style={{ background: num < currentStep ? "#FA6E43" : "rgba(255,255,255,0.06)" }}
-                  />
+                 <div
+  className={`w-px h-6 transition-all duration-300 ${
+    num < currentStep ? "bg-brand" : "bg-white/[0.06]"
+  }`}
+/>
                 )}
               </div>
 
@@ -89,22 +90,22 @@ export default function OnboardingSidebar({ currentStep, formData }) {
 
                 {/* Show filled data for completed steps */}
                 {isCompleted && num === 1 && formData.primarySubject && (
-                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium truncate">
+                  <p className="text-[10px] text-brand mt-1 font-medium truncate">
                     {formData.primarySubject}
                   </p>
                 )}
                 {isCompleted && num === 2 && formData.courseName && (
-                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium truncate">
+                  <p className="text-[10px] text-brand mt-1 font-medium truncate">
                     {formData.courseName}
                   </p>
                 )}
                 {isCompleted && num === 3 && formData.confidenceLevel && (
-                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium capitalize">
+                  <p className="text-[10px] text-brand mt-1 font-medium capitalize">
                     {formData.confidenceLevel}
                   </p>
                 )}
                 {isCompleted && num === 4 && formData.targetDate && (
-                  <p className="text-[10px] text-[#FA6E43] mt-1 font-medium">
+                  <p className="text-[10px] text-brand mt-1 font-medium">
                     {formData.dailyHours}h/day · {new Date(formData.targetDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                   </p>
                 )}

@@ -19,7 +19,7 @@ export default function MiniBarChart() {
       indexBy="topic"
       theme={nivoTheme}
       maxValue={100}
-      colors={["#FA6E43"]}
+      colors={["var(--color-brand)"]}
       margin={{ top: 20, right: 0, bottom: 30, left: 30 }}
       padding={0.05}
       borderRadius={6}

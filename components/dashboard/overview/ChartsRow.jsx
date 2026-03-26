@@ -31,7 +31,7 @@ export default function ChartsRow() {
             <p className="text-[14px] font-medium text-white/70">Concept Mastery</p>
             <p className="text-[11px] text-[#666] mt-0.5">Per-topic breakdown</p>
           </div>
-          <span className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity mt-1">
+          <span className="text-[11px] text-brand opacity-0 group-hover:opacity-100 transition-opacity mt-1">
             View All →
           </span>
         </div>
@@ -71,7 +71,7 @@ export default function ChartsRow() {
                   key={r}
                   onClick={(e) => { e.preventDefault(); setTrendRange(r) }}
                   className={`px-2.5 py-1 rounded-md text-[10px] font-bold transition-all ${
-                    trendRange === r ? "bg-[#FA6E43] text-white" : "text-[#555]"
+                    trendRange === r ? "bg-brand text-white" : "text-secondary-text"
                   }`}
                 >
                   {r}

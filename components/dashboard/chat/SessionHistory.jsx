@@ -72,7 +72,7 @@ const grouped = sessions.reduce((acc, session) => {
 
 export default function SessionHistory({ onClose }) {
   return (
-    <div className="flex flex-col h-full bg-[#0D0D0D]">
+    <div className="flex flex-col h-full bg-dark">
 
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-white/[0.06] flex-shrink-0">
@@ -129,7 +129,7 @@ export default function SessionHistory({ onClose }) {
                   {/* Stats row */}
                   <div className="flex items-center gap-3 mb-3">
                     <div className="flex items-center gap-1.5">
-                      <RiChat3Line className="text-[#555] text-[11px]" />
+                      <RiChat3Line className="text-secondary-text text-[11px]" />
                       <span className="text-[10px] text-[#666]">
                         {session.questions} questions
                       </span>

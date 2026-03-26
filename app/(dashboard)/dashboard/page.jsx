@@ -8,7 +8,7 @@ import ActivityRow       from "@/components/dashboard/overview/ActivityRow"
 
 export default function DashboardPage() {
   return (
-    <div className="max-w-[1320px] mx-auto flex flex-col gap-4 py-4">
+    <div className="max-w-330 mx-auto flex flex-col gap-4 py-4">
       <WelcomeRow />
       <StatCards />
       <RevisionCalendar />

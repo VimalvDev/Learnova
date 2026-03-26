@@ -34,15 +34,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="bg-[#1A1A1A] border border-white/[0.06] rounded-2xl p-8 sm:p-10 flex flex-col gap-7 shadow-2xl">
+    <div className="bg-light-black border border-white/6 rounded-2xl p-8 sm:p-10 flex flex-col gap-7 shadow-2xl">
 
       <div className="flex flex-col gap-3">
         <SectionLabel text="Secure Access" />
         <div>
-          <h1 className="text-[28px] font-bold text-white">Welcome Back.</h1>
-          <p className="text-[14px] text-[#888] mt-1">
+          <h1 className="text-2xl font-bold text-white">Welcome Back.</h1>
+          <p className="text-sm text-bleed mt-1">
             Don't have an account?{" "}
-            <Link href="/signup" className="text-[#FA6E43] hover:underline font-medium">
+            <Link href="/signup" className="text-brand hover:underline font-medium">
               Sign up for free
             </Link>
           </p>
@@ -71,7 +71,7 @@ export default function LoginPage() {
       </div>
 
       {globalError && (
-        <p className="text-[12px] text-[#F87171] -mt-2">⚠ {globalError}</p>
+        <p className="text-xs text-red -mt-2">⚠ {globalError}</p>
       )}
 
       <div className="flex flex-col gap-3">

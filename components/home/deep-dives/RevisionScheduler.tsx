@@ -20,7 +20,7 @@ export default function RevisionScheduler() {
 
           {/* Streak */}
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Current Streak
             </span>
             <div className="grid grid-cols-3 gap-3">
@@ -31,7 +31,7 @@ export default function RevisionScheduler() {
               ].map(([num, label, color]) => (
                 <div key={label} className="rounded-xl p-3 text-center border border-white/[0.06]" style={{ background: `${color}10` }}>
                   <p className="text-[20px] font-black leading-none" style={{ color }}>{num}</p>
-                  <p className="text-[9px] text-[#555] mt-1 uppercase tracking-wide">{label}</p>
+                  <p className="text-[9px] text-secondary-text mt-1 uppercase tracking-wide">{label}</p>
                 </div>
               ))}
             </div>
@@ -39,7 +39,7 @@ export default function RevisionScheduler() {
 
           {/* Upcoming */}
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Upcoming Revisions
             </span>
             {[
@@ -66,7 +66,7 @@ export default function RevisionScheduler() {
 
           {/* How it works */}
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               How It Calculates
             </span>
             {[
@@ -88,7 +88,7 @@ export default function RevisionScheduler() {
 
           <div className="flex items-start justify-between">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                 Revision Activity
               </span>
               <h3 className="text-[clamp(1rem,1.5vw,1.3rem)] font-bold text-white mt-1">

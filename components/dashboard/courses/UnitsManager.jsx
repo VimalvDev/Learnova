@@ -63,7 +63,7 @@ function FileRow({ file }) {
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-[12px] font-medium text-white">{file.name}</p>
-          <p className="text-[10px] text-[#555] mt-0.5">
+          <p className="text-[10px] text-secondary-text mt-0.5">
             {file.type} · {file.size} · {file.pages} pages · {file.words.toLocaleString()} words
           </p>
           <div className="mt-2">
@@ -78,7 +78,7 @@ function FileRow({ file }) {
               />
             </div>
             {file.status === "complete" && (
-              <p className="text-[10px] text-[#555] mt-1">
+              <p className="text-[10px] text-secondary-text mt-1">
                 Chunks: {file.chunks} · Embeddings: ✓
               </p>
             )}
@@ -98,15 +98,15 @@ function FileRow({ file }) {
             </div>
           ) : (
             <>
-              <button className="text-[#555] hover:text-white transition-colors">
+              <button className="text-secondary-text hover:text-white transition-colors">
                 <RiEyeLine className="text-[14px]" />
               </button>
-              <button className="text-[#555] hover:text-white transition-colors">
+              <button className="text-secondary-text hover:text-white transition-colors">
                 <RiRefreshLine className="text-[14px]" />
               </button>
               <button
                 onClick={() => setConfirmDelete(true)}
-                className="text-[#555] hover:text-[#F87171] transition-colors"
+                className="text-secondary-text hover:text-[#F87171] transition-colors"
               >
                 <RiDeleteBinLine className="text-[14px]" />
               </button>
@@ -136,7 +136,7 @@ export default function UnitsManager() {
     <div className="bg-[#171717] rounded-2xl p-6">
       <div className="flex items-start justify-between mb-5">
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#FA6E43]/80 block mb-1">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-brand/80 block mb-1">
             Course Structure
           </span>
           <h2 className="text-[17px] font-semibold text-white/90">Units & Modules</h2>
@@ -148,7 +148,7 @@ export default function UnitsManager() {
           onClick={addUnit}
           className="flex items-center gap-2 px-3.5 py-2 bg-[#111] text-white text-[12px] font-medium rounded-xl hover:bg-[#1a1a1a] transition-all"
         >
-          <RiAddLine className="text-[#FA6E43] text-[15px]" />
+          <RiAddLine className="text-brand text-[15px]" />
           Add Unit
         </button>
       </div>
@@ -162,19 +162,19 @@ export default function UnitsManager() {
               className="flex items-center gap-3 px-4 py-3.5 cursor-pointer hover:bg-white/[0.02] transition-colors group"
               onClick={() => toggleUnit(unit.id)}
             >
-              <RiDraggable className="text-[#333] text-[16px] flex-shrink-0 cursor-grab" />
+              <RiDraggable className="text-tertiary-text text-[16px] flex-shrink-0 cursor-grab" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-[#FA6E43]">
+                  <span className="text-[10px] font-bold text-brand">
                     Unit {units.indexOf(unit) + 1}
                   </span>
-                  <span className="text-[#333] text-[10px]">·</span>
+                  <span className="text-tertiary-text text-[10px]">·</span>
                   <span className="text-[13px] font-medium text-white">{unit.name}</span>
                 </div>
-                <p className="text-[11px] text-[#555] mt-0.5">
+                <p className="text-[11px] text-secondary-text mt-0.5">
                   {unit.files.length} {unit.files.length === 1 ? "file" : "files"}
                   {unit.files.filter((f) => f.status === "processing").length > 0 && (
-                    <span className="text-[#FA6E43] ml-1.5">
+                    <span className="text-brand ml-1.5">
                       · {unit.files.filter((f) => f.status === "processing").length} processing
                     </span>
                   )}
@@ -195,7 +195,7 @@ export default function UnitsManager() {
                 </button>
                 <button
                   onClick={(e) => e.stopPropagation()}
-                  className="text-[#555] hover:text-[#F87171] transition-colors"
+                  className="text-secondary-text hover:text-[#F87171] transition-colors"
                 >
                   <RiDeleteBinLine className="text-[15px]" />
                 </button>
@@ -213,15 +213,15 @@ export default function UnitsManager() {
                   unit.files.map((file) => <FileRow key={file.id} file={file} />)
                 ) : (
                   <div className="py-6 text-center">
-                    <p className="text-[12px] text-[#555] mb-2">
+                    <p className="text-[12px] text-secondary-text mb-2">
                       No documents in this unit yet.
                     </p>
-                    <button className="text-[12px] text-[#FA6E43] hover:underline">
+                    <button className="text-[12px] text-brand hover:underline">
                       + Upload to this unit
                     </button>
                   </div>
                 )}
-                <button className="mt-3 w-full py-2.5 border border-dashed border-[#FA6E43]/20 rounded-xl text-[12px] text-[#FA6E43]/70 hover:border-[#FA6E43]/40 hover:text-[#FA6E43] transition-all flex items-center justify-center gap-2">
+                <button className="mt-3 w-full py-2.5 border border-dashed border-brand/20 rounded-xl text-[12px] text-brand/70 hover:border-brand/40 hover:text-brand transition-all flex items-center justify-center gap-2">
                   <RiUploadLine className="text-[14px]" />
                   Upload to Unit {units.indexOf(unit) + 1}
                 </button>

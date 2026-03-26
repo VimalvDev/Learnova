@@ -24,7 +24,7 @@ export default function StepComplete({ formData }) {
       {/* Header */}
       <header className="h-[56px] flex items-center px-6 lg:px-12 border-b border-white/[0.05]">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 bg-[#FA6E43] rounded-lg flex items-center justify-center">
+          <div className="w-7 h-7 bg-brand rounded-lg flex items-center justify-center">
             <svg viewBox="0 0 10 10" fill="none" className="w-3.5 h-3.5">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
@@ -45,7 +45,7 @@ export default function StepComplete({ formData }) {
               className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8"
               style={{ background: "rgba(250,110,67,0.12)", border: "1.5px solid rgba(250,110,67,0.3)" }}
             >
-              <RiCheckLine className="text-[#FA6E43] text-[32px]" />
+              <RiCheckLine className="text-brand text-[32px]" />
             </div>
 
             <h1 className="text-[40px] lg:text-[48px] font-black text-white leading-tight mb-4">
@@ -59,7 +59,7 @@ export default function StepComplete({ formData }) {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => router.push("/dashboard")}
-                className="px-8 h-[50px] bg-[#FA6E43] text-white text-[14px] font-bold rounded-2xl hover:brightness-110 transition-all flex items-center gap-2"
+                className="px-8 h-[50px] bg-brand text-white text-[14px] font-bold rounded-2xl hover:brightness-110 transition-all flex items-center gap-2"
               >
                 Go to Dashboard
                 <RiArrowRightLine className="text-[16px]" />
@@ -81,7 +81,7 @@ export default function StepComplete({ formData }) {
           {/* Summary card */}
           <div className="bg-[#212225] rounded-2xl overflow-hidden">
             <div className="px-5 py-3.5 border-b border-white/[0.05]">
-              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#FA6E43]/70">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand/70">
                 Your Setup Summary
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function StepComplete({ formData }) {
                   i < summary.length - 1 ? "border-b border-white/[0.05]" : ""
                 }`}
               >
-                <span className="text-[12px] text-[#555]">{label}</span>
+                <span className="text-[12px] text-secondary-text">{label}</span>
                 <span className="text-[13px] font-semibold text-white">{value}</span>
               </div>
             ))}
@@ -100,7 +100,7 @@ export default function StepComplete({ formData }) {
 
           {/* Unlocked features */}
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#FA6E43]/70 mb-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand/70 mb-3">
               Features Unlocked
             </p>
             <div className="flex flex-col gap-2.5">
@@ -109,8 +109,8 @@ export default function StepComplete({ formData }) {
                   key={label}
                   className="flex items-center gap-3 px-4 py-3 bg-[#212225] rounded-xl"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-[#FA6E43]/10 flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-[#FA6E43] text-[15px]" />
+                  <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="text-brand text-[15px]" />
                   </div>
                   <span className="text-[13px] text-[#C0C0C0]">{label}</span>
                   <RiCheckLine className="text-[#4ADE80] text-[14px] ml-auto flex-shrink-0" />

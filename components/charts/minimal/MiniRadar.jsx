@@ -32,12 +32,12 @@ export default function MiniRadar() {
       gridLevels={4}
       gridShape="circular"
       gridLabelOffset={12}
-      colors={["#FA6E43"]}
+      colors={["var(--color-brand)"]}
       fillOpacity={0.12}
       borderWidth={2}
-      borderColor="#FA6E43"
+      borderColor="var(--color-brand)"
       dotSize={5}
-      dotColor="#FA6E43"
+      dotColor="var(--color-brand)"
       dotBorderWidth={2}
       dotBorderColor="#212225"
       blendMode="normal"

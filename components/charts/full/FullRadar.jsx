@@ -31,19 +31,19 @@ export default function FullRadar({ data = defaultData, onClick }) {
       gridLevels={4}
       gridShape="circular"
       gridLabelOffset={14}
-      colors={["#FA6E43"]}
+      colors={["var(--color-brand)"]}
       fillOpacity={0.1}
       borderWidth={2}
-      borderColor="#FA6E43"
+      borderColor="var(--color-brand)"
       dotSize={6}
-      dotColor="#FA6E43"
+      dotColor="var(--color-brand)"
       dotBorderWidth={2}
       dotBorderColor="#0D0D0D"
       blendMode="normal"
       animate
       tooltip={({ index, value }) => (
-        <div className="bg-[#212225] border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
-          {index}: <span className="text-[#FA6E43] font-bold">{value}%</span>
+        <div className="bg-card border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
+          {index}: <span className="text-brand font-bold">{value}%</span>
         </div>
       )}
     />

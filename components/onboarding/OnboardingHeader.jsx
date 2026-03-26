@@ -10,7 +10,7 @@ export default function OnboardingHeader({ step, totalSteps }) {
 
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2">
-        <div className="w-6 h-6 bg-[#FA6E43] rounded-md flex items-center justify-center">
+        <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center">
           <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
             <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
           </svg>
@@ -20,7 +20,7 @@ export default function OnboardingHeader({ step, totalSteps }) {
 
       {/* Mobile step count */}
       {step > 0 && step <= 6 && (
-        <span className="text-[12px] text-[#555] lg:hidden">
+        <span className="text-[12px] text-secondary-text lg:hidden">
           Step {step} of {totalSteps}
         </span>
       )}
@@ -30,7 +30,7 @@ export default function OnboardingHeader({ step, totalSteps }) {
         <div className="relative">
           <button
             onClick={() => setShowSkip(!showSkip)}
-            className="text-[12px] text-[#555] hover:text-white transition-colors"
+            className="text-[12px] text-secondary-text hover:text-white transition-colors"
           >
             Skip setup →
           </button>
@@ -49,7 +49,7 @@ export default function OnboardingHeader({ step, totalSteps }) {
                 </button>
                 <Link
                   href="/dashboard"
-                  className="text-[12px] text-[#FA6E43] hover:underline font-medium"
+                  className="text-[12px] text-brand hover:underline font-medium"
                 >
                   Skip
                 </Link>

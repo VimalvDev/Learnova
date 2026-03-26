@@ -30,7 +30,7 @@ export default function ActivityRow() {
       <div className="col-span-8 bg-[#171717] rounded-2xl p-5">
         <div className="flex items-center justify-between mb-4">
           <p className="text-[14px] font-medium text-white/70">Recent Activity</p>
-          <button className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-0.5">
+          <button className="text-[11px] text-brand hover:underline flex items-center gap-0.5">
             View All <RiArrowRightSLine className="text-[13px]" />
           </button>
         </div>
@@ -43,7 +43,7 @@ export default function ActivityRow() {
               <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: dot }} />
               <div className="flex-1 min-w-0">
                 <p className="text-[13px] font-medium text-white">{title}</p>
-                <p className="text-[11px] text-[#555] mt-0.5">{sub}</p>
+                <p className="text-[11px] text-secondary-text mt-0.5">{sub}</p>
               </div>
               <span className="text-[11px] text-[#444] flex-shrink-0 mt-0.5">{time}</span>
             </div>
@@ -73,14 +73,14 @@ export default function ActivityRow() {
           href="/dashboard/quizzes"
           className="flex items-center gap-3 p-3.5 bg-[#111] rounded-2xl hover:bg-[#151515] transition-all group"
         >
-          <div className="w-8 h-8 rounded-lg bg-[#FA6E43]/15 flex items-center justify-center flex-shrink-0">
-            <RiPlayCircleFill className="text-[#FA6E43] text-[16px]" />
+          <div className="w-8 h-8 rounded-lg bg-brand/15 flex items-center justify-center flex-shrink-0">
+            <RiPlayCircleFill className="text-brand text-[16px]" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-[12px] font-medium text-white">Continue: DBMS Unit 3</p>
-            <p className="text-[10px] text-[#555]">Question 7 of 18 · 2h ago</p>
+            <p className="text-[10px] text-secondary-text">Question 7 of 18 · 2h ago</p>
           </div>
-          <span className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+          <span className="text-[11px] text-brand opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
             Resume →
           </span>
         </Link>

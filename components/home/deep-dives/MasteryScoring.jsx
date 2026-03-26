@@ -20,11 +20,11 @@ export default function MasteryScoring() {
 
           {/* Formula card */}
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.8em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Scoring Formula
             </span>
             <div className="bg-[#1a1b1e] rounded-xl p-4 font-mono text-[12px] text-[#888] leading-relaxed">
-              <span className="text-[#FA6E43]">Mastery</span> = <br />
+              <span className="text-brand">Mastery</span> = <br />
               {"  "}(Accuracy <span className="text-white">× 0.4</span>) +<br />
               {"  "}(Speed <span className="text-white">× 0.2</span>) −<br />
               {"  "}(Error <span className="text-white">× 0.25</span>) +<br />
@@ -60,7 +60,7 @@ export default function MasteryScoring() {
 
           <div className="flex items-start justify-between">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                 Live Mastery Scores
               </span>
               <h3 className="text-[clamp(1rem,1.5vw,1.3rem)] font-bold text-white mt-1">
@@ -82,7 +82,7 @@ export default function MasteryScoring() {
             ].map(({ color, label }) => (
               <div key={label} className="flex items-center gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-sm" style={{ background: color }} />
-                <span className="text-[10px] text-[#555]">{label}</span>
+                <span className="text-[10px] text-secondary-text">{label}</span>
               </div>
             ))}
           </div>

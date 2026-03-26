@@ -29,11 +29,11 @@ export default function LowConfidenceMessage({ time, bestMatch, threshold }) {
           {/* Match info */}
           <div className="bg-[#2A2B2F] rounded-xl p-3 mb-3 flex flex-col gap-1.5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-[#555]">Best match found</span>
+              <span className="text-[11px] text-secondary-text">Best match found</span>
               <span className="text-[11px] font-semibold text-[#F87171]">{bestMatch}%</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-[#555]">Threshold required</span>
+              <span className="text-[11px] text-secondary-text">Threshold required</span>
               <span className="text-[11px] font-semibold text-white">{threshold}%</span>
             </div>
             {/* Gap bar */}
@@ -52,7 +52,7 @@ export default function LowConfidenceMessage({ time, bestMatch, threshold }) {
               "Try rephrasing using terms from your notes",
               "This concept may not be in your course scope",
             ].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-[11px] text-[#555]">
+              <li key={item} className="flex items-start gap-2 text-[11px] text-secondary-text">
                 <span className="text-[#FBBF24] flex-shrink-0 mt-0.5">·</span>
                 {item}
               </li>
@@ -69,7 +69,7 @@ export default function LowConfidenceMessage({ time, bestMatch, threshold }) {
             </button>
             <Link
               href="/dashboard/courses"
-              className="px-3 py-1.5 text-[11px] font-semibold text-white bg-[#FA6E43] rounded-lg hover:brightness-110 transition-all"
+              className="px-3 py-1.5 text-[11px] font-semibold text-white bg-brand rounded-lg hover:brightness-110 transition-all"
             >
               Upload Documents
             </Link>

@@ -26,7 +26,7 @@ export default function AIMessage({ message, isPublic = false }) {
   return (
     <div className="flex flex-col items-start gap-1 mb-6">
       <div
-        className="w-full max-w-[80%] bg-[#212225] overflow-hidden"
+        className="w-full max-w-[80%] bg-card overflow-hidden"
         style={{
           borderRadius: "4px 14px 14px 14px",
           border: isPublic
@@ -36,7 +36,7 @@ export default function AIMessage({ message, isPublic = false }) {
       >
 
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.04]">
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/4">
           <div className="flex items-center gap-2">
             <span className="text-[12px] font-semibold" style={{ color: accentColor }}>
               Learnova AI
@@ -73,7 +73,7 @@ export default function AIMessage({ message, isPublic = false }) {
             <ul className="flex flex-col gap-1.5 mt-1">
               {message.bullets.map((b, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="mt-1 flex-shrink-0 w-1 h-1 rounded-full bg-[#FA6E43]" />
+                  <span className="mt-1 shrink-0 w-1 h-1 rounded-full bg-brand" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -83,11 +83,11 @@ export default function AIMessage({ message, isPublic = false }) {
 
         {/* Citations */}
         {!isPublic && message.sources?.length > 0 && (
-          <div className="px-4 py-2.5 border-t border-white/[0.04] flex flex-col gap-1">
+          <div className="px-4 py-2.5 border-t border-white/4 flex flex-col gap-1">
             {message.sources.map((src, i) => (
               <div key={i} className="flex items-center gap-2 cursor-pointer group">
-                <RiFileTextLine className="text-[#FA6E43]/50 text-[11px] flex-shrink-0" />
-                <span className="text-[10px] text-[#555] group-hover:text-[#FA6E43] transition-colors">
+                <RiFileTextLine className="text-brand/50 text-[11px] shrink-0" />
+                <span className="text-[10px] text-secondary-text group-hover:text-brand transition-colors">
                   {src}
                 </span>
               </div>
@@ -97,8 +97,8 @@ export default function AIMessage({ message, isPublic = false }) {
 
         {/* Public footnote */}
         {isPublic && (
-          <div className="px-4 py-2 border-t border-white/[0.04]">
-            <p className="text-[10px] text-[#444]">
+          <div className="px-4 py-2 border-t border-white/4">
+            <p className="text-xs text-dark-gray">
               Not sourced from your documents.
             </p>
           </div>
@@ -106,9 +106,9 @@ export default function AIMessage({ message, isPublic = false }) {
 
         {/* Confidence bar */}
         {!isPublic && message.confidence && (
-          <div className="px-4 py-2.5 border-t border-white/[0.04] flex items-center gap-3">
-            <span className="text-[10px] text-[#444]">Confidence</span>
-            <div className="flex-1 h-[3px] bg-white/[0.06] rounded-full overflow-hidden max-w-[100px]">
+          <div className="px-4 py-2.5 border-t border-white/4 flex items-center gap-3">
+            <span className="text-xs text-dark-gray">Confidence</span>
+            <div className="flex-1 h-0.75 bg-white/6 rounded-full overflow-hidden max-w-25">
               <div
                 className="h-full rounded-full"
                 style={{ width: `${message.confidence}%`, background: confColor }}
@@ -121,7 +121,7 @@ export default function AIMessage({ message, isPublic = false }) {
         )}
 
         {/* Actions */}
-        <div className="px-4 py-2.5 border-t border-white/[0.04] flex items-center gap-3">
+        <div className="px-4 py-2.5 border-t border-white/4 flex items-center gap-3">
           <button
             onClick={() => setLiked(true)}
             style={{ color: liked === true ? "#FA6E43" : "#444" }}
@@ -136,21 +136,21 @@ export default function AIMessage({ message, isPublic = false }) {
           >
             <RiThumbDownLine className="text-[14px]" />
           </button>
-          <div className="w-px h-3 bg-white/[0.06]" />
+          <div className="w-px h-3 bg-white/6" />
           <button
             onClick={() => navigator.clipboard?.writeText(message.paragraphs?.join(" ") ?? "")}
-            className="flex items-center gap-1.5 text-[11px] text-[#555] hover:text-[#FA6E43] transition-colors"
+            className="flex items-center gap-1.5 text-[11px] text-secondary-text hover:text-brand transition-colors"
           >
             <RiFileCopyLine className="text-[12px]" /> Copy
           </button>
           <button
             onClick={handleSave}
-            className="flex items-center gap-1.5 text-[11px] text-[#555] hover:text-[#FA6E43] transition-colors"
+            className="flex items-center gap-1.5 text-[11px] text-secondary-text hover:text-brand transition-colors"
           >
             <RiBookmarkLine className="text-[12px]" /> Save
           </button>
           {!isPublic && (
-            <button className="flex items-center gap-1.5 text-[11px] text-[#555] hover:text-[#FA6E43] transition-colors ml-auto">
+            <button className="flex items-center gap-1.5 text-[11px] text-secondary-text hover:text-brand transition-colors ml-auto">
               <RiExternalLinkLine className="text-[12px]" /> Sources
             </button>
           )}

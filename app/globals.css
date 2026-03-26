@@ -2,15 +2,20 @@
 
 @theme {
   /* Colors */
-  --color-brand: #FA6E43;
+  /* --color-brand: #FA6E43; */
+  --color-brand: #5465FF;
+  --color-red: #ef233c;
   --color-dark: #0D0D0D;
   --color-card: #212225;
+  --color-card-dark: #171718;
   --color-light-black: #1a1820;
   --color-very-light: #f4f3f6;
   --color-dark-light: #e4dfe6;
   --color-secondary: #C0C0C0;
   --color-bleed: #888891;
   
+  --color-secondary-text:#999;
+  --color-tertiary-text: #666;
   --color-gray: #a6a3af;
   --color-mid-gray: #797681;
   --color-dark-gray: #4b4852;

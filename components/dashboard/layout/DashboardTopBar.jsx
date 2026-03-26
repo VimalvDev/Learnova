@@ -30,17 +30,17 @@ export default function DashboardTopBar() {
   const [notifOpen, setNotifOpen] = useState(false)
 
   return (
-    <header className="h-[54px] flex items-center justify-between px-6 flex-shrink-0 relative z-50 bg-[#0D0D0D]">
+    <header className="h-[54px] flex items-center justify-between px-6 flex-shrink-0 relative z-50 bg-dark">
 
       {/* Search */}
-      <div className="flex items-center gap-2 h-[34px] px-3 bg-[#171717] rounded-xl flex-1 max-w-[360px] focus-within:ring-1 focus-within:ring-[#FA6E43]/30 transition-all">
-        <RiSearchLine className="text-[#555] text-[15px] flex-shrink-0" />
+      <div className="flex items-center gap-2 h-[34px] px-3 bg-[#171717] rounded-xl flex-1 max-w-[360px] focus-within:ring-1 focus-within:ring-brand/30 transition-all">
+        <RiSearchLine className="text-secondary-text text-[15px] flex-shrink-0" />
         <input
           type="text"
           placeholder="Search for concepts, quizzes..."
           className="flex-1 bg-transparent text-[12px] text-white placeholder:text-white/20 outline-none"
         />
-        <span className="text-[9px] text-[#555] bg-[#1a1a1a] px-1.5 py-0.5 rounded-md flex-shrink-0">
+        <span className="text-[9px] text-secondary-text bg-[#1a1a1a] px-1.5 py-0.5 rounded-md flex-shrink-0">
           ⌘K
         </span>
       </div>
@@ -64,14 +64,14 @@ export default function DashboardTopBar() {
             className="relative w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/[0.04] transition-colors"
           >
             <RiNotification3Line className="text-[#666] text-[18px]" />
-            <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#FA6E43]" />
+            <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-brand" />
           </button>
 
           {notifOpen && (
             <div className="absolute right-0 top-11 w-[290px] bg-[#1a1a1a] rounded-2xl shadow-2xl z-50 overflow-hidden">
               <div className="flex items-center justify-between px-4 py-3">
                 <span className="text-[13px] font-semibold text-white">Notifications</span>
-                <button className="text-[11px] text-[#FA6E43] hover:underline">
+                <button className="text-[11px] text-brand hover:underline">
                   Mark all read
                 </button>
               </div>
@@ -80,10 +80,10 @@ export default function DashboardTopBar() {
                   <div
                     key={title}
                     className={`flex items-start gap-3 px-4 py-3 cursor-pointer hover:bg-white/[0.02] transition-colors ${
-                      unread ? "bg-[#FA6E43]/[0.02]" : ""
+                      unread ? "bg-brand/[0.02]" : ""
                     }`}
                   >
-                    <RiErrorWarningLine className="text-[#FA6E43] mt-0.5 flex-shrink-0 text-[14px]" />
+                    <RiErrorWarningLine className="text-brand mt-0.5 flex-shrink-0 text-[14px]" />
                     <div className="flex-1 min-w-0">
                       <p className="text-[12px] text-white font-medium leading-tight">{title}</p>
                       <p className="text-[10px] text-[#888] mt-0.5">{sub}</p>
@@ -93,7 +93,7 @@ export default function DashboardTopBar() {
                 ))}
               </div>
               <div className="px-4 py-3 text-center">
-                <button className="text-[12px] text-[#FA6E43] hover:underline flex items-center justify-center gap-1">
+                <button className="text-[12px] text-brand hover:underline flex items-center justify-center gap-1">
                   View all notifications
                   <RiArrowRightSLine className="text-[14px]" />
                 </button>
@@ -110,9 +110,9 @@ export default function DashboardTopBar() {
           >
             <div className="text-right hidden md:block capitalize ">
               <p className="text-[12px] font-semibold text-white leading-none">Vimal verma</p>
-              <p className="text-[10px] text-[#555] mt-0.5">Student</p>
+              <p className="text-[10px] text-secondary-text mt-0.5">Student</p>
             </div>
-            <div className="w-8 h-8 rounded-full bg-[#FA6E43] flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0">
               <span className="text-[11px] font-bold text-white">AR</span>
             </div>
           </button>

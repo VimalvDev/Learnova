@@ -8,11 +8,11 @@ export default function AuthButton({
   type = "button",
   variant = "primary",
 }) {
-  const base = "w-full h-[44px] rounded-lg text-[15px] font-semibold transition-all duration-150 flex items-center justify-center gap-2"
+  const base = "w-full h-11 rounded-lg text-base font-semibold transition-all duration-150 flex items-center justify-center gap-2"
 
   const variants = {
-    primary: "bg-[#FA6E43] text-white hover:brightness-110 hover:scale-[1.01] active:scale-[0.98]",
-    google: "bg-[#212225] text-white border border-white/10 hover:bg-[#2A2B2F] hover:border-white/[0.18]",
+    primary: "bg-brand text-white hover:brightness-110 hover:scale-[1.01] active:scale-[0.98]",
+    google: "bg-card text-white border border-white/10 hover:bg-[#2A2B2F] hover:border-white/20",
   }
 
   return (

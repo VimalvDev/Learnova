@@ -5,7 +5,7 @@ import nivoTheme from "@/lib/nivo"
 const defaultData = [
   {
     id: "Overall Mastery",
-    color: "#FA6E43",
+    color: "var(--color-brand)",
     data: [
       { x: "Mar 1",  y: 52 }, { x: "Mar 5",  y: 58 },
       { x: "Mar 8",  y: 55 }, { x: "Mar 11", y: 63 },
@@ -37,7 +37,7 @@ const defaultData = [
 
 // Map serie id → explicit dot color
 const dotColors = {
-  "Overall Mastery": "#FA6E43",
+  "Overall Mastery": "var(--color-brand)",
   "Quiz Accuracy":   "rgba(255,255,255,0.5)",
   "Revision Rate":   "rgba(255,255,255,0.25)",
 }

@@ -41,7 +41,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
 
       {/* ── COURSE ── */}
       <div className="p-4 border-b border-white/[0.06]">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
           Active Course
         </p>
         <div className="relative">
@@ -49,7 +49,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
             onClick={() => setCourseOpen(!courseOpen)}
             className="w-full flex items-center gap-2 px-3 py-2 bg-[#212225] rounded-xl hover:bg-[#2A2B2F] transition-colors"
           >
-            <RiFileTextLine className="text-[#FA6E43] text-[13px] flex-shrink-0" />
+            <RiFileTextLine className="text-brand text-[13px] flex-shrink-0" />
             <span className="text-[12px] font-medium text-white flex-1 text-left truncate">{course}</span>
             <RiArrowDownSLine className="text-[#444] text-[14px] flex-shrink-0" />
           </button>
@@ -60,15 +60,15 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
                   key={c}
                   onClick={() => { setCourse(c); setCourseOpen(false) }}
                   className={`w-full text-left px-3 py-2.5 text-[12px] flex items-center justify-between hover:bg-white/[0.04] transition-colors ${
-                    course === c ? "text-[#FA6E43]" : "text-white"
+                    course === c ? "text-brand" : "text-white"
                   }`}
                 >
                   {c}
-                  {course === c && <span className="text-[10px] text-[#FA6E43]">✓</span>}
+                  {course === c && <span className="text-[10px] text-brand">✓</span>}
                 </button>
               ))}
               <div className="border-t border-white/[0.06]">
-                <button className="w-full text-left px-3 py-2.5 text-[12px] text-[#FA6E43] flex items-center gap-2 hover:bg-white/[0.04] transition-colors">
+                <button className="w-full text-left px-3 py-2.5 text-[12px] text-brand flex items-center gap-2 hover:bg-white/[0.04] transition-colors">
                   <RiAddLine className="text-[13px]" /> New Course
                 </button>
               </div>
@@ -79,7 +79,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
 
       {/* ── MODE TOGGLE ── */}
       <div className="p-4 border-b border-white/[0.06]">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
           Mode
         </p>
         <div className="flex flex-col gap-1.5">
@@ -122,12 +122,12 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
       {mode === "private" && (
         <div className="p-4 border-b border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">
               Scope
             </p>
             <button
               onClick={() => setActive(activeUnits.length ? [] : units.map(u => u.id))}
-              className="text-[10px] text-[#FA6E43] hover:underline"
+              className="text-[10px] text-brand hover:underline"
             >
               {activeUnits.length ? "Deselect All" : "Select All"}
             </button>
@@ -162,7 +162,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
                   <div className="px-3 pb-3 pl-8 flex flex-col gap-1 border-t border-white/[0.04] pt-2">
                     {unit.docs.map((doc) => (
                       <div key={doc.name} className="flex items-start gap-2">
-                        <RiFileTextLine className="text-[#FA6E43]/40 text-[11px] flex-shrink-0 mt-0.5" />
+                        <RiFileTextLine className="text-brand/40 text-[11px] flex-shrink-0 mt-0.5" />
                         <div>
                           <p className="text-[10px] text-[#888] leading-tight">{doc.name}</p>
                           <p className="text-[9px] text-[#444]">{doc.pages}p · {doc.words.toLocaleString()} words</p>
@@ -181,7 +181,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
       {mode === "private" && (
         <div className="p-4 border-b border-white/[0.06]">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">
               Confidence Threshold
             </p>
             <span className="text-[11px] font-semibold text-white">{threshold}%</span>
@@ -203,7 +203,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
       {/* ── SESSION STATS (private only) ── */}
       {mode === "private" && (
         <div className="p-4">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
             This Session
           </p>
           <div className="grid grid-cols-2 gap-1.5">
@@ -227,7 +227,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
         <div className="p-4">
           <div className="bg-[#212225] rounded-xl p-3.5">
             <p className="text-[11px] font-semibold text-[#4ADE80] mb-1.5">Public Mode Active</p>
-            <p className="text-[10px] text-[#555] leading-relaxed">
+            <p className="text-[10px] text-secondary-text leading-relaxed">
               Questions use general AI knowledge. Document scope and confidence scoring are disabled.
             </p>
           </div>

@@ -19,12 +19,12 @@ export default function PerformanceInsights() {
         <div className="md:col-span-4 flex flex-col gap-[1em]">
 
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Overall Score
             </span>
             <div className="flex items-end gap-2 mb-1">
-              <span className="text-[48px] font-black text-[#FA6E43] leading-none">73</span>
-              <span className="text-[16px] text-[#555] mb-2">/100</span>
+              <span className="text-[48px] font-black text-brand leading-none">73</span>
+              <span className="text-[16px] text-secondary-text mb-2">/100</span>
             </div>
             <p className="text-[11px] text-[#888]">Above average for your subject group.</p>
           </div>
@@ -65,7 +65,7 @@ export default function PerformanceInsights() {
         <div className="md:col-span-8 bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.8em] flex flex-col gap-4">
 
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
               Performance Overview
             </span>
             <h3 className="text-[clamp(1rem,1.5vw,1.3rem)] font-bold text-white mt-1">

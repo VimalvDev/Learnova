@@ -120,7 +120,7 @@ export default function InputBar({ onSend, isPublic = false }) {
         </div>
       </div>
 
-      <p className="text-[10px] text-[#333] text-center mt-1.5 hidden sm:block">
+      <p className="text-[10px] text-tertiary-text text-center mt-1.5 hidden sm:block">
         Enter to send · Shift+Enter for new line · / for commands
       </p>
     </div>

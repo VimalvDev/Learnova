@@ -57,18 +57,18 @@ export default function OnboardingPage() {
     <div className="flex min-h-screen bg-[#161719] text-white">
 
       {/* ── SIDEBAR — fixed, never scrolls ── */}
-      <aside className="hidden lg:flex fixed top-0 left-0 w-[22vw] h-screen z-40 flex-col bg-[#111214] border-r border-white/[0.05]">
+      <aside className="hidden lg:flex fixed top-0 left-0 w-[22vw] h-screen z-40 flex-col bg-[#111214] border-r border-white/5">
 
         {/* Logo */}
-        <div className="flex items-center gap-3 px-6 py-5 border-b border-white/[0.05] flex-shrink-0">
-          <div className="w-8 h-8 bg-[#FA6E43] rounded-xl flex items-center justify-center flex-shrink-0">
+        <div className="flex items-center gap-3 px-6 py-5 border-b border-white/5 shrink-0">
+          <div className="w-8 h-8 bg-brand rounded-xl flex items-center justify-center shrink-0">
             <svg viewBox="0 0 10 10" fill="none" className="w-4 h-4">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
           </div>
           <div>
             <p className="text-sm font-bold text-white leading-none">Learnova</p>
-            <p className="text-[0.6rem] text-[#FA6E43] font-bold uppercase tracking-widest mt-0.5">
+            <p className="text-[0.6rem] text-brand font-bold uppercase tracking-widest mt-0.5">
               Student Portal
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function OnboardingPage() {
 
         {/* Step list — scrollable */}
         <div className="flex-1 overflow-y-auto px-5 py-6">
-          <p className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-[#FA6E43]/60 mb-5">
+          <p className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-brand/60 mb-5">
             Setup Progress
           </p>
           {stepMeta.map(({ num, label, desc }) => {
@@ -84,12 +84,12 @@ export default function OnboardingPage() {
             const active = num === step
             return (
               <div key={num} className="flex gap-4">
-                <div className="flex flex-col items-center flex-shrink-0">
+                <div className="flex flex-col items-center shrink-0">
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
                     done
-                      ? "bg-[#FA6E43] text-white"
+                      ? "bg-brand text-white"
                       : active
-                      ? "bg-[#FA6E43]/15 text-[#FA6E43] ring-1 ring-[#FA6E43]"
+                      ? "bg-brand/15 text-brand ring-1 ring-brand"
                       : "bg-white/[0.04] text-[#3a3b3f]"
                   }`}>
                     {done ? (
@@ -99,7 +99,7 @@ export default function OnboardingPage() {
                     ) : num}
                   </div>
                   {num < 6 && (
-                    <div className={`w-px flex-1 my-1 min-h-[2rem] ${done ? "bg-[#FA6E43]" : "bg-white/[0.06]"}`} />
+                    <div className={`w-px flex-1 my-1 min-h-[2rem] ${done ? "bg-brand" : "bg-white/[0.06]"}`} />
                   )}
                 </div>
 
@@ -115,16 +115,16 @@ export default function OnboardingPage() {
                     {desc}
                   </p>
                   {done && num === 1 && formData.primarySubject && (
-                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 truncate">{formData.primarySubject}</p>
+                    <p className="text-[0.65rem] text-brand font-semibold mt-1 truncate">{formData.primarySubject}</p>
                   )}
                   {done && num === 2 && formData.courseName && (
-                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 truncate">{formData.courseName}</p>
+                    <p className="text-[0.65rem] text-brand font-semibold mt-1 truncate">{formData.courseName}</p>
                   )}
                   {done && num === 3 && formData.confidenceLevel && (
-                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1 capitalize">{formData.confidenceLevel}</p>
+                    <p className="text-[0.65rem] text-brand font-semibold mt-1 capitalize">{formData.confidenceLevel}</p>
                   )}
                   {done && num === 4 && (
-                    <p className="text-[0.65rem] text-[#FA6E43] font-semibold mt-1">{formData.dailyHours}h / day</p>
+                    <p className="text-[0.65rem] text-brand font-semibold mt-1">{formData.dailyHours}h / day</p>
                   )}
                 </div>
               </div>
@@ -133,14 +133,14 @@ export default function OnboardingPage() {
         </div>
 
         {/* Progress bar — always visible */}
-        <div className="px-5 py-5 border-t border-white/[0.05] flex-shrink-0">
+        <div className="px-5 py-5 border-t border-white/5 shrink-0">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-[#444]">Step {step} of 6</span>
-            <span className="text-xs font-bold text-[#FA6E43]">{progress}%</span>
+            <span className="text-xs font-bold text-brand">{progress}%</span>
           </div>
-          <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
+          <div className="h-1 bg-white/6 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#FA6E43] rounded-full transition-all duration-500"
+              className="h-full bg-brand rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -153,11 +153,11 @@ export default function OnboardingPage() {
       <div className="flex-1 flex flex-col lg:ml-[22vw]">
 
         {/* HEADER — sticky, never scrolls away ── */}
-        <header className="sticky top-0 z-30 flex items-center justify-between px-8 lg:px-12 h-14 border-b border-white/[0.05] bg-[#161719] flex-shrink-0">
+        <header className="sticky top-0 z-30 flex items-center justify-between px-8 lg:px-12 h-14 border-b border-white/5 bg-[#161719] shrink-0">
 
           {/* Mobile: logo + pill */}
           <div className="flex items-center gap-3 lg:hidden">
-            <div className="w-6 h-6 bg-[#FA6E43] rounded-md flex items-center justify-center">
+            <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center">
               <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
                 <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
@@ -168,7 +168,7 @@ export default function OnboardingPage() {
                 <div
                   key={num}
                   className={`rounded-full h-[5px] transition-all duration-300 ${
-                    num <= step ? "bg-[#FA6E43]" : "bg-white/10"
+                    num <= step ? "bg-brand" : "bg-white/10"
                   } ${num === step ? "w-[18px]" : "w-[5px]"}`}
                 />
               ))}
@@ -177,10 +177,10 @@ export default function OnboardingPage() {
 
           {/* Desktop: step label */}
           <div className="hidden lg:flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#FA6E43]/60">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand/60">
               Step {step} of 6
             </span>
-            <span className="text-[#333] text-xs">—</span>
+            <span className="text-tertiary-text text-xs">—</span>
             <span className="text-xs text-[#888891]">{stepMeta[step - 1].label}</span>
           </div>
 
@@ -211,13 +211,13 @@ export default function OnboardingPage() {
         </main>
 
         {/* FOOTER — sticky bottom, never scrolls away ── */}
-        <footer className="sticky bottom-0 z-30 flex items-center justify-between px-8 lg:px-12 h-[4.5rem] border-t border-white/[0.05] bg-[#161719] flex-shrink-0">
+        <footer className="sticky bottom-0 z-30 flex items-center justify-between px-8 lg:px-12 h-[4.5rem] border-t border-white/5 bg-[#161719] shrink-0">
 
           {/* Back — always left */}
           {step > 1 ? (
             <button
               onClick={back}
-              className="flex items-center gap-2 text-sm text-[#555] hover:text-white transition-colors"
+              className="flex items-center gap-2 text-sm text-secondary-text hover:text-white transition-colors"
             >
               <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
                 <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -229,7 +229,7 @@ export default function OnboardingPage() {
           {/* Continue — always right */}
           <button
             onClick={next}
-            className="flex items-center gap-2 px-8 py-2.5 bg-[#FA6E43] text-white text-sm font-bold rounded-xl hover:brightness-110 transition-all"
+            className="flex items-center gap-2 px-8 py-2.5 bg-brand text-white text-sm font-bold rounded-xl hover:brightness-110 transition-all"
           >
             {step === 6 ? "Complete Setup" : "Continue"}
             <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">

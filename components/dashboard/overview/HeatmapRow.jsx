@@ -24,7 +24,7 @@ export default function HeatmapRow() {
             <p className="text-[14px] font-medium text-white/70">Performance Heatmap</p>
             <p className="text-[11px] text-[#666] mt-0.5">Topic mastery over 6 weeks</p>
           </div>
-          <span className="text-[11px] text-[#FA6E43] opacity-0 group-hover:opacity-100 transition-opacity">
+          <span className="text-[11px] text-brand opacity-0 group-hover:opacity-100 transition-opacity">
             View Details →
           </span>
         </div>
@@ -46,7 +46,7 @@ export default function HeatmapRow() {
       <div className="col-span-3 bg-[#171717] rounded-2xl p-5 flex flex-col">
         <div className="flex items-center justify-between mb-3">
           <p className="text-[14px] font-medium text-white/70">Revision Planner</p>
-          <Link href="/dashboard/revision" className="text-[11px] text-[#FA6E43] hover:underline">
+          <Link href="/dashboard/revision" className="text-[11px] text-brand hover:underline">
             View All →
           </Link>
         </div>
@@ -60,10 +60,10 @@ export default function HeatmapRow() {
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dot }} />
               <div className="flex-1 min-w-0">
                 <p className="text-[12px] font-medium text-white truncate">{name}</p>
-                <p className="text-[10px] text-[#555] mt-0.5">{due}</p>
+                <p className="text-[10px] text-secondary-text mt-0.5">{due}</p>
               </div>
               <svg viewBox="0 0 24 24" fill="none" stroke="#555"
-                className="w-3.5 h-3.5 flex-shrink-0 group-hover:stroke-[#FA6E43] transition-colors"
+                className="w-3.5 h-3.5 flex-shrink-0 group-hover:stroke-brand transition-colors"
                 strokeWidth="2">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
@@ -89,9 +89,9 @@ export default function HeatmapRow() {
             <p className="text-[11px] text-[#666] mt-0.5">6 dimension overview</p>
           </div>
           <div className="text-right">
-            <p className="text-[10px] text-[#555]">Overall Score</p>
-            <p className="text-[20px] font-black text-[#FA6E43] leading-none mt-0.5">
-              73<span className="text-[12px] text-[#555] font-normal">/100</span>
+            <p className="text-[10px] text-secondary-text">Overall Score</p>
+            <p className="text-[20px] font-black text-brand leading-none mt-0.5">
+              73<span className="text-[12px] text-secondary-text font-normal">/100</span>
             </p>
           </div>
         </div>

@@ -55,7 +55,7 @@ export default function WeaknessIntelligence() {
 
           {/* Stat */}
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               This Week
             </span>
             <div className="grid grid-cols-3 gap-3">
@@ -65,8 +65,8 @@ export default function WeaknessIntelligence() {
                 ["87%", "Accuracy after fix"],
               ].map(([num, label]) => (
                 <div key={label} className="text-center">
-                  <p className="text-[20px] font-black text-[#FA6E43] leading-none">{num}</p>
-                  <p className="text-[9px] text-[#555] mt-1 uppercase tracking-wide">{label}</p>
+                  <p className="text-[20px] font-black text-brand leading-none">{num}</p>
+                  <p className="text-[9px] text-secondary-text mt-1 uppercase tracking-wide">{label}</p>
                 </div>
               ))}
             </div>
@@ -79,7 +79,7 @@ export default function WeaknessIntelligence() {
 
           <div className="flex items-start justify-between">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                 Topic Mastery Over Time
               </span>
               <h3 className="text-[clamp(1rem,1.5vw,1.3rem)] font-bold text-white mt-1">
@@ -119,7 +119,7 @@ export default function WeaknessIntelligence() {
                   <div className="w-1.5 h-1.5 rounded-full bg-[#F87171] flex-shrink-0" />
                   <div>
                     <p className="text-[11px] font-semibold text-white">{topic}</p>
-                    <p className="text-[10px] text-[#555] truncate">{reason}</p>
+                    <p className="text-[10px] text-secondary-text truncate">{reason}</p>
                   </div>
                 </div>
                 <span className="text-[13px] font-black text-[#F87171] flex-shrink-0">{score}</span>

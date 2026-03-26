@@ -65,38 +65,38 @@ export default function RightPanel({ mode = "private", onModeChange }) {
     setActiveUnits((p) => p.includes(id) ? p.filter((u) => u !== id) : [...p, id])
 
   return (
-    <div className="flex flex-col h-full  divide-y divide-white/[0.06]">
+    <div className="flex flex-col h-screen mt-[3em] ">
 
       {/* ── COURSE ── */}
       <div className="p-3">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
           Course
         </p>
         <div className="relative">
           <button
             onClick={() => setCourseOpen(!courseOpen)}
-            className="w-full flex items-center gap-2 px-3 py-2 bg-[#212225] rounded-xl hover:bg-[#2A2B2F] transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 bg-card rounded-xl hover:bg-[#2A2B2F] transition-colors"
           >
-            <RiFileTextLine className="text-[#FA6E43] text-[12px] flex-shrink-0" />
+            <RiFileTextLine className="text-brand text-[12px] flex-shrink-0" />
             <span className="text-[11px] font-medium text-white flex-1 text-left truncate">{course}</span>
             <RiArrowDownSLine className="text-[#444] text-[13px] flex-shrink-0" />
           </button>
           {courseOpen && (
-            <div className="absolute top-10 left-0 w-full bg-[#212225] rounded-xl shadow-2xl z-30 overflow-hidden border border-white/[0.06]">
+            <div className="absolute top-10 left-0 w-full bg-card rounded-xl shadow-2xl z-30 overflow-hidden border border-white/6\">
               {courses.map((c) => (
                 <button
                   key={c}
                   onClick={() => { setCourse(c); setCourseOpen(false) }}
-                  className={`w-full text-left px-3 py-2 text-[11px] flex items-center justify-between hover:bg-white/[0.04] transition-colors ${
-                    course === c ? "text-[#FA6E43]" : "text-white"
+                  className={`w-full text-left px-3 py-2 text-[11px] flex items-center justify-between hover:bg-white/4 transition-colors ${
+                    course === c ? "text-brand" : "text-white"
                   }`}
                 >
                   {c}
-                  {course === c && <span className="text-[9px] text-[#FA6E43]">✓</span>}
+                  {course === c && <span className="text-[9px] text-brand">✓</span>}
                 </button>
               ))}
-              <div className="border-t border-white/[0.06]">
-                <button className="w-full text-left px-3 py-2 text-[11px] text-[#FA6E43] flex items-center gap-2 hover:bg-white/[0.04] transition-colors">
+              <div className="border-t border-white/6">
+                <button className="w-full text-left px-3 py-2 text-[11px] text-brand flex items-center gap-2 hover:bg-white/4 transition-colors">
                   <RiAddLine className="text-[12px]" /> New Course
                 </button>
               </div>
@@ -107,12 +107,12 @@ export default function RightPanel({ mode = "private", onModeChange }) {
 
       {/* ── MODE ── */}
       <div className="p-3">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
           Mode
         </p>
         <div className="flex gap-1.5">
           {[
-            { id: "private", icon: RiLockLine,   label: "Private", color: "text-[#FA6E43]", activeBg: "bg-[#FA6E43]/10 border-[#FA6E43]/20" },
+            { id: "private", icon: RiLockLine,   label: "Private", color: "text-brand", activeBg: "bg-brand/10 border-brand/20" },
             { id: "public",  icon: RiGlobalLine, label: "Public",  color: "text-[#4ADE80]", activeBg: "bg-[#4ADE80]/10 border-[#4ADE80]/20" },
           ].map(({ id, icon: Icon, label, color, activeBg }) => {
             const active = mode === id
@@ -123,7 +123,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                 className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border transition-all text-[11px] font-medium ${
                   active
                     ? `${activeBg} ${color}`
-                    : "bg-transparent border-white/[0.06] text-[#444] hover:text-white hover:border-white/[0.1]"
+                    : "bg-transparent border-white/6 text-[#444] hover:text-white hover:border-white/10"
                 }`}
               >
                 <Icon className="text-[12px]" />
@@ -141,7 +141,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
             onClick={() => setScopeOpen(!scopeOpen)}
             className="w-full flex items-center justify-between mb-2"
           >
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">
               Scope
             </p>
             <div className="flex items-center gap-2">
@@ -150,7 +150,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                   e.stopPropagation()
                   setActiveUnits(activeUnits.length ? [] : units.map(u => u.id))
                 }}
-                className="text-[9px] text-[#FA6E43] hover:underline"
+                className="text-[9px] text-brand hover:underline"
               >
                 {activeUnits.length ? "Deselect All" : "Select All"}
               </button>
@@ -163,13 +163,13 @@ export default function RightPanel({ mode = "private", onModeChange }) {
           {scopeOpen && (
             <div className="flex flex-col gap-1">
               {units.map((unit) => (
-                <div key={unit.id} className="bg-[#212225] rounded-xl overflow-hidden">
+                <div key={unit.id} className="bg-card rounded-xl overflow-hidden">
                   <div
-                    className="flex items-center gap-2 px-2.5 py-2 cursor-pointer hover:bg-white/[0.02] transition-colors"
+                    className="flex items-center gap-2 px-2.5 py-2 cursor-pointer hover:bg-white/2 transition-colors"
                     onClick={() => setExpanded(expandedUnit === unit.id ? null : unit.id)}
                   >
                     <RiArrowRightSLine
-                      className="text-[#444] text-[12px] flex-shrink-0 transition-transform duration-200"
+                      className="text-[#444] text-[12px] shrink-0 transition-transform duration-200"
                       style={{ transform: expandedUnit === unit.id ? "rotate(90deg)" : "rotate(0deg)" }}
                     />
                     <div className="flex-1 min-w-0">
@@ -178,7 +178,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                     </div>
                     <div
                       onClick={(e) => { e.stopPropagation(); toggleUnit(unit.id) }}
-                      className="w-7 h-3.5 rounded-full flex-shrink-0 cursor-pointer relative transition-all"
+                      className="w-7 h-3.5 rounded-full shrink-0 cursor-pointer relative transition-all"
                       style={{ background: activeUnits.includes(unit.id) ? "#FA6E43" : "rgba(255,255,255,0.08)" }}
                     >
                       <div
@@ -191,7 +191,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                     <div className="px-3 pb-2.5 pl-7 flex flex-col gap-1 border-t border-white/[0.04] pt-2">
                       {unit.docs.map((doc) => (
                         <div key={doc.name} className="flex items-start gap-1.5">
-                          <RiFileTextLine className="text-[#FA6E43]/40 text-[10px] flex-shrink-0 mt-0.5" />
+                          <RiFileTextLine className="text-brand/40 text-[10px] flex-shrink-0 mt-0.5" />
                           <div>
                             <p className="text-[10px] text-[#888] leading-tight">{doc.name}</p>
                             <p className="text-[9px] text-[#444]">{doc.pages}p · {doc.words.toLocaleString()} words</p>
@@ -211,7 +211,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
       {isPrivate && (
         <div className="p-3">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">
               Confidence Threshold
             </p>
             <span className="text-[11px] font-semibold text-white">{threshold}%</span>
@@ -219,7 +219,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
           <input
             type="range" min={60} max={90} value={threshold}
             onChange={(e) => setThreshold(Number(e.target.value))}
-            className="w-full h-1 rounded-full appearance-none cursor-pointer accent-[#FA6E43]"
+            className="w-full h-1 rounded-full appearance-none cursor-pointer accent-brand"
           />
           <div className="flex items-center justify-between mt-1">
             {["Strict", "Balanced", "Loose"].map((m) => (
@@ -236,7 +236,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
             onClick={() => setSourcesOpen(!sourcesOpen)}
             className="w-full flex items-center justify-between mb-2"
           >
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">
               Retrieved Sources
             </p>
             <RiArrowDownSLine
@@ -254,7 +254,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                     className="bg-[#212225] rounded-xl p-2.5 cursor-pointer hover:bg-[#2A2B2F] transition-all"
                   >
                     <div className="flex items-center gap-1.5 mb-1">
-                      <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md bg-[#FA6E43]/10 text-[#FA6E43]">
+                      <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md bg-brand/10 text-brand">
                         #{chunk.rank}
                       </span>
                       <div className="flex-1 min-w-0">
@@ -265,7 +265,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                         {chunk.similarity}
                       </span>
                     </div>
-                    <p className="text-[10px] text-[#555] leading-relaxed italic line-clamp-2">
+                    <p className="text-[10px] text-secondary-text leading-relaxed italic line-clamp-2">
                       {chunk.excerpt}
                     </p>
                     <div className="mt-1.5 h-[2px] bg-white/[0.06] rounded-full overflow-hidden">
@@ -285,13 +285,13 @@ export default function RightPanel({ mode = "private", onModeChange }) {
       {/* ── ACTIVE SOURCES (private only) ── */}
       {isPrivate && (
         <div className="p-3">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
             Active Sources
           </p>
           <div className="bg-[#212225] rounded-xl overflow-hidden">
             {sourceDocs.map(({ name, chunks: c, active }) => (
               <div key={name} className="flex items-center gap-2 px-2.5 py-2 border-b border-white/[0.04] last:border-0">
-                <RiFileTextLine className="text-[#FA6E43]/40 text-[11px] flex-shrink-0" />
+                <RiFileTextLine className="text-brand/40 text-[11px] flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-[10px] font-medium text-white truncate">{name}</p>
                   <p className="text-[9px] text-[#444]">{c} chunks</p>
@@ -306,7 +306,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
       {/* ── SESSION STATS (private only) ── */}
       {isPrivate && (
         <div className="p-3">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-[#FA6E43]/70 mb-2">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
             This Session
           </p>
           <div className="grid grid-cols-2 gap-1.5">
@@ -330,12 +330,12 @@ export default function RightPanel({ mode = "private", onModeChange }) {
         <div className="p-3">
           <div className="bg-[#212225] rounded-xl p-3">
             <p className="text-[11px] font-semibold text-[#4ADE80] mb-1.5">Public Mode Active</p>
-            <p className="text-[10px] text-[#555] leading-relaxed">
+            <p className="text-[10px] text-secondary-text leading-relaxed">
               Answers from general AI knowledge. Document retrieval and confidence scoring are disabled.
             </p>
             <button
               onClick={() => onModeChange?.("private")}
-              className="mt-2.5 w-full py-1.5 text-[11px] font-semibold text-white bg-[#FA6E43] rounded-lg hover:brightness-110 transition-all"
+              className="mt-2.5 w-full py-1.5 text-[11px] font-semibold text-white bg-brand rounded-lg hover:brightness-110 transition-all"
             >
               Switch to Private Mode
             </button>

@@ -38,7 +38,7 @@ export default function AdaptiveQuiz() {
           ))}
 
           <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Session Stats
             </span>
             <div className="grid grid-cols-2 gap-3">
@@ -49,8 +49,8 @@ export default function AdaptiveQuiz() {
                 ["0", "Static questions"],
               ].map(([num, label]) => (
                 <div key={label} className="bg-[#1a1b1e] rounded-xl p-3 text-center">
-                  <p className="text-[18px] font-black text-[#FA6E43] leading-none">{num}</p>
-                  <p className="text-[9px] text-[#555] mt-1 uppercase tracking-wide">{label}</p>
+                  <p className="text-[18px] font-black text-brand leading-none">{num}</p>
+                  <p className="text-[9px] text-secondary-text mt-1 uppercase tracking-wide">{label}</p>
                 </div>
               ))}
             </div>
@@ -62,7 +62,7 @@ export default function AdaptiveQuiz() {
         <div className="md:col-span-8 bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.8em] flex flex-col gap-4">
 
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
               Adaptive Difficulty vs Mastery
             </span>
             <h3 className="text-[clamp(1rem,1.5vw,1.3rem)] font-bold text-white mt-1">

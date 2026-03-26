@@ -15,12 +15,12 @@ export default function RevisionCalendar() {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-[#FA6E43]/10 flex items-center justify-center flex-shrink-0">
-            <RiCalendarTodoLine className="text-[#FA6E43] text-[16px]" />
+          <div className="w-8 h-8 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
+            <RiCalendarTodoLine className="text-brand text-[16px]" />
           </div>
           <div>
             <p className="text-[14px] font-medium text-white/90">Revision Activity</p>
-            <p className="text-[11px] text-[#555] mt-0.5">
+            <p className="text-[11px] text-secondary-text mt-0.5">
               Your study sessions over the last 6 months
             </p>
           </div>
@@ -28,15 +28,15 @@ export default function RevisionCalendar() {
 
         <div className="flex items-center gap-4">
           {/* Streak pill */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FA6E43]/10 rounded-lg">
-            <RiFireLine className="text-[#FA6E43] text-[13px]" />
-            <span className="text-[11px] font-bold text-[#FA6E43]">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 rounded-lg">
+            <RiFireLine className="text-brand text-[13px]" />
+            <span className="text-[11px] font-bold text-brand">
               {currentStreak} day streak
             </span>
           </div>
 
           {/* Stats */}
-          <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-[#555]">
+          <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-secondary-text">
             <span className="text-white font-semibold">{totalSessions}</span> sessions ·
             <span className="text-white font-semibold">{activeDays}</span> active days ·
             <span className="text-white font-semibold">{longestStreak}</span> longest streak
@@ -44,7 +44,7 @@ export default function RevisionCalendar() {
 
           <Link
             href="/dashboard/revision"
-            className="flex items-center gap-1 text-[11px] text-[#FA6E43] hover:underline"
+            className="flex items-center gap-1 text-[11px] text-brand hover:underline"
           >
             View Planner <RiArrowRightSLine className="text-[13px]" />
           </Link>

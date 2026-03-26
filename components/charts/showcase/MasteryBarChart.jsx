@@ -20,13 +20,17 @@ export default function TopicBarChart() {
       theme={nivoTheme}
       layout="vertical"
       maxValue={100}
-      colors={(bar) => {
-        const v = bar.data.mastery
-        if (v >= 75) return "#FA6E43"
-        if (v >= 50) return "rgba(250,110,67,0.65)"
-        if (v >= 25) return "rgba(250,110,67,0.35)"
-        return "rgba(250,110,67,0.15)"
-      }}
+   colors={(bar) => {
+  const v = bar.data.mastery
+
+  if (v >= 75) return "var(--color-brand)"
+  if (v >= 50)
+    return "color-mix(in srgb, var(--color-brand) 65%, transparent)"
+  if (v >= 25)
+    return "color-mix(in srgb, var(--color-brand) 35%, transparent)"
+
+  return "color-mix(in srgb, var(--color-brand) 15%, transparent)"
+}}
       margin={{ top: 8, right: 8, bottom: 36, left: 32 }}
       padding={0.15}
       borderRadius={6}
@@ -77,7 +81,7 @@ export default function TopicBarChart() {
           whiteSpace: "nowrap",
         }}>
           {data.topic}:{" "}
-          <span style={{ color: "#FA6E43", fontWeight: 600 }}>{value}%</span>
+          <span style={{ color: "var(--color-brand)", fontWeight: 600 }}>{value}%</span>
         </div>
       )}
     />

@@ -57,8 +57,8 @@ export default function FAQ() {
                 key={i}
                 className={`rounded-2xl border  transition-all duration-300 overflow-hidden ${
                   open === i
-                    ? "border-[#FA6E43]/25 bg-[#FA6E43]/[0.04]"
-                    : "border-white/[0.06] bg-[#212225] hover:border-white/10"
+                    ? "border-brand/25 bg-brand/5"
+                   : "border-white/6 bg-card hover:border-white/10"
                 }`}
               >
                 <button
@@ -66,13 +66,13 @@ export default function FAQ() {
                   className="w-full flex items-center cursor-pointer justify-between gap-4 px-6 py-5 text-left"
                 >
                   <span
-                    className={`text-[15px] font-semibold transition-colors duration-200 ${open === i ? "text-white" : "text-[#888]"}`}
+                    className={`text-base font-semibold transition-colors duration-200 ${open === i ? "text-white" : "text-bleed"}`}
                   >
                     {faq.q}
                   </span>
                   <div
-                    className={`w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                      open === i ? "bg-[#FA6E43] rotate-45" : "bg-white/5"
+                    className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      open === i ? "bg-brand rotate-45" : "bg-white/5"
                     }`}
                   >
                     <svg viewBox="0 0 14 14" fill="none" className="w-3 h-3">
@@ -117,7 +117,7 @@ export default function FAQ() {
               </div>
 
               <div className="relative z-10">
-                <div className="w-10 h-10 rounded-xl bg-[#FA6E43]/10 border border-[#FA6E43]/20 flex items-center justify-center mb-5">
+                <div className="w-10 h-10 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-5">
                   <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5">
                     <circle
                       cx="10"
@@ -137,14 +137,14 @@ export default function FAQ() {
                 <h4 className="text-[18px] font-bold text-white mb-2">
                   Still have questions?
                 </h4>
-                <p className="text-[13px] text-[#555] leading-relaxed">
+                <p className="text-[13px] text-secondary-text leading-relaxed">
                   Our support team is here to help you get the most out of
                   Learnova's adaptive learning system.
                 </p>
               </div>
 
               <div className="relative z-10 flex flex-col gap-3 mt-8">
-                <button className="w-full py-3 rounded-xl bg-[#FA6E43] text-black text-[13px] font-bold hover:brightness-110 transition-all">
+                <button className="w-full py-3 rounded-xl bg-brand text-black text-[13px] font-bold hover:brightness-110 transition-all">
                   Visit Help Center →
                 </button>
                 <button className="w-full py-3 rounded-xl bg-white/5 border border-white/[0.06] text-white text-[13px] font-semibold hover:bg-white/8 transition-all">
@@ -162,7 +162,7 @@ export default function FAQ() {
               ].map(([num, label]) => (
                 <div key={label} className="text-center">
                   <p
-                    className="text-[20px] font-black text-[#FA6E43] leading-none"
+                    className="text-[20px] font-black text-brand leading-none"
                     dangerouslySetInnerHTML={{ __html: num }}
                   />
                   <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mt-1">

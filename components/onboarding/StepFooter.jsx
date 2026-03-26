@@ -4,7 +4,7 @@ export default function StepFooter({ onBack, onNext, nextLabel = "Continue", ste
       {step > 1 ? (
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-[13px] text-[#555] hover:text-white transition-colors"
+          className="flex items-center gap-2 text-[13px] text-secondary-text hover:text-white transition-colors"
         >
           <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
             <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -14,7 +14,7 @@ export default function StepFooter({ onBack, onNext, nextLabel = "Continue", ste
       ) : <div />}
       <button
         onClick={onNext}
-        className="flex items-center gap-2 px-7 h-[44px] bg-[#FA6E43] text-white text-[13px] font-bold rounded-xl hover:brightness-110 transition-all"
+        className="flex items-center gap-2 px-7 h-[44px] bg-brand text-white text-[13px] font-bold rounded-xl hover:brightness-110 transition-all"
       >
         {nextLabel}
         <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">

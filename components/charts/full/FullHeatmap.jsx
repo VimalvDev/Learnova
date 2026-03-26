@@ -58,7 +58,7 @@ const defaultData = [
       { x: "Week 6", y: 28 },
     ],
   },
-]
+];
 
 export default function FullHeatmap({ data = defaultData, onClick }) {
   return (
@@ -84,7 +84,11 @@ export default function FullHeatmap({ data = defaultData, onClick }) {
       onClick={(cell) => onClick && onClick(cell)}
       colors={{
         type: "sequential",
-        colors: ["rgba(250,110,67,0.12)", "rgba(250,110,67,0.78)", "#FA6E43"],
+        colors: [
+          "color-mix(in srgb, var(--color-brand) 12%, transparent)",
+          "color-mix(in srgb, var(--color-brand) 78%, transparent)",
+          "var(--color-brand)",
+        ],
       }}
       emptyColor="#2A2B2F"
       labelTextColor="#C0C0C0"
@@ -92,20 +96,24 @@ export default function FullHeatmap({ data = defaultData, onClick }) {
       axisLeft={{ tickSize: 0, tickPadding: 10 }}
       axisRight={null}
       axisBottom={null}
-tooltip={({ cell }) => (
-  <div style={{
-    background: "#212225",
-    borderRadius: "8px",
-    padding: "6px 10px",
-    fontSize: "11px",
-    color: "#fff",
-    whiteSpace: "nowrap",
-  }}>
-    <span style={{ color: "#FA6E43", fontWeight: 600 }}>{cell.serieId}</span>
-    {" · "}
-    {cell.data.x}: {cell.value}%
-  </div>
-)}
+      tooltip={({ cell }) => (
+        <div
+          style={{
+            background: "#212225",
+            borderRadius: "8px",
+            padding: "6px 10px",
+            fontSize: "11px",
+            color: "#fff",
+            whiteSpace: "nowrap",
+          }}
+        >
+          <span style={{ color: "var(--color-brand)", fontWeight: 600 }}>
+            {cell.serieId}
+          </span>
+          {" · "}
+          {cell.data.x}: {cell.value}%
+        </div>
+      )}
     />
   );
 }

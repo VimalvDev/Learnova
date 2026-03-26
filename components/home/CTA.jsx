@@ -63,7 +63,7 @@ export default function CTA() {
   const trust = ["Free to start", "No credit card", "Cancel anytime"];
 
   return (
-    <section className="relative py-[5em] border-y border-white/10  bg-[#0D0D0D] overflow-hidden">
+    <section className="relative py-[5em] border-y border-white/10  bg-dark overflow-hidden">
       {/* <Heading text={"get started"} /> */}
       {/* <SectionHeader num="010" para="get started" /> */}
 
@@ -86,8 +86,8 @@ export default function CTA() {
             <div className="flex items-center gap-6 flex-wrap">
               {trust.map((item) => (
                 <div key={item} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#FA6E43]" />
-                  <span className="text-[12px] text-[#555] font-medium">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand" />
+                  <span className="text-[12px] text-secondary-text font-medium">
                     {item}
                   </span>
                 </div>
@@ -97,7 +97,7 @@ export default function CTA() {
 
           {/* Right — buttons */}
           <div className="flex flex-col gap-3 w-full lg:w-auto lg:min-w-[280px]">
-            <button className="w-full px-8 py-4 bg-[#FA6E43] text-black text-[14px] font-bold rounded-xl hover:brightness-110 transition-all">
+            <button className="w-full px-8 py-4 bg-brand text-black text-[14px] font-bold rounded-xl hover:brightness-110 transition-all">
               Start Learning Free →
             </button>
             <button className="w-full px-8 py-4 bg-transparent text-white text-[14px] font-semibold rounded-xl border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.03] transition-all">

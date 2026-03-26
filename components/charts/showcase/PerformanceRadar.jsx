@@ -32,12 +32,12 @@ export default function PerformanceRadar() {
       gridLevels={4}
       gridShape="circular"
       gridLabelOffset={16}
-      colors={["#FA6E43"]}
+      colors={["var(--color-brand)"]}
       fillOpacity={0.12}
       borderWidth={2}
-      borderColor="#FA6E43"
+      borderColor="var(--color-brand)"
       dotSize={7}
-      dotColor="#FA6E43"
+      dotColor="var(--color-brand)"
       dotBorderWidth={2}
       dotBorderColor="#1a1b1e"
       blendMode="normal"

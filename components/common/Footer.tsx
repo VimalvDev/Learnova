@@ -62,21 +62,21 @@ export default function CTA() {
   const trust = ["Free to start"];
 
   return (
-    <section className="relative px-[4em] py-[1.5em] bg-[#0D0D0D] overflow-hidden">
+    <section className="relative px-[4em] py-[1.5em] bg-dark overflow-hidden">
       {/* Bleed heading */}
       <Heading text={"get started"} />
 
-      <div className="max-w-[1320px] mx-auto relative z-10">
+      <div className="max-w-330 mx-auto relative z-10">
         {/* CTA block */}
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 pb-16 md:pb-20 border-b border-white/[0.06]">
           {/* Left */}
           <div className="flex flex-col gap-5 w-full lg:max-w-[700px]">
             <div className="flex items-center gap-3">
-              <div className="w-[3px] h-7 bg-[#FA6E43] rounded-full" />
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+              <div className="w-[3px] h-7 bg-brand rounded-full" />
+              <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                 010
               </span>
-              <span className="text-[13px] text-[#555] ml-1">CTA</span>
+              <span className="text-[13px] text-secondary-text ml-1">CTA</span>
             </div>
 
             <h2 className="text-[clamp(28px,5vw,72px)] font-black text-white leading-[0.95] tracking-tight">
@@ -93,8 +93,8 @@ export default function CTA() {
             <div className="flex items-center gap-4 flex-wrap">
               {trust.map((item) => (
                 <div key={item} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#FA6E43]" />
-                  <span className="text-[12px] text-[#555] font-medium">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand" />
+                  <span className="text-[12px] text-secondary-text font-medium">
                     {item}
                   </span>
                 </div>
@@ -104,7 +104,7 @@ export default function CTA() {
 
           {/* Buttons */}
           <div className="flex flex-col gap-3 w-full lg:w-auto lg:min-w-[260px]">
-            <button className="w-full px-8 py-4 bg-[#FA6E43] text-black text-[14px] font-bold rounded-xl hover:brightness-110 transition-all">
+            <button className="w-full px-8 py-4 bg-brand text-black text-[14px] font-bold rounded-xl hover:brightness-110 transition-all">
               Start Learning Free →
             </button>
             <button className="w-full px-8 py-4 bg-transparent text-white text-[14px] font-semibold rounded-xl border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.03] transition-all">
@@ -122,7 +122,7 @@ export default function CTA() {
                 i !== 0 ? "border-l border-white/[0.06]" : ""
               }`}
             >
-              <span className="text-[clamp(20px,3vw,40px)] font-black text-[#FA6E43] leading-none tracking-tight">
+              <span className="text-[clamp(20px,3vw,40px)] font-black text-brand leading-none tracking-tight">
                 {num}
               </span>
               <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-[#444]">
@@ -137,7 +137,7 @@ export default function CTA() {
           {/* Brand */}
           <div className="lg:col-span-4 flex flex-col gap-5">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#FA6E43] flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center shrink-0">
                 <svg viewBox="0 0 10 10" fill="none" className="w-4 h-4">
                   <path
                     d="M2 8V4M5 8V2M8 8V5"
@@ -152,7 +152,7 @@ export default function CTA() {
               </span>
             </div>
 
-            <p className="text-[13px] text-[#555] leading-relaxed max-w-[260px]">
+            <p className="text-[13px] text-secondary-text leading-relaxed max-w-[260px]">
               Adaptive learning intelligence for serious students. Upload your
               material — we handle the rest.
             </p>
@@ -162,7 +162,7 @@ export default function CTA() {
                 <button
                   key={label}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/[0.06] flex items-center justify-center text-[#555] hover:text-[#FA6E43] hover:border-[#FA6E43]/30 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/[0.06] flex items-center justify-center text-secondary-text hover:text-brand hover:border-brand/30 transition-all duration-200"
                 >
                   {icon}
                 </button>
@@ -182,7 +182,7 @@ export default function CTA() {
                     <Link
                       key={item}
                       href="#"
-                      className="text-[13px] text-[#555] hover:text-white transition-colors duration-200 w-fit"
+                      className="text-[13px] text-secondary-text hover:text-white transition-colors duration-200 w-fit"
                     >
                       {item}
                     </Link>
@@ -201,11 +201,11 @@ export default function CTA() {
 
           <div className="flex items-center gap-1.5 text-[12px] text-[#444]">
             <span>Built with</span>
-            <span className="text-[#FA6E43] font-semibold">Next.js</span>
+            <span className="text-brand font-semibold">Next.js</span>
             <span>·</span>
-            <span className="text-[#FA6E43] font-semibold">TypeScript</span>
+            <span className="text-brand font-semibold">TypeScript</span>
             <span>·</span>
-            <span className="text-[#FA6E43] font-semibold">OpenAI</span>
+            <span className="text-brand font-semibold">OpenAI</span>
           </div>
 
           {/* Policy links — commented out for now (college project) */}

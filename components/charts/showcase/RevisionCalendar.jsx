@@ -47,12 +47,12 @@ export default function RevisionCalendar() {
       from="2026-01-01"
       to="2026-05-31"
       emptyColor="#2a2b2f"
-      colors={[
-        "rgba(250,110,67,0.2)",
-        "rgba(250,110,67,0.45)",
-        "rgba(250,110,67,0.7)",
-        "#FA6E43",
-      ]}
+    colors={[
+  "color-mix(in srgb, var(--color-brand) 20%, transparent)",
+  "color-mix(in srgb, var(--color-brand) 45%, transparent)",
+  "color-mix(in srgb, var(--color-brand) 70%, transparent)",
+  "var(--color-brand)",
+]}
       margin={{ top: 12, right: 12, bottom: 12, left: 12 }}
       yearSpacing={0}
       monthBorderWidth={0}
@@ -60,7 +60,7 @@ export default function RevisionCalendar() {
       dayBorderColor="#1a1b1e"
       tooltip={({ day, value }) => (
         <div className="bg-[#1a1b1e] border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
-          {day}: <span className="text-[#FA6E43] font-bold">{value} sessions</span>
+          {day}: <span className="text-brand font-bold">{value} sessions</span>
         </div>
       )}
     />

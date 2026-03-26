@@ -12,7 +12,7 @@ export default function PasswordStrength({ password }) {
   const strength = getStrength()
 
   const labels = ["", "Weak", "Fair", "Strong", "Very Strong"]
-  const colors = ["", "#F87171", "#FBBF24", "#FA6E43", "#4ADE80"]
+  const colors = ["", "var(--color-red)", "#FBBF24", "#FA6E43", "#4ADE80"]
 
   if (!password) return null
 
@@ -22,7 +22,7 @@ export default function PasswordStrength({ password }) {
         {[1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className="h-[3px] flex-1 rounded-full transition-all duration-300"
+            className="h-0.75 flex-1 rounded-full transition-all duration-300"
             style={{
               background: i <= strength ? colors[strength] : "rgba(255,255,255,0.08)",
             }}

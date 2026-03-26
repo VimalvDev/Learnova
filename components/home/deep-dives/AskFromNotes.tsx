@@ -42,7 +42,7 @@ export default function AskFromNotes() {
                 Low Confidence — Blocked
               </span>
             </div>
-            <p className="text-[11px] text-[#555] leading-relaxed italic">
+            <p className="text-[11px] text-secondary-text leading-relaxed italic">
               "What's in tomorrow's exam?" — This information is not available in your uploaded documents.
               Confidence threshold not met.
             </p>
@@ -55,7 +55,7 @@ export default function AskFromNotes() {
 
           <div className="flex items-start justify-between">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                 Context Chat
               </span>
               <h3 className="text-[clamp(1rem,1.5vw,1.3rem)] font-bold text-white mt-1">

@@ -3,7 +3,7 @@ import DashboardTopBar from "@/components/dashboard/layout/DashboardTopBar";
 
 export default function DashboardLayout({ children }) {
   return (
-    <div className="flex min-h-screen bg-[#0D0D0D] text-white">
+    <div className="flex min-h-screen bg-dark text-white">
       {/* Sidebar — fixed, never scrolls */}
       <DashboardSidebar />
 

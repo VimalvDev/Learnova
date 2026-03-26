@@ -1,5 +1,11 @@
-"use client"
-import { RiFlashlightLine, RiRadarLine, RiCalendar2Line, RiPercentLine, RiListOrdered2 } from "react-icons/ri"
+"use client";
+import {
+  RiFlashlightLine,
+  RiRadarLine,
+  RiCalendar2Line,
+  RiPercentLine,
+  RiListOrdered2,
+} from "react-icons/ri";
 
 const features = [
   {
@@ -37,54 +43,67 @@ const features = [
     desc: "Topics are ordered so foundational concepts are mastered before advanced ones are introduced.",
     impact: ["Structured learning", "No knowledge gaps"],
   },
-]
+];
 
 function Toggle({ on, onChange }) {
   return (
     <button
       onClick={onChange}
-      className="w-11 h-6 rounded-full flex-shrink-0 relative transition-all duration-300"
-      style={{ background: on ? "#FA6E43" : "rgba(255,255,255,0.08)" }}
+      className={`w-11 h-6 rounded-full shrink-0 relative transition-all duration-300 ${
+        on ? "bg-brand" : "bg-white/8"
+      }`}
     >
       <div
-        className="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all duration-300"
-        style={{ left: on ? "22px" : "2px" }}
+        className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all duration-300 ${
+          on ? "left-5.5" : "left-0.5"
+        }`}
       />
     </button>
-  )
+  );
 }
 
 export default function StepFeatures({ formData, update }) {
-  const allOn = Object.values(formData.features).every(Boolean)
+  const allOn = Object.values(formData.features).every(Boolean);
 
   const toggleFeature = (key) =>
-    update("features", { ...formData.features, [key]: !formData.features[key] })
+    update("features", {
+      ...formData.features,
+      [key]: !formData.features[key],
+    });
 
   const toggleAll = () => {
-    const newVal = !allOn
-    update("features", Object.fromEntries(Object.keys(formData.features).map((k) => [k, newVal])))
-  }
+    const newVal = !allOn;
+    update(
+      "features",
+      Object.fromEntries(
+        Object.keys(formData.features).map((k) => [k, newVal]),
+      ),
+    );
+  };
 
   return (
-    <div className="max-w-[640px]">
+    <div className="max-w-160">
       <div className="mb-6">
         <h2 className="text-[32px] lg:text-[38px] font-black text-white leading-tight mb-2">
           Configure Your Learning Intelligence.
         </h2>
-        <p className="text-[14px] text-[#888891] leading-relaxed">
-          These features form the core of Learnova's adaptive engine. All are recommended for first-time setup.
+        <p className="text-sm text-bleed leading-relaxed">
+          These features form the core of Learnova's adaptive engine. All are
+          recommended for first-time setup.
         </p>
       </div>
 
       {/* All enabled row */}
       <div className="flex items-center justify-between mb-4 px-1">
         <div className="flex items-center gap-2">
-          <span className="text-[#FA6E43] text-[12px]">✓</span>
-          <span className="text-[12px] text-[#888891]">All features enabled (recommended)</span>
+          <span className="text-brand text-[12px]">✓</span>
+          <span className="text-xs text-bleed">
+            All features enabled (recommended)
+          </span>
         </div>
         <button
           onClick={toggleAll}
-          className="text-[12px] text-[#555] hover:text-white transition-colors"
+          className="text-[12px] text-secondary-text hover:text-white transition-colors"
         >
           {allOn ? "Disable All" : "Enable All"}
         </button>
@@ -92,7 +111,7 @@ export default function StepFeatures({ formData, update }) {
 
       <div className="flex flex-col gap-3">
         {features.map(({ key, icon: Icon, title, desc, impact }) => {
-          const on = formData.features[key]
+          const on = formData.features[key];
           return (
             <div
               key={key}
@@ -105,31 +124,41 @@ export default function StepFeatures({ formData, update }) {
               }}
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
-                style={{
-                  background: on ? "rgba(250,110,67,0.12)" : "rgba(255,255,255,0.04)",
-                  color: on ? "#FA6E43" : "#444",
-                }}
+                className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all ${
+                  on
+                    ? "bg-brand/20 text-brand"
+                    : "bg-white/4 text-dark-gray"
+                }`}
               >
                 <Icon className="text-[18px]" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-[14px] font-semibold text-white mb-1">{title}</p>
-                <p className="text-[12px] text-[#888891] leading-relaxed mb-2">{desc}</p>
+                <p className="text-[14px] font-semibold text-white mb-1">
+                  {title}
+                </p>
+                <p className="text-xs text-bleed leading-relaxed mb-2">
+                  {desc}
+                </p>
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[10px] text-[#555]">Impact:</span>
+                  <span className="text-[10px] text-secondary-text">
+                    Impact:
+                  </span>
                   {impact.map((tag, i) => (
-                    <span key={tag} className="text-[10px] font-semibold text-[#FA6E43]">
-                      {tag}{i < impact.length - 1 ? " ·" : ""}
+                    <span
+                      key={tag}
+                      className="text-[10px] font-semibold text-brand"
+                    >
+                      {tag}
+                      {i < impact.length - 1 ? " ·" : ""}
                     </span>
                   ))}
                 </div>
               </div>
               <Toggle on={on} onChange={() => toggleFeature(key)} />
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

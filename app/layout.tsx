@@ -42,8 +42,7 @@ export default function RootLayout({
         className={`${inter.variable} ${bebasNeue.variable} ${splineSansMono.variable} ${manrope.variable}`}
       >
         <LenisProvider>
-
-        {children}
+          {children}
         </LenisProvider>
       </body>
     </html>

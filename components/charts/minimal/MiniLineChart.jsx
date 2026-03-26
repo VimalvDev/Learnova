@@ -26,10 +26,10 @@ export default function MiniLineChart() {
       xScale={{ type: "point" }}
       yScale={{ type: "linear", min: 0, max: 100 }}
       curve="monotoneX"
-      colors={["#FA6E43"]}
+      colors={["var(--color-brand)"]}
       lineWidth={2}
       pointSize={6}
-      pointColor="#FA6E43"
+      pointColor="var(--color-brand)"
       pointBorderWidth={2}
       pointBorderColor="#212225"
       enableArea
@@ -39,7 +39,7 @@ export default function MiniLineChart() {
       axisBottom={{ tickSize: 0, tickPadding: 8 }}
       tooltip={({ point }) => (
         <div className="bg-[#1a1b1e] border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
-          {point.data.x}: <span className="text-[#FA6E43] font-bold">{point.data.y}%</span>
+          {point.data.x}: <span className="text-brand font-bold">{point.data.y}%</span>
         </div>
       )}
     />

@@ -95,15 +95,15 @@ function QueueCard({ file }) {
       }}
     >
       <div className="flex items-start gap-3 mb-3">
-        <div className="w-7 h-7 rounded-lg bg-[#FA6E43]/10 flex items-center justify-center flex-shrink-0">
+        <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
           <RiFileTextLine className="text-[13px] text-white/60" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-[13px] font-medium text-white">{file.name}</p>
-          <p className="text-[10px] text-[#555] mt-0.5">{file.type} · {file.size}</p>
+          <p className="text-[10px] text-secondary-text mt-0.5">{file.type} · {file.size}</p>
         </div>
         {!isComplete && !isError && (
-          <button className="text-[11px] text-[#555] hover:text-white transition-colors flex-shrink-0">
+          <button className="text-[11px] text-secondary-text hover:text-white transition-colors flex-shrink-0">
             Cancel
           </button>
         )}
@@ -125,7 +125,7 @@ function QueueCard({ file }) {
             <button className="px-3 py-1.5 bg-[#171717] text-[#F87171] text-[11px] font-medium rounded-lg border border-[#F87171]/20 hover:bg-[#F87171]/5 transition-all">
               Retry Processing
             </button>
-            <button className="text-[11px] text-[#555] hover:text-white transition-colors">
+            <button className="text-[11px] text-secondary-text hover:text-white transition-colors">
               Remove
             </button>
           </div>
@@ -134,13 +134,13 @@ function QueueCard({ file }) {
         <>
           <div className="flex items-center justify-between mb-2">
             <StageIndicator stage={file.stage - 1} activeStage={file.stage - 1} />
-            <span className="text-[10px] text-[#555] ml-3">{stages[file.stage - 1]}</span>
+            <span className="text-[10px] text-secondary-text ml-3">{stages[file.stage - 1]}</span>
           </div>
 
           <div className="mt-2">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] text-[#555]">{file.progress}%</span>
-              {file.eta && <span className="text-[10px] text-[#555]">{file.eta} remaining</span>}
+              <span className="text-[10px] text-secondary-text">{file.progress}%</span>
+              {file.eta && <span className="text-[10px] text-secondary-text">{file.eta} remaining</span>}
             </div>
             <div className="h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
               <div
@@ -154,7 +154,7 @@ function QueueCard({ file }) {
           </div>
 
           {file.words > 0 && (
-            <p className="text-[10px] text-[#555] mt-2">
+            <p className="text-[10px] text-secondary-text mt-2">
               {file.words.toLocaleString()} words · {file.chunks} chunks
               {isComplete && " · 84 embeddings · Ready for AI chat and quizzes"}
             </p>
@@ -168,7 +168,7 @@ function QueueCard({ file }) {
 export default function ProcessingQueue() {
   return (
     <div className="mt-4">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-[#FA6E43]/80 block mb-3">
+      <span className="text-[10px] font-bold uppercase tracking-widest text-brand/80 block mb-3">
         Processing Queue
       </span>
       {queueFiles.map((file) => (

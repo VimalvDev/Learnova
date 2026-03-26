@@ -61,10 +61,14 @@ export default function MiniHeatmap() {
       borderRadius={6}
       borderWidth={3}
       borderColor="#212225"
-      colors={{
-        type: "sequential",
-        colors: ["rgba(250,110,67,0.12)", "rgba(250,110,67,0.78)", "#FA6E43"],
-      }}
+     colors={{
+  type: "sequential",
+  colors: [
+    "color-mix(in srgb, var(--color-brand) 12%, transparent)",
+    "color-mix(in srgb, var(--color-brand) 78%, transparent)",
+    "var(--color-brand)",
+  ],
+}}
       labelTextColor="#ffffff"
       emptyColor="#2a2b2f"
       axisTop={null}
@@ -85,7 +89,7 @@ export default function MiniHeatmap() {
             whiteSpace: "nowrap",
           }}
         >
-          <span style={{ color: "#FA6E43", fontWeight: 600 }}>
+          <span style={{ color: "var(--color-brand)", fontWeight: 600 }}>
             {cell.serieId}
           </span>
           {" · "}

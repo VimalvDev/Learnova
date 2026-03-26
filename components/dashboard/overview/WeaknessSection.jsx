@@ -41,16 +41,16 @@ export default function WeaknessSection() {
         <div className="flex items-center justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <div className="flex items-center gap-1.5 px-2 py-0.5 bg-[#FA6E43]/10 rounded-full">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#FA6E43] animate-pulse" />
-                <span className="text-[9px] font-bold uppercase tracking-wider text-[#FA6E43]">
+              <div className="flex items-center gap-1.5 px-2 py-0.5 bg-brand/10 rounded-full">
+                <div className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+                <span className="text-[9px] font-bold uppercase tracking-wider text-brand">
                   AI Detection · Scanning Complete
                 </span>
               </div>
             </div>
             <p className="text-[14px] font-medium text-white/70">Weakness Detection Engine</p>
           </div>
-          <Link href="/dashboard/analytics" className="text-[11px] text-[#FA6E43] hover:underline flex items-center gap-1">
+          <Link href="/dashboard/analytics" className="text-[11px] text-brand hover:underline flex items-center gap-1">
             View Full Report <RiArrowRightSLine className="text-[13px]" />
           </Link>
         </div>
@@ -70,11 +70,11 @@ export default function WeaknessSection() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[13px] font-semibold text-white">{name}</p>
-                <p className="text-[11px] text-[#555] mt-0.5">{sub}</p>
+                <p className="text-[11px] text-secondary-text mt-0.5">{sub}</p>
               </div>
               <div className="w-[130px]">
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[9px] uppercase tracking-widest text-[#555]">Mastery</span>
+                  <span className="text-[9px] uppercase tracking-widest text-secondary-text">Mastery</span>
                   <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: statusColor }}>
                     {status}
                   </span>
@@ -84,7 +84,7 @@ export default function WeaknessSection() {
                 </div>
               </div>
               <div className="w-8 h-8 rounded-full bg-white/[0.04] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
-                <RiPlayCircleFill className="text-[#FA6E43] text-[18px]" />
+                <RiPlayCircleFill className="text-brand text-[18px]" />
               </div>
             </Link>
           ))}
@@ -95,7 +95,7 @@ export default function WeaknessSection() {
       <div className="col-span-4 bg-[#171717] rounded-2xl p-5 flex flex-col gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <RiSparklingLine className="text-[#FA6E43] text-[16px] flex-shrink-0" />
+            <RiSparklingLine className="text-brand text-[16px] flex-shrink-0" />
             <p className="text-[14px] font-medium text-white/90">AI Learning Insight</p>
           </div>
           <p className="text-[12px] text-[#888] leading-relaxed">
@@ -108,7 +108,7 @@ export default function WeaknessSection() {
         </div>
 
         <div>
-          <p className="text-[10px] font-medium uppercase tracking-widest text-[#FA6E43]/80 mb-3">
+          <p className="text-[10px] font-medium uppercase tracking-widest text-brand/80 mb-3">
             Recommended Path
           </p>
           <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function WeaknessSection() {
               <div
                 key={num}
                 className={`w-8 h-8 rounded-lg flex items-center justify-center text-[13px] font-bold ${
-                  active ? "bg-[#FA6E43] text-white" : "bg-[#111] text-[#555]"
+                  active ? "bg-brand text-white" : "bg-[#111] text-secondary-text"
                 }`}
               >
                 {num}
@@ -135,7 +135,7 @@ export default function WeaknessSection() {
               key={label}
               className="flex items-center justify-between py-2.5 border-b border-white/[0.04] last:border-0"
             >
-              <span className="text-[12px] text-[#555]">{label}</span>
+              <span className="text-[12px] text-secondary-text">{label}</span>
               <span className="text-[12px] font-bold" style={{ color }}>{value}</span>
             </div>
           ))}
@@ -143,7 +143,7 @@ export default function WeaknessSection() {
 
         <Link
           href="/dashboard/quizzes"
-          className="w-full h-10 bg-[#FA6E43] text-white text-[12px] font-bold rounded-xl flex items-center justify-center gap-1.5 hover:brightness-110 transition-all"
+          className="w-full h-10 bg-brand text-white text-[12px] font-bold rounded-xl flex items-center justify-center gap-1.5 hover:brightness-110 transition-all"
         >
           Start Targeted Revision
           <RiArrowRightSLine className="text-[15px]" />

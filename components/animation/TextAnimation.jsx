@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const TextAnimation = ({
   children,
   colorInitial = "#2a2a2a",
-  colorAccent = "#FA6E43",
+  colorAccent = "var(--color-brand)" ,
   colorFinal = "#C0C0C0",
 }) => {
   const containerRef = useRef(null);

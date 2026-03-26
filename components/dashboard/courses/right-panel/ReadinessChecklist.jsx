@@ -15,7 +15,7 @@ export default function ReadinessChecklist() {
 
   return (
     <div className="bg-[#171717] rounded-2xl p-5 mt-4">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-[#FA6E43]/80 block mb-1">
+      <span className="text-[10px] font-bold uppercase tracking-widest text-brand/80 block mb-1">
         Course Readiness
       </span>
       <h3 className="text-[15px] font-semibold text-white/90 mb-4">Setup Checklist</h3>
@@ -27,13 +27,13 @@ export default function ReadinessChecklist() {
               <RiCheckLine className="text-[#4ADE80] text-[15px] flex-shrink-0" />
             )}
             {status === "processing" && (
-              <RiRefreshLine className="text-[#FA6E43] text-[15px] flex-shrink-0 animate-spin" />
+              <RiRefreshLine className="text-brand text-[15px] flex-shrink-0 animate-spin" />
             )}
             {status === "locked" && (
               <RiCircleLine className="text-[#444] text-[15px] flex-shrink-0" />
             )}
             <span className={`text-[12px] ${
-              status === "locked" ? "text-[#555]" : "text-white"
+              status === "locked" ? "text-secondary-text" : "text-white"
             }`}>
               {label}
             </span>
@@ -48,7 +48,7 @@ export default function ReadinessChecklist() {
         </div>
         <div className="h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
           <div
-            className="h-full bg-[#FA6E43] rounded-full transition-all"
+            className="h-full bg-brand rounded-full transition-all"
             style={{ width: `${(done / items.length) * 100}%` }}
           />
         </div>
@@ -56,7 +56,7 @@ export default function ReadinessChecklist() {
 
       <Link
         href="/dashboard/chat"
-        className="w-full h-9 bg-[#FA6E43] text-white text-[12px] font-bold rounded-xl flex items-center justify-center hover:brightness-110 transition-all"
+        className="w-full h-9 bg-brand text-white text-[12px] font-bold rounded-xl flex items-center justify-center hover:brightness-110 transition-all"
       >
         Go to AI Chat →
       </Link>

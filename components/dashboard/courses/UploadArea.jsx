@@ -20,7 +20,7 @@ export default function UploadArea({ onFilesAdded }) {
   return (
     <div className="bg-[#171717] rounded-2xl p-6">
       <div className="mb-5">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-[#FA6E43]/80 block mb-1">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-brand/80 block mb-1">
           Document Processing
         </span>
         <h2 className="text-[17px] font-semibold text-white/90">Upload Learning Materials</h2>
@@ -38,7 +38,7 @@ export default function UploadArea({ onFilesAdded }) {
             className="w-full h-[36px] px-3 bg-[#111] rounded-xl text-[12px] text-white flex items-center justify-between"
           >
             <span className="truncate">{unit}</span>
-            <span className="text-[#555] text-[10px] ml-2 flex-shrink-0">▾</span>
+            <span className="text-secondary-text text-[10px] ml-2 flex-shrink-0">▾</span>
           </button>
           {unitOpen && (
             <div className="absolute top-10 left-0 w-full bg-[#1a1a1a] rounded-xl shadow-2xl z-20 overflow-hidden">
@@ -47,7 +47,7 @@ export default function UploadArea({ onFilesAdded }) {
                   key={u}
                   onClick={() => { setUnit(u); setUnitOpen(false) }}
                   className={`w-full text-left px-3 py-2.5 text-[12px] hover:bg-white/[0.04] transition-colors ${
-                    unit === u ? "text-[#FA6E43]" : "text-white"
+                    unit === u ? "text-brand" : "text-white"
                   }`}
                 >
                   {u}
@@ -93,7 +93,7 @@ export default function UploadArea({ onFilesAdded }) {
         <p className="text-[14px] font-medium text-white/80 mb-1">
           {dragging ? "Release to upload" : "Drop files here or click to browse"}
         </p>
-        <p className="text-[12px] text-[#555]">
+        <p className="text-[12px] text-secondary-text">
           PDF, DOCX, images, handwritten notes
         </p>
 
@@ -101,7 +101,7 @@ export default function UploadArea({ onFilesAdded }) {
           {["PDF", "DOCX", "JPG/PNG", "Handwritten", "PPTX"].map((f) => (
             <span
               key={f}
-              className="text-[10px] text-[#555] bg-white/[0.04] px-2 py-1 rounded-lg"
+              className="text-[10px] text-secondary-text bg-white/[0.04] px-2 py-1 rounded-lg"
             >
               {f}
             </span>

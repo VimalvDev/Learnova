@@ -26,19 +26,19 @@ export default function Features() {
         {/* ── ROW 1 ── */}
 
         {/* Card 1 — Mastery Scoring */}
-        <div className="md:col-span-7 bg-[#212225] border border-white/[0.06] rounded-2xl overflow-hidden relative flex flex-col min-h-[520px] hover:border-white/[0.12] transition-all duration-300">
+        <div className="md:col-span-7 bg-card border border-white/6 rounded-2xl overflow-hidden relative flex flex-col min-h-[520px] hover:border-white/12 transition-all duration-300">
   <div className="absolute top-4 right-4 opacity-10 z-0">
             <TbGridDots className="text-white text-2xl" />
           </div>          <div className="p-[2em] flex flex-col h-full gap-4 relative z-10">
             <div className="flex items-start justify-between">
               <div className="flex-1 pr-4">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                   Featured Feature
                 </span>
                 <h3 className="text-[clamp(1.2rem,2vw,1.7rem)] font-bold text-white mt-1 leading-tight">
                   Concept Mastery Scoring Engine
                 </h3>
-                <p className="text-[13px] text-[#888] mt-1.5 leading-relaxed max-w-[380px]">
+                <p className="text-xs text-bleed mt-1.5 leading-relaxed max-w-[380px]">
                   Dynamic mastery score calculated from accuracy, speed,
                   first-attempt correctness, and recency decay.
                 </p>
@@ -58,19 +58,19 @@ export default function Features() {
         </div>
 
         {/* Card 2 — Weakness Intelligence */}
-        <div className="md:col-span-5 bg-[#212225] border border-white/[0.06] rounded-2xl overflow-hidden relative flex flex-col min-h-[520px] hover:border-white/[0.12] transition-all duration-300">
+        <div className="md:col-span-5 bg-card border border-white/6 rounded-2xl overflow-hidden relative flex flex-col min-h-[520px] hover:border-white/12 transition-all duration-300">
   <div className="absolute top-4 right-4 opacity-10 z-0">
             <TbGridDots className="text-white text-2xl" />
           </div>          <div className="p-[2em] flex flex-col h-full gap-4 relative z-10">
             <div className="flex items-start justify-between">
               <div className="flex-1 pr-4">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                   Intelligence Core
                 </span>
                 <h3 className="text-[clamp(1.2rem,2vw,1.7rem)] font-bold text-white mt-1 leading-tight">
                   Weakness Intelligence Engine
                 </h3>
-                <p className="text-[13px] text-[#888] mt-1.5 leading-relaxed">
+                <p className="text-xs text-bleed mt-1.5 leading-relaxed">
                   Identifies prerequisite gaps, misconception patterns, and
                   speed-accuracy imbalances — not just low scores.
                 </p>
@@ -143,7 +143,7 @@ export default function Features() {
           <div className="p-[1.8em] flex flex-col h-full gap-4 relative z-10">
             <div className="flex items-start justify-between">
               <div className="flex-1 pr-4">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#FA6E43]">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
                   06
                 </span>
                 <h3 className="text-[clamp(1rem,1.8vw,1.4rem)] font-bold text-white mt-1 leading-tight">
@@ -162,7 +162,7 @@ export default function Features() {
             </div>
             <div className="flex items-center justify-between pt-[1em] border-t border-white/[0.06]">
               <Tags tags={["Spaced Rep", "Scheduler", "Streaks"]} />
-              <div className="w-[2.8em] h-[2.8em] rounded-xl bg-[#FA6E43] flex items-center justify-center cursor-pointer hover:brightness-110 transition-all hover:scale-105">
+              <div className="w-[2.8em] h-[2.8em] rounded-xl bg-brand flex items-center justify-center cursor-pointer hover:brightness-110 transition-all hover:scale-105">
                 <MdArrowOutward className="text-black text-lg" />
               </div>
             </div>

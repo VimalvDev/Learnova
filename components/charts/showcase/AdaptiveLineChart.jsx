@@ -6,7 +6,7 @@ import nivoTheme  from "@/lib/nivo"
 const data = [
   {
     id: "Mastery Score",
-    color: "#FA6E43",
+    color: "var(--color-brand)",
     data: [
       { x: "Quiz 1",  y: 30 },
       { x: "Quiz 2",  y: 42 },
@@ -43,7 +43,7 @@ export default function AdaptiveLineChart() {
       xScale={{ type: "point" }}
       yScale={{ type: "linear", min: 0, max: 100 }}
       curve="monotoneX"
-      colors={["#FA6E43", "rgba(255,255,255,0.25)"]}
+      colors={["var(--color-brand)", "rgba(255,255,255,0.25)"]}
       lineWidth={2}
       pointSize={7}
       pointColor={{ from: "color" }}
@@ -76,7 +76,7 @@ export default function AdaptiveLineChart() {
       ]}
       tooltip={({ point }) => (
         <div className="bg-[#1a1b1e] border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
-          {point.serieId}: <span className="text-[#FA6E43] font-bold">{point.data.y}%</span>
+          {point.serieId}: <span className="text-brand font-bold">{point.data.y}%</span>
         </div>
       )}
     />

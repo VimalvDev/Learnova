@@ -3,7 +3,7 @@ export default function AuthLayout({ children }) {
     <main className="min-h-screen flex flex-col md:flex-row">
 
       {/* Left — orange branding */}
-      <section className="hidden md:flex md:w-1/2 bg-[#FA6E43] flex-col justify-between items-start p-12 relative overflow-hidden">
+      <section className="hidden md:flex md:w-1/2 bg-brand flex-col justify-between items-start p-12 relative overflow-hidden">
 
         {/* Decorative circles */}
         <div className="absolute inset-0 pointer-events-none opacity-10">
@@ -13,7 +13,7 @@ export default function AuthLayout({ children }) {
 
         {/* Logo */}
         <div className="relative z-10 flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center shrink-0">
             <svg viewBox="0 0 10 10" fill="none" className="w-4 h-4">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
@@ -40,17 +40,17 @@ export default function AuthLayout({ children }) {
       </section>
 
       {/* Right — form */}
-      <section className="w-full md:w-1/2 bg-[#0D0D0D] flex items-center justify-center p-6 sm:p-12 min-h-screen">
+      <section className="w-full md:w-1/2 bg-dark flex items-center justify-center p-6 sm:p-12 min-h-screen">
 
         {/* Mobile logo */}
-        <div className="absolute top-0 left-0 right-0 h-14 flex items-center justify-center border-b border-white/[0.06] bg-[#0D0D0D]/90 backdrop-blur md:hidden">
+        <div className="absolute top-0 left-0 right-0 h-14 flex items-center justify-center border-b border-white/6 bg-dark/90 backdrop-blur md:hidden">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-[#FA6E43] flex items-center justify-center">
+            <div className="w-6 h-6 rounded-md bg-brand flex items-center justify-center">
               <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
                 <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             </div>
-            <span className="text-[14px] font-semibold text-white">Learnova</span>
+            <span className="text-sm font-semibold text-white">Learnova</span>
           </div>
         </div>
 

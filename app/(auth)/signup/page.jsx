@@ -34,15 +34,15 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="bg-[#1A1A1A] border border-white/[0.06] rounded-2xl p-8 sm:p-10 flex flex-col gap-6 shadow-2xl">
+    <div className="bg-light-black border border-white/6 rounded-2xl p-8 sm:p-10 flex flex-col gap-6 shadow-2xl">
 
       <div className="flex flex-col gap-3">
         <SectionLabel text="New Account" />
         <div>
-          <h1 className="text-[28px] font-bold text-white">Create Your Account.</h1>
-          <p className="text-[14px] text-[#888] mt-1">
+          <h1 className="text-3xl font-bold text-white">Create Your Account.</h1>
+          <p className="text-sm text-bleed mt-1">
             Already have an account?{" "}
-            <Link href="/login" className="text-[#FA6E43] hover:underline font-medium">
+            <Link href="/login" className="text-brand hover:underline font-medium">
               Log in
             </Link>
           </p>
@@ -106,9 +106,9 @@ export default function SignupPage() {
         </AuthButton>
         <p className="text-center text-[12px] text-[#888] leading-relaxed">
           By creating an account, you agree to our{" "}
-          <span className="text-[#FA6E43] hover:underline cursor-pointer">Terms of Service</span>
+          <span className="text-brand hover:underline cursor-pointer">Terms of Service</span>
           {" "}and{" "}
-          <span className="text-[#FA6E43] hover:underline cursor-pointer">Privacy Policy</span>.
+          <span className="text-brand hover:underline cursor-pointer">Privacy Policy</span>.
         </p>
       </div>
 

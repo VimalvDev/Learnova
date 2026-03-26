@@ -109,15 +109,15 @@ export default function Hero() {
 
       <div className=" z-20 flex flex-col w-full h-full items-center gap-[2em] justify-between relative">
         <div className="h-full w-full">
-          <FadeIn stagger staggerMax={0.5}>
-            <h1 className="text-[clamp(2.488rem,6.875vw,6.875rem)] capitalize leading-[1em] inline-block font-semibold mb-8 md:pr-[3em] pr-[.5em] text-white">
+          <UpText duration={1} delay={.5} splitType="words" >
+            <h1 className="text-[clamp(2.488rem,6.875vw,6.875rem)] uppercase leading-[1em] inline-block font-semibold mb-8 md:pr-[2em] pr-[.5em] text-white">
               — The smarter way to{" "}
               <span className="text-brand highlighted-word">learn</span>,{" "}
               <span className="text-brand highlighted-word ">retain</span>, and{" "}
               <span className="text-brand highlighted-word ">master </span>
               anything
             </h1>
-          </FadeIn>
+          </UpText>
 
           <div className=" flex md:flex-row flex-col h-full w-full  md:items-center md:mb-[3em] tracking-wide  ">
             <p className="text-xl text-bleed md:w-[60%]  ">

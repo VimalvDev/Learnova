@@ -124,12 +124,11 @@ export default function CenterPanel({ mode = "private" }) {
   const tips = isPublic ? publicSuggestions : suggestions
 
   return (
-    <div className=" h-full overflow-hidden relative">
+    <div className=" h-full w-full overflow-hidden relative">
 
       {/* HEADER */}
       <div
-        className="flex items-center justify-start  px-5 py-3 flex-shrink-0 fixed  w-full border-b border-white/[0.06]"
-        style={{ background: "rgba(13,13,13,0.95)", backdropFilter: "blur(12px)" }}
+        className="flex items-center justify-between  py-3 shrink-0 fixed  w-[55%] border-b border-white/6 bg-dark "
       >
         <div className="flex items-center gap-2.5">
           <h2 className="text-[14px] font-semibold text-white">
@@ -149,19 +148,19 @@ export default function CenterPanel({ mode = "private" }) {
           </div>
         </div>
 
-        <div className="flex items-center ml-[5em] gap-1.5">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={() => setMessages([])}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#212225] text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-card text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
           >
             <RiDeleteBinLine className="text-[12px]" /> Clear
           </button>
-          <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#212225] text-[#888] text-[11px] rounded-xl hover:text-white transition-colors">
+          <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-card text-[#888] text-[11px] rounded-xl hover:text-white transition-colors">
             <RiDownloadLine className="text-[12px]" /> Export
           </button>
           <button
             onClick={openHistory}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#212225] text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-card text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
           >
             <RiHistoryLine className="text-[12px]" /> History
           </button>
@@ -169,7 +168,7 @@ export default function CenterPanel({ mode = "private" }) {
       </div>
 
       {/* MESSAGES */}
-      <div className="flex-1 overflow-y-auto  px-5 py-[5em]">
+      <div className="flex-1 overflow-y-auto py-[5em]">
         {messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center">
             <div
@@ -186,14 +185,14 @@ export default function CenterPanel({ mode = "private" }) {
                 ? "Answers from general AI knowledge."
                 : "Learnova retrieves relevant sections from your uploaded documents before answering."}
             </p>
-            <div className="w-full max-w-[340px] h-px bg-white/[0.06] mb-4" />
+            <div className="w-full max-w-85 h-px bg-white/6 mb-4" />
             <p className="text-[10px] text-[#444] mb-2.5">Try asking:</p>
-            <div className="flex flex-col gap-1.5 w-full max-w-[340px]">
+            <div className="flex flex-col gap-1.5 w-full max-w-85">
               {tips.map((s) => (
                 <button
                   key={s}
                   onClick={() => handleSend(s)}
-                  className="px-4 py-2.5 bg-[#212225] text-[#888] text-[12px] rounded-xl hover:text-white hover:bg-[#2A2B2F] transition-all text-left"
+                  className="px-4 py-2.5 bg-card text-[#888] text-[12px] rounded-xl hover:text-white hover:bg-[#2A2B2F] transition-all text-left"
                 >
                   {s}
                 </button>

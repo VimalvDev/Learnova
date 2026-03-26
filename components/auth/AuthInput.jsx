@@ -25,14 +25,14 @@ export default function AuthInput({
       {(label || rightLabel) && (
         <div className="flex items-center justify-between">
           {label && (
-            <label className="text-[12px] font-medium text-[#888]">
+            <label className="text-xs font-medium text-bleed">
               {label}
             </label>
           )}
           {rightLabel && (
             <Link
               href={rightLabelHref || "#"}
-              className="text-[12px] text-[#FA6E43] hover:underline"
+              className="text-xs text-brand hover:underline"
             >
               {rightLabel}
             </Link>
@@ -47,7 +47,7 @@ export default function AuthInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className={`w-full h-[44px] px-[14px] bg-[#141414] border rounded-lg text-[14px] text-white placeholder:text-white/20 outline-none transition-all duration-200 focus:border-[#FA6E43] focus:ring-[3px] focus:ring-[#FA6E43]/20 ${error ? "border-[#F87171]" : "border-white/[0.08]"} ${showToggle || rightIcon ? "pr-10" : ""}`}
+          className={`w-full h-11 px-3.5 bg-dark border rounded-lg text-sm text-white placeholder:text-white/20 outline-none transition-all duration-200 focus:border-brand focus:ring-1 focus:ring-brand/20 ${error ? "border-red" : "border-white/8"} ${showToggle || rightIcon ? "pr-10" : ""}`}
         />
 
         {/* Eye toggle */}
@@ -55,7 +55,7 @@ export default function AuthInput({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#888] hover:text-white transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-bleed hover:text-white transition-colors"
           >
             {showPassword ? (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-4 h-4" strokeWidth="2">

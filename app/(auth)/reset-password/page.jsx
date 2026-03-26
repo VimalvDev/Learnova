@@ -26,7 +26,7 @@ export default function ResetPasswordPage() {
 
   if (expired) {
     return (
-      <div className="bg-[#1A1A1A] border border-white/[0.06] rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-6 text-center shadow-2xl">
+      <div className="bg-light-black border border-white/6 rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-6 text-center shadow-2xl">
         <div className="w-14 h-14 rounded-full bg-[#FBBF24]/10 border border-[#FBBF24]/20 flex items-center justify-center">
           <svg viewBox="0 0 24 24" fill="none" stroke="#FBBF24" className="w-7 h-7" strokeWidth="1.5">
             <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
@@ -35,15 +35,15 @@ export default function ResetPasswordPage() {
           </svg>
         </div>
         <div>
-          <h2 className="text-[22px] font-bold text-white">This reset link has expired.</h2>
-          <p className="text-[14px] text-[#888] mt-2 leading-relaxed">
+          <h2 className="text-2xl font-bold text-white">This reset link has expired.</h2>
+          <p className="text-sm text-bleed mt-2 leading-relaxed">
             Reset links are valid for 15 minutes only. Please request a new one.
           </p>
         </div>
-        <Link href="/forgot-password" className="text-[13px] text-[#FA6E43] hover:underline">
+        <Link href="/forgot-password" className="text-xs text-brand hover:underline">
           Request a new link →
         </Link>
-        <Link href="/login" className="text-[13px] text-[#888] hover:text-white transition-colors">
+        <Link href="/login" className="text-xs text-bleed hover:text-white transition-colors">
           ← Back to login
         </Link>
       </div>
@@ -52,21 +52,21 @@ export default function ResetPasswordPage() {
 
   if (success) {
     return (
-      <div className="bg-[#1A1A1A] border border-white/[0.06] rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-6 text-center shadow-2xl">
+      <div className="bg-light-black border border-white/6 rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-6 text-center shadow-2xl">
         <div className="w-14 h-14 rounded-full bg-[#4ADE80]/10 border border-[#4ADE80]/20 flex items-center justify-center">
           <svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" className="w-7 h-7" strokeWidth="2">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
         <div>
-          <h2 className="text-[22px] font-bold text-white">Password updated.</h2>
-          <p className="text-[14px] text-[#888] mt-2 leading-relaxed">
+          <h2 className="text-2xl font-bold text-white">Password updated.</h2>
+          <p className="text-sm text-bleed mt-2 leading-relaxed">
             Your new password is active. You can now log in to your Learnova account.
           </p>
         </div>
         <Link
           href="/login"
-          className="w-full h-[44px] rounded-xl bg-[#FA6E43] text-white text-[15px] font-semibold flex items-center justify-center hover:brightness-110 transition-all"
+          className="w-full h-11 rounded-xl bg-brand text-white text-base font-semibold flex items-center justify-center hover:brightness-110 transition-all"
         >
           Go to Login →
         </Link>
@@ -75,11 +75,11 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="bg-[#1A1A1A] border border-white/[0.06] rounded-2xl p-8 sm:p-10 flex flex-col gap-6 shadow-2xl">
+    <div className="bg-light-black border border-white/6 rounded-2xl p-8 sm:p-10 flex flex-col gap-6 shadow-2xl">
 
       {/* Secure pill */}
-      <div className="w-fit px-3 py-1.5 rounded-full bg-[#FA6E43]/[0.08] border border-[#FA6E43]/20 mx-auto">
-        <span className="text-[12px] text-[#FA6E43] font-medium">
+      <div className="w-fit px-3 py-1.5 rounded-full bg-brand/10 border border-brand/20 mx-auto">
+        <span className="text-xs text-brand font-medium">
           🔒 Secure Reset Link · Valid for 15 minutes
         </span>
       </div>
@@ -87,8 +87,8 @@ export default function ResetPasswordPage() {
       <div className="flex flex-col gap-3">
         <SectionLabel text="Password Reset" />
         <div>
-          <h1 className="text-[28px] font-bold text-white">Set a New Password.</h1>
-          <p className="text-[14px] text-[#888] mt-1">
+          <h1 className="text-3xl font-bold text-white">Set a New Password.</h1>
+          <p className="text-sm text-bleed mt-1">
             Choose a strong password for your Learnova account.
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function ResetPasswordPage() {
         <AuthButton loading={loading} onClick={handleSubmit}>
           Update Password →
         </AuthButton>
-        <Link href="/login" className="text-center text-[13px] text-[#888] hover:text-white transition-colors">
+        <Link href="/login" className="text-center text-xs text-bleed hover:text-white transition-colors">
           ← Back to login
         </Link>
       </div>

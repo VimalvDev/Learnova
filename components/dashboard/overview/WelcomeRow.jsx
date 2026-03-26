@@ -11,7 +11,7 @@ export default function WelcomeRow() {
         <h1 className="text-[22px] font-bold text-white">{greeting}, Alex 👋</h1>
         <p className="text-[12px] text-[#666] mt-0.5">
           Your mastery index is{" "}
-          <span className="text-[#FA6E43] font-semibold">+12.4%</span>{" "}
+          <span className="text-brand font-semibold">+12.4%</span>{" "}
           higher than last week. Keep it up!
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function WelcomeRow() {
         </button>
         <Link
           href="/dashboard/quizzes"
-          className="flex items-center gap-2 px-4 py-2 bg-[#FA6E43] text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all"
         >
           <RiAddLine className="text-[14px]" />
           New Session

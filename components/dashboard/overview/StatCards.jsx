@@ -56,10 +56,10 @@ export default function StatCards() {
           className="bg-[#171717] rounded-2xl p-5 hover:bg-[#1c1c1c] transition-all group cursor-pointer"
         >
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] font-medium uppercase tracking-widest text-[#FA6E43]/80">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-brand/80">
               {label}
             </span>
-            <span className="text-[#333] text-[12px] group-hover:text-[#FA6E43] transition-colors">→</span>
+            <span className="text-tertiary-text text-[12px] group-hover:text-brand transition-colors">→</span>
           </div>
 
           {type === "ring" ? (
@@ -82,7 +82,7 @@ export default function StatCards() {
                   {change}
                 </p>
               </div>
-              <p className="text-[11px] text-[#555] mt-1">{sub}</p>
+              <p className="text-[11px] text-secondary-text mt-1">{sub}</p>
               <div className="mt-3 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
