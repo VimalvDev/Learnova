@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function PerformanceInsights() {
   return (
-    <section id="performance-insights" className="py-[4em] relative overflow-hidden">
+    <section id="performance-insights" className="pt-[4em] pb-[8em] bg-card-dark px-[4vw] relative overflow-hidden">
       <Heading text="performance insights" />
       <SectionHeader
         num="008"
@@ -18,7 +18,7 @@ export default function PerformanceInsights() {
         {/* Left */}
         <div className="md:col-span-4 flex flex-col gap-[1em]">
 
-          <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
+          <div className="bg-card rounded-xl p-[1.5em]">
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Overall Score
             </span>
@@ -48,7 +48,7 @@ export default function PerformanceInsights() {
             </div>
           ))}
 
-          <div className="bg-[#212225] border border-[#F87171]/15 rounded-2xl p-[1.5em] bg-[#F87171]/[0.03]">
+          <div className="bg-card-dark border border-[#F87171]/15 rounded-2xl p-[1.5em] bg-[#F87171]/[0.03]">
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#F87171] block mb-2">
               Weakest Area
             </span>
@@ -62,7 +62,7 @@ export default function PerformanceInsights() {
         </div>
 
         {/* Right */}
-        <div className="md:col-span-8 bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.8em] flex flex-col gap-4">
+        <div className="md:col-span-8 bg-card rounded-xl p-[1.8em] flex flex-col gap-4">
 
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand">

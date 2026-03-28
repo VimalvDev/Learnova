@@ -1,7 +1,7 @@
 // components/charts/showcase/RevisionCalendar.jsx
-"use client"
-import { ResponsiveCalendar } from "@nivo/calendar"
-import nivoTheme  from "@/lib/nivo"
+"use client";
+import { ResponsiveCalendar } from "@nivo/calendar";
+import nivoTheme from "@/lib/nivo";
 
 const data = [
   { day: "2026-01-05", value: 2 },
@@ -37,7 +37,7 @@ const data = [
   { day: "2026-05-05", value: 7 },
   { day: "2026-05-11", value: 6 },
   { day: "2026-05-12", value: 8 },
-]
+];
 
 export default function RevisionCalendar() {
   return (
@@ -47,13 +47,13 @@ export default function RevisionCalendar() {
       from="2026-01-01"
       to="2026-05-31"
       emptyColor="#2a2b2f"
-    colors={[
-  "color-mix(in srgb, var(--color-brand) 20%, transparent)",
-  "color-mix(in srgb, var(--color-brand) 45%, transparent)",
-  "color-mix(in srgb, var(--color-brand) 70%, transparent)",
-  "var(--color-brand)",
-]}
-      margin={{ top: 12, right: 12, bottom: 12, left: 12 }}
+      colors={[
+        "color-mix(in srgb, var(--color-brand) 20%, transparent)",
+        "color-mix(in srgb, var(--color-brand) 45%, transparent)",
+        "color-mix(in srgb, var(--color-brand) 70%, transparent)",
+        "var(--color-brand)",
+      ]}
+      margin={{ top: 25, right: 15, bottom: 0, left: 20 }}
       yearSpacing={0}
       monthBorderWidth={0}
       dayBorderWidth={2}
@@ -64,5 +64,5 @@ export default function RevisionCalendar() {
         </div>
       )}
     />
-  )
+  );
 }

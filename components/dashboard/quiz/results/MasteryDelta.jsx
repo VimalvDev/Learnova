@@ -7,7 +7,7 @@ const rows = [
 
 export default function MasteryDelta() {
   return (
-    <div className="bg-card rounded-2xl p-5 border border-white/4">
+    <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
       <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Mastery Updates</p>
       <h2 className="text-[16px] font-semibold text-white mb-4">How This Session Changed Your Profile</h2>
       <div className="overflow-x-auto">

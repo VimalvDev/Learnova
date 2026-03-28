@@ -79,7 +79,7 @@ export default function FullHeatmap({ data = defaultData, onClick }) {
       maxValue={100}
       borderRadius={5}
       borderWidth={3}
-      borderColor="#1a1b1e"
+      borderColor="var(--color-card)"
       hoverTarget="cell"
       onClick={(cell) => onClick && onClick(cell)}
       colors={{

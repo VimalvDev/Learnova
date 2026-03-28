@@ -19,7 +19,7 @@ export default function ConceptBreakdown() {
   const [tab, setTab] = useState("accuracy")
 
   return (
-    <div className="bg-card rounded-2xl p-5 border border-white/4">
+    <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
       <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
         <div>
           <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Concept Analysis</p>

@@ -3,7 +3,7 @@ import TextAnimation from "../animation/TextAnimation";
 
 const Manifesto = () => {
   return (
-    <section className="relative md:min-h-screen min-h-[50vh]  w-full z-10 text-white bg-dark overflow-hidden flex items-center justify-center">
+    <section className="relative md:min-h-screen min-h-[50vh]  w-full z-10 text-white flex items-center justify-center ">
       <div className="manifesto_container h-full w-full  ">
       
 

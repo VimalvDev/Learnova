@@ -1,145 +1,48 @@
-import FadeIn from "@/components/animation/FadeIn";
-import UpText from "@/components/animation/UpText";
-import HeroImage from "@/components/home/hero/HeroImage";
+
+import UpText from "@/components/animation/UpText.tsx";
+
 
 export default function Hero() {
   return (
-    <section id="home"  className="md:min-h-[150vh] min-h-screen pt-[8em] md:mb-[5em] overflow-hidden ">
-      <div className="bg absolute inset-0 opacity-60 z-10 h-full w-full object-cover ">
-        <svg
-          className="absolute -z-10 -mt-20 right-0"
-          width="890"
-          height="764"
-          viewBox="0 0 890 764"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M.5.5h63.825v63.825H.5zm0 380.85h63.825v63.825H.5zM444.824.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM.5 190.924h63.825v63.825H.5zm0 380.849h63.825v63.825H.5zm444.324-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M.5 63.975h63.825V127.8H.5zm0 380.849h63.825v63.825H.5zM444.824 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM.5 254.4h63.825v63.825H.5zm0 380.85h63.825v63.825H.5zM444.824 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M.5 127.449h63.825v63.825H.5zm0 380.85h63.825v63.825H.5zm444.324-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM.5 317.875h63.825V381.7H.5zm0 380.85h63.825v63.825H.5zm444.324-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM635.248.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924 190.924h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825zm444.324-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M190.924 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM635.248 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM190.924 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM635.248 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M190.924 127.449h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zm444.324-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924 317.875h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zm444.324-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zM127.449.5h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M127.449 381.35h63.825v63.825h-63.825zM571.775.5H635.6v63.825h-63.825zm0 380.85H635.6v63.825h-63.825zM127.449 190.924h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825zm444.326-380.849H635.6v63.825h-63.825zm0 380.849H635.6v63.825h-63.825zM127.449 63.975h63.825V127.8h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M127.449 444.824h63.825v63.825h-63.825zM571.775 63.975H635.6V127.8h-63.825zm0 380.849H635.6v63.825h-63.825zM127.449 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM571.775 254.4H635.6v63.825h-63.825zm0 380.85H635.6v63.825h-63.825zM127.449 127.449h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M127.449 508.299h63.825v63.825h-63.825zm444.326-380.85H635.6v63.825h-63.825zm0 380.85H635.6v63.825h-63.825zM127.449 317.875h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zm444.326-380.85H635.6V381.7h-63.825zm0 380.85H635.6v63.825h-63.825zM317.873.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM762.197.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM317.873 190.924h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825zm444.324-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M317.873 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM762.197 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM317.873 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM762.197 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M317.873 127.449h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zm444.324-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM317.873 317.875h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zm444.324-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zM63.973.5h63.825v63.825H63.973zm0 380.85h63.825v63.825H63.973zM508.297.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM63.973 190.924h63.825v63.825H63.973zm0 380.849h63.825v63.825H63.973zm444.324-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M63.973 63.975h63.825V127.8H63.973zm0 380.849h63.825v63.825H63.973zM508.297 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM63.973 254.4h63.825v63.825H63.973zm0 380.85h63.825v63.825H63.973zM508.297 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M63.973 127.449h63.825v63.825H63.973zm0 380.85h63.825v63.825H63.973zm444.324-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM63.973 317.875h63.825V381.7H63.973zm0 380.85h63.825v63.825H63.973zm444.324-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zM254.4.5h63.825v63.825H254.4zm0 380.85h63.825v63.825H254.4zM698.725.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM254.4 190.924h63.825v63.825H254.4zm0 380.849h63.825v63.825H254.4zm444.325-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M254.4 63.975h63.825V127.8H254.4zm0 380.849h63.825v63.825H254.4zM698.725 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM254.4 254.4h63.825v63.825H254.4zm0 380.85h63.825v63.825H254.4zM698.725 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M254.4 127.449h63.825v63.825H254.4zm0 380.85h63.825v63.825H254.4zm444.325-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM254.4 317.875h63.825V381.7H254.4zm0 380.85h63.825v63.825H254.4zm444.325-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924.5h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M190.924 381.35h63.825v63.825h-63.825zM635.248.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924 190.924h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825zm444.324-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825zM190.924 63.975h63.825V127.8h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M190.924 444.824h63.825v63.825h-63.825zM635.248 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM190.924 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM635.248 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924 127.449h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M190.924 508.299h63.825v63.825h-63.825zm444.324-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM190.924 317.875h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zm444.324-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zM381.352.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM825.674.5h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM381.352 190.924h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825zm444.322-380.849h63.825v63.825h-63.825zm0 380.849h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M381.352 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM825.674 63.975h63.825V127.8h-63.825zm0 380.849h63.825v63.825h-63.825zM381.352 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM825.674 254.4h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path
-            stroke="rgba(255,255,255,0.06)"
-            d="M381.352 127.449h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zm444.322-380.85h63.825v63.825h-63.825zm0 380.85h63.825v63.825h-63.825zM381.352 317.875h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825zm444.322-380.85h63.825V381.7h-63.825zm0 380.85h63.825v63.825h-63.825z"
-          />
-          <path fill="url(#a)" d="M0 0h889.999v763.049H0z" />
-          <defs>
-            <radialGradient
-              id="a"
-              cx="0"
-              cy="0"
-              r="1"
-              gradientUnits="userSpaceOnUse"
-              gradientTransform="matrix(0 381.525 -445 0 445 381.525)"
-            >
-              <stop offset=".293" stopColor="#0D0D0D" stopOpacity="0" />
-              <stop offset="1" stopColor="#0D0D0D" />
-            </radialGradient>
-          </defs>
-        </svg>
-      </div>
 
-      <div className=" z-20 flex flex-col w-full h-full items-center gap-[2em] justify-between relative">
-        <div className="h-full w-full">
-          <UpText duration={1} delay={.5} splitType="words" >
-            <h1 className="text-[clamp(2.488rem,6.875vw,6.875rem)] uppercase leading-[1em] inline-block font-semibold mb-8 md:pr-[2em] pr-[.5em] text-white">
-              — The smarter way to{" "}
-              <span className="text-brand highlighted-word">learn</span>,{" "}
-              <span className="text-brand highlighted-word ">retain</span>, and{" "}
-              <span className="text-brand highlighted-word ">master </span>
-              anything
-            </h1>
-          </UpText>
 
-          <div className=" flex md:flex-row flex-col h-full w-full  md:items-center md:mb-[3em] tracking-wide  ">
-            <p className="text-xl text-bleed md:w-[60%]  ">
-              Upload your lectures, textbooks, or notes. We transform your
-              materials into a structured path toward total mastery with
-              AI-driven insights.
-            </p>
+      <section id="home" className="min-h-screen pt-[10em] pl-[5em] md:mb-[5em]  ">
+        <div className=" z-20 flex flex-col w-full h-full  items-center gap-[2em] relative">
+          <div className="h-full w-full ">
+            <UpText duration={1} delay={0.5} splitType="words">
+              <h1 className="text-[clamp(2.488rem,7.875vw,7.875rem)] uppercase leading-[1em] inline-block font-semibold mb-8 md:pr-[.6em] text-white">
+                — The smarter way to{" "}
+                <span className="text-brand highlighted-word">learn</span>,{" "}
+                <span className="text-brand highlighted-word ">retain</span>,
+                and{" "}
+                <span className="text-brand highlighted-word ">master </span>
+                anything
+              </h1>
+            </UpText>
 
-            <div className="hidden md:inline-block w-[6em] h-[.1em] bg-bleed "></div>
+            <div className=" flex md:flex-row flex-col h-full w-full  md:items-center md:mb-[3em] tracking-wide  ">
+              <p className="text-xl text-bleed md:w-[60%]  ">
+                Upload your lectures, textbooks, or notes. We transform your
+                materials into a structured path toward total mastery with
+                AI-driven insights.
+              </p>
 
-            <div className="hero_btn md:mr-[10em] md:mt-0 mt-[6em] md:ml-[2em] ">
-              <button className="bg-brand text-black px-8 py-4 rounded-xl text-lg font-bold hover:brightness-110 transition-all">
-                Learn now
-              </button>
+              <div className="hidden md:inline-block w-[6em] h-[.1em] bg-bleed "></div>
+
+              <div className="hero_btn md:mr-[10em] md:mt-0 mt-[6em] md:ml-[2em] ">
+                <button className="bg-brand text-black px-8 py-4 rounded-xl text-lg font-bold hover:brightness-110 transition-all">
+                  Learn now
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="hero_image w-full hidden md:block  ">
-          <HeroImage />
+          {/* <div className="hero_image w-full hidden md:block  ">
+            <HeroImage />
+          </div> */}
         </div>
-      </div>
-    </section>
+      </section>
+
+
   );
 }

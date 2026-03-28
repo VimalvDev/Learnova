@@ -66,7 +66,7 @@ export default function StepComplete({ formData }) {
               </button>
               <button
                 onClick={() => router.push("/courses")}
-                className="px-6 h-[50px] bg-[#212225] text-[#C0C0C0] text-[13px] font-medium rounded-2xl hover:text-white hover:bg-[#2a2b2f] transition-all"
+                className="px-6 h-[50px] bg-card-dark text-[#C0C0C0] text-[13px] font-medium rounded-2xl hover:text-white hover:bg-[#2a2b2f] transition-all"
               >
                 Upload a document first
               </button>
@@ -78,8 +78,8 @@ export default function StepComplete({ formData }) {
         {/* Right — summary + features */}
         <div className="hidden lg:flex w-[420px] xl:w-[480px] flex-shrink-0 flex-col justify-center px-12 xl:px-16 py-16 border-l border-white/[0.05] gap-6">
 
-          {/* Summary card */}
-          <div className="bg-[#212225] rounded-2xl overflow-hidden">
+          {/* Summary card-dark */}
+          <div className="bg-card-dark rounded-2xl overflow-hidden">
             <div className="px-5 py-3.5 border-b border-white/[0.05]">
               <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand/70">
                 Your Setup Summary
@@ -107,7 +107,7 @@ export default function StepComplete({ formData }) {
               {unlocked.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-3 px-4 py-3 bg-[#212225] rounded-xl"
+                  className="flex items-center gap-3 px-4 py-3 bg-card-dark rounded-xl"
                 >
                   <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
                     <Icon className="text-brand text-[15px]" />

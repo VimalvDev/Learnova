@@ -105,7 +105,7 @@ export default function StepProcessing({ onComplete }) {
               <div
                 className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-all ${
                   isComplete || done
-                    ? "bg-[var(--color-card)]"
+                    ? "bg-[var(--color-card-dark)]"
                     : isActive
                       ? "bg-[color-mix(in_srgb,var(--color-brand)_15%,var(--color-dark))]"
                       : "bg-white/[0.04]"

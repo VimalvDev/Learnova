@@ -142,7 +142,7 @@ export default function DocumentsPage() {
           { label: "Processing",      value: allDocs.filter(d => d.status === "processing").length,  color: "text-brand"  },
           { label: "Errors",          value: allDocs.filter(d => d.status === "error").length,       color: "text-[#F87171]"  },
         ].map(({ label, value, color }) => (
-          <div key={label} className="bg-[#212225] rounded-xl px-4 py-3">
+          <div key={label} className="bg-card-dark rounded-xl px-4 py-3">
             <p className={`text-[18px] font-bold ${color}`}>{value}</p>
             <p className="text-[10px] text-secondary-text mt-0.5">{label}</p>
           </div>
@@ -160,7 +160,7 @@ export default function DocumentsPage() {
       {/* Filters + search */}
       <div className="flex items-center gap-3 mb-4 flex-wrap">
         {/* Search */}
-        <div className="flex items-center gap-2 flex-1 min-w-[200px] h-9 px-3 bg-[#212225] rounded-xl border border-white/[0.06] focus-within:border-brand/40 transition-colors">
+        <div className="flex items-center gap-2 flex-1 min-w-[200px] h-9 px-3 bg-card-dark rounded-xl border border-white/[0.06] focus-within:border-brand/40 transition-colors">
           <RiSearchLine className="text-[#444] text-[14px] flex-shrink-0" />
           <input
             value={search}
@@ -171,7 +171,7 @@ export default function DocumentsPage() {
         </div>
 
         {/* Status filter */}
-        <div className="flex items-center gap-1 p-1 bg-[#212225] rounded-xl">
+        <div className="flex items-center gap-1 p-1 bg-card-dark rounded-xl">
           {["all", "complete", "processing", "error"].map((s) => (
             <button
               key={s}
@@ -191,7 +191,7 @@ export default function DocumentsPage() {
         <select
           value={courseFilter}
           onChange={(e) => setCourse(e.target.value)}
-          className="h-9 px-3 bg-[#212225] text-[12px] text-white rounded-xl border border-white/[0.06] outline-none cursor-pointer"
+          className="h-9 px-3 bg-card-dark text-[12px] text-white rounded-xl border border-white/[0.06] outline-none cursor-pointer"
         >
           <option value="all">All Courses</option>
           {courses.map((c) => (
@@ -201,7 +201,7 @@ export default function DocumentsPage() {
       </div>
 
       {/* Documents table */}
-      <div className="bg-[#212225] rounded-2xl overflow-hidden">
+      <div className="bg-card-dark rounded-2xl overflow-hidden">
         {/* Table header */}
         <div className="flex items-center gap-4 px-4 py-2.5 border-b border-white/[0.06]">
           <div className="w-9 flex-shrink-0" />

@@ -39,7 +39,7 @@ export default function ForgotPasswordPage() {
         </div>
         <div className="flex gap-3 w-full">
           {["Open Gmail →", "Open Outlook →"].map((label) => (
-            <button key={label} className="flex-1 h-9 rounded-full text-[12px] font-medium text-[#888] bg-card border border-white/8 hover:border-brand hover:text-white transition-all">
+            <button key={label} className="flex-1 h-9 rounded-full text-[12px] font-medium text-[#888] bg-card-dark border border-white/8 hover:border-brand hover:text-white transition-all">
               {label}
             </button>
           ))}

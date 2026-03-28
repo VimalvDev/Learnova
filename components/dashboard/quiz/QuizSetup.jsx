@@ -49,7 +49,7 @@ export default function QuizSetup({ onStart }) {
         {/* Left — main config */}
         <div className="flex flex-col gap-4">
 
-          {/* Scope card */}
+          {/* Scope card-dark */}
           <div className="bg-card-dark rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-4">
               <RiBookOpenLine className="text-brand text-[15px]" />
@@ -58,7 +58,7 @@ export default function QuizSetup({ onStart }) {
             <ScopeSelector />
           </div>
 
-          {/* Difficulty card */}
+          {/* Difficulty card-dark */}
           <div className="bg-card-dark rounded-2xl p-5">
             <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-4">Difficulty Mode</p>
             <DifficultySelector value={difficulty} onChange={setDifficulty} />
@@ -80,7 +80,7 @@ export default function QuizSetup({ onStart }) {
             </div>
           </div>
 
-          {/* Smart options card */}
+          {/* Smart options card-dark */}
           <div className="bg-card-dark rounded-2xl p-5 ">
             <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-4">Smart Options</p>
             <SmartOptions value={smarts} onChange={setSmarts} />

@@ -47,14 +47,14 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
         <div className="relative">
           <button
             onClick={() => setCourseOpen(!courseOpen)}
-            className="w-full flex items-center gap-2 px-3 py-2 bg-[#212225] rounded-xl hover:bg-[#2A2B2F] transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 bg-card-dark rounded-xl hover:bg-[#2A2B2F] transition-colors"
           >
             <RiFileTextLine className="text-brand text-[13px] flex-shrink-0" />
             <span className="text-[12px] font-medium text-white flex-1 text-left truncate">{course}</span>
             <RiArrowDownSLine className="text-[#444] text-[14px] flex-shrink-0" />
           </button>
           {courseOpen && (
-            <div className="absolute top-10 left-0 w-full bg-[#212225] rounded-xl shadow-2xl z-30 overflow-hidden border border-white/[0.06]">
+            <div className="absolute top-10 left-0 w-full bg-card-dark rounded-xl shadow-2xl z-30 overflow-hidden border border-white/[0.06]">
               {courses.map((c) => (
                 <button
                   key={c}
@@ -134,7 +134,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
           </div>
           <div className="flex flex-col gap-1">
             {units.map((unit) => (
-              <div key={unit.id} className="bg-[#212225] rounded-xl overflow-hidden">
+              <div key={unit.id} className="bg-card-dark rounded-xl overflow-hidden">
                 <div
                   className="flex items-center gap-2 px-3 py-2.5 cursor-pointer hover:bg-white/[0.02] transition-colors"
                   onClick={() => setExpanded(expandedUnit === unit.id ? null : unit.id)}
@@ -213,7 +213,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
               { label: "Sources",    value: "11"  },
               { label: "Low conf.",  value: "1"   },
             ].map(({ label, value }) => (
-              <div key={label} className="bg-[#212225] rounded-xl px-3 py-2">
+              <div key={label} className="bg-card-dark rounded-xl px-3 py-2">
                 <p className="text-[13px] font-semibold text-white">{value}</p>
                 <p className="text-[9px] text-[#444] mt-0.5">{label}</p>
               </div>
@@ -225,7 +225,7 @@ export default function LeftPanel({ mode = "private", onModeChange }) {
       {/* ── PUBLIC MODE INFO ── */}
       {mode === "public" && (
         <div className="p-4">
-          <div className="bg-[#212225] rounded-xl p-3.5">
+          <div className="bg-card-dark rounded-xl p-3.5">
             <p className="text-[11px] font-semibold text-[#4ADE80] mb-1.5">Public Mode Active</p>
             <p className="text-[10px] text-secondary-text leading-relaxed">
               Questions use general AI knowledge. Document scope and confidence scoring are disabled.

@@ -36,7 +36,7 @@ export default function OnboardingHeader({ step, totalSteps }) {
           </button>
 
           {showSkip && (
-            <div className="absolute right-0 top-9 w-[240px] bg-[#212225] border border-white/[0.08] rounded-xl p-4 shadow-2xl z-50">
+            <div className="absolute right-0 top-9 w-[240px] bg-card-dark border border-white/[0.08] rounded-xl p-4 shadow-2xl z-50">
               <p className="text-[12px] text-[#888] leading-relaxed mb-3">
                 Skip onboarding? You can configure these settings later.
               </p>

@@ -12,7 +12,7 @@ export default function ResultsActions({ onRestart }) {
     <div className="flex flex-col gap-4 lg:sticky lg:top-4">
 
       {/* Revision schedule */}
-      <div className="bg-card rounded-2xl p-5 border border-white/4">
+      <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-brand text-[12px]">◈</span>
           <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">
@@ -34,7 +34,7 @@ export default function ResultsActions({ onRestart }) {
       </div>
 
       {/* Actions */}
-      <div className="bg-card rounded-2xl p-5 border border-white/4 flex flex-col gap-2.5">
+      <div className="bg-card-dark rounded-2xl p-5 border border-white/4 flex flex-col gap-2.5">
         <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Next Steps</p>
         <button className="w-full py-2.5 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all">
           Review All Mistakes

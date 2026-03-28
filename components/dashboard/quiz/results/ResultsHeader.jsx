@@ -7,7 +7,7 @@ const stats = [
 
 export default function ResultsHeader() {
   return (
-    <div className="bg-card rounded-2xl border border-white/4 overflow-hidden">
+    <div className="bg-card-dark rounded-2xl border border-white/4 overflow-hidden">
       <div className="px-6 py-4 border-b border-white/6">
         <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Quiz Complete</p>
         <div className="flex items-center justify-between flex-wrap gap-2">

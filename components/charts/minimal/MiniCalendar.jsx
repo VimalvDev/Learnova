@@ -24,26 +24,44 @@ const data = [
 
 export default function MiniCalendar() {
   return (
-    <div style={{ height: "160px" }} className="w-full">
+    <div className="w-full h-full min-h-[160px]">
       <ResponsiveCalendar
         data={data}
-        theme={nivoTheme}
+        theme={{
+          ...nivoTheme,
+          labels: {
+            text: {
+              fill: "var(--color-mid-gray)",
+              fontSize: 10,
+              fontWeight: 400,
+            },
+          },
+          axis: {
+            ticks: {
+              text: {
+                fill: "var(--color-mid-gray)",
+                fontSize: 10,
+                fontWeight: 400,
+              },
+            },
+          },
+        }}
         from="2026-01-01"
         to="2026-06-30"
-        emptyColor="#2a2b2f"
-       colors={[
-  "color-mix(in srgb, var(--color-brand) 20%, transparent)",
-  "color-mix(in srgb, var(--color-brand) 45%, transparent)",
-  "color-mix(in srgb, var(--color-brand) 70%, transparent)",
-  "var(--color-brand)",
-]}
-        margin={{ top: 25, right: 8, bottom: 8, left: 8 }}
+        emptyColor="var(--color-card-mid)"
+        colors={[
+          "color-mix(in srgb, var(--color-brand) 20%, var(--color-dark))",
+          "color-mix(in srgb, var(--color-brand) 45%, var(--color-dark))",
+          "color-mix(in srgb, var(--color-brand) 70%, var(--color-dark))",
+          "var(--color-brand)",
+        ]}
+        margin={{ top: 25, right: 8, bottom: 8, left: 20 }}
         yearSpacing={0}
         monthBorderWidth={0}
         dayBorderWidth={2}
-        dayBorderColor="#212225"
+        dayBorderColor="var(--color-card)"
         tooltip={({ day, value }) => (
-          <div className="bg-[#1a1b1e] border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
+          <div className="bg-card border border-white/[0.08] rounded-lg px-3 py-1.5 text-[11px] text-white">
             {day}:{" "}
             <span className="text-brand font-bold">{value} sessions</span>
           </div>

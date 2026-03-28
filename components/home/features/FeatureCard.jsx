@@ -2,7 +2,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { TbGridDots } from "react-icons/tb";
 import Tags from "@/components/home/features/Tags";
 
-export default function FeatureCard({
+export default function Featurecard({
   num,
   label,
   title,
@@ -12,15 +12,16 @@ export default function FeatureCard({
   colSpan = "md:col-span-4",
   minHeight = "min-h-[520px]",
   extra = null,
+  link
 }) {
   return (
     <div
-      className={`${colSpan} bg-card border border-white/6 rounded-2xl overflow-hidden relative flex flex-col ${minHeight} hover:border-white/12 transition-all duration-300`}
+      className={`${colSpan} bg-card rounded-xl overflow-hidden relative flex flex-col ${minHeight}`}
     >
       <div className="absolute top-4 right-4 opacity-10 z-0">
         <TbGridDots className="text-white text-2xl" />
       </div>{" "}
-      <div className="p-[1.8em] flex flex-col h-full gap-4 relative z-10">
+      <div className="px-[2em] pt-[2em] pb-[1em] flex flex-col h-full gap-4 relative z-10">
         {extra}
 
         {/* Header */}
@@ -37,11 +38,9 @@ export default function FeatureCard({
             <h3 className="text-[clamp(1rem,1.8vw,1.4rem)] font-bold text-white mt-1 leading-tight">
               {title}
             </h3>
-              <p className="text-xs text-bleed mt-1.5 leading-relaxed">
-              {desc}
-            </p>
+            <p className="text-xs text-bleed mt-1.5 leading-relaxed">{desc}</p>
           </div>
-            <span className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white/5 leading-none select-none shrink-0">
+          <span className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white/5 leading-none select-none shrink-0">
             {num}
           </span>
         </div>
@@ -52,7 +51,12 @@ export default function FeatureCard({
         {/* Footer */}
         <div className="flex items-center justify-between pt-[1em] border-t border-white/6">
           <Tags tags={tags} />
-          <MdArrowOutward />
+          <a
+            href={link}
+            className="w-[2.5em] h-[2.5em] rounded-xl bg-brand flex items-center justify-center cursor-pointer hover:brightness-110 transition-all hover:scale-105"
+          >
+            <MdArrowOutward className="text-black text-lg" />
+          </a>{" "}
         </div>
       </div>
     </div>

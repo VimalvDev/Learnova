@@ -26,7 +26,7 @@ export default function ChatPage() {
 
           <button
             onClick={() => setRightOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#212225] text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-card-dark text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
           >
             Options <RiLayoutRightLine className="text-[13px]" />
           </button>

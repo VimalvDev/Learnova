@@ -25,7 +25,7 @@ export default function StepTimeline({ formData, update }) {
             type="date"
             value={formData.targetDate}
             onChange={(e) => update("targetDate", e.target.value)}
-            className="w-full h-12.5 px-4 bg-card text-white text-[13px] rounded-xl outline-none transition-all"
+            className="w-full h-12.5 px-4 bg-card-dark text-white text-[13px] rounded-xl outline-none transition-all"
             style={{
               border: "1px solid rgba(255,255,255,0.06)",
               colorScheme: "dark",
@@ -57,7 +57,7 @@ export default function StepTimeline({ formData, update }) {
                 className={`flex-1 min-w-12 h-12 rounded-xl text-[14px] font-bold transition-all ${
                   formData.dailyHours === h
                     ? "bg-brand text-white border-none"
-                    : "bg-card text-mid-gray"
+                    : "bg-card-dark text-mid-gray"
                 }`}
               >
                 {h}h
@@ -76,7 +76,7 @@ export default function StepTimeline({ formData, update }) {
               type="time"
               value={formData.studyFrom}
               onChange={(e) => update("studyFrom", e.target.value)}
-              className="w-full h-12.5 px-4 bg-card text-white text-[13px] rounded-xl outline-none transition-all"
+              className="w-full h-12.5 px-4 bg-card-dark text-white text-[13px] rounded-xl outline-none transition-all"
               style={{
                 border: "1px solid rgba(255,255,255,0.06)",
                 colorScheme: "dark",
@@ -91,7 +91,7 @@ export default function StepTimeline({ formData, update }) {
               type="time"
               value={formData.studyTo}
               onChange={(e) => update("studyTo", e.target.value)}
-              className="w-full h-12.5 px-4 bg-card text-white text-[13px] rounded-xl outline-none transition-all"
+              className="w-full h-12.5 px-4 bg-card-dark text-white text-[13px] rounded-xl outline-none transition-all"
               style={{
                 border: "1px solid rgba(255,255,255,0.06)",
                 colorScheme: "dark",

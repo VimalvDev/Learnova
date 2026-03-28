@@ -18,7 +18,7 @@ const activities = [
 const quickActions = [
   { icon: RiMagicLine,     label: "AI Optimize", href: "/dashboard/chat",    color: "#FA6E43" },
   { icon: RiTimerLine,     label: "Focus Timer",  href: "/dashboard",         color: "#FBBF24" },
-  { icon: RiFileList3Line, label: "Flashcards",   href: "/dashboard/quizzes", color: "#4ADE80" },
+  { icon: RiFileList3Line, label: "Flashcard-darks",   href: "/dashboard/quizzes", color: "#4ADE80" },
   { icon: RiChat3Line,     label: "AI Chat",      href: "/dashboard/chat",    color: "#FA6E43" },
 ]
 
@@ -68,7 +68,7 @@ export default function ActivityRow() {
           ))}
         </div>
 
-        {/* Continue card */}
+        {/* Continue card-dark */}
         <Link
           href="/dashboard/quizzes"
           className="flex items-center gap-3 p-3.5 bg-[#111] rounded-2xl hover:bg-[#151515] transition-all group"

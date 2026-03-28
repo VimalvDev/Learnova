@@ -79,7 +79,7 @@ export default function StepConfidence({ formData, update }) {
               className={`w-full text-left flex items-start gap-4 p-5 rounded-2xl transition-all duration-200 border ${
                 selected
                   ? "bg-brand/5 border-brand/40"
-                  : "bg-card border-white/[0.05]"
+                  : "bg-card-dark border-white/[0.05]"
               }`}
             >
               <div
@@ -118,7 +118,7 @@ export default function StepConfidence({ formData, update }) {
       </div>
 
       {/* Note */}
-      <div className="flex items-start gap-2.5 px-4 py-3.5 rounded-xl text-[12px] text-bleed leading-relaxed bg-card border border-white/[0.05]">
+      <div className="flex items-start gap-2.5 px-4 py-3.5 rounded-xl text-[12px] text-bleed leading-relaxed bg-card-dark border border-white/[0.05]">
         <span className="text-brand flex-shrink-0 mt-0.5">◈</span>
         <span>
           This sets your starting quiz difficulty only. Learnova recalibrates

@@ -38,7 +38,7 @@ export default function StepCourse({ formData, update }) {
               value={formData.courseName}
               onChange={(e) => update("courseName", e.target.value)}
               placeholder="e.g. DBMS — Semester 4"
-              className="w-full h-12.5 px-4 bg-card text-white text-xs placeholder:text-white/20 rounded-xl outline-none transition-all"
+              className="w-full h-12.5 px-4 bg-card-dark text-white text-xs placeholder:text-white/20 rounded-xl outline-none transition-all"
               style={{ border: "1px solid rgba(255,255,255,0.06)" }}
               onFocus={(e) =>
                 (e.target.style.borderColor = "rgba(250,110,67,0.4)")
@@ -57,7 +57,7 @@ export default function StepCourse({ formData, update }) {
               value={formData.unitName}
               onChange={(e) => update("unitName", e.target.value)}
               placeholder="e.g. Unit 1 — Intro"
-              className="w-full h-12.5 px-4 bg-card text-white text-xs placeholder:text-white/20 rounded-xl outline-none transition-all"
+              className="w-full h-12.5 px-4 bg-card-dark text-white text-xs placeholder:text-white/20 rounded-xl outline-none transition-all"
               style={{ border: "1px solid rgba(255,255,255,0.06)" }}
               onFocus={(e) =>
                 (e.target.style.borderColor = "rgba(250,110,67,0.4)")
@@ -117,7 +117,7 @@ export default function StepCourse({ formData, update }) {
               className={`flex flex-col items-center justify-center min-h-45 rounded-2xl cursor-pointer transition-all duration-200 ${
                 dragging
                   ? "bg-brand/5 border-2 border-brand scale-[1.01]"
-                  : "bg-card border-2 border-dashed border-white/[0.08] scale-100"
+                  : "bg-card-dark border-2 border-dashed border-white/[0.08] scale-100"
               }`}
             >
               <input

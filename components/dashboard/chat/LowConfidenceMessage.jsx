@@ -6,7 +6,7 @@ export default function LowConfidenceMessage({ time, bestMatch, threshold }) {
   return (
     <div className="flex flex-col items-start mb-6">
       <div
-        className="w-full max-w-[80%] bg-[#212225] overflow-hidden"
+        className="w-full max-w-[80%] bg-card-dark overflow-hidden"
         style={{
           borderRadius: "4px 14px 14px 14px",
           border: "1px solid rgba(251,191,36,0.12)",

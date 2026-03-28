@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Heading from "./Heading";
+import BackgroundPaths from "../home/hero/BackgroundPaths";
 
 export default function CTA() {
   const year = new Date().getFullYear();
@@ -68,9 +69,11 @@ export default function CTA() {
 
       <div className="max-w-330 mx-auto relative z-10">
         {/* CTA block */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 pb-16 md:pb-20 border-b border-white/[0.06]">
+
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 pb-16 md:pb-20 border-b over  border-white/[0.06]">
           {/* Left */}
           <div className="flex flex-col gap-5 w-full lg:max-w-[700px]">
+
             <div className="flex items-center gap-3">
               <div className="w-[3px] h-7 bg-brand rounded-full" />
               <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
@@ -79,7 +82,7 @@ export default function CTA() {
               <span className="text-[13px] text-secondary-text ml-1">CTA</span>
             </div>
 
-            <h2 className="text-[clamp(28px,5vw,72px)] font-black text-white leading-[0.95] tracking-tight">
+            <h2 className="text-[clamp(28px,5vw,72px)]  font-black text-white leading-[0.95] tracking-tight">
               Ready to Master
               <br />
               Your Subject?
@@ -87,7 +90,8 @@ export default function CTA() {
 
             <p className="text-[15px] md:text-[16px] text-[#888] leading-relaxed max-w-[480px]">
               Upload your first document and let Learnova build your personal
-              learning engine — free. No setup, no credit card, no friction.
+              learning engine — free. No setup, no credit card-dark, no
+              friction.
             </p>
 
             <div className="flex items-center gap-4 flex-wrap">

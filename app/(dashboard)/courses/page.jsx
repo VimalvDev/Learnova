@@ -81,7 +81,7 @@ function MasteryRing({ pct }) {
   )
 }
 
-function CourseCard({ course }) {
+function Coursecard-dark({ course }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const masteryColor = course.mastery >= 75 ? "text-[#4ADE80]" : course.mastery >= 50 ? "text-brand" : "text-[#F87171]"
   const masteryBg    = course.mastery >= 75 ? "bg-[#4ADE80]" : course.mastery >= 50 ? "bg-brand" : "bg-[#F87171]"
@@ -207,7 +207,7 @@ export default function CoursesPage() {
         ))}
       </div>
 
-      <div className="flex items-center gap-1 mb-5 p-1 bg-card rounded-xl w-fit">
+      <div className="flex items-center gap-1 mb-5 p-1 bg-card-dark rounded-xl w-fit">
         {["all", "active", "completed"].map((f) => (
           <button
             key={f}
@@ -222,7 +222,7 @@ export default function CoursesPage() {
       </div>
 
       <div className="flex flex-col gap-3">
-        {courses.map((course) => <CourseCard key={course.id} course={course} />)}
+        {courses.map((course) => <Coursecard-dark key={course.id} course={course} />)}
       </div>
 
       {courses.length === 0 && (

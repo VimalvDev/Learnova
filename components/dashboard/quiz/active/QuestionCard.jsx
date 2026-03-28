@@ -4,7 +4,7 @@ import { RiBookmarkLine, RiBookmarkFill, RiArrowLeftLine, RiArrowRightLine } fro
 import AnswerOption     from "./AnswerOption"
 import ExplanationBlock from "./ExplanationBlock"
 
-export default function QuestionCard({
+export default function Questioncard-dark({
   question, selected, onSelect, revealed,
   onSubmit, onNext, onPrev, isFirst, isLast,
 }) {
@@ -17,7 +17,7 @@ export default function QuestionCard({
   }[question.difficulty] ?? "text-[#888] bg-white/[0.06]"
 
   return (
-    <div className="bg-card rounded-2xl p-[clamp(1.25rem,2.5vw,2rem)] border border-white/4">
+    <div className="bg-card-dark rounded-2xl p-[clamp(1.25rem,2.5vw,2rem)] border border-white/4">
 
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">

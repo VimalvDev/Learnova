@@ -17,7 +17,7 @@ const mistakes = [
 
 export default function MistakeReview() {
   return (
-    <div className="bg-card rounded-2xl p-5 border border-white/4">
+    <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
       <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Mistakes</p>
       <h2 className="text-[16px] font-semibold text-white mb-1">Questions to Review</h2>
       <p className="text-[12px] text-secondary-text mb-5">{mistakes.length} questions answered incorrectly</p>

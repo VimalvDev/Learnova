@@ -1,11 +1,14 @@
 // components/home/deep-dives/AdaptiveQuiz.jsx
-import AdaptiveLineChart from "@/components/charts/showcase/AdaptiveLineChart"
-import Heading from "@/components/common/Heading"
-import SectionHeader from "@/components/common/SectionHeader"
+import AdaptiveLineChart from "@/components/charts/showcase/AdaptiveLineChart";
+import Heading from "@/components/common/Heading";
+import SectionHeader from "@/components/common/SectionHeader";
 
 export default function AdaptiveQuiz() {
   return (
-    <section id="adaptive-quiz" className="py-[4em] relative overflow-hidden">
+    <section
+      id="adaptive-quiz"
+      className="pt-[8em] pb-[12em] px-[4vw] bg-card-dark relative overflow-hidden"
+    >
       <Heading text="adaptive quiz" />
       <SectionHeader
         num="006"
@@ -14,16 +17,54 @@ export default function AdaptiveQuiz() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-[1em] mt-[3em]">
-
         {/* Left */}
         <div className="md:col-span-4 flex flex-col gap-[1em]">
-
+          <div className="bg-card-mid-dark rounded-2xl p-[1.5em]">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
+              Session Stats
+            </span>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                ["47", "Quizzes taken"],
+                ["3.2×", "Faster mastery"],
+                ["91%", "Accuracy last week"],
+                ["2", "Static questions"],
+              ].map(([num, label]) => (
+                <div key={label} className="bg-card rounded-xl p-3 text-center">
+                  <p className="text-[18px] font-black text-brand leading-none">
+                    {num}
+                  </p>
+                  <p className="text-[9px] text-secondary-text mt-1 uppercase tracking-wide">
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
           {[
-            { label: "Score High", outcome: "Harder questions", color: "#FA6E43", icon: "↑" },
-            { label: "Struggle",   outcome: "Explanation mode before retesting", color: "#FBBF24", icon: "?" },
-            { label: "Perfect Run", outcome: "Skip to next concept", color: "#4ADE80", icon: "→" },
+            {
+              label: "Score High",
+              outcome: "Harder questions",
+              color: "#FA6E43",
+              icon: "↑",
+            },
+            {
+              label: "Struggle",
+              outcome: "Explanation mode before retesting",
+              color: "#FBBF24",
+              icon: "?",
+            },
+            {
+              label: "Perfect Run",
+              outcome: "Skip to next concept",
+              color: "#4ADE80",
+              icon: "→",
+            },
           ].map(({ label, outcome, color, icon }) => (
-            <div key={label} className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em] flex items-center gap-4">
+            <div
+              key={label}
+              className="bg-card  rounded-2xl p-[1.5em] flex items-center gap-4"
+            >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black flex-shrink-0"
                 style={{ background: `${color}15`, color }}
@@ -36,31 +77,10 @@ export default function AdaptiveQuiz() {
               </div>
             </div>
           ))}
-
-          <div className="bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.5em]">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
-              Session Stats
-            </span>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                ["47", "Quizzes taken"],
-                ["3.2×", "Faster mastery"],
-                ["91%", "Accuracy last week"],
-                ["0", "Static questions"],
-              ].map(([num, label]) => (
-                <div key={label} className="bg-[#1a1b1e] rounded-xl p-3 text-center">
-                  <p className="text-[18px] font-black text-brand leading-none">{num}</p>
-                  <p className="text-[9px] text-secondary-text mt-1 uppercase tracking-wide">{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
 
         {/* Right */}
-        <div className="md:col-span-8 bg-[#212225] border border-white/[0.06] rounded-2xl p-[1.8em] flex flex-col gap-4">
-
+        <div className="md:col-span-8 bg-card rounded-2xl p-[1.8em] flex flex-col gap-4">
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
               Adaptive Difficulty vs Mastery
@@ -77,9 +97,8 @@ export default function AdaptiveQuiz() {
           <div className="flex-1 min-h-[400px]">
             <AdaptiveLineChart />
           </div>
-
         </div>
       </div>
     </section>
-  )
+  );
 }

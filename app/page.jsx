@@ -1,6 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import Hero from "@/components/home/hero/Hero";
-import HowItWorks from "@/components/home/howitworks/HowItWorks";
+
 import FAQ from "@/components/home/FAQ";
 import Manifesto from "@/components/home/Manifesto";
 import Features from "@/components/home/features/Features";
@@ -11,24 +11,28 @@ import AskFromNotes from "@/components/home/deep-dives/AskFromNotes";
 import AdaptiveQuiz from "@/components/home/deep-dives/AdaptiveQuiz";
 import RevisionScheduler from "@/components/home/deep-dives/RevisionScheduler";
 import PerformanceInsights from "@/components/home/deep-dives/PerformanceInghts";
+import HeroBackground from "@/components/home/hero/HeroBackground";
+import HowItWorks from "@/components/home/howitworks/HowItWorks";
 
 export default function Page() {
   return (
     <div className="overflow-x-hidden">
       <Navbar />
-
-      <main className="md:px-[3em] px-[1em]" >
-        <Hero />
+      <HeroBackground/>
+      <Hero />
+      <main>
         <Manifesto />
+
         <Features />
+
         <HowItWorks />
-        <MasteryScoring/>
-        <WeaknessIntelligence/>
-        <AskFromNotes/>
-        <AdaptiveQuiz/>
-        <RevisionScheduler/>
-        <PerformanceInsights/>
-        {/* <Pricing /> */}
+
+        <MasteryScoring />
+        <WeaknessIntelligence />
+        <AskFromNotes />
+        <AdaptiveQuiz />
+        <RevisionScheduler />
+        <PerformanceInsights />
         <FAQ />
         {/* <FinalCTA /> */}
       </main>

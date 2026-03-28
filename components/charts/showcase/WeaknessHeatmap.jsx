@@ -64,7 +64,7 @@ export default function WeaknessHeatmap() {
   return (
     <ResponsiveHeatMap
       data={data}
-  theme={{
+      theme={{
         ...nivoTheme,
         labels: {
           text: {
@@ -73,20 +73,21 @@ export default function WeaknessHeatmap() {
             fill: "rgba(255,255,255,0.7)",
           },
         },
-      }}      margin={{ top: 24, right: 12, bottom: 32, left: 100 }}
+      }}
+      margin={{ top: 24, right: 12, bottom: 32, left: 100 }}
       minValue={0}
       maxValue={100}
       borderRadius={5}
-      borderWidth={3}
-      borderColor="#1a1b1e"
-     colors={{
-  type: "sequential",
-  colors: [
-    "color-mix(in srgb, var(--color-brand) 12%, var(--color-dark))",
-    "color-mix(in srgb, var(--color-brand) 78%, var(--color-dark))",
-    "var(--color-brand)",
-  ],
-}}
+      borderWidth={5}
+      borderColor="var(--color-card)"
+      colors={{
+        type: "sequential",
+        colors: [
+          "color-mix(in srgb, var(--color-brand) 12%, var(--color-dark))",
+          "color-mix(in srgb, var(--color-brand) 78%, var(--color-dark))",
+          "var(--color-brand)",
+        ],
+      }}
       labelTextColor="#ffffff"
       emptyColor="#2a2b2f"
       hoverTarget="cell"
@@ -100,20 +101,24 @@ export default function WeaknessHeatmap() {
       }}
       axisRight={null}
       axisBottom={null}
-     tooltip={({ cell }) => (
-  <div style={{
-    background: "#212225",
-    borderRadius: "8px",
-    padding: "6px 10px",
-    fontSize: "11px",
-    color: "#fff",
-    whiteSpace: "nowrap",
-  }}>
-    <span style={{ color: "var(--color-brand)", fontWeight: 600 }}>{cell.serieId}</span>
-    {" · "}
-    {cell.data.x}: {cell.value}%
-  </div>
-)}
+      tooltip={({ cell }) => (
+        <div
+          style={{
+            background: "#212225",
+            borderRadius: "8px",
+            padding: "6px 10px",
+            fontSize: "11px",
+            color: "#fff",
+            whiteSpace: "nowrap",
+          }}
+        >
+          <span style={{ color: "var(--color-brand)", fontWeight: 600 }}>
+            {cell.serieId}
+          </span>
+          {" · "}
+          {cell.data.x}: {cell.value}%
+        </div>
+      )}
     />
   );
 }

@@ -151,16 +151,16 @@ export default function CenterPanel({ mode = "private" }) {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => setMessages([])}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-card text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-card-dark text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
           >
             <RiDeleteBinLine className="text-[12px]" /> Clear
           </button>
-          <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-card text-[#888] text-[11px] rounded-xl hover:text-white transition-colors">
+          <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-card-dark text-[#888] text-[11px] rounded-xl hover:text-white transition-colors">
             <RiDownloadLine className="text-[12px]" /> Export
           </button>
           <button
             onClick={openHistory}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-card text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-card-dark text-[#888] text-[11px] rounded-xl hover:text-white transition-colors"
           >
             <RiHistoryLine className="text-[12px]" /> History
           </button>
@@ -192,7 +192,7 @@ export default function CenterPanel({ mode = "private" }) {
                 <button
                   key={s}
                   onClick={() => handleSend(s)}
-                  className="px-4 py-2.5 bg-card text-[#888] text-[12px] rounded-xl hover:text-white hover:bg-[#2A2B2F] transition-all text-left"
+                  className="px-4 py-2.5 bg-card-dark text-[#888] text-[12px] rounded-xl hover:text-white hover:bg-[#2A2B2F] transition-all text-left"
                 >
                   {s}
                 </button>

@@ -127,7 +127,7 @@ export default function StepWelcome({ onNext }) {
           </div>
         </div>
 
-        {/* Right — feature cards, hidden on mobile */}
+        {/* Right — feature card-darks, hidden on mobile */}
         <div className="hidden lg:flex w-105 xl:w-120 shrink-0 flex-col justify-center px-12 xl:px-16 py-16 border-l border-white/5">
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand/70 mb-6">
             What You'll Unlock
@@ -137,7 +137,7 @@ export default function StepWelcome({ onNext }) {
             {features.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-white/5"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-card-dark border border-white/5"
               >
                 <div className="w-9 h-9 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
                   <Icon className="text-brand text-[18px]" />

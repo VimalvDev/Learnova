@@ -4,6 +4,7 @@ import { useState } from "react";
 import UpText from "../animation/UpText";
 import SectionHeader from "../common/SectionHeader";
 import Heading from "../common/Heading";
+import BackgroundPaths from "./hero/BackgroundPaths";
 
 const faqs = [
   {
@@ -36,7 +37,11 @@ export default function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="relative py-[8em] overflow-hidden bg-dark">
+    <section
+      id="faq"
+      className="relative py-[8em] px-[3em] overflow-hidden bg-dark"
+    >
+
       <Heading text="have doubts?" />
 
       <div className=" relative z-10">
@@ -48,7 +53,7 @@ export default function FAQ() {
           para="Everything you need to know before uploading your first document."
         />
 
-        {/* FAQ + Card grid */}
+        {/* FAQ + card-dark grid */}
         <div className="grid grid-cols-12 gap-6">
           {/* FAQ list */}
           <div className="col-span-12 lg:col-span-7 flex flex-col gap-2">
@@ -58,7 +63,7 @@ export default function FAQ() {
                 className={`rounded-2xl border  transition-all duration-300 overflow-hidden ${
                   open === i
                     ? "border-brand/25 bg-brand/5"
-                   : "border-white/6 bg-card hover:border-white/10"
+                    : "border-white/6 bg-card-dark hover:border-white/10"
                 }`}
               >
                 <button
@@ -99,10 +104,10 @@ export default function FAQ() {
             ))}
           </div>
 
-          {/* Right card */}
+          {/* Right card-dark */}
           <div className="col-span-12 lg:col-span-5 flex flex-col gap-4">
-            {/* Help card */}
-            <div className="self-start bg-card rounded-2xl border border-white/6 p-8 flex flex-col justify-between relative overflow-hidden">
+            {/* Help card-dark */}
+            <div className="self-start bg-card-dark rounded-2xl border border-white/6 p-8 flex flex-col justify-between relative overflow-hidden">
               {/* Background dots grid */}
               <div className="absolute inset-0 pointer-events-none">
                 <div
@@ -113,7 +118,7 @@ export default function FAQ() {
                     backgroundSize: "24px 24px",
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#212225]/0 via-[#212225]/50 to-[#212225]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-card-dark/0 via-card-dark/50 to-card-dark" />
               </div>
 
               <div className="relative z-10">
@@ -153,8 +158,8 @@ export default function FAQ() {
               </div>
             </div>
 
-            {/* Quick stat card */}
-            <div className="bg-[#212225] rounded-2xl border border-white/[0.06] px-6 py-5 flex items-center justify-between">
+            {/* Quick stat card-dark */}
+            <div className="bg-card-dark rounded-2xl border border-white/[0.06] px-6 py-5 flex items-center justify-between">
               {[
                 ["99.9%", "Uptime SLA"],
                 ["&lt;30s", "Avg Response"],
@@ -174,6 +179,7 @@ export default function FAQ() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }

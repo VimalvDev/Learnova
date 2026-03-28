@@ -26,7 +26,7 @@ export default function AIMessage({ message, isPublic = false }) {
   return (
     <div className="flex flex-col items-start gap-1 mb-6">
       <div
-        className="w-full max-w-[80%] bg-card overflow-hidden"
+        className="w-full max-w-[80%] bg-card-dark overflow-hidden"
         style={{
           borderRadius: "4px 14px 14px 14px",
           border: isPublic

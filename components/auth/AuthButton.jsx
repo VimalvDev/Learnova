@@ -12,7 +12,7 @@ export default function AuthButton({
 
   const variants = {
     primary: "bg-brand text-white hover:brightness-110 hover:scale-[1.01] active:scale-[0.98]",
-    google: "bg-card text-white border border-white/10 hover:bg-[#2A2B2F] hover:border-white/20",
+    google: "bg-card-dark text-white border border-white/10 hover:bg-[#2A2B2F] hover:border-white/20",
   }
 
   return (

@@ -42,7 +42,7 @@ export default function FullRadar({ data = defaultData, onClick }) {
       blendMode="normal"
       animate
       tooltip={({ index, value }) => (
-        <div className="bg-card border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
+        <div className="bg-card-dark border border-white/10 rounded-lg px-3 py-1.5 text-[11px] text-white">
           {index}: <span className="text-brand font-bold">{value}%</span>
         </div>
       )}

@@ -20,7 +20,7 @@ export default function MiniBarChart() {
       theme={nivoTheme}
       maxValue={100}
       colors={["var(--color-brand)"]}
-      margin={{ top: 20, right: 0, bottom: 30, left: 30 }}
+      margin={{ top: 10, right: 10, bottom: 26, left: 40 }}
       padding={0.05}
       borderRadius={6}
       label={(d) => `${d.value}%`}
@@ -38,7 +38,7 @@ export default function MiniBarChart() {
               y={0}
               width={bar.width}
               height={bar.y + bar.height}
-              fill="#1a1820"
+              fill="var(--color-card-mid)"
               rx={14}
             />
           )),

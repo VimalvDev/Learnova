@@ -15,7 +15,7 @@ const insights = [
 
 export default function AdaptiveReport() {
   return (
-    <div className="bg-card rounded-2xl p-5 border border-white/4">
+    <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
       <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Adaptive Engine Report</p>
       <h2 className="text-[16px] font-semibold text-white mb-4">What the System Learned</h2>
       <div className="flex flex-col gap-2">

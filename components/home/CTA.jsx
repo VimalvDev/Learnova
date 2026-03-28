@@ -60,7 +60,7 @@ export default function CTA() {
     ["50+", "File Formats"],
   ];
 
-  const trust = ["Free to start", "No credit card", "Cancel anytime"];
+  const trust = ["Free to start", "No credit card-dark", "Cancel anytime"];
 
   return (
     <section className="relative py-[5em] border-y border-white/10  bg-dark overflow-hidden">
@@ -80,7 +80,7 @@ export default function CTA() {
 
             <p className="text-[16px] text-[#888] leading-relaxed max-w-[480px]">
               Upload your first document and let Learnova build your personal
-              learning engine — free. No setup, no credit card, no friction.
+              learning engine — free. No setup, no credit card-dark, no friction.
             </p>
 
             <div className="flex items-center gap-6 flex-wrap">

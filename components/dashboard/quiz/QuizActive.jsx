@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react"
 import { RiPauseLine, RiCloseLine } from "react-icons/ri"
 import QuizProgressBar    from "./active/QuizProgressBar"
-import AdaptiveStatusCard from "./active/AdaptiveStatusCard"
-import QuestionCard       from "./active/QuestionCard"
+import AdaptiveStatuscard-dark from "./active/AdaptiveStatuscard-dark"
+import Questioncard-dark       from "./active/Questioncard-dark"
 
 const questions = [
   {
@@ -87,7 +87,7 @@ export default function QuizActive({ onFinish }) {
           <span className={`text-[13px] font-semibold tabular-nums ${timerColor}`}>
             ⏱ {mm}:{ss}
           </span>
-          <button className="w-8 h-8 flex items-center justify-center rounded-xl bg-card text-secondary-text hover:text-white border border-white/6 transition-colors">
+          <button className="w-8 h-8 flex items-center justify-center rounded-xl bg-card-dark text-secondary-text hover:text-white border border-white/6 transition-colors">
             <RiPauseLine className="text-[14px]" />
           </button>
           <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[#F87171] text-[11px] border border-[#F87171]/20 hover:border-[#F87171]/50 transition-colors">
@@ -102,8 +102,8 @@ export default function QuizActive({ onFinish }) {
         {/* Left — question */}
         <div className="flex flex-col gap-4">
           <QuizProgressBar current={qIndex + 1} total={total} answers={answers} questions={questions} />
-          <AdaptiveStatusCard qIndex={qIndex} answers={answers} />
-          <QuestionCard
+          <AdaptiveStatuscard-dark qIndex={qIndex} answers={answers} />
+          <Questioncard-dark
             question={q}
             selected={selected}
             onSelect={setSelected}
@@ -120,7 +120,7 @@ export default function QuizActive({ onFinish }) {
         <div className="flex flex-col gap-4">
 
           {/* Progress summary */}
-          <div className="bg-card rounded-2xl p-5 border border-white/4">
+          <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
             <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-4">
               Session Progress
             </p>
@@ -140,7 +140,7 @@ export default function QuizActive({ onFinish }) {
           </div>
 
           {/* Q map */}
-          <div className="bg-card rounded-2xl p-5 border border-white/4">
+          <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
             <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">
               Question Map
             </p>

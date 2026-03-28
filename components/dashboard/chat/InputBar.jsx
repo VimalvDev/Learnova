@@ -54,7 +54,7 @@ export default function InputBar({ onSend, isPublic = false }) {
       }}
     >
       {showCmds && (
-        <div className="mb-2 bg-[#212225] rounded-xl overflow-hidden shadow-2xl border border-white/[0.06]">
+        <div className="mb-2 bg-card-dark rounded-xl overflow-hidden shadow-2xl border border-white/[0.06]">
           {commands
             .filter((c) => c.cmd.startsWith(value))
             .map(({ cmd, desc }) => (

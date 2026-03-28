@@ -75,14 +75,14 @@ export default function RightPanel({ mode = "private", onModeChange }) {
         <div className="relative">
           <button
             onClick={() => setCourseOpen(!courseOpen)}
-            className="w-full flex items-center gap-2 px-3 py-2 bg-card rounded-xl hover:bg-[#2A2B2F] transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 bg-card-dark rounded-xl hover:bg-[#2A2B2F] transition-colors"
           >
             <RiFileTextLine className="text-brand text-[12px] flex-shrink-0" />
             <span className="text-[11px] font-medium text-white flex-1 text-left truncate">{course}</span>
             <RiArrowDownSLine className="text-[#444] text-[13px] flex-shrink-0" />
           </button>
           {courseOpen && (
-            <div className="absolute top-10 left-0 w-full bg-card rounded-xl shadow-2xl z-30 overflow-hidden border border-white/6\">
+            <div className="absolute top-10 left-0 w-full bg-card-dark rounded-xl shadow-2xl z-30 overflow-hidden border border-white/6\">
               {courses.map((c) => (
                 <button
                   key={c}
@@ -163,7 +163,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
           {scopeOpen && (
             <div className="flex flex-col gap-1">
               {units.map((unit) => (
-                <div key={unit.id} className="bg-card rounded-xl overflow-hidden">
+                <div key={unit.id} className="bg-card-dark rounded-xl overflow-hidden">
                   <div
                     className="flex items-center gap-2 px-2.5 py-2 cursor-pointer hover:bg-white/2 transition-colors"
                     onClick={() => setExpanded(expandedUnit === unit.id ? null : unit.id)}
@@ -251,7 +251,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
                 return (
                   <div
                     key={chunk.rank}
-                    className="bg-[#212225] rounded-xl p-2.5 cursor-pointer hover:bg-[#2A2B2F] transition-all"
+                    className="bg-card-dark rounded-xl p-2.5 cursor-pointer hover:bg-[#2A2B2F] transition-all"
                   >
                     <div className="flex items-center gap-1.5 mb-1">
                       <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md bg-brand/10 text-brand">
@@ -288,7 +288,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
           <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
             Active Sources
           </p>
-          <div className="bg-[#212225] rounded-xl overflow-hidden">
+          <div className="bg-card-dark rounded-xl overflow-hidden">
             {sourceDocs.map(({ name, chunks: c, active }) => (
               <div key={name} className="flex items-center gap-2 px-2.5 py-2 border-b border-white/[0.04] last:border-0">
                 <RiFileTextLine className="text-brand/40 text-[11px] flex-shrink-0" />
@@ -316,7 +316,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
               { label: "Sources",   value: "11"  },
               { label: "Low conf.", value: "1"   },
             ].map(({ label, value }) => (
-              <div key={label} className="bg-[#212225] rounded-xl px-2.5 py-2">
+              <div key={label} className="bg-card-dark rounded-xl px-2.5 py-2">
                 <p className="text-[13px] font-semibold text-white">{value}</p>
                 <p className="text-[9px] text-[#444] mt-0.5">{label}</p>
               </div>
@@ -328,7 +328,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
       {/* ── PUBLIC MODE INFO ── */}
       {!isPrivate && (
         <div className="p-3">
-          <div className="bg-[#212225] rounded-xl p-3">
+          <div className="bg-card-dark rounded-xl p-3">
             <p className="text-[11px] font-semibold text-[#4ADE80] mb-1.5">Public Mode Active</p>
             <p className="text-[10px] text-secondary-text leading-relaxed">
               Answers from general AI knowledge. Document retrieval and confidence scoring are disabled.

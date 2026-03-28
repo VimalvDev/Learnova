@@ -68,7 +68,7 @@ export default function StepFocus({ formData, update }) {
             value={formData.primarySubject}
             onChange={(e) => update("primarySubject", e.target.value)}
             placeholder="e.g. Database Management Systems"
-            className="w-full h-12.5 px-4 bg-card text-white text-sm placeholder:text-white/20 rounded-xl outline-none transition-all"
+            className="w-full h-12.5 px-4 bg-card-dark text-white text-sm placeholder:text-white/20 rounded-xl outline-none transition-all"
             style={{ border: "1px solid rgba(255,255,255,0.06)" }}
             onFocus={(e) =>
               (e.target.style.borderColor = "rgba(250,110,67,0.4)")
@@ -108,7 +108,7 @@ export default function StepFocus({ formData, update }) {
             </span>
           </div>
           <div
-            className="min-h-12.5 px-3 py-2.5 bg-card rounded-xl flex flex-wrap gap-2 items-center transition-all"
+            className="min-h-12.5 px-3 py-2.5 bg-card-dark rounded-xl flex flex-wrap gap-2 items-center transition-all"
             style={{ border: "1px solid rgba(255,255,255,0.06)" }}
           >
             {formData.additionalSubjects.map((s) => (
@@ -147,7 +147,7 @@ export default function StepFocus({ formData, update }) {
             <select
               value={formData.academicLevel}
               onChange={(e) => update("academicLevel", e.target.value)}
-              className="w-full h-12.5 px-4 bg-card text-white text-xs rounded-xl outline-none appearance-none cursor-pointer transition-all"
+              className="w-full h-12.5 px-4 bg-card-dark text-white text-xs rounded-xl outline-none appearance-none cursor-pointer transition-all"
               style={{ border: "1px solid rgba(255,255,255,0.06)" }}
             >
               <option value="" disabled>
@@ -169,7 +169,7 @@ export default function StepFocus({ formData, update }) {
               value={formData.studyingFor}
               onChange={(e) => update("studyingFor", e.target.value)}
               placeholder="e.g. Final Exam, GRE"
-              className="w-full h-12.5 px-4 bg-card text-white text-xs placeholder:text-white/20 rounded-xl outline-none transition-all"
+              className="w-full h-12.5 px-4 bg-card-dark text-white text-xs placeholder:text-white/20 rounded-xl outline-none transition-all"
               style={{ border: "1px solid rgba(255,255,255,0.06)" }}
               onFocus={(e) =>
                 (e.target.style.borderColor = "rgba(250,110,67,0.4)")

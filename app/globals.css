@@ -4,11 +4,13 @@
   /* Colors */
   /* --color-brand: #FA6E43; */
   --color-brand: #5465FF;
+  /* --color-brand: #e76f51     ; */
   --color-red: #ef233c;
   --color-dark: #0D0D0D;
-  --color-card: #212225;
+  --color-card: #1f2023;
+  --color-card-mid: #2a2b2e;
   --color-card-dark: #171718;
-  --color-light-black: #1a1820;
+  --color-card-mid-dark: #1b1c1f;
   --color-very-light: #f4f3f6;
   --color-dark-light: #e4dfe6;
   --color-secondary: #C0C0C0;
@@ -22,7 +24,7 @@
   --color-black: #121014;
 
   /* Radius */
-  --radius-card: 12px;
+  --radius-card-dark: 12px;
 
   /* Fonts */
   --font-inter: var(--font-inter);
@@ -32,7 +34,8 @@
 
 /* Global styles */
 body {
-  background-color: var(--color-dark);
+  /* background-color: var(--color-dark); */
+  background-color: rgb(44, 44, 44);
   color:#f4f3f6 ;
   font-family: var(--font-manrope), sans-serif;
 }

@@ -22,7 +22,7 @@ export default function MiniLineChart() {
     <ResponsiveLine
       data={data}
       theme={nivoTheme}
-      margin={{ top: 16, right: 16, bottom: 36, left: 36 }}
+      margin={{ top: 10, right: 10, bottom: 21, left: 20 }}
       xScale={{ type: "point" }}
       yScale={{ type: "linear", min: 0, max: 100 }}
       curve="monotoneX"
