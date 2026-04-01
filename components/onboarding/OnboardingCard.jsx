@@ -1,4 +1,4 @@
-export default function Onboardingcard-dark({ children }) {
+export default function OnboardingCard({ children }) {
   return (
     <div
       className="w-full bg-card-dark border border-white/[0.06] rounded-2xl p-8 md:p-10"
