@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react"
 import { RiPauseLine, RiCloseLine } from "react-icons/ri"
 import QuizProgressBar    from "./active/QuizProgressBar"
-import AdaptiveStatuscard-dark from "./active/AdaptiveStatuscard-dark"
-import Questioncard-dark       from "./active/Questioncard-dark"
+import AdaptiveStatusCard from "./active/AdaptiveStatusCard"
+import QuestionCard   from "./active/QuestionCard"
 
 const questions = [
   {
@@ -102,8 +102,8 @@ export default function QuizActive({ onFinish }) {
         {/* Left — question */}
         <div className="flex flex-col gap-4">
           <QuizProgressBar current={qIndex + 1} total={total} answers={answers} questions={questions} />
-          <AdaptiveStatuscard-dark qIndex={qIndex} answers={answers} />
-          <Questioncard-dark
+          <AdaptiveStatusCard qIndex={qIndex} answers={answers} />
+          <QuestionCard
             question={q}
             selected={selected}
             onSelect={setSelected}

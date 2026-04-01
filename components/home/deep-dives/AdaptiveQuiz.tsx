@@ -7,7 +7,7 @@ export default function AdaptiveQuiz() {
   return (
     <section
       id="adaptive-quiz"
-      className="pt-[8em] pb-[12em] px-[4vw] bg-card-dark relative overflow-hidden"
+      className="pt-[4em] pb-[10em] px-[4vw] bg-card-dark relative overflow-hidden"
     >
       <Heading text="adaptive quiz" />
       <SectionHeader

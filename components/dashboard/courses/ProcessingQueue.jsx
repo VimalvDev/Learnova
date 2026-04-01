@@ -79,7 +79,7 @@ function StageIndicator({ stage, activeStage }) {
   )
 }
 
-function Queuecard-dark({ file }) {
+function QueueCard({ file }) {
   const isComplete = file.status === "complete"
   const isError    = file.status === "error"
 
@@ -172,7 +172,7 @@ export default function ProcessingQueue() {
         Processing Queue
       </span>
       {queueFiles.map((file) => (
-        <Queuecard-dark key={file.id} file={file} />
+        <QueueCard key={file.id} file={file} />
       ))}
     </div>
   )

@@ -10,7 +10,7 @@ export default function WeaknessIntelligence() {
   return (
     <section
       id="weakness-intelligence"
-      className="pt-[8em] pb-[12em] bg-card-dark px-[4vw] relative overflow-hidden"
+      className="pt-[4em] pb-[10em] bg-card-dark px-[4vw] relative overflow-hidden"
     >
       <Heading text="weakness detection" />
       <SectionHeader

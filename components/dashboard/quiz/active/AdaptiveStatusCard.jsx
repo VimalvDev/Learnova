@@ -1,6 +1,6 @@
 import { RiFlashlightLine } from "react-icons/ri"
 
-export default function AdaptiveStatuscard-dark({ answers }) {
+export default function AdaptiveStatusCard({ answers }) {
   const recent     = answers.slice(-2)
   const allCorrect = recent.length === 2 && recent.every((a) => a.selected === a.correct)
   const allWrong   = recent.length === 2 && recent.every((a) => a.selected !== a.correct)

@@ -3,8 +3,8 @@
 @theme {
   /* Colors */
   /* --color-brand: #FA6E43; */
-  --color-brand: #5465FF;
-  /* --color-brand: #e76f51     ; */
+  /* --color-brand: #5465FF; */
+  --color-brand: #e76f51     ;
   --color-red: #ef233c;
   --color-dark: #0D0D0D;
   --color-card: #1f2023;
@@ -41,7 +41,6 @@ body {
 }
 html {
   scrollbar-width: none;
-  -ms-overflow-style: none;
   overflow-x: hidden;
 }
 

@@ -1,5 +1,6 @@
 
 import UpText from "@/components/animation/UpText.tsx";
+import Link from "next/link";
 
 
 export default function Hero() {
@@ -30,9 +31,9 @@ export default function Hero() {
               <div className="hidden md:inline-block w-[6em] h-[.1em] bg-bleed "></div>
 
               <div className="hero_btn md:mr-[10em] md:mt-0 mt-[6em] md:ml-[2em] ">
-                <button className="bg-brand text-black px-8 py-4 rounded-xl text-lg font-bold hover:brightness-110 transition-all">
+                <Link href="/signup" className="bg-brand text-white px-5 py-3 rounded-xl text-lg font-bold hover:brightness-110 transition-all">
                   Learn now
-                </button>
+                </Link>
               </div>
             </div>
           </div>

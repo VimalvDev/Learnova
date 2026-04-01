@@ -105,7 +105,7 @@ export default function FAQ() {
           </div>
 
           {/* Right card-dark */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-4">
+          <div className="col-span-12 lg:col-span-5 hidden flex flex-col gap-4">
             {/* Help card-dark */}
             <div className="self-start bg-card-dark rounded-2xl border border-white/6 p-8 flex flex-col justify-between relative overflow-hidden">
               {/* Background dots grid */}
@@ -121,7 +121,7 @@ export default function FAQ() {
                 <div className="absolute inset-0 bg-gradient-to-b from-card-dark/0 via-card-dark/50 to-card-dark" />
               </div>
 
-              <div className="relative z-10">
+              <div className="relative  z-10">
                 <div className="w-10 h-10 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-5">
                   <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5">
                     <circle
@@ -177,6 +177,7 @@ export default function FAQ() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
 

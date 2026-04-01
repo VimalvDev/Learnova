@@ -50,7 +50,7 @@ export default function Navbar() {
             : "bg-transparent  h-18"
         }`}
       >
-        <div className="max-w-330 mx-auto h-full flex items-center justify-between px-6 lg:px-12">
+        <div className=" h-full flex items-center justify-between px-[2vw] lg:px-[3.5vw]">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
@@ -164,7 +164,7 @@ export default function Navbar() {
               href="/signup"
               className="bg-brand text-white px-5 py-2.5 rounded-xl text-[13px] font-bold hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150"
             >
-              Get Started Free
+              Login now
             </Link>
           </div>
 
@@ -253,7 +253,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="w-full h-11 flex items-center justify-center rounded-xl bg-brand text-white text-[13px] font-bold hover:brightness-110 transition-all"
             >
-              Get Started Free
+              Login now
             </Link>
           </div>
 

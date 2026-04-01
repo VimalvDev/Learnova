@@ -1,9 +1,9 @@
 import React from "react";
-import TextAnimation from "../animation/TextAnimation";
+import TextAnimation from "../animation/TextAnimation.tsx";
 
 const Manifesto = () => {
   return (
-    <section className="relative md:min-h-screen min-h-[50vh]  w-full z-10 text-white flex items-center justify-center ">
+    <section className="relative md:min-h-screen min-h-[50vh] px-[3vw]  w-full z-10 text-white flex items-center justify-center ">
       <div className="manifesto_container h-full w-full  ">
       
 

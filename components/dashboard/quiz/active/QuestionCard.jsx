@@ -4,7 +4,7 @@ import { RiBookmarkLine, RiBookmarkFill, RiArrowLeftLine, RiArrowRightLine } fro
 import AnswerOption     from "./AnswerOption"
 import ExplanationBlock from "./ExplanationBlock"
 
-export default function Questioncard-dark({
+export default function QuestionCard({
   question, selected, onSelect, revealed,
   onSubmit, onNext, onPrev, isFirst, isLast,
 }) {

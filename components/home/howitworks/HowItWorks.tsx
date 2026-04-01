@@ -80,7 +80,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="pt-[8em] relative overflow-hidden px-[1vw] md:px-[4vw] bg-card-mid-dark"
+      className="pt-[4em] relative overflow-hidden px-[1vw] md:px-[4vw] bg-card-mid-dark"
     >
       <Heading text="how it works" />
       <SectionHeader

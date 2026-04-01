@@ -5,7 +5,7 @@ import SectionHeader from "@/components/common/SectionHeader"
 
 export default function AskFromNotes() {
   return (
-    <section id="ask-your-notes" className="pt-[8em] pb-[12em] px-[4vw] bg-card-dark relative overflow-hidden">
+    <section id="ask-your-notes" className="pt-[4em] pb-[10em] px-[4vw] bg-card-dark relative overflow-hidden">
       <Heading text="ask your notes" />
       <SectionHeader
         num="005"

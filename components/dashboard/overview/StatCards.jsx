@@ -53,7 +53,7 @@ export default function StatCards() {
         <Link
           key={label}
           href={href}
-          className="bg-[#171717] rounded-2xl p-5 hover:bg-[#1c1c1c] transition-all group cursor-pointer"
+          className="bg-card-dark rounded-2xl p-5 hover:bg-[#1c1c1c] transition-all group cursor-pointer"
         >
           <div className="flex items-center justify-between mb-1">
             <span className="text-[10px] font-medium uppercase tracking-widest text-brand/80">

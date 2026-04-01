@@ -77,7 +77,7 @@ const TextAnimation: React.FC<TextAnimationProps> = ({
         const timer = setTimeout(() => {
           if (!completedChars.current.has(index)) {
             gsap.to(char, {
-              duration: 0.1,
+              duration: .1,
               ease: "none",
               color: colorFinal,
               onComplete: () => {
@@ -86,7 +86,7 @@ const TextAnimation: React.FC<TextAnimationProps> = ({
             });
           }
           colorTransitionTimers.current.delete(index);
-        }, 100);
+        }, 10);
 
         colorTransitionTimers.current.set(index, timer);
       };
@@ -95,7 +95,7 @@ const TextAnimation: React.FC<TextAnimationProps> = ({
         trigger: containerRef.current,
         start: "top 80%",
         end: "top 20%",
-        scrub: 1,
+        scrub: 5,
         onUpdate: (self) => {
           const progress = self.progress;
           const totalChars = allChars.length;

@@ -8,7 +8,7 @@ const categories = [
 
 const durations = ["1 Week", "2 Weeks", "1 Month", "3 Months", "Custom"]
 
-export default function CourseInfocard-dark() {
+export default function CourseInfoCard() {
   const [name,        setName]       = useState("Database Management Systems — Semester 4")
   const [category,    setCategory]   = useState("Computer Science")
   const [level,       setLevel]      = useState("Intermediate")

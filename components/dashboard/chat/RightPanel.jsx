@@ -65,7 +65,7 @@ export default function RightPanel({ mode = "private", onModeChange }) {
     setActiveUnits((p) => p.includes(id) ? p.filter((u) => u !== id) : [...p, id])
 
   return (
-    <div className="flex flex-col h-screen mt-[3em] ">
+    <div className="flex flex-col min-h-screen overflow-y-scroll ">
 
       {/* ── COURSE ── */}
       <div className="p-3">

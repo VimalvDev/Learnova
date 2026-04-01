@@ -15,7 +15,7 @@ import SectionHeader from "@/components/common/SectionHeader";
 export default function Features() {
   return (
     <section
-      className="pt-[8em] pb-[10em] relative overflow-hidden bg-card-dark px-[1vw] md:px-[4vw] "
+      className="pt-[4em] pb-[10em] relative overflow-hidden bg-card-dark px-[1vw] md:px-[4vw] "
       id="features"
     >
       <Heading text="our features" />

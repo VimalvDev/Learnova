@@ -68,7 +68,7 @@ export default function LowConfidenceMessage({ time, bestMatch, threshold }) {
               Switch to Public Mode
             </button>
             <Link
-              href="/dashboard/courses"
+              href="/courses/new"
               className="px-3 py-1.5 text-[11px] font-semibold text-white bg-brand rounded-lg hover:brightness-110 transition-all"
             >
               Upload Documents

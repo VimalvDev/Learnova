@@ -9,6 +9,7 @@ import {
   RiBrainLine,
   RiBarChart2Line,
   RiCalendarTodoLine,
+  RiTaskLine,
   RiSettingsLine,
   RiArrowDownSLine,
   RiBookOpenLine,
@@ -34,6 +35,7 @@ const navSections = [
     items: [
       { icon: RiChat3Line,        label: "Ask Your Notes", href: "/chat"           },
       { icon: RiBrainLine,        label: "Quiz Center",    href: "/quizzes"        },
+      { icon: RiTaskLine,         label: "Study Plan",     href: "/plan"           },
       { icon: RiCalendarTodoLine, label: "Revision",       href: "/revision"       },
       { icon: RiMapLine,          label: "Knowledge Map",  href: "/knowledge-map", badge: "Soon" },
     ],
@@ -41,30 +43,36 @@ const navSections = [
   {
     label: "Analytics",
     items: [
-      { icon: RiBarChart2Line,    label: "Analytics",      href: "/dashboard/analytics"      },
+      { icon: RiBarChart2Line,    label: "Analytics",      href: "/analytics"      },
     ],
   },
   {
     label: "Account",
     items: [
-      { icon: RiSettingsLine,     label: "Settings",       href: "/dashboard/settings"       },
-      { icon: RiAdminLine,        label: "Admin",          href: "/admin",                   badge: "Admin" },
+      { icon: RiSettingsLine,     label: "Settings",       href: "/settings"       },
     ],
   },
 ]
 
 // ── SHARED NAV CONTENT ────────────────────────────────────
 function SidebarContent({ pathname, onClose }) {
+  // Extract courseId from pathname if viewing a course
+  const courseMatch = pathname.match(/\/courses\/(\d+)/)
+  const courseId = courseMatch ? courseMatch[1] : null
+  const isInCourseView = pathname.startsWith("/courses/") && courseId
+
   return (
     <>
       {/* Logo */}
       <div className="px-5 py-5 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+
+          <Link href="/" className="w-7 h-7 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
             <svg viewBox="0 0 10 10" fill="none" className="w-3.5 h-3.5">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
-          </div>
+          </Link>
+
           <div>
             <p className="text-[14px] font-bold text-white leading-none">Learnova</p>
             <p className="text-[9px] text-brand font-bold uppercase tracking-wider mt-0.5">
@@ -94,6 +102,19 @@ function SidebarContent({ pathname, onClose }) {
           </span>
           <RiArrowDownSLine className="text-[#888] text-[14px] flex-shrink-0" />
         </div>
+
+        {/* Course context actions */}
+        {isInCourseView && (
+          <Link
+            href={`/courses/${courseId}/concepts`}
+            onClick={onClose ?? undefined}
+            className="flex items-center gap-2 px-3 py-2.5 rounded-xl mt-2 transition-all text-secondary-text hover:text-white hover:bg-white/[0.04] group"
+          >
+            <RiBrainLine className="text-[16px] flex-shrink-0 group-hover:text-brand" />
+            <span className="text-[13px] font-medium">View Concepts</span>
+            <RiArrowRightSLine className="text-[14px] flex-shrink-0 ml-auto opacity-0 group-hover:opacity-100 transition" />
+          </Link>
+        )}
       </div>
 
       {/* Nav */}
@@ -146,7 +167,7 @@ function SidebarContent({ pathname, onClose }) {
       {/* Storage + Upload */}
       <div className="p-4 flex-shrink-0 border-t border-white/[0.04]">
         <Link
-          href="/dashboard/courses"
+          href="/courses/new"
           onClick={onClose ?? undefined}
           className="w-full h-9 bg-brand text-white text-[12px] font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all mb-3"
         >

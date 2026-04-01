@@ -37,7 +37,7 @@ export default function WeaknessSection() {
     <div className="grid grid-cols-12 gap-4">
 
       {/* Weakness list */}
-      <div className="col-span-8 bg-[#171717] rounded-2xl p-5">
+      <div className="col-span-8 bg-card-dark rounded-2xl p-5">
         <div className="flex items-center justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">

@@ -81,7 +81,7 @@ function MasteryRing({ pct }) {
   )
 }
 
-function Coursecard-dark({ course }) {
+function CourseCard({ course }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const masteryColor = course.mastery >= 75 ? "text-[#4ADE80]" : course.mastery >= 50 ? "text-brand" : "text-[#F87171]"
   const masteryBg    = course.mastery >= 75 ? "bg-[#4ADE80]" : course.mastery >= 50 ? "bg-brand" : "bg-[#F87171]"
@@ -113,7 +113,7 @@ function Coursecard-dark({ course }) {
               {menuOpen && (
                 <div className="absolute right-0 top-8 w-36 bg-[#2A2B2F] rounded-xl shadow-2xl z-20 overflow-hidden border border-white/6">
                   <Link
-                    href={`/dashboard/courses/${course.id}/edit`}
+                    href={`/courses/${course.id}/edit`}
                     className="w-full flex items-center gap-2.5 px-3 py-2.5 text-[12px] text-white hover:bg-white/4 transition-colors"
                   >
                     <RiEditLine className="text-[13px] text-[#888]" /> Edit
@@ -157,7 +157,7 @@ function Coursecard-dark({ course }) {
           <div className="flex items-center justify-between mt-1.5">
             <span className="text-[10px] text-[#444]">Overall Mastery</span>
             <Link
-              href={`/dashboard/courses/${course.id}`}
+              href={`/courses/${course.id}`}
               className="flex items-center gap-1 text-[11px] text-brand hover:underline"
             >
               Open <RiArrowRightLine className="text-[11px]" />
@@ -222,7 +222,7 @@ export default function CoursesPage() {
       </div>
 
       <div className="flex flex-col gap-3">
-        {courses.map((course) => <Coursecard-dark key={course.id} course={course} />)}
+        {courses.map((course) => <CourseCard key={course.id} course={course} />)}
       </div>
 
       {courses.length === 0 && (
@@ -235,7 +235,7 @@ export default function CoursesPage() {
             Create your first course to start building your personalized learning engine.
           </p>
           <Link
-            href="/dashboard/courses/new"
+            href="/courses/new"
             className="flex items-center gap-2 px-4 py-2.5 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all"
           >
             <RiAddLine className="text-[14px]" /> Create First Course
