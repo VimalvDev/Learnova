@@ -13,9 +13,14 @@ import RevisionScheduler from "@/components/home/deep-dives/RevisionScheduler";
 import PerformanceInsights from "@/components/home/deep-dives/PerformanceInghts";
 import HeroBackground from "@/components/home/hero/HeroBackground";
 import HowItWorks from "@/components/home/howitworks/HowItWorks";
+import LenisProvider from "@/components/common/LenisProvider";
 
 export default function Page() {
   return (
+            <LenisProvider>
+
+            
+
     <div className="overflow-x-hidden">
       <Navbar />
       <HeroBackground/>
@@ -38,5 +43,6 @@ export default function Page() {
       </main>
       <Footer />
     </div>
+    </LenisProvider>
   );
 }

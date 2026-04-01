@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {Inter, Bebas_Neue, Spline_Sans_Mono, Manrope} from 'next/font/google'
-// import LenisProvider from "@/components/common/LenisProvider";
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -41,9 +41,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${bebasNeue.variable} ${splineSansMono.variable} ${manrope.variable}`}
       >
-        {/* <LenisProvider> */}
           {children}
-        {/* </LenisProvider> */}
+
       </body>
     </html>
   );
