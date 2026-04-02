@@ -3,7 +3,7 @@ import { RiLockLine, RiGlobalLine } from "react-icons/ri"
 export default function ModeComparison({ onSwitchPrivate }) {
   return (
     <div className="p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-3">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">
         Mode Comparison
       </p>
 
@@ -11,7 +11,7 @@ export default function ModeComparison({ onSwitchPrivate }) {
         {/* Private */}
         <div className="bg-card rounded-xl p-3">
           <div className="flex items-center gap-2 mb-2">
-            <RiLockLine className="text-(--color-secondary-text) text-[12px]" />
+            <RiLockLine className="text-secondary-text text-[12px]" />
             <span className="text-[12px] font-semibold text-white">Private Mode</span>
           </div>
           <div className="flex flex-col gap-1">
@@ -21,8 +21,8 @@ export default function ModeComparison({ onSwitchPrivate }) {
               "Confidence score shown",
               "Zero hallucination risk",
             ].map((item) => (
-              <p key={item} className="text-[10px] text-(--color-secondary-text) flex items-start gap-1.5">
-                <span className="text-(--color-dark-gray) mt-0.5 flex-shrink-0">·</span> {item}
+              <p key={item} className="text-[10px] text-secondary-text flex items-start gap-1.5">
+                <span className="text-dark-gray mt-0.5 flex-shrink-0">·</span> {item}
               </p>
             ))}
           </div>
@@ -43,8 +43,8 @@ export default function ModeComparison({ onSwitchPrivate }) {
               "No source citations",
               "Verify before exam use",
             ].map((item) => (
-              <p key={item} className="text-[10px] text-(--color-secondary-text) flex items-start gap-1.5">
-                <span className="text-(--color-dark-gray) mt-0.5 flex-shrink-0">·</span> {item}
+              <p key={item} className="text-[10px] text-secondary-text flex items-start gap-1.5">
+                <span className="text-dark-gray mt-0.5 flex-shrink-0">·</span> {item}
               </p>
             ))}
           </div>

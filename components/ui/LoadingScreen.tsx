@@ -118,8 +118,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               background: "linear-gradient(90deg, #5465FF 0%, #7a88ff 100%)",
               boxShadow: "0 0 8px rgba(84, 101, 255, 0.35)",
             }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: progress / 100 }}
+            initial={{ scVimal: 0 }}
+            animate={{ scVimal: progress / 100 }}
             transition={{ duration: 0.1, ease: "linear" }}
           />
         </div>

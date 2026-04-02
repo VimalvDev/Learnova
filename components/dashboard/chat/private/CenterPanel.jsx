@@ -22,7 +22,7 @@ export default function CenterPanel({ messages, input, setInput, onSend, bottomR
       {/* Input */}
       <div className="flex-shrink-0 px-6 py-4 border-t border-(--color-card-dark)">
         <InputBar value={input} onChange={setInput} onSend={onSend} />
-        <p className="text-[10px] text-(--color-tertiary-text) text-center mt-2">
+        <p className="text-[10px] text-tertiary-text text-center mt-2">
           Enter to send · Shift+Enter for new line · / for commands
         </p>
       </div>

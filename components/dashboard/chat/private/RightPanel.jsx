@@ -19,7 +19,7 @@ const activeFiles = [
   { name: "Unit2_Slides.pdf",        active: true  },
 ]
 
-const scoreColor = (s) => s >= 0.85 ? "text-(--color-brand)" : s >= 0.70 ? "text-[#FBBF24]" : "text-[var(--color-red)]"
+const scoreColor = (s) => s >= 0.85 ? "text-brand" : s >= 0.70 ? "text-[#FBBF24]" : "text-[var(--color-red)]"
 const scoreBar   = (s) => s >= 0.85 ? "bg-(--color-brand)" : s >= 0.70 ? "bg-[#FBBF24]" : "bg-[var(--color-red)]"
 
 export default function RightPanel() {
@@ -32,15 +32,15 @@ export default function RightPanel() {
       {/* Scope */}
       <div className="p-4 border-b border-(--color-card)">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70">Scope</p>
-          <button className="text-[10px] text-(--color-brand) hover:underline">Deselect All</button>
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">Scope</p>
+          <button className="text-[10px] text-brand hover:underline">Deselect All</button>
         </div>
         <div className="flex flex-col gap-2">
           {units.map((u) => (
             <div key={u.name} className="flex items-center justify-between gap-2">
               <div className="min-w-0">
                 <p className="text-[11px] font-medium text-white truncate">{u.name}</p>
-                <p className="text-[10px] text-(--color-tertiary-text)">{u.docs} docs</p>
+                <p className="text-[10px] text-tertiary-text">{u.docs} docs</p>
               </div>
               <div className={`w-8 h-4 rounded-full relative flex-shrink-0 transition-all ${u.active ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}>
                 <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full shadow transition-all ${u.active ? "left-[17px]" : "left-[2px]"}`} />
@@ -53,7 +53,7 @@ export default function RightPanel() {
       {/* Confidence threshold */}
       <div className="p-4 border-b border-(--color-card)">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70">Confidence Threshold</p>
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">Confidence Threshold</p>
           <span className="text-[12px] font-bold text-white">{threshold}%</span>
         </div>
         <div className="relative h-1.5 mb-2">
@@ -68,7 +68,7 @@ export default function RightPanel() {
             style={{ left: `${((threshold - 50) / 50) * 100}%` }}
           />
         </div>
-        <div className="flex justify-between text-[9px] text-(--color-dark-gray)">
+        <div className="flex justify-between text-[9px] text-dark-gray">
           <span>Strict</span><span>Balanced</span><span>Loose</span>
         </div>
       </div>
@@ -79,8 +79,8 @@ export default function RightPanel() {
           onClick={() => setSourcesOpen(!sourcesOpen)}
           className="flex items-center justify-between w-full mb-3"
         >
-          <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70">Retrieved Sources</p>
-          {sourcesOpen ? <RiArrowUpSLine className="text-(--color-dark-gray) text-[13px]" /> : <RiArrowDownSLine className="text-(--color-dark-gray) text-[13px]" />}
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">Retrieved Sources</p>
+          {sourcesOpen ? <RiArrowUpSLine className="text-dark-gray text-[13px]" /> : <RiArrowDownSLine className="text-dark-gray text-[13px]" />}
         </button>
         {sourcesOpen && (
           <div className="flex flex-col gap-2.5">
@@ -89,17 +89,17 @@ export default function RightPanel() {
                 <div className="flex items-start justify-between gap-2 mb-1.5">
                   <div>
                     <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="text-[9px] font-bold text-(--color-brand)">#{s.rank}</span>
+                      <span className="text-[9px] font-bold text-brand">#{s.rank}</span>
                       <span className="text-[11px] font-medium text-white">{s.name}</span>
                     </div>
-                    <p className="text-[10px] text-(--color-tertiary-text)">{s.loc}</p>
+                    <p className="text-[10px] text-tertiary-text">{s.loc}</p>
                   </div>
                   <span className={`text-[12px] font-bold flex-shrink-0 ${scoreColor(s.score)}`}>
                     {s.score}
                   </span>
                 </div>
                 <div className={`h-[2px] rounded-full mb-2 ${scoreBar(s.score)}`} style={{ width: `${s.score * 100}%` }} />
-                <p className="text-[10px] text-(--color-secondary-text) leading-relaxed">{s.snippet}</p>
+                <p className="text-[10px] text-secondary-text leading-relaxed">{s.snippet}</p>
               </div>
             ))}
           </div>
@@ -108,7 +108,7 @@ export default function RightPanel() {
 
       {/* Active sources */}
       <div className="p-4">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-3">Active Sources</p>
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">Active Sources</p>
         <div className="flex flex-col gap-2">
           {activeFiles.map((f) => (
             <div key={f.name} className="flex items-center gap-2">

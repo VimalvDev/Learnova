@@ -25,7 +25,7 @@ const decayPath = buildPath(decayLine)
 export default function MasteryForecast({ phase }) {
   return (
     <div className="bg-card rounded-2xl p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Projected Outcome
       </p>
       <h3 className="text-[14px] font-semibold text-white mb-4">Mastery Forecast</h3>
@@ -52,7 +52,7 @@ export default function MasteryForecast({ phase }) {
         </svg>
         <div className="flex justify-between mt-1">
           {weeks.map(w => (
-            <span key={w} className="text-[9px] text-(--color-dark-gray)">{w}</span>
+            <span key={w} className="text-[9px] text-dark-gray">{w}</span>
           ))}
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function MasteryForecast({ phase }) {
           { label: "Gain",     value: "+11%",  color: "text-[#4ADE80]"       },
         ].map(({ label, value, color }) => (
           <div key={label} className="flex flex-col items-center py-2.5">
-            <span className="text-[9px] text-(--color-tertiary-text) mb-1">{label}</span>
+            <span className="text-[9px] text-tertiary-text mb-1">{label}</span>
             <span className={`text-[16px] font-bold ${color}`}>{value}</span>
           </div>
         ))}

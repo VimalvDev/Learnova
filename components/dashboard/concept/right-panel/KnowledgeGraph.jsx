@@ -35,11 +35,11 @@ export default function KnowledgeGraph() {
 
   return (
     <div className="bg-card rounded-2xl p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Concept Relationships
       </p>
       <h3 className="text-[14px] font-semibold text-white mb-0.5">Knowledge Graph</h3>
-      <p className="text-[11px] text-(--color-tertiary-text) mb-4">
+      <p className="text-[11px] text-tertiary-text mb-4">
         Prerequisite chain and dependent concepts.
       </p>
 
@@ -110,7 +110,7 @@ export default function KnowledgeGraph() {
           ].map(({ color, label }) => (
             <div key={label} className="flex items-center gap-1">
               <div className={`w-1.5 h-1.5 rounded-full ${color}`} />
-              <span className="text-[9px] text-(--color-tertiary-text)">{label}</span>
+              <span className="text-[9px] text-tertiary-text">{label}</span>
             </div>
           ))}
         </div>
@@ -121,19 +121,19 @@ export default function KnowledgeGraph() {
         {prereqStatus.map(({ name, pct, status, color }) => (
           <div key={name} className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-1.5 min-w-0">
-              <span className="text-(--color-brand) text-[11px]">◈</span>
+              <span className="text-brand text-[11px]">◈</span>
               <span className="text-[11px] text-white truncate">{name}</span>
             </div>
             <div className="flex items-center gap-1.5 flex-shrink-0">
               <span className={`text-[11px] font-semibold ${color}`}>{pct}%</span>
-              <span className="text-[10px] text-(--color-tertiary-text)">{status}</span>
+              <span className="text-[10px] text-tertiary-text">{status}</span>
             </div>
           </div>
         ))}
       </div>
 
       <div className="bg-card-dark rounded-xl p-3">
-        <p className="text-[10px] text-(--color-tertiary-text) leading-relaxed">
+        <p className="text-[10px] text-tertiary-text leading-relaxed">
           Mastering Functional Dependency first will significantly accelerate Normalization progress.
         </p>
       </div>

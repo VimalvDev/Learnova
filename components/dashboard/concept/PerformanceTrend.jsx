@@ -41,7 +41,7 @@ export default function PerformanceTrend() {
     <div className="bg-card rounded-2xl p-6">
       <div className="flex items-start justify-between mb-5 flex-wrap gap-3">
         <div>
-          <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
             Performance History
           </p>
           <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white">
@@ -54,7 +54,7 @@ export default function PerformanceTrend() {
               key={t}
               onClick={() => setTab(t)}
               className={`px-3 py-1 text-[10px] font-medium rounded-lg transition-all whitespace-nowrap ${
-                tab === t ? "bg-(--color-brand) text-white" : "text-(--color-tertiary-text) hover:text-white"
+                tab === t ? "bg-(--color-brand) text-white" : "text-tertiary-text hover:text-white"
               }`}
             >
               {t}
@@ -67,7 +67,7 @@ export default function PerformanceTrend() {
         {/* Y labels */}
         <div className="absolute left-0 top-0 h-full flex flex-col justify-between pointer-events-none">
           {["100%","75%","50%","25%","0%"].map(l => (
-            <span key={l} className="text-[9px] text-(--color-dark-gray) leading-none">{l}</span>
+            <span key={l} className="text-[9px] text-dark-gray leading-none">{l}</span>
           ))}
         </div>
 
@@ -105,14 +105,14 @@ export default function PerformanceTrend() {
           {/* X labels */}
           <div className="flex justify-between mt-1">
             {sessions.map(s => (
-              <span key={s.date} className="text-[9px] text-(--color-dark-gray)">{s.date}</span>
+              <span key={s.date} className="text-[9px] text-dark-gray">{s.date}</span>
             ))}
           </div>
 
           {/* Session diamonds */}
           <div className="flex justify-between mt-1">
             {sessions.map(s => (
-              <span key={s.date} className="text-[8px] text-(--color-brand) opacity-60">◆</span>
+              <span key={s.date} className="text-[8px] text-brand opacity-60">◆</span>
             ))}
           </div>
         </div>
@@ -120,8 +120,8 @@ export default function PerformanceTrend() {
 
       {/* Annotation */}
       <div className="mt-4 pt-4 border-t border-card-dark flex items-start gap-2">
-        <span className="text-(--color-brand) flex-shrink-0 mt-0.5">◈</span>
-        <p className="text-[11px] text-(--color-tertiary-text) leading-relaxed italic">
+        <span className="text-brand flex-shrink-0 mt-0.5">◈</span>
+        <p className="text-[11px] text-tertiary-text leading-relaxed italic">
           Mastery dropped 12% during a 7-day revision gap (Feb 15–20). Recovery sessions on Feb 21 and 23 partially restored performance. Pattern suggests this concept requires review every 3–4 days at current mastery level.
         </p>
       </div>

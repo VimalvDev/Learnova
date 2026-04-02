@@ -1,7 +1,7 @@
 export default function SmartToggles({ value, onToggle }) {
   return (
     <div>
-      <p className="text-[12px] text-(--color-secondary-text) mb-3">Plan options</p>
+      <p className="text-[12px] text-secondary-text mb-3">Plan options</p>
       <div className="bg-card-dark rounded-xl overflow-hidden divide-y divide-white/[0.04]">
         {[
           { key: "prioritizeWeak",    label: "Prioritize Weak Topics",           desc: "Front-load critical and high-risk concepts"        },
@@ -19,7 +19,7 @@ export default function SmartToggles({ value, onToggle }) {
             >
               <div className="min-w-0">
                 <p className="text-[12px] font-medium text-white">{label}</p>
-                <p className="text-[10px] text-(--color-tertiary-text) mt-0.5">{desc}</p>
+                <p className="text-[10px] text-tertiary-text mt-0.5">{desc}</p>
               </div>
               <div className={`w-8 h-4 rounded-full flex-shrink-0 relative transition-all duration-200 ${on ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}>
                 <div

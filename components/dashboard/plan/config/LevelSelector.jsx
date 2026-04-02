@@ -7,7 +7,7 @@ const levels = [
 export default function LevelSelector({ value, onChange }) {
   return (
     <div>
-      <p className="text-[12px] text-(--color-secondary-text) mb-3">
+      <p className="text-[12px] text-secondary-text mb-3">
         How would you rate your current understanding?
       </p>
       <div className="grid grid-cols-3 gap-1 p-1 bg-card-dark rounded-xl">
@@ -20,11 +20,11 @@ export default function LevelSelector({ value, onChange }) {
               className={`flex flex-col items-center text-center py-4 px-2 rounded-xl transition-all ${
                 active
                   ? "bg-(--color-brand) text-white"
-                  : "text-(--color-secondary-text) hover:bg-white/[0.03] hover:text-white"
+                  : "text-secondary-text hover:bg-white/[0.03] hover:text-white"
               }`}
             >
               <span className={`text-[13px] font-semibold ${active ? "text-white" : ""}`}>{id}</span>
-              <span className={`text-[10px] mt-1 leading-tight ${active ? "text-white/70" : "text-(--color-tertiary-text)"}`}>
+              <span className={`text-[10px] mt-1 leading-tight ${active ? "text-white/70" : "text-tertiary-text"}`}>
                 {sub}
               </span>
             </button>

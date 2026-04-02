@@ -10,7 +10,7 @@ export default function ModeSwitcher({ mode, setMode }) {
           className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-[12px] font-medium transition-all ${
             mode === "private"
               ? "bg-[--color-brand] text-white"
-              : "text-(--color-tertiary-text) hover:text-white"
+              : "text-tertiary-text hover:text-white"
           }`}
         >
           <RiLockLine className="text-[13px]" /> Private Mode
@@ -20,7 +20,7 @@ export default function ModeSwitcher({ mode, setMode }) {
           className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-[12px] font-medium transition-all ${
             mode === "public"
               ? "bg-[#3B82F6]/15 text-[#3B82F6] border border-[#3B82F6]/30"
-              : "text-(--color-tertiary-text) hover:text-white"
+              : "text-tertiary-text hover:text-white"
           }`}
         >
           <RiGlobalLine className="text-[13px]" /> Public Mode
@@ -28,7 +28,7 @@ export default function ModeSwitcher({ mode, setMode }) {
       </div>
 
       {/* Center label */}
-      <p className="text-[11px] text-(--color-tertiary-text) hidden md:block">
+      <p className="text-[11px] text-tertiary-text hidden md:block">
         {mode === "private"
           ? "Document-grounded answers · Source citations included · Confidence scored"
           : "External knowledge mode · Answers from AI training data, not your documents"}
@@ -36,7 +36,7 @@ export default function ModeSwitcher({ mode, setMode }) {
 
       {/* Right context */}
       <div className="flex items-center gap-2">
-        <span className="text-[11px] text-(--color-tertiary-text) hidden lg:block">
+        <span className="text-[11px] text-tertiary-text hidden lg:block">
           {mode === "private" ? "Session: Private RAG Chat" : "Session: Public Exploration"}
         </span>
       </div>

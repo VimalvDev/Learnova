@@ -13,7 +13,7 @@ export default function PlanActions({ phase, onRegenerate }) {
 
   return (
     <div className="bg-card rounded-2xl p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-3">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">
         Plan Actions
       </p>
       <div className="flex flex-col gap-2">
@@ -23,11 +23,11 @@ export default function PlanActions({ phase, onRegenerate }) {
             onClick={onClick}
             className={`w-full h-10 flex items-center gap-2.5 px-3.5 rounded-xl text-[12px] font-medium transition-all ${
               primary ? "bg-(--color-brand) text-white hover:brightness-110"
-              : ghost  ? "bg-transparent text-(--color-secondary-text) hover:text-white"
+              : ghost  ? "bg-transparent text-secondary-text hover:text-white"
               : "bg-card-dark text-white hover:bg-(--color-card-mid)"
             }`}
           >
-            <Icon className={`text-[14px] ${primary ? "text-white" : ghost ? "text-(--color-secondary-text)" : "text-(--color-brand)"}`} />
+            <Icon className={`text-[14px] ${primary ? "text-white" : ghost ? "text-secondary-text" : "text-brand"}`} />
             {label}
           </button>
         ))}

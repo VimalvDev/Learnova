@@ -35,10 +35,10 @@ export default function GenerationTypeCards({ value, onChange }) {
             }`}
           >
             <span className="text-[18px]">{icon}</span>
-            <p className={`text-[12px] font-semibold ${active ? "text-(--color-brand)" : "text-white"}`}>
+            <p className={`text-[12px] font-semibold ${active ? "text-brand" : "text-white"}`}>
               {title}
             </p>
-            <p className="text-[10px] text-(--color-tertiary-text) leading-relaxed">{desc}</p>
+            <p className="text-[10px] text-tertiary-text leading-relaxed">{desc}</p>
           </button>
         )
       })}

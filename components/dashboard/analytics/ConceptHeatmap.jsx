@@ -29,11 +29,11 @@ const cells = [
 ]
 
 const cellStyle = {
-  mastered:  { bg: "bg-[#4ADE80]/10",  border: "border-[#4ADE80]/20",  text: "text-[#4ADE80]",   label: "text-[#E0FFE8]"  },
-  good:      { bg: "bg-[--color-brand]/10", border: "border-[--color-brand]/20", text: "text-[--color-brand]", label: "text-white" },
-  revision:  { bg: "bg-[#FBBF24]/[0.07]", border: "border-[#FBBF24]/15", text: "text-[#FBBF24]", label: "text-[#FFF3DC]" },
-  critical:  { bg: "bg-[var(--color-red)]/[0.07]", border: "border-[var(--color-red)]/15", text: "text-[var(--color-red)]", label: "text-[#FFE8E8]" },
-  unstudied: { bg: "bg-white/[0.02]",  border: "border-white/[0.04]",  text: "text-[--color-dark-gray]", label: "text-[--color-dark-gray]" },
+  mastered:  { bg: "bg-[#4ADE80]/10",  text: "text-[#4ADE80]",   label: "text-[#E0FFE8]"  },
+  good:      { bg: "bg-green-600/10",  text: "text-[--color-brand]", label: "text-white" },
+  revision:  { bg: "bg-[#FBBF24]/[0.07]",  text: "text-[#FBBF24]", label: "text-[#FFF3DC]" },
+  critical:  { bg: "bg-[var(--color-red)]/[0.07]",  text: "text-[var(--color-red)]", label: "text-[#FFE8E8]" },
+  unstudied: { bg: "bg-white/[0.02]",   text: "text-[--color-dark-gray]", label: "text-[--color-dark-gray]" },
 }
 
 const legend = [
@@ -49,7 +49,7 @@ export default function ConceptHeatmap() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] overflow-hidden">
+    <div className="bg-card-dark rounded-2xl overflow-hidden">
       <div className="px-6 py-5 border-b border-white/[0.06]">
         <div className="flex items-start justify-between flex-wrap gap-3">
           <div>
@@ -88,7 +88,7 @@ export default function ConceptHeatmap() {
                 key={cell.name}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className={`relative flex flex-col items-center justify-center rounded-xl border py-3 px-2 cursor-pointer transition-all hover:scale-[1.03] ${s.bg} ${s.border}`}
+                className={`relative flex flex-col items-center justify-center rounded-xl  py-3 px-2 cursor-pointer transition-all hover:scale-[1.03] ${s.bg} ${s.border}`}
               >
                 <span className={`text-[10px] font-medium text-center leading-tight ${s.label}`}>
                   {cell.name}

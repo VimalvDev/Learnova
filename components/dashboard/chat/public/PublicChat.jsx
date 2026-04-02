@@ -43,13 +43,13 @@ export default function PublicChat({ onSwitchPrivate }) {
 
         {/* Input card */}
         <div className="bg-card rounded-2xl p-5">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
             Knowledge Exploration
           </p>
           <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white mb-1">
             Ask About Any Topic
           </h2>
-          <p className="text-[12px] text-(--color-tertiary-text) mb-4">
+          <p className="text-[12px] text-tertiary-text mb-4">
             Learnova generates structured academic explanations. You can integrate any answer into your course.
           </p>
 
@@ -98,9 +98,9 @@ export default function PublicChat({ onSwitchPrivate }) {
 function LoadingState() {
   return (
     <div className="bg-card rounded-2xl p-12 flex flex-col items-center text-center">
-      <span className="text-(--color-brand) text-[28px] animate-pulse mb-4">◈</span>
+      <span className="text-brand text-[28px] animate-pulse mb-4">◈</span>
       <h3 className="text-[15px] font-semibold text-white mb-2">Generating structured explanation...</h3>
-      <p className="text-[12px] text-(--color-tertiary-text) mb-4">Structuring key concepts...</p>
+      <p className="text-[12px] text-tertiary-text mb-4">Structuring key concepts...</p>
       <div className="w-48 h-1 bg-card-dark rounded-full overflow-hidden">
         <div className="h-full bg-(--color-brand) rounded-full animate-pulse w-3/4" />
       </div>

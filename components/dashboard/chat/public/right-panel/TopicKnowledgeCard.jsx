@@ -16,20 +16,20 @@ export default function TopicKnowledgeCard({ topic }) {
   if (!topic) {
     return (
       <div className="p-4 mt-[2em] ">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-2">Topic Overview</p>
-        <p className="text-[11px] text-(--color-tertiary-text)">Generate an answer to see topic details.</p>
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">Topic Overview</p>
+        <p className="text-[11px] text-tertiary-text">Generate an answer to see topic details.</p>
       </div>
     )
   }
 
   return (
     <div className="p-4 ">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">Topic Overview</p>
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Topic Overview</p>
       <h3 className="text-[13px] font-semibold text-white mb-3">{topic}</h3>
 
       {/* Difficulty bar */}
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-[10px] text-(--color-tertiary-text) flex-shrink-0">Difficulty</span>
+        <span className="text-[10px] text-tertiary-text flex-shrink-0">Difficulty</span>
         <div className="flex-1 h-[3px] bg-card rounded-full overflow-hidden">
           <div className="h-full bg-[#FBBF24] rounded-full" style={{ width: "60%" }} />
         </div>
@@ -40,21 +40,21 @@ export default function TopicKnowledgeCard({ topic }) {
       <div className="flex flex-col divide-y divide-white/[0.03] mb-4">
         {metadata.map(({ label, value, valueColor }) => (
           <div key={label} className="flex items-center justify-between py-2">
-            <span className="text-[10px] text-(--color-tertiary-text)">{label}</span>
+            <span className="text-[10px] text-tertiary-text">{label}</span>
             <span className={`text-[10px] font-medium ${valueColor}`}>{value}</span>
           </div>
         ))}
       </div>
 
       {/* Exam focus */}
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-2">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
         Common Exam Focus
       </p>
       <div className="flex flex-col divide-y divide-white/[0.03]">
         {examFocus.map((f) => (
           <div key={f} className="flex items-center gap-2 py-2">
-            <span className="text-(--color-brand) text-[11px] flex-shrink-0">◈</span>
-            <span className="text-[11px] text-(--color-secondary-text)">{f}</span>
+            <span className="text-brand text-[11px] flex-shrink-0">◈</span>
+            <span className="text-[11px] text-secondary-text">{f}</span>
           </div>
         ))}
       </div>

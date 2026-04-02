@@ -69,12 +69,12 @@ function SessionRow({ session, checked, onCheck }) {
       />
 
       <div className="flex-1 min-w-0">
-        <p className={`text-[12px] font-medium ${checked ? "line-through text-(--color-secondary-text)" : "text-white"}`}>
+        <p className={`text-[12px] font-medium ${checked ? "line-through text-secondary-text" : "text-white"}`}>
           {session.title}
         </p>
-        <p className="text-[10px] text-(--color-tertiary-text) mt-0.5">{session.sub}</p>
+        <p className="text-[10px] text-tertiary-text mt-0.5">{session.sub}</p>
       </div>
-      <span className="text-[11px] text-(--color-secondary-text) flex-shrink-0">{session.duration}</span>
+      <span className="text-[11px] text-secondary-text flex-shrink-0">{session.duration}</span>
     </div>
   )
 }
@@ -99,7 +99,7 @@ export default function DayTimeline() {
       {/* Header */}
       <div className="flex items-start justify-between mb-6 flex-wrap gap-3">
         <div>
-          <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
             Daily Timeline
           </p>
           <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white">
@@ -107,10 +107,10 @@ export default function DayTimeline() {
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <button className="h-7 px-3 text-[10px] text-(--color-secondary-text) bg-card-dark rounded-lg hover:text-white transition-colors">
+          <button className="h-7 px-3 text-[10px] text-secondary-text bg-card-dark rounded-lg hover:text-white transition-colors">
             Expand All
           </button>
-          <button className="h-7 px-3 text-[10px] text-(--color-secondary-text) bg-card-dark rounded-lg hover:text-white transition-colors">
+          <button className="h-7 px-3 text-[10px] text-secondary-text bg-card-dark rounded-lg hover:text-white transition-colors">
             Collapse All
           </button>
           <div className="flex items-center gap-0.5 p-0.5 bg-card-dark rounded-lg">
@@ -119,7 +119,7 @@ export default function DayTimeline() {
                 key={v}
                 onClick={() => setView(v)}
                 className={`px-2.5 py-1 text-[10px] font-medium rounded-md transition-all ${
-                  view === v ? "bg-(--color-brand) text-white" : "text-(--color-tertiary-text) hover:text-white"
+                  view === v ? "bg-(--color-brand) text-white" : "text-tertiary-text hover:text-white"
                 }`}
               >
                 {v}
@@ -156,9 +156,9 @@ export default function DayTimeline() {
                   <div className="bg-card-dark rounded-xl px-4 py-3 opacity-70">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-[12px] font-semibold text-(--color-secondary-text)">{day.label}</span>
-                        <span className="text-(--color-dark-gray)">·</span>
-                        <span className="text-[11px] text-(--color-tertiary-text)">{day.date}</span>
+                        <span className="text-[12px] font-semibold text-secondary-text">{day.label}</span>
+                        <span className="text-dark-gray">·</span>
+                        <span className="text-[11px] text-tertiary-text">{day.date}</span>
                       </div>
                       <span className="text-[11px] text-[#4ADE80]">{day.summary}</span>
                     </div>
@@ -172,11 +172,11 @@ export default function DayTimeline() {
                     <div className="pl-4 pr-4 pt-4">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
-                          <span className="text-[13px] font-bold text-(--color-brand)">{day.label}</span>
-                          <span className="text-(--color-dark-gray)">·</span>
-                          <span className="text-[12px] text-(--color-secondary-text)">{day.date}</span>
+                          <span className="text-[13px] font-bold text-brand">{day.label}</span>
+                          <span className="text-dark-gray">·</span>
+                          <span className="text-[12px] text-secondary-text">{day.date}</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-(--color-tertiary-text)">
+                        <div className="flex items-center gap-1.5 text-tertiary-text">
                           <RiTimeLine className="text-[12px]" />
                           <span className="text-[11px]">Est: {day.est}</span>
                         </div>
@@ -192,7 +192,7 @@ export default function DayTimeline() {
                     {/* Day progress */}
                     <div className="px-4 py-3 border-t border-white/[0.04]">
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-[10px] text-(--color-tertiary-text)">
+                        <span className="text-[10px] text-tertiary-text">
                           {sessionsChecked} / {totalSessions} sessions completed
                         </span>
                       </div>
@@ -214,16 +214,16 @@ export default function DayTimeline() {
                       className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-white/[0.02] transition-colors"
                     >
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[12px] font-semibold text-(--color-secondary-text)">{day.label}</span>
-                        <span className="text-(--color-dark-gray)">·</span>
-                        <span className="text-[11px] text-(--color-tertiary-text)">{day.date}</span>
-                        <span className="text-(--color-dark-gray)">·</span>
-                        <span className="text-[11px] text-(--color-tertiary-text)">
+                        <span className="text-[12px] font-semibold text-secondary-text">{day.label}</span>
+                        <span className="text-dark-gray">·</span>
+                        <span className="text-[11px] text-tertiary-text">{day.date}</span>
+                        <span className="text-dark-gray">·</span>
+                        <span className="text-[11px] text-tertiary-text">
                           {day.sessions.length} sessions · Est: {day.est}
                         </span>
                       </div>
                       <RiArrowDownSLine
-                        className={`text-(--color-brand) text-[14px] transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+                        className={`text-brand text-[14px] transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
                       />
                     </button>
                     {isExpanded && (
@@ -244,13 +244,13 @@ export default function DayTimeline() {
                 {day.type === "buffer" && (
                   <div className="rounded-xl px-4 py-3.5" style={{ border: "1px dashed rgba(255,255,255,0.08)", background: "transparent" }}>
                     <div className="flex items-center gap-2">
-                      <span className="text-[12px] font-semibold text-(--color-dark-gray)">{day.label}</span>
-                      <span className="text-(--color-dark-gray)">·</span>
-                      <span className="text-[12px] text-(--color-dark-gray) font-medium">Buffer Day</span>
-                      <span className="text-(--color-dark-gray)">·</span>
-                      <span className="text-[11px] text-(--color-tertiary-text)">Catch-up or rest</span>
+                      <span className="text-[12px] font-semibold text-dark-gray">{day.label}</span>
+                      <span className="text-dark-gray">·</span>
+                      <span className="text-[12px] text-dark-gray font-medium">Buffer Day</span>
+                      <span className="text-dark-gray">·</span>
+                      <span className="text-[11px] text-tertiary-text">Catch-up or rest</span>
                     </div>
-                    <p className="text-[10px] text-(--color-tertiary-text) mt-1">
+                    <p className="text-[10px] text-tertiary-text mt-1">
                       Use this day to revisit any incomplete sessions from the week.
                     </p>
                   </div>
@@ -260,14 +260,14 @@ export default function DayTimeline() {
                 {day.type === "milestone" && (
                   <div className="bg-card-dark rounded-xl px-4 py-3.5" style={{ border: "1px solid rgba(251,191,36,0.2)" }}>
                     <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                      <span className="text-[12px] font-semibold text-(--color-secondary-text)">{day.label}</span>
-                      <span className="text-(--color-dark-gray)">·</span>
+                      <span className="text-[12px] font-semibold text-secondary-text">{day.label}</span>
+                      <span className="text-dark-gray">·</span>
                       <span className="text-[12px] font-semibold text-white">{day.title}</span>
                       <span className="text-[9px] font-bold text-[#FBBF24] bg-[#FBBF24]/10 px-2 py-0.5 rounded-lg">
                         ◆ Milestone
                       </span>
                     </div>
-                    <p className="text-[11px] text-(--color-tertiary-text)">{day.sub} · Est: {day.est}</p>
+                    <p className="text-[11px] text-tertiary-text">{day.sub} · Est: {day.est}</p>
                   </div>
                 )}
               </div>
@@ -277,8 +277,8 @@ export default function DayTimeline() {
 
         {/* Footer */}
         <div className="mt-4 flex items-center justify-center gap-2 bg-card-dark rounded-xl px-4 py-3.5 text-center ml-0">
-          <span className="text-(--color-brand)">◈</span>
-          <p className="text-[11px] text-(--color-secondary-text)">
+          <span className="text-brand">◈</span>
+          <p className="text-[11px] text-secondary-text">
             End of Plan · Target Date: March 15, 2026 ·{" "}
             <span className="text-[#4ADE80] font-semibold">Projected: 89% (+11%)</span>
           </p>

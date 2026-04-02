@@ -6,11 +6,11 @@ export default function CapacitySlider({ value, onChange }) {
 
   return (
     <div>
-      <p className="text-[12px] text-(--color-secondary-text) mb-3">
+      <p className="text-[12px] text-secondary-text mb-3">
         How much time can you study per day?
       </p>
       <div className="flex items-center justify-between mb-2">
-        <label className="text-[11px] font-medium text-(--color-tertiary-text)">
+        <label className="text-[11px] font-medium text-tertiary-text">
           Study Hours Per Day
         </label>
         <span className="text-[13px] font-bold text-white">{value}h</span>
@@ -33,15 +33,15 @@ export default function CapacitySlider({ value, onChange }) {
         />
       </div>
 
-      <div className="flex items-center justify-between text-[9px] text-(--color-dark-gray) mb-3">
+      <div className="flex items-center justify-between text-[9px] text-dark-gray mb-3">
         <span>Light (1h)</span>
         <span>Moderate (2–3h)</span>
         <span>Intensive (4h+)</span>
       </div>
 
-      <div className="flex items-center justify-end gap-2 text-[11px] text-(--color-tertiary-text)">
+      <div className="flex items-center justify-end gap-2 text-[11px] text-tertiary-text">
         <span>≈ <span className="text-white font-medium">{topicsPerDay} topics/day</span></span>
-        <span className="text-(--color-dark-gray)">·</span>
+        <span className="text-dark-gray">·</span>
         <span><span className="text-white font-medium">~15 min</span> per session avg</span>
       </div>
     </div>

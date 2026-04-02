@@ -35,12 +35,12 @@
 /* Global styles */
 body {
 
-  background-color: rgb(44, 44, 44);
+
   color:#f4f3f6 ;
   font-family: var(--font-manrope), sans-serif;
 }
 html {
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
   overflow-x: hidden;
 }
 

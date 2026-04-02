@@ -39,7 +39,7 @@ export default function MasteryOverview() {
 
   return (
     <div className="bg-card rounded-2xl p-6">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-5">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-5">
         Mastery Profile
       </p>
 
@@ -51,10 +51,10 @@ export default function MasteryOverview() {
           <p className="text-[clamp(40px,5vw,56px)] font-black text-[var(--color-red)] leading-none mb-1">
             42%
           </p>
-          <p className="text-[14px] text-(--color-secondary-text) mb-2">Overall Mastery Score</p>
+          <p className="text-[14px] text-secondary-text mb-2">Overall Mastery Score</p>
           <div className="flex items-center gap-2 text-[12px] mb-4 flex-wrap">
             <span className="text-[var(--color-red)]">↓ −4% from last session</span>
-            <span className="text-(--color-dark-gray)">·</span>
+            <span className="text-dark-gray">·</span>
             <span className="text-[#4ADE80]">↑ +2% from 30 days ago</span>
           </div>
 
@@ -64,7 +64,7 @@ export default function MasteryOverview() {
               <span className="text-[16px] flex-shrink-0">🔴</span>
               <div>
                 <p className="text-[14px] font-semibold text-[var(--color-red)] mb-1">Critical Risk</p>
-                <p className="text-[12px] text-(--color-secondary-text) leading-relaxed">
+                <p className="text-[12px] text-secondary-text leading-relaxed">
                   Mastery below 50%. This concept requires immediate focused attention before it blocks dependent topics.
                 </p>
               </div>
@@ -74,8 +74,8 @@ export default function MasteryOverview() {
           {/* Progress bar */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] text-(--color-tertiary-text)">Mastery Progress</span>
-              <span className="text-[11px] text-(--color-secondary-text)">42 / 100</span>
+              <span className="text-[11px] text-tertiary-text">Mastery Progress</span>
+              <span className="text-[11px] text-secondary-text">42 / 100</span>
             </div>
             <div className="relative h-2 bg-card-dark rounded-full overflow-visible">
               <div
@@ -95,7 +95,7 @@ export default function MasteryOverview() {
               {[{ pct: 50, label: "Threshold" }, { pct: 70, label: "Good" }, { pct: 85, label: "Mastered" }].map((m) => (
                 <span
                   key={m.label}
-                  className="text-[9px] text-(--color-dark-gray)"
+                  className="text-[9px] text-dark-gray"
                   style={{ position: "relative", left: `${m.pct - 10}%` }}
                 >
                   {m.label}
@@ -121,17 +121,17 @@ export default function MasteryOverview() {
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-[22px] font-bold text-white leading-none">42%</span>
-              <span className="text-[10px] text-(--color-tertiary-text) mt-0.5">Mastery</span>
+              <span className="text-[10px] text-tertiary-text mt-0.5">Mastery</span>
             </div>
           </div>
           <div className="w-full bg-card-dark rounded-xl p-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-(--color-tertiary-text)">Course avg</span>
+              <span className="text-[11px] text-tertiary-text">Course avg</span>
               <span className="text-[12px] font-semibold text-white">64%</span>
             </div>
             <div className="flex items-center justify-between mt-1.5">
-              <span className="text-[11px] text-(--color-tertiary-text)">Your best</span>
-              <span className="text-[12px] font-semibold text-white">61% <span className="text-(--color-tertiary-text) text-[10px]">(Feb 12)</span></span>
+              <span className="text-[11px] text-tertiary-text">Your best</span>
+              <span className="text-[12px] font-semibold text-white">61% <span className="text-tertiary-text text-[10px]">(Feb 12)</span></span>
             </div>
           </div>
         </div>
@@ -141,14 +141,14 @@ export default function MasteryOverview() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-5 border-t border-(--color-card-dark)">
         {subMetrics.map(({ label, value, valueColor, bar, delta, deltaColor, sub, decay, rec }) => (
           <div key={label}>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-dark-gray) mb-2">{label}</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-dark-gray mb-2">{label}</p>
             <p className={`text-[clamp(18px,2.2vw,24px)] font-black leading-none mb-1 ${valueColor}`}>{value}</p>
             {bar && (
               <div className="h-[3px] w-20 bg-card-dark rounded-full overflow-hidden my-1.5">
                 <div className={`h-full rounded-full ${bar.color}`} style={{ width: `${bar.pct}%` }} />
               </div>
             )}
-            {sub && <p className="text-[10px] text-(--color-tertiary-text) mb-1">{sub}</p>}
+            {sub && <p className="text-[10px] text-tertiary-text mb-1">{sub}</p>}
             {decay && (
               <svg viewBox="0 0 60 16" className="w-14 h-4 my-1">
                 <polyline points="0,2 20,6 40,10 60,14" fill="none" stroke="var(--color-red)" strokeWidth="1.5" strokeLinecap="round" />
@@ -158,7 +158,7 @@ export default function MasteryOverview() {
               </svg>
             )}
             {delta && <p className={`text-[10px] font-medium ${deltaColor}`}>{delta}</p>}
-            {rec && <p className="text-[10px] text-(--color-brand)">{rec}</p>}
+            {rec && <p className="text-[10px] text-brand">{rec}</p>}
           </div>
         ))}
       </div>

@@ -13,7 +13,7 @@ const fill = (pct / 100) * circ
 export default function PlanProgress() {
   return (
     <div className="bg-card rounded-2xl p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Plan Progress
       </p>
       <h3 className="text-[13px] font-semibold text-white mb-4">Completion Status</h3>
@@ -31,13 +31,13 @@ export default function PlanProgress() {
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <span className="text-[14px] font-bold text-white leading-none">{pct}%</span>
-            <span className="text-[8px] text-(--color-tertiary-text)">done</span>
+            <span className="text-[8px] text-tertiary-text">done</span>
           </div>
         </div>
         <div className="flex flex-col gap-1.5 flex-1">
           {stats.map(({ label, value, color }) => (
             <div key={label} className="flex items-center justify-between">
-              <span className="text-[10px] text-(--color-tertiary-text)">{label}</span>
+              <span className="text-[10px] text-tertiary-text">{label}</span>
               <span className={`text-[11px] font-medium ${color ?? "text-white"}`}>{value}</span>
             </div>
           ))}
@@ -45,10 +45,10 @@ export default function PlanProgress() {
       </div>
 
       <div className="flex items-start gap-2 bg-card-dark rounded-xl px-3 py-2.5">
-        <span className="text-(--color-brand) text-[11px] flex-shrink-0 mt-0.5">◈</span>
+        <span className="text-brand text-[11px] flex-shrink-0 mt-0.5">◈</span>
         <div>
           <p className="text-[11px] text-white font-medium">2 sessions remaining today</p>
-          <p className="text-[10px] text-(--color-tertiary-text) mt-0.5">Est. 1h 10m</p>
+          <p className="text-[10px] text-tertiary-text mt-0.5">Est. 1h 10m</p>
         </div>
       </div>
     </div>

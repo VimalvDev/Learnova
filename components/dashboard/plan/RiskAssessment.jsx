@@ -34,19 +34,19 @@ const risks = [
 const levelStyle = {
   "High":     "text-[var(--color-red)] bg-[var(--color-red)]/10",
   "Moderate": "text-[#FBBF24] bg-[#FBBF24]/10",
-  "Low":      "text-(--color-brand) bg-(--color-brand)/10",
+  "Low":      "text-brand bg-(--color-brand)/10",
 }
 
 export default function RiskAssessment() {
   return (
     <div className="bg-card rounded-2xl p-6">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Risk Assessment
       </p>
       <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white mb-1">
         Plan Risk Analysis
       </h2>
-      <p className="text-[12px] text-(--color-tertiary-text) mb-5">
+      <p className="text-[12px] text-tertiary-text mb-5">
         System-identified risks based on mastery gaps, timeline constraints, and concept dependencies.
       </p>
 
@@ -67,13 +67,13 @@ export default function RiskAssessment() {
               </div>
 
               {/* Body */}
-              <p className="text-[12px] text-(--color-secondary-text) leading-relaxed mb-3">{body}</p>
+              <p className="text-[12px] text-secondary-text leading-relaxed mb-3">{body}</p>
 
               {/* Impact */}
               {impact.length > 0 && (
                 <div className="mb-3 flex flex-col gap-1">
                   {impact.map(({ label, value }) => (
-                    <p key={label} className="text-[11px] text-(--color-tertiary-text)">
+                    <p key={label} className="text-[11px] text-tertiary-text">
                       <span className="text-white font-medium">{label}:</span> {value}
                     </p>
                   ))}
@@ -82,8 +82,8 @@ export default function RiskAssessment() {
 
               {/* Mitigation */}
               <div className="flex items-start gap-2 bg-card rounded-xl px-3 py-2.5">
-                <span className="text-(--color-brand) text-[11px] flex-shrink-0 mt-0.5">◈</span>
-                <p className="text-[11px] text-(--color-tertiary-text) leading-relaxed">{mitigation}</p>
+                <span className="text-brand text-[11px] flex-shrink-0 mt-0.5">◈</span>
+                <p className="text-[11px] text-tertiary-text leading-relaxed">{mitigation}</p>
               </div>
             </div>
           </div>
@@ -92,10 +92,10 @@ export default function RiskAssessment() {
 
       {/* Summary */}
       <div className="mt-4 flex items-start gap-2 bg-card-dark rounded-xl px-4 py-3.5">
-        <span className="text-(--color-brand)">◈</span>
-        <p className="text-[11px] text-(--color-secondary-text) leading-relaxed">
+        <span className="text-brand">◈</span>
+        <p className="text-[11px] text-secondary-text leading-relaxed">
           Overall plan risk: <span className="text-[#FBBF24] font-semibold">Moderate</span>
-          <span className="text-(--color-dark-gray) mx-1.5">·</span>
+          <span className="text-dark-gray mx-1.5">·</span>
           Main dependency: <span className="text-white font-medium">Functional Dependency mastery by Day 2</span>.
           Recommended: Add 15–20 min/day or resolve prerequisite gap before Day 3.
         </p>

@@ -29,7 +29,7 @@ export default function PublicInput({ value, onChange, onGenerate, genType }) {
           <div className="relative">
             <button
               onClick={() => setFmtOpen(!fmtOpen)}
-              className="flex items-center gap-1.5 h-7 px-2.5 bg-card rounded-lg text-[11px] text-(--color-secondary-text) hover:text-white transition-colors"
+              className="flex items-center gap-1.5 h-7 px-2.5 bg-card rounded-lg text-[11px] text-secondary-text hover:text-white transition-colors"
             >
               Format: <span className="text-white font-medium">{format}</span>
               <RiArrowDownSLine className="text-[12px]" />
@@ -38,7 +38,7 @@ export default function PublicInput({ value, onChange, onGenerate, genType }) {
               <div className="absolute bottom-9 left-0 w-36 bg-(--color-card-mid) rounded-xl border border-white/[0.06] shadow-2xl z-20 overflow-hidden">
                 {formats.map((f) => (
                   <button key={f} onClick={() => { setFormat(f); setFmtOpen(false) }}
-                    className={`w-full text-left px-3 py-2 text-[11px] hover:bg-white/[0.04] transition-colors ${format === f ? "text-(--color-brand)" : "text-white"}`}>
+                    className={`w-full text-left px-3 py-2 text-[11px] hover:bg-white/[0.04] transition-colors ${format === f ? "text-brand" : "text-white"}`}>
                     {f}
                   </button>
                 ))}
@@ -53,7 +53,7 @@ export default function PublicInput({ value, onChange, onGenerate, genType }) {
                 className={`px-2.5 py-1 text-[10px] font-medium rounded-md transition-all ${
                   depth === d
                     ? "bg-[#3B82F6]/15 text-[#3B82F6] border border-[#3B82F6]/30"
-                    : "text-(--color-tertiary-text) hover:text-white"
+                    : "text-tertiary-text hover:text-white"
                 }`}>
                 {d}
               </button>
@@ -62,12 +62,12 @@ export default function PublicInput({ value, onChange, onGenerate, genType }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-[10px] text-(--color-dark-gray)">{value.length} / 500</span>
+          <span className="text-[10px] text-dark-gray">{value.length} / 500</span>
           <button
             onClick={onGenerate}
             disabled={!value.trim()}
             className={`flex items-center gap-1.5 h-8 px-4 text-[12px] font-bold rounded-lg transition-all ${
-              value.trim() ? "bg-(--color-brand) text-white hover:brightness-110" : "bg-white/[0.05] text-(--color-dark-gray) cursor-not-allowed"
+              value.trim() ? "bg-(--color-brand) text-white hover:brightness-110" : "bg-white/[0.05] text-dark-gray cursor-not-allowed"
             }`}
           >
             Generate <RiSendPlaneFill className="text-[12px]" />

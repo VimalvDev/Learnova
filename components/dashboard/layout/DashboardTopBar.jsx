@@ -120,8 +120,8 @@ export default function DashboardTopBar() {
           {userOpen && (
             <div className="absolute right-0 top-11 w-[200px] bg-[#1a1a1a] rounded-2xl shadow-2xl z-50 overflow-hidden">
               <div className="px-4 py-3.5">
-                <p className="text-[13px] font-semibold text-white">Alex Rahman</p>
-                <p className="text-[11px] text-[#888] mt-0.5">alex@university.edu</p>
+                <p className="text-[13px] font-semibold text-white">Vimal Rahman</p>
+                <p className="text-[11px] text-[#888] mt-0.5">Vimal@university.edu</p>
               </div>
               <div className="px-2 pb-2">
                 {userMenuItems.map(({ icon: Icon, label }) => (

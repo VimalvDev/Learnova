@@ -61,25 +61,25 @@ const weeks = [
 const typeStyle = {
   Prerequisite: "text-[#FBBF24] bg-[#FBBF24]/10",
   Critical:     "text-[var(--color-red)] bg-[var(--color-red)]/10",
-  Revision:     "text-(--color-brand) bg-(--color-brand)/10",
-  Medium:       "text-(--color-secondary-text) bg-white/[0.05]",
+  Revision:     "text-brand bg-(--color-brand)/10",
+  Medium:       "text-secondary-text bg-white/[0.05]",
 }
 
 const masteryColor = (m) =>
-  m >= 80 ? "text-[#4ADE80]" : m >= 60 ? "text-(--color-brand)" : m >= 40 ? "text-[#FBBF24]" : "text-[var(--color-red)]"
+  m >= 80 ? "text-[#4ADE80]" : m >= 60 ? "text-brand" : m >= 40 ? "text-[#FBBF24]" : "text-[var(--color-red)]"
 
 export default function WeeklyAccordion() {
   const [open, setOpen] = useState({ "Week 1": true })
 
   return (
     <div className="bg-card rounded-2xl p-6">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Weekly Overview
       </p>
       <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white mb-1">
         Study Plan by Week
       </h2>
-      <p className="text-[12px] text-(--color-tertiary-text) mb-5">
+      <p className="text-[12px] text-tertiary-text mb-5">
         Strategic allocation of topics, quizzes, and revisions across your timeline.
       </p>
 
@@ -94,21 +94,21 @@ export default function WeeklyAccordion() {
                 className="w-full flex items-center justify-between px-5 py-4 hover:bg-white/[0.02] transition-colors"
               >
                 <div className="flex items-center gap-3 flex-wrap text-left">
-                  <span className="text-[13px] font-bold text-(--color-brand)">{week.label}</span>
-                  <span className="text-(--color-dark-gray)">·</span>
-                  <span className="text-[12px] text-(--color-secondary-text)">{week.range}</span>
-                  <span className="text-(--color-dark-gray)">·</span>
-                  <span className="text-[11px] text-(--color-tertiary-text)">
+                  <span className="text-[13px] font-bold text-brand">{week.label}</span>
+                  <span className="text-dark-gray">·</span>
+                  <span className="text-[12px] text-secondary-text">{week.range}</span>
+                  <span className="text-dark-gray">·</span>
+                  <span className="text-[11px] text-tertiary-text">
                     {week.days} days{week.topics ? ` · ${week.topics} topics` : " · Review + Assessment"}
                   </span>
                 </div>
-                <RiArrowDownSLine className={`text-(--color-brand) text-[14px] flex-shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <RiArrowDownSLine className={`text-brand text-[14px] flex-shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
               </button>
 
               {/* Focus preview (always visible) */}
               {!isOpen && week.preview && (
                 <div className="px-5 pb-3">
-                  <p className="text-[11px] text-(--color-tertiary-text)">Focus: {week.preview}</p>
+                  <p className="text-[11px] text-tertiary-text">Focus: {week.preview}</p>
                 </div>
               )}
 
@@ -116,10 +116,10 @@ export default function WeeklyAccordion() {
               {isOpen && (
                 <div className="px-5 pb-3 -mt-1">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] text-(--color-tertiary-text)">
+                    <span className="text-[10px] text-tertiary-text">
                       Week {week.label.split(" ")[1]} progress
                     </span>
-                    <span className="text-[10px] text-(--color-tertiary-text)">
+                    <span className="text-[10px] text-tertiary-text">
                       {week.progress.done} / {week.progress.total} days
                     </span>
                   </div>
@@ -137,10 +137,10 @@ export default function WeeklyAccordion() {
                 <div className="px-5 pb-5 border-t border-white/[0.04]">
                   {/* Focus */}
                   <div className="flex flex-col gap-0.5 my-4">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-(--color-brand)/70">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-brand/70">
                       Focus: <span className="text-white normal-case tracking-normal font-medium">{week.focus}</span>
                     </p>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-(--color-brand)/70">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-brand/70">
                       Goal: <span className="text-white normal-case tracking-normal font-medium">{week.goal}</span>
                     </p>
                   </div>
@@ -150,7 +150,7 @@ export default function WeeklyAccordion() {
                     <div className="mb-4">
                       <div className="grid grid-cols-5 gap-2 pb-2 border-b border-white/[0.04] mb-1">
                         {["Concept","Type","Days","Current","Target"].map(h => (
-                          <span key={h} className="text-[9px] font-bold uppercase tracking-widest text-(--color-dark-gray)">{h}</span>
+                          <span key={h} className="text-[9px] font-bold uppercase tracking-widest text-dark-gray">{h}</span>
                         ))}
                       </div>
                       {week.items.map((item) => (
@@ -159,12 +159,12 @@ export default function WeeklyAccordion() {
                           <span className={`text-[9px] font-bold px-2 py-0.5 rounded-lg w-fit ${typeStyle[item.type]}`}>
                             {item.type}
                           </span>
-                          <span className="text-[10px] text-(--color-secondary-text)">{item.days}</span>
+                          <span className="text-[10px] text-secondary-text">{item.days}</span>
                           <span className={`text-[11px] font-semibold ${masteryColor(item.current)}`}>
                             {item.current}%
                           </span>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[11px] text-(--color-brand)">{item.target}%</span>
+                            <span className="text-[11px] text-brand">{item.target}%</span>
                             {item.met && <span className="text-[#4ADE80] text-[11px]">✓</span>}
                           </div>
                         </div>
@@ -175,19 +175,19 @@ export default function WeeklyAccordion() {
                   {/* Quiz milestone */}
                   <div className="flex items-center gap-2 px-3.5 py-2.5 bg-card rounded-xl mb-4" style={{ border: "1px solid rgba(251,191,36,0.18)" }}>
                     <span className="text-[#FBBF24] text-[12px]">◆</span>
-                    <span className="text-[11px] text-(--color-secondary-text)">{week.quiz}</span>
+                    <span className="text-[11px] text-secondary-text">{week.quiz}</span>
                   </div>
 
                   {/* Projection */}
                   <div className="bg-card rounded-xl p-3.5">
                     <div className="flex items-center justify-between flex-wrap gap-2">
                       <div>
-                        <p className="text-[11px] text-(--color-secondary-text)">
+                        <p className="text-[11px] text-secondary-text">
                           Estimated mastery after {week.label}:{" "}
                           <span className="text-[#4ADE80] font-bold">{week.projection.mastery}%</span>
                           <span className="text-[#4ADE80]"> (+{week.projection.gain}% overall)</span>
                         </p>
-                        <p className="text-[10px] text-(--color-tertiary-text) mt-0.5">
+                        <p className="text-[10px] text-tertiary-text mt-0.5">
                           Critical concepts resolved: <span className="text-white font-medium">{week.projection.resolved}</span>
                         </p>
                       </div>

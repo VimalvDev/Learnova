@@ -8,7 +8,7 @@ export default function WelcomeRow() {
   return (
     <div className="flex items-center justify-between py-2">
       <div>
-        <h1 className="text-[22px] font-bold text-white">{greeting}, Alex 👋</h1>
+        <h1 className="text-[22px] font-bold text-white">{greeting}, Vimal 👋</h1>
         <p className="text-[12px] text-[#666] mt-0.5">
           Your mastery index is{" "}
           <span className="text-brand font-semibold">+12.4%</span>{" "}

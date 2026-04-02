@@ -13,13 +13,13 @@ export default function PlanConfigForm({ config, setConfig, onGenerate }) {
 
   return (
     <div className="bg-card rounded-2xl p-[clamp(1.25rem,3vw,2.25rem)]">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Plan Parameters
       </p>
       <h2 className="text-[clamp(16px,2vw,20px)] font-semibold text-white mb-1">
         Configure Your Study Roadmap
       </h2>
-      <p className="text-[12px] text-(--color-tertiary-text) mb-7">
+      <p className="text-[12px] text-tertiary-text mb-7">
         Learnova will analyze your mastery profile and build a prioritized plan around your timeline and capacity.
       </p>
 

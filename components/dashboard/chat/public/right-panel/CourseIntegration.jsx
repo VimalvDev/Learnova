@@ -18,40 +18,40 @@ export default function CourseIntegration({ topic }) {
   if (!topic) {
     return (
       <div className="p-4">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-2">Course Integration</p>
-        <p className="text-[11px] text-(--color-tertiary-text)">Generate an answer to add it to a course.</p>
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">Course Integration</p>
+        <p className="text-[11px] text-tertiary-text">Generate an answer to add it to a course.</p>
       </div>
     )
   }
 
   return (
     <div className="p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">Course Integration</p>
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Course Integration</p>
       <h3 className="text-[13px] font-semibold text-white mb-0.5">Add to Your Course</h3>
-      <p className="text-[10px] text-(--color-tertiary-text) mb-4">Make this topic part of your private learning system.</p>
+      <p className="text-[10px] text-tertiary-text mb-4">Make this topic part of your private learning system.</p>
 
       <div className="flex flex-col gap-3 mb-4">
         {/* Course selector */}
         <div>
-          <label className="text-[10px] text-(--color-tertiary-text) block mb-1">Course</label>
+          <label className="text-[10px] text-tertiary-text block mb-1">Course</label>
           <button className="w-full flex items-center justify-between h-9 px-3 bg-card rounded-xl text-[11px] text-white">
             📂 DBMS — Semester 4
-            <RiArrowDownSLine className="text-(--color-dark-gray) text-[13px]" />
+            <RiArrowDownSLine className="text-dark-gray text-[13px]" />
           </button>
         </div>
 
         {/* Unit selector */}
         <div>
-          <label className="text-[10px] text-(--color-tertiary-text) block mb-1">Unit</label>
-          <button className="w-full flex items-center justify-between h-9 px-3 bg-card rounded-xl text-[11px] text-(--color-secondary-text)">
+          <label className="text-[10px] text-tertiary-text block mb-1">Unit</label>
+          <button className="w-full flex items-center justify-between h-9 px-3 bg-card rounded-xl text-[11px] text-secondary-text">
             Select Unit
-            <RiArrowDownSLine className="text-(--color-dark-gray) text-[13px]" />
+            <RiArrowDownSLine className="text-dark-gray text-[13px]" />
           </button>
         </div>
 
         {/* What to add */}
         <div className="flex flex-col gap-2">
-          <label className="text-[10px] text-(--color-tertiary-text)">What to add</label>
+          <label className="text-[10px] text-tertiary-text">What to add</label>
           {checkboxItems.map(({ key, label }) => (
             <button
               key={key}
@@ -75,7 +75,7 @@ export default function CourseIntegration({ topic }) {
             <RiCheckLine className="text-[#4ADE80] text-[15px]" />
             <span className="text-[12px] text-white">Added to DBMS · Unit 3</span>
           </div>
-          <button className="text-[11px] text-(--color-brand) hover:underline text-left">View in Course →</button>
+          <button className="text-[11px] text-brand hover:underline text-left">View in Course →</button>
         </div>
       ) : (
         <button

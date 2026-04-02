@@ -28,11 +28,11 @@ const steps = [
 export default function ImprovementPlan() {
   return (
     <div className="bg-card rounded-2xl p-4">
-      <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-1">
+      <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
         Action Plan
       </p>
       <h3 className="text-[14px] font-semibold text-white mb-0.5">Suggested Next Steps</h3>
-      <p className="text-[11px] text-(--color-tertiary-text) mb-4">
+      <p className="text-[11px] text-tertiary-text mb-4">
         System-generated based on your error patterns and mastery score.
       </p>
 
@@ -40,13 +40,13 @@ export default function ImprovementPlan() {
         {steps.map(({ num, title, desc, action }) => (
           <div key={num} className="bg-card-dark rounded-xl p-3.5">
             <div className="flex items-start gap-3">
-              <span className="text-[16px] font-black text-(--color-brand) leading-none flex-shrink-0 mt-0.5">
+              <span className="text-[16px] font-black text-brand leading-none flex-shrink-0 mt-0.5">
                 {num}
               </span>
               <div className="min-w-0">
                 <p className="text-[12px] font-semibold text-white mb-0.5">{title}</p>
-                <p className="text-[11px] text-(--color-secondary-text) leading-relaxed mb-2">{desc}</p>
-                <button className="text-[11px] text-(--color-brand) hover:underline font-medium">
+                <p className="text-[11px] text-secondary-text leading-relaxed mb-2">{desc}</p>
+                <button className="text-[11px] text-brand hover:underline font-medium">
                   {action}
                 </button>
               </div>

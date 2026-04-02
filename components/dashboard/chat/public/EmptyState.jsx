@@ -18,7 +18,7 @@ export default function EmptyState({ onSelect }) {
 
       {/* Subject clusters */}
       <div>
-        <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-3">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">
           Explore by Subject
         </p>
         <div className="grid grid-cols-2 gap-3">
@@ -29,8 +29,8 @@ export default function EmptyState({ onSelect }) {
             >
               <span className="text-[18px]">{icon}</span>
               <p className="text-[13px] font-semibold text-white">{title}</p>
-              <p className="text-[10px] text-(--color-tertiary-text) leading-relaxed">{topics}</p>
-              <p className="text-[10px] text-(--color-brand) font-medium">{count} suggested topics</p>
+              <p className="text-[10px] text-tertiary-text leading-relaxed">{topics}</p>
+              <p className="text-[10px] text-brand font-medium">{count} suggested topics</p>
             </button>
           ))}
         </div>
@@ -38,10 +38,10 @@ export default function EmptyState({ onSelect }) {
 
       {/* Gap detection */}
       <div>
-        <p className="text-[9px] font-bold uppercase tracking-widest text-(--color-brand)/70 mb-2">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-2">
           Topics Not in Your Docs
         </p>
-        <p className="text-[11px] text-(--color-tertiary-text) leading-relaxed mb-3">
+        <p className="text-[11px] text-tertiary-text leading-relaxed mb-3">
           These concepts appear in standard DBMS curricula but are not in your uploaded documents.
         </p>
         <div className="bg-card-dark rounded-xl overflow-hidden divide-y divide-white/[0.03]">
