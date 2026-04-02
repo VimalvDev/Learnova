@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {Inter, Bebas_Neue, Spline_Sans_Mono, Manrope} from 'next/font/google'
-
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -42,7 +42,7 @@ export default function RootLayout({
         className={`${inter.variable} ${bebasNeue.variable} ${splineSansMono.variable} ${manrope.variable}`}
       >
           {children}
-
+          <Analytics />
       </body>
     </html>
   );
