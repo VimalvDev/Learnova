@@ -1,5 +1,7 @@
 "use client"
 import { useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import {
   RiDashboardLine, RiLineChartLine, RiRobot2Line, RiServerLine,
   RiGroupLine, RiBookOpenLine, RiFileTextLine, RiTestTubeLine,
@@ -11,44 +13,44 @@ const sections = [
   {
     label: "Monitoring",
     items: [
-      { id: "overview",   icon: RiDashboardLine, label: "Overview"          },
-      { id: "analytics",  icon: RiLineChartLine, label: "Platform Analytics" },
-      { id: "ai",         icon: RiRobot2Line,    label: "AI Usage Monitor"  },
-      { id: "health",     icon: RiServerLine,    label: "System Health"     },
+      { id: "overview",   icon: RiDashboardLine, label: "Overview",           link: "/admin" },
+      { id: "analytics",  icon: RiLineChartLine, label: "Platform Analytics", link: "/admin/analytics" },
+      { id: "ai",         icon: RiRobot2Line,    label: "AI Usage Monitor",   link: "/admin/ai" },
+      { id: "health",     icon: RiServerLine,    label: "System Health",      link: "/admin/health" },
     ],
   },
   {
     label: "Management",
     items: [
-      { id: "users",    icon: RiGroupLine,    label: "Users"      },
-      { id: "courses",  icon: RiBookOpenLine, label: "Courses"    },
-      { id: "docs",     icon: RiFileTextLine, label: "Documents"  },
-      { id: "quiz",     icon: RiTestTubeLine, label: "Quiz Engine" },
+      { id: "users",    icon: RiGroupLine,    label: "Users",        link: "/admin/users" },
+      { id: "courses",  icon: RiBookOpenLine, label: "Courses",      link: "/admin/courses" },
+      { id: "docs",     icon: RiFileTextLine, label: "Documents",    link: "/admin/documents" },
+      { id: "quiz",     icon: RiTestTubeLine, label: "Quiz Engine",  link: "/admin/quiz" },
     ],
   },
   {
     label: "Reports",
     items: [
-      { id: "activity", icon: RiListCheck2,      label: "Activity Logs" },
-      { id: "errors",   icon: RiErrorWarningLine, label: "Error Logs"   },
-      { id: "exports",  icon: RiArchiveLine,      label: "Data Exports" },
+      { id: "activity", icon: RiListCheck2,      label: "Activity Logs",  link: "/admin/activity" },
+      { id: "errors",   icon: RiErrorWarningLine, label: "Error Logs",     link: "/admin/errors" },
+      { id: "exports",  icon: RiArchiveLine,      label: "Data Exports",   link: "/admin/exports" },
     ],
   },
   {
     label: "Configuration",
     items: [
-      { id: "settings", icon: RiSettings3Line, label: "Platform Settings" },
-      { id: "security", icon: RiLockLine,      label: "Security Config"  },
-      { id: "api",      icon: RiKeyLine,       label: "API Keys"         },
+      { id: "settings", icon: RiSettings3Line, label: "Platform Settings", link: "/admin/settings" },
+      { id: "security", icon: RiLockLine,      label: "Security Config",   link: "/admin/security" },
+      { id: "api",      icon: RiKeyLine,       label: "API Keys",          link: "/admin/api-keys" },
     ],
   },
 ]
 
 export default function AdminSidebar() {
-  const [active, setActive] = useState("overview")
+  const pathname = usePathname()
 
   return (
-    <aside className="w-60 flex-shrink-0 flex flex-col h-full bg-card-dark border-r border-(--color-card) overflow-y-auto">
+    <aside className="w-60   flex flex-col h-full bg-card-dark border-r border-(--color-card) overflow-y-auto">
       <div className="flex-1 px-3 py-5">
         {sections.map((sec) => (
           <div key={sec.label} className="mb-5">
@@ -56,12 +58,12 @@ export default function AdminSidebar() {
               {sec.label}
             </p>
             <div className="flex flex-col gap-0.5">
-              {sec.items.map(({ id, icon: Icon, label }) => {
-                const isActive = active === id
+              {sec.items.map(({ id, icon: Icon, label, link }) => {
+                const isActive = pathname === link || (link === "/admin" && pathname === "/admin")
                 return (
-                  <button
+                  <Link
                     key={id}
-                    onClick={() => setActive(id)}
+                    href={link}
                     className={`relative flex items-center gap-3 h-9 px-3 rounded-xl text-[12px] font-medium transition-all text-left w-full ${
                       isActive
                         ? "bg-(--color-brand)/[0.08] text-white"
@@ -71,9 +73,9 @@ export default function AdminSidebar() {
                     {isActive && (
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-(--color-brand) rounded-r" />
                     )}
-                    <Icon className={`text-[14px] flex-shrink-0 ${isActive ? "text-brand" : "text-dark-gray"}`} />
+                    <Icon className={`text-[14px]   ${isActive ? "text-brand" : "text-dark-gray"}`} />
                     {label}
-                  </button>
+                  </Link>
                 )
               })}
             </div>

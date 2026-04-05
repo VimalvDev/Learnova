@@ -37,21 +37,21 @@ export default function PlatformIntelligence() {
         <div className="flex flex-col divide-y divide-white/[0.04]">
           {weakConcepts.map(({ name, pct }, i) => (
             <div key={name} className="flex items-center gap-3 py-2.5">
-              <span className="text-[10px] font-bold text-brand w-5 flex-shrink-0 tabular-nums">
+              <span className="text-[10px] font-bold text-brand w-5   tabular-nums">
                 #{i + 1}
               </span>
               <span className="text-[12px] font-medium text-white flex-1 truncate">{name}</span>
-              <span className="text-[11px] text-secondary-text flex-shrink-0 hidden sm:block w-24 text-right">
+              <span className="text-[11px] text-secondary-text   hidden sm:block w-24 text-right">
                 {pct}% of users
               </span>
-              <div className="w-24 h-[3px] bg-white/[0.06] rounded-full overflow-hidden flex-shrink-0">
+              <div className="w-24 h-[3px] bg-white/[0.06] rounded-full overflow-hidden  ">
                 <div className="h-full bg-(--color-brand) rounded-full" style={{ width: `${pct}%` }} />
               </div>
             </div>
           ))}
         </div>
         <div className="mt-4 flex items-start gap-2 bg-card-dark rounded-xl px-3 py-2.5">
-          <span className="text-brand text-[11px] flex-shrink-0">◈</span>
+          <span className="text-brand text-[11px]  ">◈</span>
           <p className="text-[10px] text-tertiary-text leading-relaxed">
             Normalization affects 68% of users — consider adding a curated prerequisite path in the platform library.
           </p>
@@ -76,11 +76,11 @@ export default function PlatformIntelligence() {
         <div className="flex flex-col gap-3">
           {subjects.map(({ name, courses, pct }) => (
             <div key={name} className="flex items-center gap-3">
-              <span className="text-[11px] text-secondary-text w-28 flex-shrink-0 truncate">{name}</span>
+              <span className="text-[11px] text-secondary-text w-28   truncate">{name}</span>
               <div className="flex-1 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
                 <div className="h-full bg-(--color-brand) rounded-full" style={{ width: `${pct}%` }} />
               </div>
-              <span className="text-[11px] text-tertiary-text flex-shrink-0 w-16 text-right">
+              <span className="text-[11px] text-tertiary-text   w-16 text-right">
                 {courses.toLocaleString()}
               </span>
             </div>

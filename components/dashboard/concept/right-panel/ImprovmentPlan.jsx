@@ -40,7 +40,7 @@ export default function ImprovementPlan() {
         {steps.map(({ num, title, desc, action }) => (
           <div key={num} className="bg-card-dark rounded-xl p-3.5">
             <div className="flex items-start gap-3">
-              <span className="text-[16px] font-black text-brand leading-none flex-shrink-0 mt-0.5">
+              <span className="text-[16px] font-black text-brand leading-none   mt-0.5">
                 {num}
               </span>
               <div className="min-w-0">

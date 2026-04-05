@@ -83,7 +83,7 @@ export default function MasteryScoring() {
               className="bg-card-dark rounded-xl p-[.5em] flex items-start gap-4"
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-[11px] font-black"
+                className="w-10 h-10 rounded-xl flex items-center justify-center   text-[11px] font-black"
                 style={{ background: `${color}15`, color }}
               >
                 {value}

@@ -39,7 +39,7 @@ function DocRow({ doc }) {
   return (
     <div className="flex items-center gap-4 py-3 border-b border-white/[0.04] last:border-0 group">
       {/* Type badge */}
-      <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${typeColors[doc.type] ?? "bg-white/[0.06] text-white"}`}>
+      <div className={`w-9 h-9 rounded-xl flex items-center justify-center   ${typeColors[doc.type] ?? "bg-white/[0.06] text-white"}`}>
         <RiFileTextLine className="text-[14px]" />
       </div>
 
@@ -54,23 +54,23 @@ function DocRow({ doc }) {
       </div>
 
       {/* Course tag */}
-      <div className="hidden md:block flex-shrink-0">
+      <div className="hidden md:block  ">
         <span className="text-[10px] text-secondary-text bg-white/[0.04] px-2 py-1 rounded-lg truncate max-w-[140px] block">
           {doc.course}
         </span>
       </div>
 
       {/* Status */}
-      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg flex-shrink-0 ${s.bg}`}>
+      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg   ${s.bg}`}>
         <Icon className={`text-[11px] ${s.color}`} />
         <span className={`text-[10px] font-medium ${s.color}`}>{s.label}</span>
       </div>
 
       {/* Uploaded */}
-      <span className="text-[11px] text-[#444] flex-shrink-0 hidden lg:block">{doc.uploaded}</span>
+      <span className="text-[11px] text-[#444]   hidden lg:block">{doc.uploaded}</span>
 
       {/* Actions */}
-      <div className="flex items-center gap-2 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="flex items-center gap-2   opacity-0 group-hover:opacity-100 transition-opacity">
         {confirmDelete ? (
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-[#888]">Delete?</span>
@@ -161,7 +161,7 @@ export default function DocumentsPage() {
       <div className="flex items-center gap-3 mb-4 flex-wrap">
         {/* Search */}
         <div className="flex items-center gap-2 flex-1 min-w-[200px] h-9 px-3 bg-card-dark rounded-xl border border-white/[0.06] focus-within:border-brand/40 transition-colors">
-          <RiSearchLine className="text-[#444] text-[14px] flex-shrink-0" />
+          <RiSearchLine className="text-[#444] text-[14px]  " />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -204,12 +204,12 @@ export default function DocumentsPage() {
       <div className="bg-card-dark rounded-2xl overflow-hidden">
         {/* Table header */}
         <div className="flex items-center gap-4 px-4 py-2.5 border-b border-white/[0.06]">
-          <div className="w-9 flex-shrink-0" />
+          <div className="w-9  " />
           <span className="flex-1 text-[10px] font-bold uppercase tracking-widest text-[#444]">Document</span>
           <span className="hidden md:block w-[140px] text-[10px] font-bold uppercase tracking-widest text-[#444]">Course</span>
           <span className="w-24 text-[10px] font-bold uppercase tracking-widest text-[#444]">Status</span>
           <span className="hidden lg:block w-16 text-[10px] font-bold uppercase tracking-widest text-[#444]">Uploaded</span>
-          <div className="w-20 flex-shrink-0" />
+          <div className="w-20  " />
         </div>
 
         {/* Rows */}

@@ -114,7 +114,7 @@ export default function AIBehaviorSection({ onSave }) {
       <SaveRow label="Save AI Settings" onSave={onSave} />
 
       <div className="mt-4 flex items-start gap-2 bg-card-dark rounded-xl px-4 py-3">
-        <span className="text-brand text-[11px] flex-shrink-0 mt-0.5">◈</span>
+        <span className="text-brand text-[11px]   mt-0.5">◈</span>
         <p className="text-[11px] text-tertiary-text leading-relaxed">
           AI settings apply globally across all courses. Changes take effect immediately on next query.
         </p>

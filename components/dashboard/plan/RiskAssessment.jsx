@@ -59,7 +59,7 @@ export default function RiskAssessment() {
             <div className="pl-5 pr-5 py-5">
               {/* Header */}
               <div className="flex items-center gap-2.5 mb-3 flex-wrap">
-                <div className={`w-2 h-2 rounded-full flex-shrink-0 ${dot}`} />
+                <div className={`w-2 h-2 rounded-full   ${dot}`} />
                 <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-lg ${levelStyle[level]}`}>
                   {level} Risk
                 </span>
@@ -82,7 +82,7 @@ export default function RiskAssessment() {
 
               {/* Mitigation */}
               <div className="flex items-start gap-2 bg-card rounded-xl px-3 py-2.5">
-                <span className="text-brand text-[11px] flex-shrink-0 mt-0.5">◈</span>
+                <span className="text-brand text-[11px]   mt-0.5">◈</span>
                 <p className="text-[11px] text-tertiary-text leading-relaxed">{mitigation}</p>
               </div>
             </div>

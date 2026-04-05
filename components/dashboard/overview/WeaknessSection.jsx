@@ -63,7 +63,7 @@ export default function WeaknessSection() {
               className="flex items-center gap-4 p-4 bg-[#111] rounded-2xl hover:bg-[#151515] transition-all group"
             >
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                className="w-9 h-9 rounded-xl flex items-center justify-center  "
                 style={{ background: `${statusColor}15`, color: statusColor }}
               >
                 <Icon className="text-[16px]" />
@@ -83,7 +83,7 @@ export default function WeaknessSection() {
                   <div className="h-full rounded-full" style={{ width: `${mastery}%`, background: statusColor }} />
                 </div>
               </div>
-              <div className="w-8 h-8 rounded-full bg-white/[0.04] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-white/[0.04] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity  ">
                 <RiPlayCircleFill className="text-brand text-[18px]" />
               </div>
             </Link>
@@ -95,7 +95,7 @@ export default function WeaknessSection() {
       <div className="col-span-4 bg-[#171717] rounded-2xl p-5 flex flex-col gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <RiSparklingLine className="text-brand text-[16px] flex-shrink-0" />
+            <RiSparklingLine className="text-brand text-[16px]  " />
             <p className="text-[14px] font-medium text-white/90">AI Learning Insight</p>
           </div>
           <p className="text-[12px] text-[#888] leading-relaxed">

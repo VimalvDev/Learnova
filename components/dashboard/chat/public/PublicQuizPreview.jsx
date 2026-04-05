@@ -21,7 +21,7 @@ export default function PublicQuizPreview({ topic, onSwitchPrivate }) {
 
       {/* Disclaimer */}
       <div className="flex items-start gap-2 px-3 py-2.5 bg-[#3B82F6]/[0.04] rounded-xl border border-[#3B82F6]/15 mb-5">
-        <span className="text-[#3B82F6] text-[13px] flex-shrink-0 mt-0.5">ⓘ</span>
+        <span className="text-[#3B82F6] text-[13px]   mt-0.5">ⓘ</span>
         <p className="text-[11px] text-secondary-text">
           Generated from AI training data — not your documents. Verify before exam use.
         </p>
@@ -34,7 +34,7 @@ export default function PublicQuizPreview({ topic, onSwitchPrivate }) {
         <div className="flex flex-col gap-2">
           {q1.options.map((opt, i) => (
             <div key={i} className="flex items-center gap-3 px-3.5 py-2.5 bg-card-dark rounded-xl">
-              <div className="w-4 h-4 rounded-full border-2 border-white/[0.2] flex-shrink-0" />
+              <div className="w-4 h-4 rounded-full border-2 border-white/[0.2]  " />
               <span className="text-[12px] text-secondary-text">{opt}</span>
             </div>
           ))}

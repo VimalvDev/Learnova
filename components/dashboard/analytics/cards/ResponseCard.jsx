@@ -14,7 +14,7 @@ export default function ResponseCard() {
           <p className="text-[11px] text-[--color-tertiary-text] mt-1.5">vs 30-day average</p>
           <p className="text-[11px] text-[--color-secondary-text] mt-1">Avg 34s per question</p>
         </div>
-        <div className="flex items-end gap-1.5 h-10 flex-shrink-0">
+        <div className="flex items-end gap-1.5 h-10  ">
           {bars.map((b, i) => (
             <div
               key={i}

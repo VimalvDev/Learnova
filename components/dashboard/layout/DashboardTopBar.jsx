@@ -30,17 +30,17 @@ export default function DashboardTopBar() {
   const [notifOpen, setNotifOpen] = useState(false)
 
   return (
-    <header className="h-[54px] flex items-center justify-between px-6 flex-shrink-0 relative z-50 bg-dark">
+    <header className="h-[54px] flex items-center justify-between px-6   relative z-50 bg-dark">
 
       {/* Search */}
       <div className="flex items-center gap-2 h-[34px] px-3 bg-[#171717] rounded-xl flex-1 max-w-[360px] focus-within:ring-1 focus-within:ring-brand/30 transition-all">
-        <RiSearchLine className="text-secondary-text text-[15px] flex-shrink-0" />
+        <RiSearchLine className="text-secondary-text text-[15px]  " />
         <input
           type="text"
           placeholder="Search for concepts, quizzes..."
           className="flex-1 bg-transparent text-[12px] text-white placeholder:text-white/20 outline-none"
         />
-        <span className="text-[9px] text-secondary-text bg-[#1a1a1a] px-1.5 py-0.5 rounded-md flex-shrink-0">
+        <span className="text-[9px] text-secondary-text bg-[#1a1a1a] px-1.5 py-0.5 rounded-md  ">
           ⌘K
         </span>
       </div>
@@ -83,12 +83,12 @@ export default function DashboardTopBar() {
                       unread ? "bg-brand/[0.02]" : ""
                     }`}
                   >
-                    <RiErrorWarningLine className="text-brand mt-0.5 flex-shrink-0 text-[14px]" />
+                    <RiErrorWarningLine className="text-brand mt-0.5   text-[14px]" />
                     <div className="flex-1 min-w-0">
                       <p className="text-[12px] text-white font-medium leading-tight">{title}</p>
                       <p className="text-[10px] text-[#888] mt-0.5">{sub}</p>
                     </div>
-                    <span className="text-[10px] text-[#444] flex-shrink-0 mt-0.5">{time}</span>
+                    <span className="text-[10px] text-[#444]   mt-0.5">{time}</span>
                   </div>
                 ))}
               </div>
@@ -112,7 +112,7 @@ export default function DashboardTopBar() {
               <p className="text-[12px] font-semibold text-white leading-none">Vimal verma</p>
               <p className="text-[10px] text-secondary-text mt-0.5">Student</p>
             </div>
-            <div className="w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-brand flex items-center justify-center  ">
               <span className="text-[11px] font-bold text-white">AR</span>
             </div>
           </button>
@@ -129,13 +129,13 @@ export default function DashboardTopBar() {
                     key={label}
                     className="w-full text-left px-3 py-2 text-[12px] text-[#888] hover:text-white hover:bg-white/[0.04] rounded-lg transition-all flex items-center gap-2.5"
                   >
-                    <Icon className="text-[14px] flex-shrink-0" />
+                    <Icon className="text-[14px]  " />
                     {label}
                   </button>
                 ))}
                 <div className="mx-3 my-1.5 h-px bg-white/[0.06]" />
                 <button className="w-full text-left px-3 py-2 text-[12px] text-[#888] hover:text-[#F87171] hover:bg-[#F87171]/[0.04] rounded-lg transition-all flex items-center gap-2.5">
-                  <RiLogoutBoxRLine className="text-[14px] flex-shrink-0" />
+                  <RiLogoutBoxRLine className="text-[14px]  " />
                   Log Out
                 </button>
               </div>

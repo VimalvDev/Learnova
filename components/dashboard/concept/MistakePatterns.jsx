@@ -59,7 +59,7 @@ export default function MistakePatterns() {
             {/* Header */}
             <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
               <div className="flex items-center gap-2.5">
-                <div className={`w-2 h-2 rounded-full flex-shrink-0 ${dot}`} />
+                <div className={`w-2 h-2 rounded-full   ${dot}`} />
                 <span className="text-[13px] font-semibold text-white">{severity}</span>
               </div>
               <span className={`text-[10px] font-bold px-2.5 py-1 rounded-lg ${countStyle}`}>
@@ -106,7 +106,7 @@ export default function MistakePatterns() {
 
       {/* Summary bar */}
       <div className="mt-4 flex items-start gap-2 bg-card-dark rounded-xl p-4">
-        <span className="text-brand flex-shrink-0 mt-0.5">◈</span>
+        <span className="text-brand   mt-0.5">◈</span>
         <p className="text-[11px] text-secondary-text leading-relaxed">
           <span className="text-white font-semibold">3 error patterns detected</span>
           <span className="text-dark-gray mx-1.5">·</span>

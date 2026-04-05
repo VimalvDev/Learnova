@@ -124,7 +124,7 @@ export default function KnowledgeGraph() {
               <span className="text-brand text-[11px]">◈</span>
               <span className="text-[11px] text-white truncate">{name}</span>
             </div>
-            <div className="flex items-center gap-1.5 flex-shrink-0">
+            <div className="flex items-center gap-1.5  ">
               <span className={`text-[11px] font-semibold ${color}`}>{pct}%</span>
               <span className="text-[10px] text-tertiary-text">{status}</span>
             </div>

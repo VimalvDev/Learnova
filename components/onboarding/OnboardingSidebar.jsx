@@ -11,7 +11,7 @@ export default function OnboardingSidebar({ currentStep, formData }) {
   const progress = Math.round(((currentStep - 1) / (steps.length - 1)) * 100)
 
   return (
-    <aside className="hidden lg:flex flex-col w-[280px] xl:w-[320px] flex-shrink-0 border-r border-white/[0.06] px-8 py-10 min-h-full">
+    <aside className="hidden lg:flex flex-col w-[280px] xl:w-[320px]   border-r border-white/[0.06] px-8 py-10 min-h-full">
 
       {/* Header */}
       <div className="mb-10">
@@ -47,7 +47,7 @@ export default function OnboardingSidebar({ currentStep, formData }) {
               }`}
             >
               {/* Step indicator */}
-              <div className="flex flex-col items-center gap-1 flex-shrink-0 mt-0.5">
+              <div className="flex flex-col items-center gap-1   mt-0.5">
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-200 ${
                     isCompleted

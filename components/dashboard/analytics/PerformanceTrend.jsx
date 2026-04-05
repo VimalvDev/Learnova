@@ -106,7 +106,7 @@ export default function PerformanceTrend() {
         </div>
 
         <div className="mt-4 pt-4 border-t border-white/[0.04] flex items-start gap-2">
-          <span className="text-[--color-brand] text-[12px] flex-shrink-0">◈</span>
+          <span className="text-[--color-brand] text-[12px]  ">◈</span>
           <p className="text-[11px] text-[--color-tertiary-text] leading-relaxed italic">
             Mastery consistently improves 8–12% in the 48 hours following a revision session.
             Longest improvement streak: 6 consecutive sessions (Feb 12–18).

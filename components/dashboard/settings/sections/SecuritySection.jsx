@@ -68,7 +68,7 @@ export default function SecuritySection({ onSave }) {
         <p className="text-[9px] font-bold uppercase tracking-widest text-dark-gray mb-4">Two-Factor Authentication</p>
         <div className="flex items-start justify-between gap-4 p-4 bg-card-dark rounded-xl">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-xl bg-(--color-brand)/10 flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-xl bg-(--color-brand)/10 flex items-center justify-center  ">
               <span className="text-[14px]">🔐</span>
             </div>
             <div>
@@ -81,7 +81,7 @@ export default function SecuritySection({ onSave }) {
               </span>
             </div>
           </div>
-          <button className="text-[11px] text-brand hover:underline flex-shrink-0">Enable →</button>
+          <button className="text-[11px] text-brand hover:underline  ">Enable →</button>
         </div>
       </SettingCard>
 
@@ -110,7 +110,7 @@ export default function SecuritySection({ onSave }) {
                 {!s.current && (
                   <button
                     onClick={() => setRevoking(i)}
-                    className="text-[11px] text-[var(--color-red)]/70 hover:text-[var(--color-red)] transition-colors flex-shrink-0"
+                    className="text-[11px] text-[var(--color-red)]/70 hover:text-[var(--color-red)] transition-colors  "
                   >
                     Revoke
                   </button>

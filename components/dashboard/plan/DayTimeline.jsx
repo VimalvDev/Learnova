@@ -56,12 +56,12 @@ function SessionRow({ session, checked, onCheck }) {
       className={`flex items-start gap-3 py-3 border-b border-white/[0.03] last:border-0 ${checked ? "opacity-50" : ""}`}
     >
       {/* Left type accent */}
-      <div className={`w-0.5 self-stretch rounded-full flex-shrink-0 ${sessionTypeEdge[session.type]}`} />
+      <div className={`w-0.5 self-stretch rounded-full   ${sessionTypeEdge[session.type]}`} />
 
       {/* Checkbox */}
       <button
         onClick={onCheck}
-        className={`w-4 h-4 rounded-full border-2 flex-shrink-0 mt-0.5 transition-all ${
+        className={`w-4 h-4 rounded-full border-2   mt-0.5 transition-all ${
           checked
             ? "bg-(--color-brand) border-(--color-brand)"
             : "border-white/[0.2] bg-transparent"
@@ -74,7 +74,7 @@ function SessionRow({ session, checked, onCheck }) {
         </p>
         <p className="text-[10px] text-tertiary-text mt-0.5">{session.sub}</p>
       </div>
-      <span className="text-[11px] text-secondary-text flex-shrink-0">{session.duration}</span>
+      <span className="text-[11px] text-secondary-text  ">{session.duration}</span>
     </div>
   )
 }
@@ -223,7 +223,7 @@ export default function DayTimeline() {
                         </span>
                       </div>
                       <RiArrowDownSLine
-                        className={`text-brand text-[14px] transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+                        className={`text-brand text-[14px] transition-transform   ${isExpanded ? "rotate-180" : ""}`}
                       />
                     </button>
                     {isExpanded && (

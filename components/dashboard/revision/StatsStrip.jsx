@@ -21,7 +21,7 @@ export default function StatsStrip() {
             i < stats.length - 1 ? "border-r border-white/[0.04]" : ""
           }`}
         >
-          <div className="w-8 h-8 rounded-xl bg-[--color-card-dark] flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-[--color-card-dark] flex items-center justify-center  ">
             <Icon className="text-[--color-brand] text-[14px]" />
           </div>
           <div className="min-w-0">

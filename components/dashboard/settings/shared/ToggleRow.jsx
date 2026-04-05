@@ -17,7 +17,7 @@ export default function ToggleRow({
       <button
         onClick={() => !locked && onChange?.(!value)}
         disabled={locked}
-        className={`w-8 h-4 rounded-full flex-shrink-0 relative transition-all duration-200 mt-0.5 ${
+        className={`w-8 h-4 rounded-full   relative transition-all duration-200 mt-0.5 ${
           locked ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
         } ${value ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}
       >

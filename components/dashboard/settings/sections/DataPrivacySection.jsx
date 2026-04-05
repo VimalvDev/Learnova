@@ -105,7 +105,7 @@ export default function DataPrivacySection() {
               Delete all quiz history, mastery scores, and revision schedules. Uploaded documents are kept.
             </p>
           </div>
-          <button className="flex-shrink-0 h-8 px-3.5 text-[var(--color-red)] text-[11px] font-medium rounded-xl border border-[var(--color-red)]/30 hover:bg-[var(--color-red)]/[0.05] transition-all whitespace-nowrap">
+          <button className="  h-8 px-3.5 text-[var(--color-red)] text-[11px] font-medium rounded-xl border border-[var(--color-red)]/30 hover:bg-[var(--color-red)]/[0.05] transition-all whitespace-nowrap">
             Clear Learning Data
           </button>
         </div>
@@ -122,7 +122,7 @@ export default function DataPrivacySection() {
           {deleteStep === 0 && (
             <button
               onClick={() => setDeleteStep(1)}
-              className="flex-shrink-0 h-8 px-3.5 bg-[var(--color-red)]/15 text-[var(--color-red)] text-[11px] font-semibold rounded-xl border border-[var(--color-red)]/40 hover:bg-[var(--color-red)]/25 transition-all whitespace-nowrap"
+              className="  h-8 px-3.5 bg-[var(--color-red)]/15 text-[var(--color-red)] text-[11px] font-semibold rounded-xl border border-[var(--color-red)]/40 hover:bg-[var(--color-red)]/25 transition-all whitespace-nowrap"
             >
               Delete Account
             </button>

@@ -87,7 +87,7 @@ export default function LearningPreferencesSection({ onSave }) {
                     className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border text-left transition-all ${
                       on ? "border-(--color-brand)/40 bg-(--color-brand)/[0.05]" : "border-white/[0.06] bg-card-dark hover:border-white/[0.1]"
                     }`}>
-                    <div className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border transition-all ${
+                    <div className={`w-4 h-4 rounded flex items-center justify-center   border transition-all ${
                       on ? "bg-(--color-brand) border-(--color-brand)" : "border-white/[0.2]"
                     }`}>
                       {on && <span className="text-white text-[9px] font-bold">✓</span>}

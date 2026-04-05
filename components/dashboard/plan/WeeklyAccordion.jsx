@@ -102,7 +102,7 @@ export default function WeeklyAccordion() {
                     {week.days} days{week.topics ? ` · ${week.topics} topics` : " · Review + Assessment"}
                   </span>
                 </div>
-                <RiArrowDownSLine className={`text-brand text-[14px] flex-shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <RiArrowDownSLine className={`text-brand text-[14px]   transition-transform ${isOpen ? "rotate-180" : ""}`} />
               </button>
 
               {/* Focus preview (always visible) */}

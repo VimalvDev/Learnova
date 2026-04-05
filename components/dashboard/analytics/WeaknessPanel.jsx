@@ -83,12 +83,12 @@ export default function WeaknessPanel() {
             {/* Header */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-white/[0.04] flex items-center justify-center text-[16px] flex-shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-white/[0.04] flex items-center justify-center text-[16px]  ">
                   {p.icon}
                 </div>
                 <span className="text-[13px] font-semibold text-white">{p.title}</span>
               </div>
-              <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded-lg flex-shrink-0 ${p.severityColor}`}>
+              <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded-lg   ${p.severityColor}`}>
                 {p.severity}
               </span>
             </div>
@@ -128,7 +128,7 @@ export default function WeaknessPanel() {
                   { label: "Accuracy", value: p.speedBar.accuracy, color: "bg-[var(--color-red)]", max: 100 },
                 ].map(({ label, value, color, max }) => (
                   <div key={label} className="flex items-center gap-2">
-                    <span className="text-[10px] text-[--color-tertiary-text] w-14 flex-shrink-0">{label}</span>
+                    <span className="text-[10px] text-[--color-tertiary-text] w-14  ">{label}</span>
                     <div className="flex-1 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
                       <div className={`h-full rounded-full ${color}`} style={{ width: `${(value / max) * 100}%` }} />
                     </div>

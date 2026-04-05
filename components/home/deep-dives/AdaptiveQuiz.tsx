@@ -66,7 +66,7 @@ export default function AdaptiveQuiz() {
               className="bg-card  rounded-2xl p-[1.5em] flex items-center gap-4"
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black flex-shrink-0"
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black  "
                 style={{ background: `${color}15`, color }}
               >
                 {icon}

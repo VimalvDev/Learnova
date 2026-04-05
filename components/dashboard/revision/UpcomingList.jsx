@@ -153,14 +153,14 @@ export default function UpcomingList() {
             onClick={() => setCollapsed((p) => ({ ...p, [group.label]: !p[group.label] }))}
           >
             <div className="flex-1 h-px bg-white/[0.06]" />
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[--color-tertiary-text] whitespace-nowrap flex-shrink-0">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[--color-tertiary-text] whitespace-nowrap  ">
               {group.label}
             </span>
-            <span className="text-[10px] text-[--color-dark-gray] flex-shrink-0">{group.count} items</span>
+            <span className="text-[10px] text-[--color-dark-gray]  ">{group.count} items</span>
             <div className="flex-1 h-px bg-white/[0.06]" />
             {collapsed[group.label]
-              ? <RiArrowRightSLine className="text-[--color-dark-gray] text-[13px] flex-shrink-0" />
-              : <RiArrowDownSLine  className="text-[--color-dark-gray] text-[13px] flex-shrink-0" />
+              ? <RiArrowRightSLine className="text-[--color-dark-gray] text-[13px]  " />
+              : <RiArrowDownSLine  className="text-[--color-dark-gray] text-[13px]  " />
             }
           </div>
 

@@ -53,7 +53,7 @@ function StageIndicator({ stage, activeStage }) {
           <div key={s} className="flex items-center">
             <div className="flex flex-col items-center">
               <div
-                className="w-3 h-3 rounded-full flex-shrink-0 transition-all"
+                className="w-3 h-3 rounded-full   transition-all"
                 style={{
                   background: done
                     ? "#FA6E43"
@@ -95,7 +95,7 @@ function QueueCard({ file }) {
       }}
     >
       <div className="flex items-start gap-3 mb-3">
-        <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
+        <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center  ">
           <RiFileTextLine className="text-[13px] text-white/60" />
         </div>
         <div className="flex-1 min-w-0">
@@ -103,12 +103,12 @@ function QueueCard({ file }) {
           <p className="text-[10px] text-secondary-text mt-0.5">{file.type} · {file.size}</p>
         </div>
         {!isComplete && !isError && (
-          <button className="text-[11px] text-secondary-text hover:text-white transition-colors flex-shrink-0">
+          <button className="text-[11px] text-secondary-text hover:text-white transition-colors  ">
             Cancel
           </button>
         )}
         {isComplete && (
-          <div className="flex items-center gap-1.5 flex-shrink-0">
+          <div className="flex items-center gap-1.5  ">
             <RiCheckLine className="text-[#4ADE80] text-[14px]" />
             <span className="text-[11px] text-[#4ADE80]">Complete</span>
           </div>

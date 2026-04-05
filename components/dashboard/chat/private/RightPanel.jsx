@@ -42,7 +42,7 @@ export default function RightPanel() {
                 <p className="text-[11px] font-medium text-white truncate">{u.name}</p>
                 <p className="text-[10px] text-tertiary-text">{u.docs} docs</p>
               </div>
-              <div className={`w-8 h-4 rounded-full relative flex-shrink-0 transition-all ${u.active ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}>
+              <div className={`w-8 h-4 rounded-full relative   transition-all ${u.active ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}>
                 <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full shadow transition-all ${u.active ? "left-[17px]" : "left-[2px]"}`} />
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function RightPanel() {
                     </div>
                     <p className="text-[10px] text-tertiary-text">{s.loc}</p>
                   </div>
-                  <span className={`text-[12px] font-bold flex-shrink-0 ${scoreColor(s.score)}`}>
+                  <span className={`text-[12px] font-bold   ${scoreColor(s.score)}`}>
                     {s.score}
                   </span>
                 </div>
@@ -112,7 +112,7 @@ export default function RightPanel() {
         <div className="flex flex-col gap-2">
           {activeFiles.map((f) => (
             <div key={f.name} className="flex items-center gap-2">
-              <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${f.active ? "bg-[#4ADE80]" : "bg-(--color-dark-gray)"}`} />
+              <div className={`w-1.5 h-1.5 rounded-full   ${f.active ? "bg-[#4ADE80]" : "bg-(--color-dark-gray)"}`} />
               <span className="text-[11px] text-white truncate">{f.name}</span>
             </div>
           ))}

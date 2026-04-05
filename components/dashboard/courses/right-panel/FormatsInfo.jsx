@@ -25,7 +25,7 @@ export default function FormatsInfo() {
             key={type}
             className="flex items-center gap-3 py-2.5 border-b border-white/[0.04] last:border-0"
           >
-            <Icon className="text-brand/60 text-[15px] flex-shrink-0" />
+            <Icon className="text-brand/60 text-[15px]  " />
             <span className="text-[12px] font-medium text-white flex-1">{type}</span>
             <span className="text-[11px] text-secondary-text">{desc}</span>
           </div>
@@ -33,7 +33,7 @@ export default function FormatsInfo() {
       </div>
 
       <div className="mt-4 flex items-start gap-2 p-3 bg-[#111] rounded-xl">
-        <span className="text-brand text-[12px] mt-0.5 flex-shrink-0">ⓘ</span>
+        <span className="text-brand text-[12px] mt-0.5  ">ⓘ</span>
         <p className="text-[11px] text-secondary-text leading-relaxed">
           Scanned PDFs and handwritten notes are processed using OCR.
           Quality depends on image clarity.

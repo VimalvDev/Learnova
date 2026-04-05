@@ -230,14 +230,14 @@ export default function CourseDetailPage() {
                   className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] transition-all group"
                 >
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <RiBrainLine className="text-brand text-[16px] flex-shrink-0" />
+                    <RiBrainLine className="text-brand text-[16px]  " />
                     <div className="flex-1 min-w-0">
                       <p className="text-[13px] font-medium text-white group-hover:text-brand transition">
                         {concept.name}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 flex-shrink-0 ml-2">
+                  <div className="flex items-center gap-3   ml-2">
                     <div className="text-right">
                       <p
                         className={`text-[12px] font-bold ${

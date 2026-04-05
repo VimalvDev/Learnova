@@ -78,7 +78,7 @@ export default function UserManagementTable() {
       {/* Controls */}
       <div className="flex items-center gap-3 px-5 py-3.5 bg-card-dark border-b border-white/[0.04] flex-wrap">
         <div className="flex items-center gap-2 h-9 px-3 bg-card rounded-xl border border-white/[0.06] w-56 focus-within:border-(--color-brand)/30 transition-colors">
-          <RiSearchLine className="text-dark-gray text-[13px] flex-shrink-0" />
+          <RiSearchLine className="text-dark-gray text-[13px]  " />
           <input value={search} onChange={e => setSearch(e.target.value)}
             placeholder="Search by name, email, or plan..."
             className="flex-1 bg-transparent text-[11px] text-white placeholder:text-dark-gray outline-none" />
@@ -111,7 +111,7 @@ export default function UserManagementTable() {
 
           {/* User */}
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-7 h-7 rounded-full bg-(--color-brand) flex items-center justify-center flex-shrink-0 text-[9px] font-bold text-white">
+            <div className="w-7 h-7 rounded-full bg-(--color-brand) flex items-center justify-center   text-[9px] font-bold text-white">
               {u.name.split(" ").map(n => n[0]).join("").slice(0,2)}
             </div>
             <div className="min-w-0">
@@ -123,7 +123,7 @@ export default function UserManagementTable() {
           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg w-fit ${planStyle[u.plan]}`}>{u.plan}</span>
 
           <div className="flex items-center gap-1.5">
-            <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${statusDot[u.status]}`} />
+            <div className={`w-1.5 h-1.5 rounded-full   ${statusDot[u.status]}`} />
             <span className={`text-[11px] font-medium ${statusLabel[u.status]}`}>{statusText[u.status]}</span>
           </div>
 

@@ -78,7 +78,7 @@ export default function ConceptTable() {
       {/* Controls */}
       <div className="flex items-center gap-3 px-6 py-3.5 border-b border-white/[0.04] flex-wrap bg-[--color-card-dark]">
         <div className="flex items-center gap-2 h-9 px-3 bg-[#111] rounded-xl border border-white/[0.06] w-48 focus-within:border-[--color-brand]/40 transition-colors">
-          <RiSearchLine className="text-[--color-dark-gray] text-[14px] flex-shrink-0" />
+          <RiSearchLine className="text-[--color-dark-gray] text-[14px]  " />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}

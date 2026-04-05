@@ -16,7 +16,7 @@ export default function CollapsedConfigBar({ config, onEdit }) {
       </div>
       <button
         onClick={onEdit}
-        className="flex items-center gap-1.5 text-[11px] text-brand hover:underline flex-shrink-0"
+        className="flex items-center gap-1.5 text-[11px] text-brand hover:underline  "
       >
         <RiEditLine className="text-[13px]" /> Edit Parameters
       </button>

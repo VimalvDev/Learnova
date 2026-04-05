@@ -22,7 +22,7 @@ export default function ModeComparison({ onSwitchPrivate }) {
               "Zero hallucination risk",
             ].map((item) => (
               <p key={item} className="text-[10px] text-secondary-text flex items-start gap-1.5">
-                <span className="text-dark-gray mt-0.5 flex-shrink-0">·</span> {item}
+                <span className="text-dark-gray mt-0.5  ">·</span> {item}
               </p>
             ))}
           </div>
@@ -44,7 +44,7 @@ export default function ModeComparison({ onSwitchPrivate }) {
               "Verify before exam use",
             ].map((item) => (
               <p key={item} className="text-[10px] text-secondary-text flex items-start gap-1.5">
-                <span className="text-dark-gray mt-0.5 flex-shrink-0">·</span> {item}
+                <span className="text-dark-gray mt-0.5  ">·</span> {item}
               </p>
             ))}
           </div>

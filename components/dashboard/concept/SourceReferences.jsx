@@ -36,7 +36,7 @@ export default function SourceReferences() {
             key={name}
             className="flex items-start gap-3.5 bg-card-dark rounded-xl p-4"
           >
-            <div className="w-9 h-9 rounded-xl bg-(--color-brand)/10 flex items-center justify-center flex-shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-(--color-brand)/10 flex items-center justify-center  ">
               <Icon className="text-brand text-[16px]" />
             </div>
             <div className="flex-1 min-w-0">
@@ -46,7 +46,7 @@ export default function SourceReferences() {
                 {chunks} · Highest confidence: {confidence}
               </p>
             </div>
-            <button className="text-[11px] text-brand hover:underline flex-shrink-0 mt-0.5 whitespace-nowrap">
+            <button className="text-[11px] text-brand hover:underline   mt-0.5 whitespace-nowrap">
               Open in AI Chat →
             </button>
           </div>
@@ -54,7 +54,7 @@ export default function SourceReferences() {
       </div>
 
       <div className="mt-4 flex items-start gap-2 bg-card-dark rounded-xl p-3.5">
-        <span className="text-brand text-[12px] flex-shrink-0 mt-0.5">◈</span>
+        <span className="text-brand text-[12px]   mt-0.5">◈</span>
         <p className="text-[11px] text-tertiary-text leading-relaxed">
           Click "Open in AI Chat" to ask targeted questions about this concept directly from these sections.
         </p>

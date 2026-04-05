@@ -6,11 +6,11 @@ export default function AdminHeader() {
   const [search, setSearch] = useState("")
 
   return (
-    <header className="flex items-center justify-between px-6 h-15 border-b border-(--color-card) bg-(--color-dark)/95 backdrop-blur-lg sticky top-0 z-40 flex-shrink-0">
+    <header className="flex items-center justify-between px-6 h-15 border-b border-(--color-card) bg-(--color-dark)/95 backdrop-blur-lg sticky top-0 z-40  ">
 
       {/* Logo + admin badge */}
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-xl bg-(--color-brand) flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-xl bg-(--color-brand) flex items-center justify-center  ">
           <svg viewBox="0 0 10 10" fill="none" className="w-4 h-4">
             <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
@@ -23,14 +23,14 @@ export default function AdminHeader() {
 
       {/* Global search */}
       <div className="flex items-center gap-2 h-9 px-3 bg-card-dark rounded-xl w-80 border border-white/[0.06] focus-within:border-(--color-brand)/30 transition-colors">
-        <RiSearchLine className="text-dark-gray text-[14px] flex-shrink-0" />
+        <RiSearchLine className="text-dark-gray text-[14px]  " />
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search users, courses, events..."
           className="flex-1 bg-transparent text-[12px] text-white placeholder:text-dark-gray outline-none"
         />
-        <span className="text-[10px] text-dark-gray bg-card px-1.5 py-0.5 rounded-md flex-shrink-0">⌘K</span>
+        <span className="text-[10px] text-dark-gray bg-card px-1.5 py-0.5 rounded-md  ">⌘K</span>
       </div>
 
       {/* Right */}

@@ -120,7 +120,7 @@ export default function PerformanceTrend() {
 
       {/* Annotation */}
       <div className="mt-4 pt-4 border-t border-card-dark flex items-start gap-2">
-        <span className="text-brand flex-shrink-0 mt-0.5">◈</span>
+        <span className="text-brand   mt-0.5">◈</span>
         <p className="text-[11px] text-tertiary-text leading-relaxed italic">
           Mastery dropped 12% during a 7-day revision gap (Feb 15–20). Recovery sessions on Feb 21 and 23 partially restored performance. Pattern suggests this concept requires review every 3–4 days at current mastery level.
         </p>

@@ -20,7 +20,7 @@ export default function EmptyState() {
       <div className="flex flex-col gap-2.5 w-full max-w-xs">
         {hints.map((h) => (
           <div key={h} className="flex items-start gap-2 text-left">
-            <span className="text-brand flex-shrink-0 mt-0.5 text-[12px]">◈</span>
+            <span className="text-brand   mt-0.5 text-[12px]">◈</span>
             <p className="text-[12px] text-tertiary-text">{h}</p>
           </div>
         ))}

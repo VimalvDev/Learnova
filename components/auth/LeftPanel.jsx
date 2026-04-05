@@ -7,7 +7,7 @@ export default function LeftPanel() {
       {/* Top */}
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center  ">
             <svg viewBox="0 0 10 10" fill="none" className="w-4 h-4">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
@@ -50,7 +50,7 @@ export default function LeftPanel() {
             "Adaptive quizzes with smart revision scheduling",
           ].map((feat) => (
             <div key={feat} className="flex items-start gap-3">
-              <span className="text-brand text-[14px] flex-shrink-0 mt-0.5">→</span>
+              <span className="text-brand text-[14px]   mt-0.5">→</span>
               <span className="text-[14px] text-[#888]">{feat}</span>
             </div>
           ))}

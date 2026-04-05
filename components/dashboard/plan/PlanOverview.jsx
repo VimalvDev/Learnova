@@ -37,11 +37,11 @@ export default function PlanOverview() {
       {/* Feasibility bar */}
       <div className="px-6 py-4 border-t border-card-dark">
         <div className="flex items-center gap-4 flex-wrap">
-          <span className="text-[11px] text-tertiary-text flex-shrink-0">Plan Feasibility</span>
+          <span className="text-[11px] text-tertiary-text  ">Plan Feasibility</span>
           <div className="flex-1 max-w-xs h-1.5 bg-card-dark rounded-full overflow-hidden">
             <div className="h-full bg-(--color-brand) rounded-full" style={{ width: "78%" }} />
           </div>
-          <span className="text-[12px] font-semibold text-brand flex-shrink-0">78% — Achievable</span>
+          <span className="text-[12px] font-semibold text-brand  ">78% — Achievable</span>
           <span className="text-[10px] text-tertiary-text ml-auto hidden lg:block">
             Based on 19 days, 2.5h/day, current mastery 78%
           </span>
@@ -51,7 +51,7 @@ export default function PlanOverview() {
       {/* Risk flag */}
       <div className="mx-6 mb-5">
         <div className="flex items-start gap-2.5 px-4 py-3 bg-[#FBBF24]/[0.04] rounded-xl">
-          <span className="text-[#FBBF24] text-[13px] flex-shrink-0 mt-0.5">⚠</span>
+          <span className="text-[#FBBF24] text-[13px]   mt-0.5">⚠</span>
           <p className="text-[11px] text-secondary-text leading-relaxed">
             <span className="text-white font-medium">3 critical concepts</span> may need additional sessions beyond current allocation.
             Consider adding 30 min/day or extending target date by 3 days.

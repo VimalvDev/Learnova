@@ -111,7 +111,7 @@ export default function RevisionCalendar() {
           { label: "Done",      color: "bg-[#4ADE80]"           },
         ].map(({ label, color }) => (
           <div key={label} className="flex items-center gap-1">
-            <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${color}`} />
+            <div className={`w-1.5 h-1.5 rounded-full   ${color}`} />
             <span className="text-[9px] text-[--color-tertiary-text]">{label}</span>
           </div>
         ))}

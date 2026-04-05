@@ -58,13 +58,13 @@ export default function SystemHealth() {
               }`}
             >
               <div className="flex items-start gap-2.5 min-w-0">
-                <div className={`w-2 h-2 rounded-full flex-shrink-0 mt-1 ${dot[s.status]}`} />
+                <div className={`w-2 h-2 rounded-full   mt-1 ${dot[s.status]}`} />
                 <div className="min-w-0">
                   <p className="text-[12px] font-medium text-white truncate">{s.name}</p>
                   <p className="text-[10px] text-tertiary-text">{s.meta}</p>
                 </div>
               </div>
-              <span className={`text-[11px] font-medium flex-shrink-0 ${label[s.status]}`}>
+              <span className={`text-[11px] font-medium   ${label[s.status]}`}>
                 {text[s.status]}
               </span>
             </div>

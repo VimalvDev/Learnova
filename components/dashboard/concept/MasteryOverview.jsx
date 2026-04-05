@@ -61,7 +61,7 @@ export default function MasteryOverview() {
           {/* Status card */}
           <div className="bg-[var(--color-red)]/[0.06] rounded-xl p-4 border border-[var(--color-red)]/15 mb-4">
             <div className="flex items-start gap-3">
-              <span className="text-[16px] flex-shrink-0">🔴</span>
+              <span className="text-[16px]  ">🔴</span>
               <div>
                 <p className="text-[14px] font-semibold text-[var(--color-red)] mb-1">Critical Risk</p>
                 <p className="text-[12px] text-secondary-text leading-relaxed">

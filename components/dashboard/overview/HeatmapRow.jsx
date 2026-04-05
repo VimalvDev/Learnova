@@ -57,13 +57,13 @@ export default function HeatmapRow() {
               href="/dashboard/revision"
               className="flex items-center gap-3 p-3 bg-[#111] rounded-xl hover:bg-[#151515] transition-all group"
             >
-              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dot }} />
+              <div className="w-2 h-2 rounded-full  " style={{ background: dot }} />
               <div className="flex-1 min-w-0">
                 <p className="text-[12px] font-medium text-white truncate">{name}</p>
                 <p className="text-[10px] text-secondary-text mt-0.5">{due}</p>
               </div>
               <svg viewBox="0 0 24 24" fill="none" stroke="#555"
-                className="w-3.5 h-3.5 flex-shrink-0 group-hover:stroke-brand transition-colors"
+                className="w-3.5 h-3.5   group-hover:stroke-brand transition-colors"
                 strokeWidth="2">
                 <polyline points="9 18 15 12 9 6" />
               </svg>

@@ -13,7 +13,7 @@ export default function FollowUpSuggestions({ suggestions, onSelect }) {
             onClick={() => onSelect(s)}
             className="flex items-center gap-3 px-4 py-3 bg-card-dark rounded-xl border border-white/[0.04] text-left hover:border-(--color-brand)/30 hover:bg-(--color-brand)/[0.03] transition-all group"
           >
-            <RiArrowRightLine className="text-brand text-[13px] flex-shrink-0" />
+            <RiArrowRightLine className="text-brand text-[13px]  " />
             <span className="text-[12px] text-secondary-text group-hover:text-white transition-colors leading-relaxed">
               {s}
             </span>

@@ -36,14 +36,14 @@ export default function DayDetail() {
       <div className="flex flex-col divide-y divide-white/[0.04]">
         {dayItems.map((item) => (
           <div key={item.name} className="flex items-center gap-3 py-2.5">
-            <div className={`w-2 h-2 rounded-full flex-shrink-0 ${dot[item.type]}`} />
+            <div className={`w-2 h-2 rounded-full   ${dot[item.type]}`} />
             <div className="flex-1 min-w-0">
               <p className={`text-[12px] font-medium ${item.type === "completed" ? "text-[--color-secondary-text]" : "text-white"}`}>
                 {item.name}
               </p>
               <p className="text-[10px] text-[--color-tertiary-text]">Mastery: {item.mastery}%</p>
             </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center gap-2  ">
               <span className={`text-[10px] ${timeColor[item.type]}`}>{item.time}</span>
               <button className="text-[11px] text-[--color-brand] hover:underline whitespace-nowrap">
                 {item.type === "completed" ? "Review" : "Start →"}

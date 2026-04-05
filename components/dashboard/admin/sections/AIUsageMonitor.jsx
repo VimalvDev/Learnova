@@ -90,7 +90,7 @@ export default function AIUsageMonitor() {
         </div>
 
         <div className="flex items-start gap-2 bg-card-dark rounded-xl px-3 py-2.5">
-          <span className="text-brand text-[11px] flex-shrink-0 mt-0.5">◈</span>
+          <span className="text-brand text-[11px]   mt-0.5">◈</span>
           <p className="text-[10px] text-tertiary-text leading-relaxed">
             At current rate: <span className="text-white font-medium">$341</span> projected by month end.
             Budget threshold: $400/month — <span className="text-[#FBBF24] font-medium">85% utilized.</span>

@@ -56,7 +56,7 @@ function FileRow({ file }) {
     }`}>
       <div className="flex items-start gap-3">
         <div
-          className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+          className="w-7 h-7 rounded-lg flex items-center justify-center   mt-0.5"
           style={{ background: typeColors[file.type] ?? "rgba(255,255,255,0.05)" }}
         >
           <RiFileTextLine className="text-[13px] text-white/70" />
@@ -84,7 +84,7 @@ function FileRow({ file }) {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2  ">
           {confirmDelete ? (
             <div className="flex items-center gap-2">
               <span className="text-[10px] text-[#888]">Delete?</span>
@@ -162,7 +162,7 @@ export default function UnitsManager() {
               className="flex items-center gap-3 px-4 py-3.5 cursor-pointer hover:bg-white/[0.02] transition-colors group"
               onClick={() => toggleUnit(unit.id)}
             >
-              <RiDraggable className="text-tertiary-text text-[16px] flex-shrink-0 cursor-grab" />
+              <RiDraggable className="text-tertiary-text text-[16px]   cursor-grab" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-bold text-brand">
@@ -201,7 +201,7 @@ export default function UnitsManager() {
                 </button>
               </div>
               <RiArrowDownSLine
-                className="text-[#444] text-[18px] flex-shrink-0 transition-transform duration-200"
+                className="text-[#444] text-[18px]   transition-transform duration-200"
                 style={{ transform: unit.expanded ? "rotate(180deg)" : "rotate(0deg)" }}
               />
             </div>

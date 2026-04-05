@@ -49,7 +49,7 @@ export default function TodayFocus() {
               Ordered by urgency: overdue first, then by mastery score and retention decay.
             </p>
           </div>
-          <div className="text-right flex-shrink-0">
+          <div className="text-right  ">
             <p className="text-[12px] text-[--color-tertiary-text]">Tuesday, February 24</p>
             <p className="text-[12px] text-[#FBBF24] font-semibold mt-0.5">4 items due</p>
           </div>
@@ -59,7 +59,7 @@ export default function TodayFocus() {
       <div className="p-5 flex flex-col gap-3">
         {/* Overdue banner */}
         <div className="flex items-start gap-3 px-4 py-3 bg-[var(--color-red)]/[0.05] rounded-xl border border-[var(--color-red)]/15">
-          <RiAlertLine className="text-[var(--color-red)] text-[15px] flex-shrink-0 mt-0.5" />
+          <RiAlertLine className="text-[var(--color-red)] text-[15px]   mt-0.5" />
           <p className="text-[11px] text-[--color-secondary-text] leading-relaxed">
             <span className="text-[var(--color-red)] font-semibold">3 revision sessions are overdue.</span>{" "}
             Delaying further will accelerate knowledge decay. These have been moved to top priority.

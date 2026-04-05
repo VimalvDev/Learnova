@@ -57,7 +57,7 @@ export default function PublicAnswer({ topic, type, onFollowUp }) {
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#3B82F6]/[0.08] rounded-xl border border-[#3B82F6]/20 flex-shrink-0">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#3B82F6]/[0.08] rounded-xl border border-[#3B82F6]/20  ">
             <span className="text-[#3B82F6] text-[12px]">🌐</span>
             <span className="text-[11px] text-[#3B82F6] font-medium">Public Mode · Generated 2:44 PM</span>
           </div>
@@ -65,7 +65,7 @@ export default function PublicAnswer({ topic, type, onFollowUp }) {
 
         {/* Disclaimer */}
         <div className="flex items-start gap-2 px-3 py-2.5 bg-[#3B82F6]/[0.04] rounded-xl border border-[#3B82F6]/15 mb-5">
-          <span className="text-[#3B82F6] text-[13px] flex-shrink-0 mt-0.5">ⓘ</span>
+          <span className="text-[#3B82F6] text-[13px]   mt-0.5">ⓘ</span>
           <p className="text-[11px] text-secondary-text leading-relaxed">
             This answer is generated from AI training data — not from your uploaded documents.
             Verify against authoritative sources before using in exams.

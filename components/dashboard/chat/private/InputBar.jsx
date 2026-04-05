@@ -3,7 +3,7 @@ import { RiMicLine, RiSendPlaneFill } from "react-icons/ri"
 export default function InputBar({ value, onChange, onSend }) {
   return (
     <div className="flex items-center gap-3 px-4 py-3 bg-card-dark rounded-2xl border border-white/[0.06] focus-within:border-(--color-brand)/30 transition-colors">
-      <span className="text-brand text-[14px] flex-shrink-0">◈</span>
+      <span className="text-brand text-[14px]  ">◈</span>
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}

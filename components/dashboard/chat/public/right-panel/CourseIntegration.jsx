@@ -58,7 +58,7 @@ export default function CourseIntegration({ topic }) {
               onClick={() => toggle(key)}
               className="flex items-center gap-2 text-left"
             >
-              <div className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border transition-all ${
+              <div className={`w-4 h-4 rounded flex items-center justify-center   border transition-all ${
                 checks[key] ? "bg-(--color-brand) border-(--color-brand)" : "border-white/[0.2]"
               }`}>
                 {checks[key] && <RiCheckLine className="text-white text-[9px]" />}

@@ -35,12 +35,12 @@ export default function ConceptPriority() {
       <div className="flex flex-col divide-y divide-card-dark">
         {concepts.map(({ name, pct, level }, i) => (
           <div key={name} className="flex items-center gap-3 py-2.5">
-            <span className="text-[10px] font-bold text-brand w-5 flex-shrink-0 tabular-nums">
+            <span className="text-[10px] font-bold text-brand w-5   tabular-nums">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-[11px] font-medium text-white flex-1 truncate">{name}</span>
-            <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${dot[level]}`} />
-            <span className={`text-[11px] font-semibold flex-shrink-0 ${pctColor[level]}`}>{pct}%</span>
+            <div className={`w-1.5 h-1.5 rounded-full   ${dot[level]}`} />
+            <span className={`text-[11px] font-semibold   ${pctColor[level]}`}>{pct}%</span>
           </div>
         ))}
       </div>

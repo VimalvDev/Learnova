@@ -15,7 +15,7 @@ export default function RevisionCalendar() {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-brand/10 flex items-center justify-center  ">
             <RiCalendarTodoLine className="text-brand text-[16px]" />
           </div>
           <div>

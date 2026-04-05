@@ -31,14 +31,14 @@ export default function UploadArea({ onFilesAdded }) {
 
       {/* Unit selector */}
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-[12px] text-[#888] flex-shrink-0">Upload to:</span>
+        <span className="text-[12px] text-[#888]  ">Upload to:</span>
         <div className="relative flex-1 max-w-[280px]">
           <button
             onClick={() => setUnitOpen(!unitOpen)}
             className="w-full h-[36px] px-3 bg-[#111] rounded-xl text-[12px] text-white flex items-center justify-between"
           >
             <span className="truncate">{unit}</span>
-            <span className="text-secondary-text text-[10px] ml-2 flex-shrink-0">▾</span>
+            <span className="text-secondary-text text-[10px] ml-2  ">▾</span>
           </button>
           {unitOpen && (
             <div className="absolute top-10 left-0 w-full bg-[#1a1a1a] rounded-xl shadow-2xl z-20 overflow-hidden">

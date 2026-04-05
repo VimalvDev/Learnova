@@ -21,7 +21,7 @@ export default function SmartToggles({ value, onToggle }) {
                 <p className="text-[12px] font-medium text-white">{label}</p>
                 <p className="text-[10px] text-tertiary-text mt-0.5">{desc}</p>
               </div>
-              <div className={`w-8 h-4 rounded-full flex-shrink-0 relative transition-all duration-200 ${on ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}>
+              <div className={`w-8 h-4 rounded-full   relative transition-all duration-200 ${on ? "bg-(--color-brand)" : "bg-white/[0.1]"}`}>
                 <div
                   className="absolute top-0.5 w-3 h-3 bg-white rounded-full shadow transition-all duration-200"
                   style={{ left: on ? "17px" : "2px" }}

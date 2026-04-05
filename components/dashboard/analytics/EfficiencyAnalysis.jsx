@@ -108,7 +108,7 @@ export default function EfficiencyAnalysis() {
         <h3 className="text-[15px] font-semibold text-white mb-5 self-start">Overall Score</h3>
 
         {/* Semicircle gauge */}
-        <div className="relative w-28 h-14 flex-shrink-0">
+        <div className="relative w-28 h-14  ">
           <svg viewBox="0 0 120 60" className="w-full h-full">
             {/* Track */}
             <path

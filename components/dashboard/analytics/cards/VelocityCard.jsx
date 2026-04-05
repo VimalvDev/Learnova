@@ -18,7 +18,7 @@ export default function VelocityCard() {
             Fastest: <span className="text-white">SQL Joins +18%</span>
           </p>
         </div>
-        <svg viewBox="0 0 80 40" className="w-20 h-10 flex-shrink-0">
+        <svg viewBox="0 0 80 40" className="w-20 h-10  ">
           <path d={d} fill="none" stroke="#4ADE80" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>

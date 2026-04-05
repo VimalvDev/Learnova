@@ -150,7 +150,7 @@ export default function WeaknessIntelligence() {
                 className="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-[#F87171]/5 border border-[#F87171]/15"
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#F87171] flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#F87171]  " />
                   <div>
                     <p className="text-[11px] font-semibold text-white">
                       {topic}
@@ -160,7 +160,7 @@ export default function WeaknessIntelligence() {
                     </p>
                   </div>
                 </div>
-                <span className="text-[13px] font-black text-[#F87171] flex-shrink-0">
+                <span className="text-[13px] font-black text-[#F87171]  ">
                   {score}
                 </span>
               </div>

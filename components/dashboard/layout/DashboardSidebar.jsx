@@ -52,6 +52,12 @@ const navSections = [
       { icon: RiSettingsLine,     label: "Settings",       href: "/settings"       },
     ],
   },
+  {
+    label: "Admin",
+    items: [
+      { icon: RiAdminLine,        label: "Admin Panel",    href: "/admin"          },
+    ],
+  },
 ]
 
 // ── SHARED NAV CONTENT ────────────────────────────────────
@@ -64,10 +70,10 @@ function SidebarContent({ pathname, onClose }) {
   return (
     <>
       {/* Logo */}
-      <div className="px-5 py-5 flex items-center justify-between flex-shrink-0">
+      <div className="px-5 py-5 flex items-center justify-between  ">
         <div className="flex items-center gap-2.5">
 
-          <Link href="/" className="w-7 h-7 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+          <Link href="/" className="w-7 h-7 bg-brand rounded-lg flex items-center justify-center  ">
             <svg viewBox="0 0 10 10" fill="none" className="w-3.5 h-3.5">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
@@ -91,16 +97,16 @@ function SidebarContent({ pathname, onClose }) {
       </div>
 
       {/* Active course */}
-      <div className="px-4 mb-3 flex-shrink-0">
+      <div className="px-4 mb-3  ">
         <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] px-1 mb-1.5">
           Current Course
         </p>
         <div className="flex items-center gap-2 px-3 py-2.5 bg-brand/10 rounded-xl cursor-pointer hover:bg-brand/15 transition-all">
-          <RiBookOpenLine className="text-brand text-[14px] flex-shrink-0" />
+          <RiBookOpenLine className="text-brand text-[14px]  " />
           <span className="text-[12px] text-white font-medium truncate flex-1">
             DBMS — Sem 4
           </span>
-          <RiArrowDownSLine className="text-[#888] text-[14px] flex-shrink-0" />
+          <RiArrowDownSLine className="text-[#888] text-[14px]  " />
         </div>
 
         {/* Course context actions */}
@@ -110,9 +116,9 @@ function SidebarContent({ pathname, onClose }) {
             onClick={onClose ?? undefined}
             className="flex items-center gap-2 px-3 py-2.5 rounded-xl mt-2 transition-all text-secondary-text hover:text-white hover:bg-white/[0.04] group"
           >
-            <RiBrainLine className="text-[16px] flex-shrink-0 group-hover:text-brand" />
+            <RiBrainLine className="text-[16px]   group-hover:text-brand" />
             <span className="text-[13px] font-medium">View Concepts</span>
-            <RiArrowRightSLine className="text-[14px] flex-shrink-0 ml-auto opacity-0 group-hover:opacity-100 transition" />
+            <RiArrowRightSLine className="text-[14px]   ml-auto opacity-0 group-hover:opacity-100 transition" />
           </Link>
         )}
       </div>
@@ -138,14 +144,14 @@ function SidebarContent({ pathname, onClose }) {
                   }`}
                 >
                   <Icon
-                    className={`text-[16px] flex-shrink-0 transition-colors ${
+                    className={`text-[16px]   transition-colors ${
                       active ? "text-brand" : "group-hover:text-white"
                     }`}
                   />
                   <span className="text-[13px] font-medium flex-1">{itemLabel}</span>
                   {badge && (
                     <span
-                      className={`text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+                      className={`text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full   ${
                         badge === "Soon"
                           ? "bg-white/[0.06] text-secondary-text"
                           : "bg-brand/15 text-brand"
@@ -155,7 +161,7 @@ function SidebarContent({ pathname, onClose }) {
                     </span>
                   )}
                   {active && !badge && (
-                    <RiArrowRightSLine className="text-brand text-[14px] flex-shrink-0" />
+                    <RiArrowRightSLine className="text-brand text-[14px]  " />
                   )}
                 </Link>
               )
@@ -165,7 +171,7 @@ function SidebarContent({ pathname, onClose }) {
       </nav>
 
       {/* Storage + Upload */}
-      <div className="p-4 flex-shrink-0 border-t border-white/[0.04]">
+      <div className="p-4   border-t border-white/[0.04]">
         <Link
           href="/courses/new"
           onClick={onClose ?? undefined}
@@ -192,7 +198,7 @@ export function DashboardSidebar() {
   const pathname = usePathname()
 
   return (
-   <aside className="hidden lg:flex w-[300px] flex-shrink-0 flex-col h-screen sticky top-0 z-40 bg-dark">
+   <aside className="hidden lg:flex w-[300px]   flex-col h-screen sticky top-0 z-40 bg-dark">
 
       <SidebarContent pathname={pathname} onClose={null} />
     </aside>
@@ -236,7 +242,7 @@ export function DashboardMobileNav() {
       {/* Mobile topbar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-[54px] z-50 bg-dark flex items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center flex-shrink-0">
+          <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center  ">
             <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
               <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
             </svg>

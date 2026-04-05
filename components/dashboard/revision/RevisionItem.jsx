@@ -54,12 +54,12 @@ export default function RevisionItem({ item }) {
         {/* Top row */}
         <div className="flex items-start justify-between gap-3 mb-2">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className={`w-2 h-2 rounded-full flex-shrink-0 mt-0.5 ${c.dot}`} />
+            <div className={`w-2 h-2 rounded-full   mt-0.5 ${c.dot}`} />
             <p className={`text-[14px] font-semibold ${isCompleted ? "line-through text-[--color-secondary-text] decoration-white/20" : "text-white"}`}>
               {item.name}
             </p>
           </div>
-          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg flex-shrink-0 ${c.tag}`}>
+          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg   ${c.tag}`}>
             {isCompleted ? item.completedTime : c.tagLabel}
           </span>
         </div>
@@ -75,7 +75,7 @@ export default function RevisionItem({ item }) {
           <>
             {/* Mastery bar */}
             <div className="flex items-center gap-3 mb-1.5">
-              <span className="text-[10px] text-[--color-tertiary-text] w-10 flex-shrink-0">Mastery</span>
+              <span className="text-[10px] text-[--color-tertiary-text] w-10  ">Mastery</span>
               <div className="flex-1 h-[3px] bg-white/[0.06] rounded-full overflow-hidden max-w-[160px]">
                 <div className={`h-full rounded-full ${c.bar}`} style={{ width: `${item.mastery}%` }} />
               </div>
@@ -84,7 +84,7 @@ export default function RevisionItem({ item }) {
 
             {/* Decay bar */}
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-[10px] text-[--color-tertiary-text] w-10 flex-shrink-0">Decay</span>
+              <span className="text-[10px] text-[--color-tertiary-text] w-10  ">Decay</span>
               <div className="flex-1 h-[3px] bg-white/[0.06] rounded-full overflow-hidden max-w-[160px]">
                 <div
                   className="h-full rounded-full bg-[#FBBF24]"

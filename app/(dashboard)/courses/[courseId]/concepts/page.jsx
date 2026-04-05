@@ -86,7 +86,7 @@ export default function ConceptsListPage() {
                   className="flex items-center justify-between p-4 rounded-xl bg-card-dark hover:bg-white/[0.06] transition-all group"
                 >
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand/20 transition">
+                    <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center   group-hover:bg-brand/20 transition">
                       <RiBrainLine className="text-brand text-[18px]" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -96,7 +96,7 @@ export default function ConceptsListPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 flex-shrink-0 ml-3">
+                  <div className="flex items-center gap-4   ml-3">
                     <div className="text-right">
                       <p
                         className={`text-[13px] font-bold ${

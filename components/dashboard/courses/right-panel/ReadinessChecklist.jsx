@@ -24,13 +24,13 @@ export default function ReadinessChecklist() {
         {items.map(({ label, status }) => (
           <div key={label} className="flex items-center gap-3 py-1.5">
             {status === "done" && (
-              <RiCheckLine className="text-[#4ADE80] text-[15px] flex-shrink-0" />
+              <RiCheckLine className="text-[#4ADE80] text-[15px]  " />
             )}
             {status === "processing" && (
-              <RiRefreshLine className="text-brand text-[15px] flex-shrink-0 animate-spin" />
+              <RiRefreshLine className="text-brand text-[15px]   animate-spin" />
             )}
             {status === "locked" && (
-              <RiCircleLine className="text-[#444] text-[15px] flex-shrink-0" />
+              <RiCircleLine className="text-[#444] text-[15px]  " />
             )}
             <span className={`text-[12px] ${
               status === "locked" ? "text-secondary-text" : "text-white"

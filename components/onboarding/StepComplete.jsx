@@ -76,7 +76,7 @@ export default function StepComplete({ formData }) {
         </div>
 
         {/* Right — summary + features */}
-        <div className="hidden lg:flex w-[420px] xl:w-[480px] flex-shrink-0 flex-col justify-center px-12 xl:px-16 py-16 border-l border-white/[0.05] gap-6">
+        <div className="hidden lg:flex w-[420px] xl:w-[480px]   flex-col justify-center px-12 xl:px-16 py-16 border-l border-white/[0.05] gap-6">
 
           {/* Summary card-dark */}
           <div className="bg-card-dark rounded-2xl overflow-hidden">
@@ -109,11 +109,11 @@ export default function StepComplete({ formData }) {
                   key={label}
                   className="flex items-center gap-3 px-4 py-3 bg-card-dark rounded-xl"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center  ">
                     <Icon className="text-brand text-[15px]" />
                   </div>
                   <span className="text-[13px] text-[#C0C0C0]">{label}</span>
-                  <RiCheckLine className="text-[#4ADE80] text-[14px] ml-auto flex-shrink-0" />
+                  <RiCheckLine className="text-[#4ADE80] text-[14px] ml-auto  " />
                 </div>
               ))}
             </div>

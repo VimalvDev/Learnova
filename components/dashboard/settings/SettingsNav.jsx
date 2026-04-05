@@ -33,7 +33,7 @@ export default function SettingsNav({ active, onChange }) {
               {isActive && (
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-(--color-brand) rounded-r" />
               )}
-              <Icon className={`text-[15px] flex-shrink-0 ${isActive ? "text-brand" : "text-dark-gray"}`} />
+              <Icon className={`text-[15px]   ${isActive ? "text-brand" : "text-dark-gray"}`} />
               {label}
             </button>
           )
@@ -49,7 +49,7 @@ export default function SettingsNav({ active, onChange }) {
       {/* Account summary */}
       <div className="mt-4 pt-4 border-t border-(--color-card) px-2">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-full bg-(--color-brand) flex items-center justify-center flex-shrink-0">
+          <div className="w-9 h-9 rounded-full bg-(--color-brand) flex items-center justify-center  ">
             <span className="text-[12px] font-bold text-white">AR</span>
           </div>
           <div className="min-w-0">

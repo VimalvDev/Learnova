@@ -29,11 +29,11 @@ export default function TopicKnowledgeCard({ topic }) {
 
       {/* Difficulty bar */}
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-[10px] text-tertiary-text flex-shrink-0">Difficulty</span>
+        <span className="text-[10px] text-tertiary-text  ">Difficulty</span>
         <div className="flex-1 h-[3px] bg-card rounded-full overflow-hidden">
           <div className="h-full bg-[#FBBF24] rounded-full" style={{ width: "60%" }} />
         </div>
-        <span className="text-[10px] text-[#FBBF24] font-medium flex-shrink-0">Intermediate</span>
+        <span className="text-[10px] text-[#FBBF24] font-medium  ">Intermediate</span>
       </div>
 
       {/* Metadata */}
@@ -53,7 +53,7 @@ export default function TopicKnowledgeCard({ topic }) {
       <div className="flex flex-col divide-y divide-white/[0.03]">
         {examFocus.map((f) => (
           <div key={f} className="flex items-center gap-2 py-2">
-            <span className="text-brand text-[11px] flex-shrink-0">◈</span>
+            <span className="text-brand text-[11px]  ">◈</span>
             <span className="text-[11px] text-secondary-text">{f}</span>
           </div>
         ))}

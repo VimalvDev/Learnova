@@ -24,7 +24,7 @@ export default function UserGrowthEngagement() {
         <GrowthBarChart />
 
         <div className="mt-4 flex items-start gap-2 bg-card-dark rounded-xl px-3 py-2.5">
-          <span className="text-brand text-[11px] flex-shrink-0">◈</span>
+          <span className="text-brand text-[11px]  ">◈</span>
           <p className="text-[11px] text-tertiary-text">
             Growth rate increased 34% in the week following the adaptive quiz engine release (Feb 10).
           </p>

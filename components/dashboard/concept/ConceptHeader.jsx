@@ -51,7 +51,7 @@ export default function ConceptHeader() {
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-2 flex-shrink-0">
+        <div className="flex flex-col items-end gap-2  ">
           <div className="flex items-center gap-2">
             <button className="flex items-center gap-2 h-10 px-4 bg-card-dark text-white text-[12px] font-medium rounded-xl hover:bg-(--color-card-mid) transition-colors">
               <RiCalendarLine className="text-brand text-[14px]" />

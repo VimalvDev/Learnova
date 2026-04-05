@@ -52,7 +52,7 @@ export default function EmptyState({ onSelect }) {
               className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-white/[0.02] transition-colors"
             >
               <span className="text-[12px] font-medium text-white text-left">{topic}</span>
-              <span className="text-[9px] font-bold text-[#FBBF24] bg-[#FBBF24]/10 px-2 py-0.5 rounded-lg flex-shrink-0">
+              <span className="text-[9px] font-bold text-[#FBBF24] bg-[#FBBF24]/10 px-2 py-0.5 rounded-lg  ">
                 Not uploaded
               </span>
             </button>

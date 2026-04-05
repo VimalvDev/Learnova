@@ -48,7 +48,7 @@ export default function Features() {
                   first-attempt correctness, and recency decay.
                 </p>
               </div>
-              <span className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white/5 leading-none select-none flex-shrink-0">
+              <span className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white/5 leading-none select-none  ">
                 01
               </span>
             </div>
@@ -86,7 +86,7 @@ export default function Features() {
                   speed-accuracy imbalances — not just low scores.
                 </p>
               </div>
-              <span className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white/[0.05] leading-none select-none flex-shrink-0">
+              <span className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white/[0.05] leading-none select-none  ">
                 02
               </span>
             </div>
@@ -176,7 +176,7 @@ export default function Features() {
                   Revision dates earned not random. Weak topics return sooner.
                 </p>
               </div>
-              <span className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white/[0.05] leading-none select-none flex-shrink-0">
+              <span className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white/[0.05] leading-none select-none  ">
                 06
               </span>
             </div>

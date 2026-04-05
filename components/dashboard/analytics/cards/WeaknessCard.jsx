@@ -18,7 +18,7 @@ export default function WeaknessCard() {
         {critical.map((c) => (
           <div key={c.name} className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-red flex-shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-red  " />
               <span className="text-[11px] text-white">{c.name}</span>
             </div>
             <span className="text-[11px] font-semibold text-red">{c.pct}%</span>

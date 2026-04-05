@@ -40,7 +40,7 @@ export default function MasterySnapshot() {
               {items.map(({ name, pct }) => (
                 <div key={name} className="flex items-center justify-between gap-1">
                   <span className="text-[10px] text-secondary-text truncate">{name}</span>
-                  <span className={`text-[10px] font-semibold flex-shrink-0 ${colors[key]}`}>{pct}%</span>
+                  <span className={`text-[10px] font-semibold   ${colors[key]}`}>{pct}%</span>
                 </div>
               ))}
               {key === "mastered" && (

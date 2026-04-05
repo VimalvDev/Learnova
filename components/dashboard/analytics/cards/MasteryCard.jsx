@@ -20,7 +20,7 @@ export default function MasteryCard() {
           </div>
           <p className="text-[11px] text-[--color-tertiary-text] mt-1">58 concepts · DBMS</p>
         </div>
-        <div className="relative flex-shrink-0">
+        <div className="relative  ">
           <svg className="w-16 h-16 -rotate-90" viewBox="0 0 72 72">
             <circle cx="36" cy="36" r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
             <circle

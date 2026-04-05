@@ -6,7 +6,7 @@ export default function OnboardingHeader({ step, totalSteps }) {
   const [showSkip, setShowSkip] = useState(false)
 
   return (
-    <header className="h-[52px] flex items-center justify-between px-6 md:px-8 border-b border-white/[0.06] flex-shrink-0">
+    <header className="h-[52px] flex items-center justify-between px-6 md:px-8 border-b border-white/[0.06]  ">
 
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2">

@@ -48,7 +48,7 @@ export default function SessionBreakdown() {
           <div className="flex items-center gap-1.5">
             <span className="text-[12px] font-medium text-white truncate">{s.session}</span>
             {s.best && (
-              <span className="text-[9px] text-brand flex-shrink-0">⭐</span>
+              <span className="text-[9px] text-brand  ">⭐</span>
             )}
           </div>
           <span className={`text-[13px] font-bold ${scoreColor(s.score)}`}>{s.score}%</span>

@@ -38,7 +38,7 @@ export default function DonutChart() {
       <div className="w-full flex flex-col gap-1.5">
         {segments.map((s, i) => (
           <div key={i} className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ background: s.color }} />
+            <div className="w-2.5 h-2.5 rounded-sm  " style={{ background: s.color }} />
             <span className="text-[11px] text-secondary-text flex-1">{s.label}</span>
             <span className="text-[11px] font-medium text-white">{s.pct}%</span>
             <span className="text-[10px] text-tertiary-text w-14 text-right">({s.count})</span>

@@ -61,7 +61,7 @@ export default function ActionPlan() {
           >
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full flex-shrink-0 ${a.dotColor}`} />
+                <div className={`w-2 h-2 rounded-full   ${a.dotColor}`} />
                 <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-lg ${a.headerColor}`}>
                   {a.priority}
                 </span>
