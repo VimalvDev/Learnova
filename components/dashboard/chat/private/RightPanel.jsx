@@ -27,7 +27,7 @@ export default function RightPanel() {
   const [sourcesOpen, setSourcesOpen] = useState(true)
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto mt-[2em] bg-card-dark border-l border-(--color-card)">
+    <div className="flex flex-col h-full overflow-y-auto bg-card-dark border-l border-(--color-card)">
 
       {/* Scope */}
       <div className="p-4 border-b border-(--color-card)">
@@ -47,29 +47,6 @@ export default function RightPanel() {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Confidence threshold */}
-      <div className="p-4 border-b border-(--color-card)">
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70">Confidence Threshold</p>
-          <span className="text-[12px] font-bold text-white">{threshold}%</span>
-        </div>
-        <div className="relative h-1.5 mb-2">
-          <div className="absolute inset-0 bg-white/[0.06] rounded-full" />
-          <div className="absolute left-0 top-0 h-full bg-(--color-brand) rounded-full" style={{ width: `${((threshold - 50) / 50) * 100}%` }} />
-          <input type="range" min={50} max={100} value={threshold}
-            onChange={(e) => setThreshold(Number(e.target.value))}
-            className="absolute inset-0 w-full opacity-0 cursor-pointer"
-          />
-          <div
-            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-(--color-brand) rounded-full border-2 border-card-dark pointer-events-none"
-            style={{ left: `${((threshold - 50) / 50) * 100}%` }}
-          />
-        </div>
-        <div className="flex justify-between text-[9px] text-dark-gray">
-          <span>Strict</span><span>Balanced</span><span>Loose</span>
         </div>
       </div>
 

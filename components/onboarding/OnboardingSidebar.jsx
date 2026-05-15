@@ -3,8 +3,7 @@ const steps = [
   { num: 2, label: "First Course",       desc: "Upload your study material"      },
   { num: 3, label: "Confidence Level",   desc: "Your starting difficulty"        },
   { num: 4, label: "Study Timeline",     desc: "Target date and daily hours"     },
-  { num: 5, label: "Intelligence",       desc: "Adaptive engine settings"        },
-  { num: 6, label: "Done",              desc: "System is being configured"      },
+  { num: 5, label: "Done",              desc: "System is being configured"      },
 ]
 
 export default function OnboardingSidebar({ currentStep, formData }) {

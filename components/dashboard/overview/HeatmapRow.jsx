@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link"
 import FullHeatmap from "@/components/charts/full/FullHeatmap"
-import FullRadar   from "@/components/charts/full/FullRadar"
 
 const revisionItems = [
   { name: "Normalization",    due: "Today",     dot: "#F87171" },
@@ -17,7 +16,7 @@ export default function HeatmapRow() {
       {/* Heatmap */}
       <Link
         href="/dashboard/analytics"
-        className="col-span-5 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
+        className="col-span-6 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
       >
         <div className="flex items-center justify-between mb-3">
           <div>
@@ -43,7 +42,7 @@ export default function HeatmapRow() {
       </Link>
 
       {/* Revision Planner */}
-      <div className="col-span-3 bg-[#171717] rounded-2xl p-5 flex flex-col">
+      <div className="col-span-6 bg-[#171717] rounded-2xl p-5 flex flex-col">
         <div className="flex items-center justify-between mb-3">
           <p className="text-[14px] font-medium text-white/70">Revision Planner</p>
           <Link href="/dashboard/revision" className="text-[11px] text-brand hover:underline">
@@ -78,27 +77,7 @@ export default function HeatmapRow() {
         </Link>
       </div>
 
-      {/* Radar */}
-      <Link
-        href="/dashboard/analytics"
-        className="col-span-4 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
-      >
-        <div className="flex items-center justify-between mb-1">
-          <div>
-            <p className="text-[14px] font-medium text-white/70">Performance</p>
-            <p className="text-[11px] text-[#666] mt-0.5">6 dimension overview</p>
-          </div>
-          <div className="text-right">
-            <p className="text-[10px] text-secondary-text">Overall Score</p>
-            <p className="text-[20px] font-black text-brand leading-none mt-0.5">
-              73<span className="text-[12px] text-secondary-text font-normal">/100</span>
-            </p>
-          </div>
-        </div>
-        <div className="flex-1 min-h-[200px]">
-          <FullRadar />
-        </div>
-      </Link>
+     
 
     </div>
   )

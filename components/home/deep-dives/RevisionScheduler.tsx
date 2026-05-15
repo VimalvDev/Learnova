@@ -1,14 +1,42 @@
+"use client"
 // components/home/deep-dives/RevisionScheduler.jsx
+import { useRef } from "react"
 import RevisionCalendar from "@/components/charts/showcase/RevisionCalendar";
 import Heading from "@/components/common/Heading";
 import SectionHeader from "@/components/common/SectionHeader";
+import {
+  ParticleCard,
+  GlobalSpotlight,
+  BentoGlowStyles,
+} from "@/components/home/features/MagicBentoEffects"
+
+const GLOW = "250, 110, 67"
 
 export default function RevisionScheduler() {
+  const sectionRef = useRef(null)
+
+  const particleProps = {
+    glowColor: GLOW,
+    particleCount: 8,
+    enableTilt: false,
+    enableMagnetism: false,
+    clickEffect: true,
+    style: {},
+  }
+
   return (
     <section
+      ref={sectionRef}
       id="revision-scheduler"
       className="pt-[4em] pb-[10em] px-[4vw] bg-card-dark relative overflow-hidden"
     >
+      <BentoGlowStyles glowColor={GLOW} />
+      <GlobalSpotlight
+        sectionRef={sectionRef}
+        glowColor={GLOW}
+        spotlightRadius={600}
+      />
+
       <Heading text="revision scheduler" />
       <SectionHeader
         num="007"
@@ -16,11 +44,15 @@ export default function RevisionScheduler() {
         para="Spaced repetition logic. Weak topics return sooner. Strong ones give you breathing room."
       />
 
-      <div className=" mt-[3em]">
+      <div className=" mt-[3em] ">
         {/* Left */}
         <div className=" flex gap-[1em] mb-[1em] ">
           {/* Streak */}
-          <div className="bg-card w-[25vw] rounded-xl p-[1.5em]">
+          <ParticleCard
+            key="streak"
+            {...particleProps}
+            className="card card--border-glow bg-card w-[25vw] rounded-xl p-[1.5em] overflow-hidden relative"
+          >
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Current Streak
             </span>
@@ -50,10 +82,13 @@ export default function RevisionScheduler() {
                 </div>
               ))}
             </div>
-          </div>
+          </ParticleCard>
 
           {/* Upcoming */}
-          <div className="bg-card w-[30vw] rounded-xl p-[1.5em]">
+          <ParticleCard
+            {...particleProps}
+            className="card card--border-glow bg-card w-[30vw] rounded-xl p-[1.5em] overflow-hidden relative"
+          >
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Upcoming Revisions
             </span>
@@ -91,10 +126,14 @@ export default function RevisionScheduler() {
                 </span>
               </div>
             ))}
-          </div>
+          </ParticleCard>
 
           {/* How it works */}
-          <div className="bg-card rounded-2xl w-[20vw] p-[1.5em]">
+          <ParticleCard
+            key="howitcalculates"
+            {...particleProps}
+            className="card card--border-glow bg-card rounded-2xl w-[20vw] p-[1.5em] overflow-hidden relative"
+          >
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               How It Calculates
             </span>
@@ -113,11 +152,15 @@ export default function RevisionScheduler() {
                 </span>
               </div>
             ))}
-          </div>
+          </ParticleCard>
         </div>
 
         {/* Right — calendar */}
-        <div className="md:col-span-8 bg-card rounded-2xl p-[1.8em] flex flex-col gap-4">
+        <ParticleCard
+          key="calendar"
+          {...particleProps}
+          className="card card--border-glow bg-card rounded-2xl p-[1.8em] flex flex-col gap-4 overflow-hidden relative"
+        >
           <div className="flex items-start justify-between">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
@@ -155,7 +198,7 @@ export default function RevisionScheduler() {
               More
             </span>
           </div>
-        </div>
+        </ParticleCard>
       </div>
     </section>
   );

@@ -13,13 +13,11 @@ const stats = [
 
 export default function StatsStrip() {
   return (
-    <div className="flex items-center gap-0 bg-card-dark rounded-2xl border border-white/[0.04] overflow-hidden">
+    <div className="flex items-center gap-0 bg-card-dark rounded-2xl overflow-hidden">
       {stats.map(({ icon: Icon, label, value, valueColor }, i) => (
         <div
           key={label}
-          className={`flex items-center gap-3 px-5 py-3.5 flex-1 min-w-0 ${
-            i < stats.length - 1 ? "border-r border-white/[0.04]" : ""
-          }`}
+          className="flex items-center gap-3 px-5 py-3.5 flex-1 min-w-0"
         >
           <div className="w-8 h-8 rounded-xl bg-[--color-card-dark] flex items-center justify-center  ">
             <Icon className="text-[--color-brand] text-[14px]" />

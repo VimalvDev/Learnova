@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {Inter, Bebas_Neue, Spline_Sans_Mono, Manrope} from 'next/font/google'
+import {Inter, Bebas_Neue, Spline_Sans_Mono, Manrope, Geist } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body
         className={`${inter.variable} ${bebasNeue.variable} ${splineSansMono.variable} ${manrope.variable}`}
       >

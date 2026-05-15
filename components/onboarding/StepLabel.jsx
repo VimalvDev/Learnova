@@ -3,7 +3,7 @@ export default function StepLabel({ step, title, desc }) {
     <div className="mb-8">
       <div className="flex items-center gap-2 mb-3">
         <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand/70">
-          Step {step} of 6
+          Step {step} of 5
         </span>
         <span className="text-tertiary-text text-[10px]">—</span>
         <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-brand/70">

@@ -43,7 +43,7 @@ export default function RevisionCalendar() {
   const next = () => { if (month === 11) { setYear(y => y + 1); setMonth(0) } else setMonth(m => m + 1) }
 
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] p-4">
+    <div className="bg-card-dark rounded-2xl p-4">
       {/* Month nav */}
       <div className="flex items-center justify-between mb-4">
         <button onClick={prev} className="w-7 h-7 flex items-center justify-center rounded-lg text-[--color-dark-gray] hover:text-white hover:bg-white/[0.06] transition-all">

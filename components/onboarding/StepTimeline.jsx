@@ -66,40 +66,7 @@ export default function StepTimeline({ formData, update }) {
           </div>
         </div>
 
-        {/* Study window */}
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-bleed block mb-2">
-              Study From
-            </label>
-            <input
-              type="time"
-              value={formData.studyFrom}
-              onChange={(e) => update("studyFrom", e.target.value)}
-              className="w-full h-12.5 px-4 bg-card-dark text-white text-[13px] rounded-xl outline-none transition-all"
-              style={{
-                border: "1px solid rgba(255,255,255,0.06)",
-                colorScheme: "dark",
-              }}
-            />
-          </div>
-          <div>
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-bleed block mb-2">
-              Study To
-            </label>
-            <input
-              type="time"
-              value={formData.studyTo}
-              onChange={(e) => update("studyTo", e.target.value)}
-              className="w-full h-12.5 px-4 bg-card-dark text-white text-[13px] rounded-xl outline-none transition-all"
-              style={{
-                border: "1px solid rgba(255,255,255,0.06)",
-                colorScheme: "dark",
-              }}
-            />
-          </div>
-        </div>
-
+     
         {/* Info note */}
         <div
           className="flex items-start gap-2.5 px-4 py-3.5 rounded-xl text-[12px] text-bleed leading-relaxed"

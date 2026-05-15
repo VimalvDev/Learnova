@@ -1,6 +1,7 @@
 "use client"
 import { useState, useRef } from "react"
 import { RiUploadCloud2Line, RiFileTextLine } from "react-icons/ri"
+import { api } from "@/services/api"   // ✅ ADD THIS LINE
 
 const units = ["Unit 1 — Introduction to Databases", "Unit 2 — ER Model", "Unit 3 — Normalization"]
 
@@ -10,11 +11,20 @@ export default function UploadArea({ onFilesAdded }) {
   const [unitOpen, setUnitOpen] = useState(false)
   const inputRef = useRef()
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault()
     setDragging(false)
+
     const files = Array.from(e.dataTransfer.files)
-    onFilesAdded?.(files)
+
+    const formData = new FormData()
+    files.forEach((file) => formData.append("files", file))
+
+    try {
+      await api.upload(formData)   // ✅ REPLACE fetch WITH THIS
+    } catch (err) {
+      console.error("Upload failed", err)
+    }
   }
 
   return (

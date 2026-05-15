@@ -39,18 +39,7 @@ export default function ResultsActions({ onRestart }) {
         <button className="w-full py-2.5 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all">
           Review All Mistakes
         </button>
-        <Link
-          href="/dashboard/revision"
-          className="w-full py-2.5 bg-[#141414] text-white text-[12px] font-medium rounded-xl border border-white/6 hover:border-white/10 transition-all text-center"
-        >
-          Start Revision Session
-        </Link>
-        <button
-          onClick={onRestart}
-          className="w-full py-2.5 bg-[#141414] text-white text-[12px] font-medium rounded-xl border border-white/6 hover:border-white/10 transition-all flex items-center justify-center gap-2"
-        >
-          <RiRefreshLine className="text-[12px]" /> Generate Follow-up Quiz
-        </button>
+       
         <Link
           href="/dashboard"
           className="w-full py-2 text-secondary-text hover:text-white text-[11px] transition-colors text-center"

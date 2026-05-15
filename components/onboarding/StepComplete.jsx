@@ -58,14 +58,16 @@ export default function StepComplete({ formData }) {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <button
-                onClick={() => router.push("/dashboard")}
+                onClick={() => window.location.href = "/dashboard"}
+
                 className="px-8 h-[50px] bg-brand text-white text-[14px] font-bold rounded-2xl hover:brightness-110 transition-all flex items-center gap-2"
               >
                 Go to Dashboard
                 <RiArrowRightLine className="text-[16px]" />
               </button>
               <button
-                onClick={() => router.push("/courses")}
+                onClick={() => window.location.href = "/courses"}
+
                 className="px-6 h-[50px] bg-card-dark text-[#C0C0C0] text-[13px] font-medium rounded-2xl hover:text-white hover:bg-[#2a2b2f] transition-all"
               >
                 Upload a document first

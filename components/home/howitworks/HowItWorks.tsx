@@ -4,6 +4,13 @@ import Heading from "@/components/common/Heading";
 import SectionHeader from "@/components/common/SectionHeader";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
+import {
+  ParticleCard,
+  GlobalSpotlight,
+  BentoGlowStyles,
+} from "@/components/home/features/MagicBentoEffects"
+
+const GLOW = "250, 110, 67"
 
 type Step = {
   num: string;
@@ -77,11 +84,29 @@ export default function HowItWorks() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const sectionRef = useRef(null)
+
+  const particleProps = {
+    glowColor: GLOW,
+    particleCount: 8,
+    enableTilt: false,
+    enableMagnetism: false,
+    clickEffect: true,
+  }
+
   return (
     <section
+      ref={sectionRef}
       id="how-it-works"
       className="pt-[4em] relative overflow-hidden px-[1vw] md:px-[4vw] bg-card-mid-dark"
     >
+      <BentoGlowStyles glowColor={GLOW} />
+      <GlobalSpotlight
+        sectionRef={sectionRef}
+        glowColor={GLOW}
+        spotlightRadius={600}
+      />
+
       <Heading text="how it works" />
       <SectionHeader
         num="002"

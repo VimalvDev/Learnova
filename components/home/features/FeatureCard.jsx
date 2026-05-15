@@ -1,30 +1,37 @@
 import { MdArrowOutward } from "react-icons/md";
 import { TbGridDots } from "react-icons/tb";
 import Tags from "@/components/home/features/Tags";
+import { ParticleCard } from "@/components/home/features/MagicBentoEffects";
 
-export default function Featurecard({
-  num,
-  label,
-  title,
-  desc,
-  tags,
-  chart,
-  colSpan = "md:col-span-4",
+export default function FeatureCard({
+  num, label, title, desc, tags,
+  chart, colSpan = "md:col-span-4",
   minHeight = "min-h-[520px]",
-  extra = null,
-  link
+  extra = null, link,
+  glowColor = "250, 110, 67",
 }) {
   return (
-    <div
-      className={`${colSpan} bg-card rounded-xl overflow-hidden relative flex flex-col ${minHeight}`}
+    <ParticleCard
+      className={`${colSpan} card card--border-glow bg-card rounded-xl overflow-hidden relative flex flex-col ${minHeight}`}
+      glowColor={glowColor}
+      particleCount={8}
+      enableTilt={false}
+      enableMagnetism={false}
+      clickEffect={true}
+      style={{
+        "--glow-x": "50%",
+        "--glow-y": "50%",
+        "--glow-intensity": "0",
+        "--glow-radius": "200px",
+      }}
     >
       <div className="absolute top-4 right-4 opacity-10 z-0">
         <TbGridDots className="text-white text-2xl" />
-      </div>{" "}
+      </div>
+
       <div className="px-[2em] pt-[2em] pb-[1em] flex flex-col h-full gap-4 relative z-10">
         {extra}
 
-        {/* Header */}
         <div className="flex items-start justify-between">
           <div className="flex-1 pr-4">
             {label && (
@@ -45,20 +52,18 @@ export default function Featurecard({
           </span>
         </div>
 
-        {/* Chart */}
         <div className="flex-1 w-full">{chart}</div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-[1em] border-t border-white/6">
+        <div className="flex items-center justify-between pt-[1em] border-t border-white/[0.06]">
           <Tags tags={tags} />
           <a
             href={link}
             className="w-[2.5em] h-[2.5em] rounded-xl bg-brand flex items-center justify-center cursor-pointer hover:brightness-110 transition-all hover:scale-105"
           >
             <MdArrowOutward className="text-black text-lg" />
-          </a>{" "}
+          </a>
         </div>
       </div>
-    </div>
+    </ParticleCard>
   );
 }

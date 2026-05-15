@@ -39,10 +39,10 @@ export default function PerformanceTrend() {
   const { d, area, pts } = buildPath(datasets[tab], W, H)
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-4">
+    <div className="grid grid-cols-1 gap-4">
 
       {/* Chart card */}
-      <div className="bg-card-dark rounded-2xl border border-white/[0.04] p-6">
+      <div className="bg-card-dark rounded-2xl p-6">
         <div className="flex items-start justify-between mb-5 flex-wrap gap-3">
           <div>
             <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-1">
@@ -114,39 +114,7 @@ export default function PerformanceTrend() {
         </div>
       </div>
 
-      {/* Stats sidebar */}
-      <div className="bg-card-dark rounded-2xl border border-white/[0.04] p-5 flex flex-col gap-4">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70">
-          Trend Analysis
-        </p>
-        <div className="flex flex-col divide-y divide-white/[0.04]">
-          {trendStats.map(({ label, value, sub }) => (
-            <div key={label} className="py-3.5 first:pt-0 last:pb-0">
-              <p className="text-[9px] text-[--color-tertiary-text] uppercase tracking-widest mb-1">{label}</p>
-              <p className="text-[13px] font-semibold text-white">{value}</p>
-              <p className="text-[11px] text-[--color-secondary-text] mt-0.5">{sub}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-auto pt-4 border-t border-white/[0.04]">
-          <p className="text-[10px] text-[--color-tertiary-text] leading-relaxed">
-            Sessions with <span className="text-white font-semibold">45+ min</span> study time show{" "}
-            <span className="text-white font-semibold">2.4×</span> higher mastery gain.
-          </p>
-          <div className="flex items-end gap-1.5 mt-3 h-10">
-            {[60, 80, 45, 90, 70].map((b, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-sm"
-                style={{
-                  height: `${b}%`,
-                  background: i === 3 ? "var(--color-brand)" : "rgba(250,110,67,0.2)",
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+  
     </div>
   )
 }

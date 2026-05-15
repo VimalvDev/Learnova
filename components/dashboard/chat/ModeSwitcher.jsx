@@ -2,7 +2,7 @@ import { RiLockLine, RiGlobalLine } from "react-icons/ri"
 
 export default function ModeSwitcher({ mode, setMode }) {
   return (
-    <div className="flex items-center justify-between px-6 py-2.5 bg-dark border-b border-(--color-card-dark) sticky top-0 z-30">
+    <div className="flex items-center justify-between px-6 py-2.5 bg-dark border-b border-(--color-card-dark) shrink-0 z-30">
       {/* Toggle */}
       <div className="flex items-center gap-1 p-1 bg-card-dark rounded-xl">
         <button

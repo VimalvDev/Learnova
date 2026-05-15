@@ -97,47 +97,6 @@ export default function StepFocus({ formData, update }) {
           </div>
         </div>
 
-        {/* Additional subjects */}
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <label className="text-xs font-semibold uppercase tracking-wider text-bleed">
-              Add More Subjects
-            </label>
-            <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/6 text-secondary-text font-bold uppercase tracking-wider">
-              Optional
-            </span>
-          </div>
-          <div
-            className="min-h-12.5 px-3 py-2.5 bg-card-dark rounded-xl flex flex-wrap gap-2 items-center transition-all"
-            style={{ border: "1px solid rgba(255,255,255,0.06)" }}
-          >
-            {formData.additionalSubjects.map((s) => (
-              <span
-                key={s}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[12px] font-medium bg-brand/10 text-brand"
-              >
-                {s}
-                <button
-                  onClick={() => removeTag(s)}
-                  className="text-brand/60 hover:text-brand text-[14px] leading-none"
-                >
-                  ×
-                </button>
-              </span>
-            ))}
-            <input
-              type="text"
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyDown={handleTagKey}
-              placeholder={
-                formData.additionalSubjects.length === 0 ? "Add subject..." : ""
-              }
-              className="flex-1 min-w-30 bg-transparent text-xs text-white placeholder:text-white/20 outline-none"
-            />
-          </div>
-        </div>
-
         {/* Academic level + Goal */}
         <div className="grid grid-cols-2 gap-4">
           <div>

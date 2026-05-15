@@ -13,8 +13,8 @@ const changeColor = (c) => c > 0 ? "text-[#4ADE80]" : "text-[var(--color-red)]"
 
 export default function RevisionHistory() {
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] overflow-hidden">
-      <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.06]">
+    <div className="bg-card-dark rounded-2xl overflow-hidden">
+      <div className="flex items-center justify-between px-6 py-5">
         <div>
           <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-1">
             Revision History
@@ -27,7 +27,7 @@ export default function RevisionHistory() {
       </div>
 
       {/* Table header */}
-      <div className="grid grid-cols-5 gap-3 px-5 py-2.5 bg-[--color-card-dark] border-b border-white/[0.04]">
+      <div className="grid grid-cols-5 gap-3 px-5 py-2.5 bg-[--color-card-dark]">
         {["Date", "Concept", "Duration", "Score", "Mastery Change"].map((h) => (
           <span key={h} className="text-[9px] font-bold uppercase tracking-widest text-[--color-dark-gray]">{h}</span>
         ))}

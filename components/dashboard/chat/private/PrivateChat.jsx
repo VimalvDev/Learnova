@@ -1,43 +1,10 @@
 "use client"
 import { useState, useRef, useEffect } from "react"
-import CenterPanel  from "./CenterPanel"
-import RightPanel   from "./RightPanel"
+import CenterPanel from "./CenterPanel"
+import RightPanel from "./RightPanel"
 
 export default function PrivateChat() {
-  const [messages, setMessages] = useState([
-    {
-      id: 1, role: "user",
-      content: "Explain 2NF with an example from my notes.",
-      time: "2:41 PM",
-    },
-    {
-      id: 2, role: "ai",
-      content: "Based on your uploaded documents, 2NF (Second Normal Form) requires that a relation is already in 1NF and every non-prime attribute is fully functionally dependent on the entire primary key.\n\nExample from your notes: The relation R(A, B, C) where A→C exists and {A,B} is the primary key violates 2NF because C depends only on A.",
-      bullets: [
-        "No partial dependencies on a composite key",
-        "All non-key attributes depend on the whole key",
-        "Violations are resolved by decomposition",
-      ],
-      sources: [
-        { name: "DBMS_Notes.pdf", loc: "Chapter 4 · Page 57" },
-        { name: "Unit2_Slides.pdf", loc: "Slide 14" },
-      ],
-      confidence: 87,
-      time: "2:41 PM",
-    },
-    {
-      id: 3, role: "user",
-      content: "What is the difference between 2NF and 3NF?",
-      time: "2:43 PM",
-    },
-    {
-      id: 4, role: "ai", type: "lowconfidence",
-      content: "This question is not sufficiently covered in your uploaded documents.",
-      confidence: 38,
-      time: "2:43 PM",
-    },
-  ])
-
+  const [messages, setMessages] = useState([])
   const [input, setInput] = useState("")
   const bottomRef = useRef(null)
 
@@ -45,10 +12,46 @@ export default function PrivateChat() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return
-    setMessages(prev => [...prev, { id: Date.now(), role: "user", content: input.trim(), time: "Now" }])
+
+    const question = input.trim()
+    const time = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+
+    setMessages(prev => [...prev, {
+      id: Date.now(),
+      role: "user",
+      content: question,
+      time,
+    }])
     setInput("")
+
+    try {
+      const res = await fetch("http://localhost:5000/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: question, mode: "private" }),
+      })
+
+      const data = await res.json()
+
+      setMessages(prev => [...prev, {
+        id: Date.now() + 1,
+        role: "ai",
+        content: data.reply || data.error || "No response",
+        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        confidence: data.confidence ?? null,
+        sources: data.sources || [],
+      }])
+
+    } catch (err) {
+      setMessages(prev => [...prev, {
+        id: Date.now() + 1,
+        role: "ai",
+        content: "Connection error. Make sure the backend server is running on port 5000.",
+        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      }])
+    }
   }
 
   return (

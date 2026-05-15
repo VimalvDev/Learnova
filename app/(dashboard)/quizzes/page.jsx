@@ -7,7 +7,7 @@ import QuizResults from "@/components/dashboard/quiz/QuizResults"
 export default function QuizzesPage() {
   const [phase, setPhase] = useState("setup")
   return (
-    <div className="w-full min-h-full">
+    <div className="max-w-330 mx-auto flex flex-col gap-4 py-4">
       {phase === "setup"   && <QuizSetup   onStart={()   => setPhase("active")}  />}
       {phase === "active"  && <QuizActive  onFinish={()  => setPhase("results")} />}
       {phase === "results" && <QuizResults onRestart={() => setPhase("setup")}   />}

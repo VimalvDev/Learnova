@@ -1,17 +1,45 @@
+"use client"
 // components/home/deep-dives/WeaknessIntelligence.jsx
+import { useRef } from "react"
 import WeaknessHeatmap from "@/components/charts/showcase/WeaknessHeatmap";
 import Heading from "@/components/common/Heading";
 import SectionHeader from "@/components/common/SectionHeader";
 import { GoAlertFill } from "react-icons/go";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { FaRepeat } from "react-icons/fa6";
+import {
+  ParticleCard,
+  GlobalSpotlight,
+  BentoGlowStyles,
+} from "@/components/home/features/MagicBentoEffects"
+
+const GLOW = "250, 110, 67"
 
 export default function WeaknessIntelligence() {
+  const sectionRef = useRef(null)
+
+  const particleProps = {
+    glowColor: GLOW,
+    particleCount: 8,
+    enableTilt: false,
+    enableMagnetism: false,
+    clickEffect: true,
+    style: {},
+  }
+
   return (
     <section
+      ref={sectionRef}
       id="weakness-intelligence"
       className="pt-[4em] pb-[10em] bg-card-dark px-[4vw] relative overflow-hidden"
     >
+      <BentoGlowStyles glowColor={GLOW} />
+      <GlobalSpotlight
+        sectionRef={sectionRef}
+        glowColor={GLOW}
+        spotlightRadius={600}
+      />
+
       <Heading text="weakness detection" />
       <SectionHeader
         num="004"
@@ -23,7 +51,11 @@ export default function WeaknessIntelligence() {
         {/* Left */}
         <div className="md:col-span-4 flex flex-col gap-[1em]">
           {/* Stat */}
-          <div className="bg-card-mid rounded-xl p-[1.5em]">
+          <ParticleCard
+            key="stats"
+            {...particleProps}
+            className="card card--border-glow bg-card-mid rounded-xl p-[1.5em] overflow-hidden relative"
+          >
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               This Week
             </span>
@@ -43,7 +75,7 @@ export default function WeaknessIntelligence() {
                 </div>
               ))}
             </div>
-          </div>
+          </ParticleCard>
           {/* Weakness types */}
           {[
             {
@@ -66,7 +98,11 @@ export default function WeaknessIntelligence() {
               color: "var(--color-brand)",
             },
           ].map(({ icon, label, desc, color }) => (
-            <div key={label} className="bg-card rounded-xl p-[1.5em]">
+            <ParticleCard
+              key={label}
+              {...particleProps}
+              className="card card--border-glow bg-card rounded-xl p-[1.5em] overflow-hidden relative"
+            >
               <div className="flex items-center gap-2 mb-2">
                 <div
                   className="w-6 h-6 rounded-lg flex items-center justify-center text-[12px]"
@@ -86,12 +122,16 @@ export default function WeaknessIntelligence() {
                 </span>
               </div>
               <p className="text-[12px] text-bleed leading-relaxed">{desc}</p>
-            </div>
+            </ParticleCard>
           ))}
         </div>
 
-        {/* Right — heatmap */}
-        <div className="md:col-span-8 bg-card rounded-xl p-[1.8em] flex flex-col gap-4">
+        {/* Right */}
+        <ParticleCard
+          key="heatmap"
+          {...particleProps}
+          className="card card--border-glow md:col-span-8 bg-card rounded-xl p-[1.8em] flex flex-col gap-4 overflow-hidden relative"
+        >
           <div className="flex items-start justify-between">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
@@ -166,7 +206,7 @@ export default function WeaknessIntelligence() {
               </div>
             ))}
           </div>
-        </div>
+        </ParticleCard>
       </div>
     </section>
   );

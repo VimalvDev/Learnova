@@ -34,9 +34,9 @@ const todayItems = [
 
 export default function TodayFocus() {
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] overflow-hidden">
+    <div className="bg-card-dark rounded-2xl overflow-hidden">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-white/[0.06]">
+      <div className="px-6 py-5">
         <div className="flex items-start justify-between flex-wrap gap-2">
           <div>
             <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-1">

@@ -8,7 +8,7 @@ export default function ChatPage() {
   const [mode, setMode] = useState("private") // "private" | "public"
 
   return (
-    <div className="flex flex-col h-full min-h-0 -m-6">
+    <div className="flex flex-col h-full min-h-0 -mx-6 -mb-10 overflow-hidden">
       <ModeSwitcher mode={mode} setMode={setMode} />
       {mode === "private"
         ? <PrivateChat />

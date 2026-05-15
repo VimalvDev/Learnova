@@ -2,8 +2,6 @@ import RevisionHeader       from "@/components/dashboard/revision/RevisionHeader
 import StatsStrip           from "@/components/dashboard/revision/StatsStrip"
 import TodayFocus           from "@/components/dashboard/revision/TodayFocus"
 import UpcomingList         from "@/components/dashboard/revision/UpcomingList"
-import SpacedRepetitionCard from "@/components/dashboard/revision/SpacedRepetitionCard"
-import ProjectionChart      from "@/components/dashboard/revision/ProjectionChart"
 import RevisionHistory      from "@/components/dashboard/revision/RevisionHistory"
 import RevisionCalendar     from "@/components/dashboard/revision/right-panel/RevisionCalender"
 import DayDetail            from "@/components/dashboard/revision/right-panel/DayDetail"
@@ -20,8 +18,6 @@ export default function RevisionPage() {
         <div className="flex flex-col gap-5">
           <TodayFocus />
           <UpcomingList />
-          <SpacedRepetitionCard />
-          <ProjectionChart />
           <RevisionHistory />
         </div>
 

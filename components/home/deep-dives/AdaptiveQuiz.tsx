@@ -1,14 +1,42 @@
 // components/home/deep-dives/AdaptiveQuiz.jsx
+"use client"
+import { useRef } from "react"
 import AdaptiveLineChart from "@/components/charts/showcase/AdaptiveLineChart";
 import Heading from "@/components/common/Heading";
 import SectionHeader from "@/components/common/SectionHeader";
+import {
+  ParticleCard,
+  GlobalSpotlight,
+  BentoGlowStyles,
+} from "@/components/home/features/MagicBentoEffects"
+
+const GLOW = "250, 110, 67"
 
 export default function AdaptiveQuiz() {
+  const sectionRef = useRef(null)
+
+  const particleProps = {
+    glowColor: GLOW,
+    particleCount: 8,
+    enableTilt: false,
+    enableMagnetism: false,
+    clickEffect: true,
+    style: {},
+  }
+
   return (
     <section
+      ref={sectionRef}
       id="adaptive-quiz"
       className="pt-[4em] pb-[10em] px-[4vw] bg-card-dark relative overflow-hidden"
     >
+      <BentoGlowStyles glowColor={GLOW} />
+      <GlobalSpotlight
+        sectionRef={sectionRef}
+        glowColor={GLOW}
+        spotlightRadius={600}
+      />
+
       <Heading text="adaptive quiz" />
       <SectionHeader
         num="006"
@@ -19,7 +47,11 @@ export default function AdaptiveQuiz() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-[1em] mt-[3em]">
         {/* Left */}
         <div className="md:col-span-4 flex flex-col gap-[1em]">
-          <div className="bg-card-mid-dark rounded-2xl p-[1.5em]">
+          <ParticleCard
+            key="stats"
+            {...particleProps}
+            className="card card--border-glow bg-card-mid-dark rounded-2xl p-[1.5em] overflow-hidden relative"
+          >
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Session Stats
             </span>
@@ -40,7 +72,7 @@ export default function AdaptiveQuiz() {
                 </div>
               ))}
             </div>
-          </div>
+          </ParticleCard>
           {[
             {
               label: "Score High",
@@ -61,9 +93,10 @@ export default function AdaptiveQuiz() {
               icon: "→",
             },
           ].map(({ label, outcome, color, icon }) => (
-            <div
+            <ParticleCard
               key={label}
-              className="bg-card  rounded-2xl p-[1.5em] flex items-center gap-4"
+              {...particleProps}
+              className="card card--border-glow bg-card rounded-2xl p-[1.5em] flex items-center gap-4 overflow-hidden relative"
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black  "
@@ -75,12 +108,16 @@ export default function AdaptiveQuiz() {
                 <p className="text-[12px] font-semibold text-white">{label}</p>
                 <p className="text-[11px] text-[#888] mt-0.5">{outcome}</p>
               </div>
-            </div>
+            </ParticleCard>
           ))}
         </div>
 
         {/* Right */}
-        <div className="md:col-span-8 bg-card rounded-2xl p-[1.8em] flex flex-col gap-4">
+        <ParticleCard
+          key="chart"
+          {...particleProps}
+          className="card card--border-glow md:col-span-8 bg-card rounded-2xl p-[1.8em] flex flex-col gap-4 overflow-hidden relative"
+        >
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
               Adaptive Difficulty vs Mastery
@@ -94,10 +131,10 @@ export default function AdaptiveQuiz() {
             </p>
           </div>
 
-          <div className="flex-1 min-h-[400px]">
+          <div className="flex-1 min-h-100">
             <AdaptiveLineChart />
           </div>
-        </div>
+        </ParticleCard>
       </div>
     </section>
   );

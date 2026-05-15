@@ -122,7 +122,7 @@ export default function DocumentsPage() {
           <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Knowledge Base</p>
           <h1 className="text-[22px] font-bold text-white">Documents</h1>
           <p className="text-[13px] text-secondary-text mt-0.5">
-            {allDocs.length} documents · {totalWords.toLocaleString()} words indexed
+            {allDocs.length} documents 
           </p>
         </div>
         <button
@@ -228,9 +228,6 @@ export default function DocumentsPage() {
       <div className="flex items-center justify-between mt-4 px-1">
         <p className="text-[11px] text-[#444]">
           Showing {filtered.length} of {allDocs.length} documents
-        </p>
-        <p className="text-[11px] text-[#444]">
-          {totalChunks.toLocaleString()} chunks · {totalWords.toLocaleString()} words indexed
         </p>
       </div>
 

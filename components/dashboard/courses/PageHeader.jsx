@@ -24,10 +24,6 @@ export default function PageHeader({ published, onPublish }) {
           <div className={`w-1.5 h-1.5 rounded-full ${published ? "bg-[#4ADE80]" : "bg-[#FBBF24]"}`} />
           <span className="text-[11px] text-[#888]">{published ? "Published" : "Draft"}</span>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-[#171717] text-white text-[12px] font-medium rounded-xl hover:bg-[#1c1c1c] transition-all">
-          <RiSaveLine className="text-[14px]" />
-          Save Draft
-        </button>
         <button
           onClick={onPublish}
           className="flex items-center gap-2 px-4 py-2 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all"

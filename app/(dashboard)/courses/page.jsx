@@ -193,15 +193,15 @@ export default function CoursesPage() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-5 gap-3 mb-6">
         {[
           { label: "Total Courses",   value: courses.length,                       color: "text-white"     },
           { label: "Docs Indexed",    value: courses.reduce((a,c)=>a+c.docs,0),    color: "text-white"     },
-          { label: "Total Words",     value: totalWords.toLocaleString(),           color: "text-white"     },
+          // { label: "Total Words",     value: totalWords.toLocaleString(),           color: "text-white"     },
           { label: "Avg Mastery",     value: `${avgMastery}%`,                     color: "text-brand" },
         ].map(({ label, value, color }) => (
-          <div key={label} className="bg-card-dark hover:bg-white/6 rounded-xl px-4 py-3">
-            <p className={`text-[18px] font-bold ${color}`}>{value}</p>
+          <div key={label} className="bg-card-dark hover:bg-white/6 rounded-xl px-4 py-5">
+            <p className={`text-[2em] font-bold ${color}`}>{value}</p>
             <p className="text-[10px] text-secondary-text mt-0.5">{label}</p>
           </div>
         ))}

@@ -1,4 +1,6 @@
 import Link from "next/link"
+import FullRadar   from "@/components/charts/full/FullRadar"
+
 import {
   RiArrowRightSLine,
   RiAlertFill,
@@ -91,8 +93,30 @@ export default function WeaknessSection() {
         </div>
       </div>
 
+ {/* Radar */}
+      <Link
+        href="/dashboard/analytics"
+        className="col-span-4 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
+      >
+        <div className="flex items-center justify-between mb-1">
+          <div>
+            <p className="text-[14px] font-medium text-white/70">Performance</p>
+            <p className="text-[11px] text-[#666] mt-0.5">6 dimension overview</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] text-secondary-text">Overall Score</p>
+            <p className="text-[20px] font-black text-brand leading-none mt-0.5">
+              73<span className="text-[12px] text-secondary-text font-normal">/100</span>
+            </p>
+          </div>
+        </div>
+        <div className="flex-1 min-h-[200px]">
+          <FullRadar />
+        </div>
+      </Link>
+
       {/* AI Insight */}
-      <div className="col-span-4 bg-[#171717] rounded-2xl p-5 flex flex-col gap-4">
+      <div className="col-span-4 hidden bg-[#171717] rounded-2xl p-5 flex flex-col gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <RiSparklingLine className="text-brand text-[16px]  " />

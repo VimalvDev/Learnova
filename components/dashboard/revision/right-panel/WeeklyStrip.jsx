@@ -24,7 +24,7 @@ const countColor = (d) => {
 
 export default function WeeklyStrip() {
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] p-4">
+    <div className="bg-card-dark rounded-2xl p-4">
       <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-3">
         This Week
       </p>

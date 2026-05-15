@@ -13,7 +13,7 @@ export default function QuizResults({ onRestart }) {
         <div className="flex flex-col gap-5">
           <ConceptBreakdown />
           <MistakeReview />
-          <AdaptiveReport />
+          {/* <AdaptiveReport /> */}
           <MasteryDelta />
         </div>
         <div>

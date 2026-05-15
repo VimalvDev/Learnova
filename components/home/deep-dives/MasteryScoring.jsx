@@ -1,14 +1,42 @@
+"use client"
 // components/home/deep-dives/MasteryScoring.jsx
+import { useRef } from "react"
 import MasteryBarChart from "@/components/charts/showcase/MasteryBarChart";
 import Heading from "@/components/common/Heading";
 import SectionHeader from "@/components/common/SectionHeader";
+import {
+  ParticleCard,
+  GlobalSpotlight,
+  BentoGlowStyles,
+} from "@/components/home/features/MagicBentoEffects"
+
+const GLOW = "250, 110, 67"
 
 export default function MasteryScoring() {
+  const sectionRef = useRef(null)
+
+  const particleProps = {
+    glowColor: GLOW,
+    particleCount: 8,
+    enableTilt: false,
+    enableMagnetism: false,
+    clickEffect: true,
+    style: {},
+  }
+
   return (
     <section
+      ref={sectionRef}
       id="mastery-scoring"
       className="pt-[4em] pb-[10em] md:px-[4vw] bg-card-dark relative overflow-hidden"
     >
+      <BentoGlowStyles glowColor={GLOW} />
+      <GlobalSpotlight
+        sectionRef={sectionRef}
+        glowColor={GLOW}
+        spotlightRadius={600}
+      />
+
       <Heading text="mastery scoring" />
       <SectionHeader
         num="003"
@@ -20,7 +48,11 @@ export default function MasteryScoring() {
         {/* Left — insight card-darks */}
         <div className="md:col-span-4 flex flex-col gap-[1em]">
           {/* Formula card-dark */}
-          <div className="bg-card-dark rounded-xl p-[.5em]">
+          <ParticleCard
+            key="formula"
+            {...particleProps}
+            className="card card--border-glow bg-card-dark rounded-xl p-[.5em] overflow-hidden relative"
+          >
             <span className="text-[11px] font-bold uppercase tracking-widest text-brand block mb-3">
               Scoring Formula
             </span>
@@ -49,7 +81,7 @@ export default function MasteryScoring() {
                 <span className="text-white"> × 0.15</span>)
               </div>
             </div>
-          </div>
+          </ParticleCard>
 
           {/* Signal card-darks */}
           {[
@@ -78,9 +110,10 @@ export default function MasteryScoring() {
               color: "#FBBF24",
             },
           ].map(({ label, value, desc, color }) => (
-            <div
+            <ParticleCard
               key={label}
-              className="bg-card-dark rounded-xl p-[.5em] flex items-start gap-4"
+              {...particleProps}
+              className="card card--border-glow bg-card-dark rounded-xl p-[.5em] flex items-start gap-4 overflow-hidden relative"
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center   text-[11px] font-black"
@@ -94,12 +127,16 @@ export default function MasteryScoring() {
                   {desc}
                 </p>
               </div>
-            </div>
+            </ParticleCard>
           ))}
         </div>
 
         {/* Right — full bar chart */}
-        <div className="md:col-span-8 bg-card rounded-xl p-[1.8em] flex flex-col gap-4">
+        <ParticleCard
+          key="barchart"
+          {...particleProps}
+          className="card card--border-glow md:col-span-8 bg-card rounded-xl p-[1.8em] flex flex-col gap-4 overflow-hidden relative"
+        >
           <div className="flex items-start justify-between">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-widest text-brand">
@@ -136,10 +173,10 @@ export default function MasteryScoring() {
             ))}
           </div>
 
-          <div className="flex-1 min-h-[400px]">
+          <div className="flex-1 min-h-100">
             <MasteryBarChart />
           </div>
-        </div>
+        </ParticleCard>
       </div>
     </section>
   );

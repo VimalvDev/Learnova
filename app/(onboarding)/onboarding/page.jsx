@@ -4,7 +4,6 @@ import StepWelcome    from "@/components/onboarding/StepWelcome"
 import StepFocus      from "@/components/onboarding/StepFocus"
 import StepTimeline   from "@/components/onboarding/StepTimeline"
 import StepConfidence from "@/components/onboarding/StepConfidence"
-import StepFeatures   from "@/components/onboarding/StepFeatures"
 import StepCourse     from "@/components/onboarding/StepCourse"
 import StepProcessing from "@/components/onboarding/StepProcessing"
 import StepComplete   from "@/components/onboarding/StepComplete"
@@ -14,32 +13,22 @@ const stepMeta = [
   { num: 2, label: "First Course",     desc: "Upload your material"        },
   { num: 3, label: "Confidence Level", desc: "Your starting difficulty"    },
   { num: 4, label: "Study Timeline",   desc: "Target date and daily hours" },
-  { num: 5, label: "Intelligence",     desc: "Adaptive engine settings"    },
-  { num: 6, label: "Processing",       desc: "System configuration"        },
+  { num: 5, label: "Processing",       desc: "System configuration"        },
 ]
 
 export default function OnboardingPage() {
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState({
-    primarySubject:     "",
-    additionalSubjects: [],
-    academicLevel:      "",
-    studyingFor:        "",
-    targetDate:         "",
-    dailyHours:         2,
-    studyFrom:          "09:00",
-    studyTo:            "11:00",
-    confidenceLevel:    "",
-    features: {
-      adaptiveDifficulty: true,
-      weaknessPriority:   true,
-      spacedRepetition:   true,
-      confidenceScore:    true,
-      prerequisiteOrder:  true,
-    },
-    courseName:   "",
-    unitName:     "",
-    uploadedFile: null,
+    primarySubject:       "",
+    academicLevel:        "",
+    studyingFor:          "",
+    additionalSubjects:   [], // fix: StepFocus uses this
+    targetDate:           "",
+    dailyHours:           2,
+    confidenceLevel:      "",
+    courseName:           "",
+    unitName:             "",
+    uploadedFile:         null,
   })
 
   const update = (field, value) =>
@@ -48,18 +37,21 @@ export default function OnboardingPage() {
   const next = () => setStep((s) => s + 1)
   const back = () => setStep((s) => s - 1)
 
+  // Step 0 — Welcome (full screen, no sidebar)
   if (step === 0) return <StepWelcome onNext={next} />
-  if (step === 7) return <StepComplete formData={formData} />
+
+  // Step 6 — Complete (full screen, no sidebar)
+  if (step === 6) return <StepComplete formData={formData} />
 
   const progress = Math.round(((step - 1) / 5) * 100)
+  const isProcessing = step === 5
 
   return (
     <div className="flex min-h-screen bg-[#161719] text-white">
 
-      {/* ── SIDEBAR — fixed, never scrolls ── */}
+      {/* SIDEBAR */}
       <aside className="hidden lg:flex fixed top-0 left-0 w-[22vw] h-screen z-40 flex-col bg-[#111214] border-r border-white/5">
 
-        {/* Logo */}
         <div className="flex items-center gap-3 px-6 py-5 border-b border-white/5 shrink-0">
           <div className="w-8 h-8 bg-brand rounded-xl flex items-center justify-center shrink-0">
             <svg viewBox="0 0 10 10" fill="none" className="w-4 h-4">
@@ -74,7 +66,6 @@ export default function OnboardingPage() {
           </div>
         </div>
 
-        {/* Step list — scrollable */}
         <div className="flex-1 overflow-y-auto px-5 py-6">
           <p className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-brand/60 mb-5">
             Setup Progress
@@ -86,11 +77,9 @@ export default function OnboardingPage() {
               <div key={num} className="flex gap-4">
                 <div className="flex flex-col items-center shrink-0">
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                    done
-                      ? "bg-brand text-white"
-                      : active
-                      ? "bg-brand/15 text-brand ring-1 ring-brand"
-                      : "bg-white/[0.04] text-[#3a3b3f]"
+                    done   ? "bg-brand text-white" :
+                    active ? "bg-brand/15 text-brand ring-1 ring-brand" :
+                             "bg-white/[0.04] text-[#3a3b3f]"
                   }`}>
                     {done ? (
                       <svg viewBox="0 0 12 12" fill="none" className="w-3 h-3">
@@ -98,22 +87,18 @@ export default function OnboardingPage() {
                       </svg>
                     ) : num}
                   </div>
-                  {num < 6 && (
+                  {num < 5 && (
                     <div className={`w-px flex-1 my-1 min-h-[2rem] ${done ? "bg-brand" : "bg-white/[0.06]"}`} />
                   )}
                 </div>
 
-                <div className={`pt-0.5 flex-1 ${num < 6 ? "pb-6" : "pb-0"}`}>
+                <div className={`pt-0.5 flex-1 ${num < 5 ? "pb-6" : "pb-0"}`}>
                   <p className={`text-sm font-medium transition-colors ${
                     active ? "text-white" : done ? "text-[#888]" : "text-[#3a3b3f]"
-                  }`}>
-                    {label}
-                  </p>
+                  }`}>{label}</p>
                   <p className={`text-xs mt-0.5 transition-colors ${
                     active ? "text-[#888891]" : "text-[#2a2b2f]"
-                  }`}>
-                    {desc}
-                  </p>
+                  }`}>{desc}</p>
                   {done && num === 1 && formData.primarySubject && (
                     <p className="text-[0.65rem] text-brand font-semibold mt-1 truncate">{formData.primarySubject}</p>
                   )}
@@ -132,10 +117,9 @@ export default function OnboardingPage() {
           })}
         </div>
 
-        {/* Progress bar — always visible */}
         <div className="px-5 py-5 border-t border-white/5 shrink-0">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-[#444]">Step {step} of 6</span>
+            <span className="text-xs text-[#444]">Step {step} of 5</span>
             <span className="text-xs font-bold text-brand">{progress}%</span>
           </div>
           <div className="h-1 bg-white/6 rounded-full overflow-hidden">
@@ -146,16 +130,13 @@ export default function OnboardingPage() {
           </div>
           <p className="text-[0.6rem] text-[#2a2b2f] mt-2">Settings are saved automatically</p>
         </div>
-
       </aside>
 
-      {/* ── MAIN — offset by sidebar, flex column ── */}
+      {/* MAIN */}
       <div className="flex-1 flex flex-col lg:ml-[22vw]">
 
-        {/* HEADER — sticky, never scrolls away ── */}
+        {/* HEADER */}
         <header className="sticky top-0 z-30 flex items-center justify-between px-8 lg:px-12 h-14 border-b border-white/5 bg-[#161719] shrink-0">
-
-          {/* Mobile: logo + pill */}
           <div className="flex items-center gap-3 lg:hidden">
             <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center">
               <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
@@ -165,78 +146,80 @@ export default function OnboardingPage() {
             <span className="text-sm font-bold">Learnova</span>
             <div className="flex items-center gap-1.5 ml-2">
               {stepMeta.map(({ num }) => (
-                <div
-                  key={num}
-                  className={`rounded-full h-[5px] transition-all duration-300 ${
-                    num <= step ? "bg-brand" : "bg-white/10"
-                  } ${num === step ? "w-[18px]" : "w-[5px]"}`}
-                />
+                <div key={num} className={`rounded-full h-[5px] transition-all duration-300 ${
+                  num <= step ? "bg-brand" : "bg-white/10"
+                } ${num === step ? "w-[18px]" : "w-[5px]"}`} />
               ))}
             </div>
           </div>
 
-          {/* Desktop: step label */}
+          {/* fix: guard against undefined */}
           <div className="hidden lg:flex items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-widest text-brand/60">
-              Step {step} of 6
+              Step {step} of 5
             </span>
             <span className="text-tertiary-text text-xs">—</span>
-            <span className="text-xs text-[#888891]">{stepMeta[step - 1].label}</span>
+            <span className="text-xs text-[#888891]">
+              {stepMeta[step - 1]?.label ?? ""}
+            </span>
           </div>
 
-          <button
-            onClick={() => setStep(7)}
-            className="text-xs text-[#444] hover:text-white transition-colors ml-auto lg:ml-0"
-          >
-            Skip setup →
-          </button>
+          {/* Hide skip during processing */}
+          {!isProcessing && (
+            <button
+              onClick={() => setStep(6)}
+              className="text-xs text-[#444] hover:text-white transition-colors ml-auto lg:ml-0"
+            >
+              Skip setup →
+            </button>
+          )}
         </header>
 
-        {/* CONTENT — this is the only scrolling zone ── */}
+        {/* CONTENT */}
         <main className="flex-1 overflow-y-auto px-8 lg:px-16 xl:px-24 py-10 pb-32">
           <div className="max-w-2xl">
             {step === 1 && <StepFocus      formData={formData} update={update} onNext={next} onBack={back} />}
             {step === 2 && <StepCourse     formData={formData} update={update} onNext={next} onBack={back} />}
             {step === 3 && <StepConfidence formData={formData} update={update} onNext={next} onBack={back} />}
             {step === 4 && <StepTimeline   formData={formData} update={update} onNext={next} onBack={back} />}
-            {step === 5 && <StepFeatures   formData={formData} update={update} onNext={next} onBack={back} />}
-            {step === 6 && (
+            {step === 5 && (
               <StepProcessing
-                formData={formData} update={update}
-                onNext={next} onBack={back}
-                onComplete={() => setStep(7)}
+                formData={formData}
+                update={update}
+                onNext={next}
+                onBack={back}
+                onComplete={() => setStep(6)}
               />
             )}
           </div>
         </main>
 
-        {/* FOOTER — sticky bottom, never scrolls away ── */}
-        <footer className="sticky bottom-0 z-30 flex items-center justify-between px-8 lg:px-12 h-[4.5rem] border-t border-white/5 bg-[#161719] shrink-0">
+        {/* FOOTER — hide during processing */}
+        {!isProcessing && (
+          <footer className="sticky bottom-0 z-30 flex items-center justify-between px-8 lg:px-12 h-[4.5rem] border-t border-white/5 bg-[#161719] shrink-0">
+            {step > 1 ? (
+              <button
+                onClick={back}
+                className="flex items-center gap-2 text-sm text-secondary-text hover:text-white transition-colors"
+              >
+                <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
+                  <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                Back
+              </button>
+            ) : <div />}
 
-          {/* Back — always left */}
-          {step > 1 ? (
             <button
-              onClick={back}
-              className="flex items-center gap-2 text-sm text-secondary-text hover:text-white transition-colors"
+              onClick={next}
+              className="flex items-center gap-2 px-8 py-2.5 bg-brand text-white text-sm font-bold rounded-xl hover:brightness-110 transition-all"
             >
+              Continue
               <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-                <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
-              Back
             </button>
-          ) : <div />}
-
-          {/* Continue — always right */}
-          <button
-            onClick={next}
-            className="flex items-center gap-2 px-8 py-2.5 bg-brand text-white text-sm font-bold rounded-xl hover:brightness-110 transition-all"
-          >
-            {step === 6 ? "Complete Setup" : "Continue"}
-            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </button>
-        </footer>
+          </footer>
+        )}
 
       </div>
     </div>

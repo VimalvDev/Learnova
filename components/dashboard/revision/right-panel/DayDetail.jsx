@@ -27,13 +27,13 @@ export default function DayDetail() {
   const [addOpen, setAddOpen] = useState(false)
 
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] p-4">
+    <div className="bg-card-dark rounded-2xl p-4">
       <div className="flex items-center justify-between mb-3">
         <span className="text-[13px] font-semibold text-white">Tuesday, Feb 24</span>
         <span className="text-[11px] text-[--color-secondary-text]">4 items</span>
       </div>
 
-      <div className="flex flex-col divide-y divide-white/[0.04]">
+      <div className="flex flex-col">
         {dayItems.map((item) => (
           <div key={item.name} className="flex items-center gap-3 py-2.5">
             <div className={`w-2 h-2 rounded-full   ${dot[item.type]}`} />
@@ -56,22 +56,22 @@ export default function DayDetail() {
       {/* Add manual revision */}
       <button
         onClick={() => setAddOpen(!addOpen)}
-        className="mt-3 w-full flex items-center justify-center gap-2 py-2.5 border border-dashed border-[--color-brand]/25 rounded-xl text-[11px] text-[--color-brand] hover:border-[--color-brand]/50 transition-all"
+        className="mt-3 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-[11px] text-[--color-brand] hover:bg-white/[0.04] transition-all"
       >
         <RiAddLine className="text-[13px]" /> Add Revision for This Day
       </button>
 
       {addOpen && (
-        <div className="mt-3 bg-[--color-card-dark] rounded-xl border border-white/[0.06] p-3.5 flex flex-col gap-2.5">
+        <div className="mt-3 bg-[--color-card-dark] rounded-xl p-3.5 flex flex-col gap-2.5">
           <input
             placeholder="Search concepts..."
-            className="w-full h-8 px-3 bg-[--color-card-mid-dark] text-[12px] text-white placeholder:text-[--color-dark-gray] rounded-lg border border-white/[0.06] outline-none focus:border-[--color-brand]/40 transition-colors"
+            className="w-full h-8 px-3 bg-[--color-card-mid-dark] text-[12px] text-white placeholder:text-[--color-dark-gray] rounded-lg outline-none focus:border-[--color-brand]/40 transition-colors"
           />
           <div className="grid grid-cols-2 gap-2">
-            <button className="flex items-center justify-between h-8 px-3 bg-[--color-card-mid-dark] text-[12px] text-white rounded-lg border border-white/[0.06]">
+            <button className="flex items-center justify-between h-8 px-3 bg-[--color-card-mid-dark] text-[12px] text-white rounded-lg">
               3:00 PM <RiArrowDownSLine className="text-[--color-dark-gray] text-[12px]" />
             </button>
-            <button className="flex items-center justify-between h-8 px-3 bg-[--color-card-mid-dark] text-[12px] text-white rounded-lg border border-white/[0.06]">
+            <button className="flex items-center justify-between h-8 px-3 bg-[--color-card-mid-dark] text-[12px] text-white rounded-lg">
               High <RiArrowDownSLine className="text-[--color-dark-gray] text-[12px]" />
             </button>
           </div>

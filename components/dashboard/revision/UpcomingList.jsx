@@ -98,8 +98,8 @@ export default function UpcomingList() {
   const [collapsed, setCollapsed] = useState({ "Next Week": true })
 
   return (
-    <div className="bg-card-dark rounded-2xl border border-white/[0.04] overflow-hidden">
-      <div className="px-6 py-5 border-b border-white/[0.06]">
+    <div className="bg-card-dark rounded-2xl overflow-hidden">
+      <div className="px-6 py-5">
         <div className="flex items-start justify-between flex-wrap gap-3">
           <div>
             <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-1">
@@ -107,7 +107,7 @@ export default function UpcomingList() {
             </p>
             <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white">Revision Queue</h2>
           </div>
-          <div className="flex items-center gap-1 p-1 bg-[--color-card-dark] rounded-xl border border-white/[0.06]">
+          <div className="flex items-center gap-1 p-1 bg-[--color-card-dark] rounded-xl">
             {tabs.map((t) => (
               <button
                 key={t}
@@ -139,7 +139,7 @@ export default function UpcomingList() {
       </div>
 
       {/* Table header */}
-      <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-2 px-5 py-2.5 bg-[--color-card-dark] border-b border-white/[0.04]">
+      <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-2 px-5 py-2.5 bg-[--color-card-dark]">
         {["Concept", "Course", "Priority", "Due Date", "Mastery", "Actions"].map((h) => (
           <span key={h} className="text-[9px] font-bold uppercase tracking-widest text-[--color-dark-gray]">{h}</span>
         ))}

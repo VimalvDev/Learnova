@@ -4,11 +4,7 @@ const options = [
     label: "Prioritize Previously Incorrect Topics",
     desc:  "Focus quiz on concepts you've gotten wrong before",
   },
-  {
-    key:   "includePrerequisites",
-    label: "Include Prerequisite Concepts",
-    desc:  "Surface foundational gaps before advanced topics",
-  },
+ 
   {
     key:   "explanationMode",
     label: "Explanation Mode After Each Question",
