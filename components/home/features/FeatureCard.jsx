@@ -12,7 +12,7 @@ export default function FeatureCard({
 }) {
   return (
     <ParticleCard
-      className={`${colSpan} card card--border-glow bg-card rounded-xl overflow-hidden relative flex flex-col ${minHeight}`}
+      className={`${colSpan} card card--border-glow bg-card rounded-xl relative flex flex-col ${minHeight}`}
       glowColor={glowColor}
       particleCount={8}
       enableTilt={false}

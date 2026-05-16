@@ -59,7 +59,7 @@ export default function MiniCalendar() {
         yearSpacing={0}
         monthBorderWidth={0}
         dayBorderWidth={2}
-        dayBorderColor="var(--color-card)"
+        dayBorderColor="#0f0f0f"
         tooltip={({ day, value }) => (
           <div className="bg-card border border-white/[0.08] rounded-lg px-3 py-1.5 text-[11px] text-white">
             {day}:{" "}

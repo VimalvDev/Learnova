@@ -60,7 +60,7 @@ export default function MiniHeatmap() {
       maxValue={100}
       borderRadius={6}
       borderWidth={3}
-      borderColor="#212225"
+      borderColor="var(--color-card-dark)"
      colors={{
   type: "sequential",
   colors: [

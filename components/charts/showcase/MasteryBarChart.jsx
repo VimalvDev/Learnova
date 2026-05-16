@@ -1,26 +1,41 @@
-"use client";
-import { ResponsiveBar } from "@nivo/bar";
-import nivoTheme from "@/lib/nivo";
+"use client"
+import { ResponsiveBar } from "@nivo/bar"
 
 const data = [
-  { topic: "SQL", mastery: 80 },
-  { topic: "Python", mastery: 60 },
-  { topic: "Java", mastery: 45 },
+  { topic: "SQL",        mastery: 80 },
+  { topic: "Python",     mastery: 60 },
+  { topic: "Java",       mastery: 45 },
   { topic: "Networking", mastery: 91 },
-  { topic: "Postgres", mastery: 20 },
+  { topic: "Postgres",   mastery: 20 },
   { topic: "Algorithms", mastery: 55 },
-];
+]
 
-export default function TopicBarChart() {
+const theme = {
+  background: "transparent",
+  text: { fontSize: 10, fill: "rgba(255,255,255,0.25)", fontFamily: "monospace" },
+  axis: {
+    ticks: { text: { fontSize: 10, fill: "rgba(255,255,255,0.25)", fontFamily: "monospace" } },
+  },
+  grid: { line: { stroke: "rgba(255,255,255,0.04)", strokeWidth: 1 } },
+}
+
+function masteryColor(v) {
+  if (v >= 75) return "rgba(232,80,10,1)"
+  if (v >= 50) return "rgba(232,80,10,0.6)"
+  if (v >= 25) return "rgba(232,80,10,0.3)"
+  return "rgba(232,80,10,0.12)"
+}
+
+export default function MasteryBarChart() {
   return (
     <ResponsiveBar
       data={data}
       keys={["mastery"]}
       indexBy="topic"
-      theme={nivoTheme}
+      theme={theme}
       layout="vertical"
       maxValue={100}
-      colors={(bar) => {
+ colors={(bar) => {
         const v = bar.data.mastery;
 
         if (v >= 75) return "var(--color-brand)";
@@ -30,10 +45,9 @@ export default function TopicBarChart() {
           return "color-mix(in srgb, var(--color-brand) 35%, transparent)";
 
         return "color-mix(in srgb, var(--color-brand) 15%, transparent)";
-      }}
-      margin={{ top: 8, right: 8, bottom: 36, left: 32 }}
-      padding={0.15}
-      borderRadius={6}
+      }}      margin={{ top: 8, right: 8, bottom: 36, left: 36 }}
+      padding={0.2}
+      borderRadius={2}
       label={(d) => `${d.value}%`}
       labelTextColor="rgba(255,255,255,0.8)"
       labelSkipHeight={20}
@@ -63,8 +77,8 @@ export default function TopicBarChart() {
               y={0}
               width={bar.width}
               height={bar.y + bar.height}
-              fill="var(--color-card-mid)"
-              rx={14}
+              fill="rgba(255,255,255,0.03)"
+              rx={2}
             />
           )),
         "bars",
@@ -74,20 +88,22 @@ export default function TopicBarChart() {
       tooltip={({ data, value }) => (
         <div
           style={{
-            background: "#212225",
-            borderRadius: "8px",
+            background: "#0f0f0f",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "2px",
             padding: "6px 10px",
-            fontSize: "11px",
-            color: "#fff",
+            fontSize: "10px",
+            fontFamily: "monospace",
+            color: "rgba(255,255,255,0.5)",
             whiteSpace: "nowrap",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
           }}
         >
           {data.topic}:{" "}
-          <span style={{ color: "var(--color-brand)", fontWeight: 600 }}>
-            {value}%
-          </span>
+          <span style={{ color: "#E8500A" }}>{value}%</span>
         </div>
       )}
     />
-  );
+  )
 }

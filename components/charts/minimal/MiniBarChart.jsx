@@ -38,7 +38,7 @@ export default function MiniBarChart() {
               y={0}
               width={bar.width}
               height={bar.y + bar.height}
-              fill="var(--color-card-mid)"
+              fill="var(--color-card-dark)"
               rx={14}
             />
           )),
