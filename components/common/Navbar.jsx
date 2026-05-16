@@ -160,12 +160,7 @@ export default function Navbar() {
             >
               Log In
             </Link> */}
-            <Link
-              href="/login"
-              className="bg-brand text-white px-5 py-2.5 rounded-xl text-[13px] font-bold hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150"
-            >
-              Login now
-            </Link>
+          
           </div>
 
           {/* Mobile hamburger */}

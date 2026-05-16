@@ -34,11 +34,53 @@
   --font-inter: var(--font-inter);
   --font-bebas: var(--font-bebas);
   --font-manrope: var(--font-manrope);
+  --font-space: "Space", monospace;
+  --font-mono: "MonoRegular", monospace;
+  --font-oswald: "Oswald", sans-serif;
+
+
+  --animate-ticker: ticker 30s linear infinite;
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-VariableFont.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "Bebas";
+  src: url("/fonts/BebasNeue-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space";
+  src: url("/fonts/SpaceGrotesk-VariableFont.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mono";
+  src: url("/fonts/SplineSansMono-VariableFont.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moho";
+  src: url("/fonts/moho-ot-condensed-bold.woff") format("woff2") ;
+    font-display: swap;
+
+}
 /* Global styles */
 body {
-
   color:#f4f3f6 ;
   font-family: var(--font-manrope), sans-serif;
 

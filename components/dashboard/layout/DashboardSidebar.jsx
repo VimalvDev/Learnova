@@ -51,17 +51,11 @@ const navSections = [
     items: [
       { icon: RiSettingsLine,     label: "Settings",       href: "/settings"       },
     ],
-  },
-  {
-    label: "Admin",
-    items: [
-      { icon: RiAdminLine,        label: "Admin Panel",    href: "/admin"          },
-    ],
-  },
+  }
 ]
 
 // ── SHARED NAV CONTENT ────────────────────────────────────
-function SidebarContent({ pathname, onClose }) {
+function SidebarContent({ pathname, onClose, isAdmin }) {
   // Extract courseId from pathname if viewing a course
   const courseMatch = pathname.match(/\/courses\/(\d+)/)
   const courseId = courseMatch ? courseMatch[1] : null
@@ -168,6 +162,31 @@ function SidebarContent({ pathname, onClose }) {
             })}
           </div>
         ))}
+{isAdmin && (
+  <div className="mb-4">
+    <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] px-2 mb-1">
+      Admin
+    </p>
+    <Link
+      href="/admin"
+      onClick={onClose ?? undefined}
+      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-150 group ${
+        pathname === "/admin" || pathname.startsWith("/admin/")
+          ? "bg-brand/15 text-white"
+          : "text-secondary-text hover:text-white hover:bg-white/[0.04]"
+      }`}
+    >
+      <RiAdminLine className={`text-[16px] transition-colors ${
+        pathname === "/admin" || pathname.startsWith("/admin/") ? "text-brand" : "group-hover:text-white"
+      }`} />
+      <span className="text-[13px] font-medium flex-1">Admin Panel</span>
+      {(pathname === "/admin" || pathname.startsWith("/admin/")) && (
+        <RiArrowRightSLine className="text-brand text-[14px]" />
+      )}
+    </Link>
+  </div>
+)}
+
       </nav>
 
       {/* Storage + Upload */}
@@ -194,19 +213,19 @@ function SidebarContent({ pathname, onClose }) {
 }
 
 // ── DESKTOP SIDEBAR ───────────────────────────────────────
-export function DashboardSidebar() {
+export function DashboardSidebar({isAdmin}) {
   const pathname = usePathname()
 
   return (
    <aside className="hidden lg:flex w-[300px]   flex-col h-screen sticky top-0 z-40 bg-dark">
 
-      <SidebarContent pathname={pathname} onClose={null} />
+      <SidebarContent pathname={pathname} onClose={null} isAdmin={isAdmin} />
     </aside>
   )
 }
 
 // ── MOBILE NAV ────────────────────────────────────────────
-export function DashboardMobileNav() {
+export function DashboardMobileNav({isAdmin}) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -290,7 +309,7 @@ export function DashboardMobileNav() {
             className="absolute left-0 top-0 h-full w-[270px] bg-dark flex flex-col shadow-2xl transition-transform duration-300 ease-out"
             style={{ transform: visible ? "translateX(0)" : "translateX(-100%)" }}
           >
-            <SidebarContent pathname={pathname} onClose={handleClose} />
+            <SidebarContent pathname={pathname} onClose={handleClose} isAdmin={isAdmin} />
           </div>
 
         </div>
@@ -300,11 +319,11 @@ export function DashboardMobileNav() {
 }
 
 // ── DEFAULT EXPORT (combined — used by layout) ────────────
-export default function DashboardSidebarWrapper() {
+export default function DashboardSidebarWrapper({isAdmin}) {
   return (
     <>
-      <DashboardSidebar />
-      <DashboardMobileNav />
+      <DashboardSidebar isAdmin={isAdmin} />
+      <DashboardMobileNav isAdmin={isAdmin} />
     </>
   )
 }

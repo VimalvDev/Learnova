@@ -64,7 +64,7 @@ export default function HeroBackground({ children }) {
           height="clamp(80px, 15vw, 20rem)"
           rotate={10}
           gradient="from-brand/10"
-          className="left-[-25%] top-[5%] sm:left-[-15%] sm:top-[30%]"
+          className="left-[-25%] top-[30%] sm:left-[-15%] sm:top-[30%]"
         />
 
         
@@ -80,11 +80,11 @@ export default function HeroBackground({ children }) {
 
         <FloatingShape
           delay={0.6}
-          width="clamp(140px, 28vw, 260px)"
-          height="clamp(40px, 8vw, 80px)"
+          width="clamp(150px, 29vw, 260px)"
+          height="clamp(50px, 9vw, 80px)"
           rotate={22}
           gradient="from-brand/10"
-          className="right-[5%] top-[3%] sm:right-[20%] sm:top-[6%]"
+          className="right-[-10%] top-[13%] sm:right-[20%] sm:top-[6%]"
         />
 
         <FloatingShape
