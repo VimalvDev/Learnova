@@ -1,22 +1,55 @@
 "use client"
 import { useState } from "react"
+import { createClient } from "@/utils/supabase/client"
 
 const categories = [
   "Computer Science", "Mathematics", "Physics",
   "Engineering", "Medicine", "Law", "Business", "Languages", "Custom...",
 ]
-
 const durations = ["1 Week", "2 Weeks", "1 Month", "3 Months", "Custom"]
 
-export default function CourseInfoCard() {
-  const [name,        setName]       = useState("Database Management Systems — Semester 4")
-  const [category,    setCategory]   = useState("Computer Science")
-  const [level,       setLevel]      = useState("Intermediate")
-  const [description, setDesc]       = useState("")
-  const [goal,        setGoal]       = useState("Final Semester Exam")
-  const [duration,    setDuration]   = useState("3 Months")
-  const [catOpen,     setCatOpen]    = useState(false)
-  const [durOpen,     setDurOpen]    = useState(false)
+export default function CourseInfoCard({ onSaved, saving, setSaving }) {
+  const [name,        setName]     = useState("")
+  const [category,    setCategory] = useState("Computer Science")
+  const [level,       setLevel]    = useState("Intermediate")
+  const [description, setDesc]     = useState("")
+  const [goal,        setGoal]     = useState("")
+  const [duration,    setDuration] = useState("3 Months")
+  const [catOpen,     setCatOpen]  = useState(false)
+  const [durOpen,     setDurOpen]  = useState(false)
+  const [saved,       setSaved]    = useState(false)
+  const [error,       setError]    = useState(null)
+  const supabase = createClient()
+
+  async function handleSave() {
+    if (!name.trim()) { setError("Course name is required."); return }
+    setSaving(true)
+    setError(null)
+
+    const { data: { user } } = await supabase.auth.getUser()
+
+    const { data, error } = await supabase
+      .from("courses")
+      .insert({
+        user_id:            user.id,
+        course_name:        name.trim(),
+        subject_category:   category,
+        difficulty_level:   level.toLowerCase(),
+        description:        description.trim() || null,
+        target_exam:        goal.trim() || null,
+        estimated_duration: duration,
+        status:             "draft",
+      })
+      .select()
+      .single()
+
+    setSaving(false)
+
+    if (error) { setError(error.message); return }
+
+    setSaved(true)
+    onSaved(data.id)
+  }
 
   return (
     <div className="bg-[#171717] rounded-2xl p-6">
@@ -26,13 +59,13 @@ export default function CourseInfoCard() {
         </span>
         <h2 className="text-[17px] font-semibold text-white/90">Course Information</h2>
         <p className="text-[12px] text-[#666] mt-0.5">
-          This defines how Learnova structures and tracks your learning.
+          Fill in course details first, then upload your documents.
         </p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
 
-        {/* Course Name — full width */}
+        {/* Course Name */}
         <div className="col-span-2">
           <div className="flex items-center justify-between mb-1.5">
             <label className="text-[11px] font-medium text-[#888]">Course Name</label>
@@ -42,7 +75,8 @@ export default function CourseInfoCard() {
             value={name}
             onChange={(e) => setName(e.target.value.slice(0, 80))}
             placeholder="e.g. Database Management Systems — Semester 4"
-            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand/40 transition-all"
+            disabled={saved}
+            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand/40 transition-all disabled:opacity-50"
           />
         </div>
 
@@ -50,8 +84,9 @@ export default function CourseInfoCard() {
         <div className="relative">
           <label className="text-[11px] font-medium text-[#888] block mb-1.5">Subject Category</label>
           <button
-            onClick={() => setCatOpen(!catOpen)}
-            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white flex items-center justify-between outline-none focus:ring-1 focus:ring-brand/40 transition-all"
+            onClick={() => !saved && setCatOpen(!catOpen)}
+            disabled={saved}
+            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white flex items-center justify-between outline-none focus:ring-1 focus:ring-brand/40 transition-all disabled:opacity-50"
           >
             <span>{category}</span>
             <span className="text-secondary-text text-[11px]">▾</span>
@@ -81,12 +116,11 @@ export default function CourseInfoCard() {
             {["Beginner", "Intermediate", "Advanced"].map((l) => (
               <button
                 key={l}
-                onClick={() => setLevel(l)}
+                onClick={() => !saved && setLevel(l)}
+                disabled={saved}
                 className={`flex-1 py-2 text-[11px] font-medium rounded-lg transition-all ${
-                  level === l
-                    ? "bg-brand text-white"
-                    : "text-secondary-text hover:text-white"
-                }`}
+                  level === l ? "bg-brand text-white" : "text-secondary-text hover:text-white"
+                } disabled:cursor-not-allowed`}
               >
                 {l}
               </button>
@@ -94,14 +128,12 @@ export default function CourseInfoCard() {
           </div>
         </div>
 
-        {/* Description — full width */}
+        {/* Description */}
         <div className="col-span-2">
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-2">
               <label className="text-[11px] font-medium text-[#888]">Description</label>
-              <span className="text-[9px] text-[#444] bg-white/[0.04] px-1.5 py-0.5 rounded-full">
-                Optional
-              </span>
+              <span className="text-[9px] text-[#444] bg-white/[0.04] px-1.5 py-0.5 rounded-full">Optional</span>
             </div>
             <span className="text-[10px] text-[#444]">{description.length} / 400</span>
           </div>
@@ -110,7 +142,8 @@ export default function CourseInfoCard() {
             onChange={(e) => setDesc(e.target.value.slice(0, 400))}
             placeholder="Describe what this course covers and your learning objectives..."
             rows={3}
-            className="w-full px-3.5 py-3 bg-[#111] rounded-xl text-[13px] text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand/40 transition-all resize-y min-h-[80px]"
+            disabled={saved}
+            className="w-full px-3.5 py-3 bg-[#111] rounded-xl text-[13px] text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand/40 transition-all resize-y min-h-[80px] disabled:opacity-50"
           />
         </div>
 
@@ -121,7 +154,8 @@ export default function CourseInfoCard() {
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
             placeholder="e.g. Final Semester Exam, GRE"
-            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand/40 transition-all"
+            disabled={saved}
+            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand/40 transition-all disabled:opacity-50"
           />
         </div>
 
@@ -129,8 +163,9 @@ export default function CourseInfoCard() {
         <div className="relative">
           <label className="text-[11px] font-medium text-[#888] block mb-1.5">Estimated Duration</label>
           <button
-            onClick={() => setDurOpen(!durOpen)}
-            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white flex items-center justify-between outline-none focus:ring-1 focus:ring-brand/40 transition-all"
+            onClick={() => !saved && setDurOpen(!durOpen)}
+            disabled={saved}
+            className="w-full h-[42px] px-3.5 bg-[#111] rounded-xl text-[13px] text-white flex items-center justify-between outline-none focus:ring-1 focus:ring-brand/40 transition-all disabled:opacity-50"
           >
             <span>{duration}</span>
             <span className="text-secondary-text text-[11px]">▾</span>
@@ -155,18 +190,28 @@ export default function CourseInfoCard() {
 
       </div>
 
-      {/* Footer */}
+      {error && <p className="text-[12px] text-[#F87171] mt-4">{error}</p>}
+
       <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/[0.04]">
         <p className="text-[11px] text-[#444] flex items-center gap-1.5">
           <span className="text-brand">◈</span>
-          Course information can be edited at any time.
+          {saved
+            ? "Course saved. Now upload your documents below."
+            : "Save course info first, then upload documents."}
         </p>
         <div className="flex items-center gap-3">
-          <button className="text-[12px] text-[#666] hover:text-white transition-colors">
+          <button
+            onClick={() => window.history.back()}
+            className="text-[12px] text-[#666] hover:text-white transition-colors"
+          >
             Cancel
           </button>
-          <button className="px-4 py-2 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all">
-            Save Course Information
+          <button
+            onClick={handleSave}
+            disabled={saving || saved}
+            className="px-4 py-2 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {saving ? "Saving..." : saved ? "✓ Saved" : "Save Course Information"}
           </button>
         </div>
       </div>

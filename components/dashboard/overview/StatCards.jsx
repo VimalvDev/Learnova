@@ -1,52 +1,60 @@
 import Link from "next/link"
 import FullMasteryRing from "@/components/charts/full/FullMasteryRing"
 
-const cards = [
-  {
-    label:       "Overall Mastery",
-    href:        "/dashboard/analytics",
-    type:        "ring",
-    ringValue:   84,
-    value:       "84%",
-    change:      "↑ 3% this week",
-    changeColor: "#4ADE80",
-  },
-  {
-    label:        "Concepts Mastered",
-    href:         "/dashboard/analytics",
-    value:        "32",
-    valueColor:   "#fff",
-    change:       "+5",
-    changeColor:  "#4ADE80",
-    sub:          "of 58 total concepts",
-    progress:     55,
-    progressColor:"#FA6E43",
-  },
-  {
-    label:        "Needs Revision",
-    href:         "/dashboard/revision",
-    value:        "6",
-    valueColor:   "#FBBF24",
-    change:       "+2",
-    changeColor:  "#FBBF24",
-    sub:          "concepts flagged",
-    progress:     10,
-    progressColor:"#FBBF24",
-  },
-  {
-    label:        "Critical Weakness",
-    href:         "/dashboard/analytics",
-    value:        "2",
-    valueColor:   "#F87171",
-    change:       "-1",
-    changeColor:  "#4ADE80",
-    sub:          "concepts below 40%",
-    progress:     3,
-    progressColor:"#F87171",
-  },
-]
+export default function StatCards({ stats }) {
+  const {
+    avgMastery    = 0,
+    mastered      = 0,
+    totalConcepts = 0,
+    needsRevision = 0,
+    critical      = 0,
+  } = stats ?? {}
 
-export default function StatCards() {
+  const cards = [
+    {
+      label:       "Overall Mastery",
+      href:        "/analytics",
+      type:        "ring",
+      ringValue:   avgMastery,
+      value:       `${avgMastery}%`,
+      change:      avgMastery > 0 ? "Based on quiz results" : "No quizzes yet",
+      changeColor: "#4ADE80",
+    },
+    {
+      label:        "Concepts Mastered",
+      href:         "/analytics",
+      value:        String(mastered),
+      valueColor:   "#fff",
+      change:       totalConcepts > 0 ? `of ${totalConcepts} total` : "No concepts yet",
+      changeColor:  "#4ADE80",
+      sub:          "concepts mastered",
+      progress:     totalConcepts > 0 ? Math.round((mastered / totalConcepts) * 100) : 0,
+      progressColor:"#FA6E43",
+    },
+    {
+      label:        "Needs Revision",
+      href:         "/revision",
+      value:        String(needsRevision),
+      valueColor:   "#FBBF24",
+      change:       needsRevision > 0 ? "Review soon" : "All caught up",
+      changeColor:  needsRevision > 0 ? "#FBBF24" : "#4ADE80",
+      sub:          "concepts flagged",
+      progress:     totalConcepts > 0 ? Math.round((needsRevision / totalConcepts) * 100) : 0,
+      progressColor:"#FBBF24",
+    },
+    {
+      label:        "Critical Weakness",
+      href:         "/analytics",
+      value:        String(critical),
+      valueColor:   "#F87171",
+      change:       critical > 0 ? "Needs attention" : "Looking good",
+      changeColor:  critical > 0 ? "#F87171" : "#4ADE80",
+      sub:          "concepts below 40%",
+      progress:     totalConcepts > 0 ? Math.round((critical / totalConcepts) * 100) : 0,
+      progressColor:"#F87171",
+    },
+  ]
+
   return (
     <div className="grid grid-cols-4 gap-4">
       {cards.map(({ label, href, type, ringValue, value, valueColor, change, changeColor, sub, progress, progressColor }) => (
@@ -78,11 +86,9 @@ export default function StatCards() {
                 <p className="text-[40px] font-black leading-none" style={{ color: valueColor }}>
                   {value}
                 </p>
-                <p className="text-[13px] font-bold mb-1.5" style={{ color: changeColor }}>
-                  {change}
-                </p>
               </div>
-              <p className="text-[11px] text-secondary-text mt-1">{sub}</p>
+              <p className="text-[11px] font-semibold mt-1" style={{ color: changeColor }}>{change}</p>
+              <p className="text-[11px] text-secondary-text mt-0.5">{sub}</p>
               <div className="mt-3 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"

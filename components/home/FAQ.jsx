@@ -1,10 +1,6 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import UpText from "../animation/UpText";
-import SectionHeader from "../common/SectionHeader";
-import Heading from "../common/Heading";
-import BackgroundPaths from "./hero/BackgroundPaths";
+import { useState } from "react"
 
 const faqs = [
   {
@@ -31,155 +27,119 @@ const faqs = [
     q: "How does spaced repetition scheduling work?",
     a: "After every quiz session, Learnova calculates the optimal next review date for each concept based on your score. Weak concepts resurface sooner. Strong ones give you more breathing room.",
   },
-];
+]
+
+function DotGrid() {
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-50"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <pattern
+          id="dots-faq"
+          x="0" y="0"
+          width="28" height="28"
+          patternUnits="userSpaceOnUse"
+        >
+          <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.06)" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dots-faq)" />
+    </svg>
+  )
+}
 
 export default function FAQ() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(0)
 
   return (
     <section
       id="faq"
-      className="relative py-[8em] px-[3em] overflow-hidden bg-dark"
+      className="relative bg-[#0a0a0a] overflow-hidden px-5 sm:px-8 md:px-12 lg:px-16 pt-20 pb-24"
     >
+      <DotGrid />
 
-      <Heading text="have doubts?" />
+      <div
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(232,80,10,0.08) 0%, transparent 70%)" }}
+      />
 
-      <div className=" relative z-10">
-        {/* Section header */}
-
-        <SectionHeader
-          num="009"
-          heading="Simple answers to help you get started faster."
-          para="Everything you need to know before uploading your first document."
-        />
-
-        {/* FAQ + card-dark grid */}
-        <div className="grid grid-cols-12 gap-6">
-          {/* FAQ list */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col gap-2">
-            {faqs.map((faq, i) => (
-              <div
-                key={i}
-                className={`rounded-2xl border  transition-all duration-300 overflow-hidden ${
-                  open === i
-                    ? "border-brand/25 bg-brand/5"
-                    : "border-white/6 bg-card-dark hover:border-white/10"
-                }`}
-              >
-                <button
-                  onClick={() => setOpen(open === i ? -1 : i)}
-                  className="w-full flex items-center cursor-pointer justify-between gap-4 px-6 py-5 text-left"
-                >
-                  <span
-                    className={`text-base font-semibold transition-colors duration-200 ${open === i ? "text-white" : "text-bleed"}`}
-                  >
-                    {faq.q}
-                  </span>
-                  <div
-                    className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
-                      open === i ? "bg-brand rotate-45" : "bg-white/5"
-                    }`}
-                  >
-                    <svg viewBox="0 0 14 14" fill="none" className="w-3 h-3">
-                      <path
-                        d="M7 2v10M2 7h10"
-                        stroke={open === i ? "#000" : "#888"}
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-                </button>
-
-                <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    open === i ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="px-6 pb-5 text-[14px] text-[#888] leading-relaxed">
-                    {faq.a}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Right card-dark */}
-          <div className="col-span-12 lg:col-span-5 hidden flex flex-col gap-4">
-            {/* Help card-dark */}
-            <div className="self-start bg-card-dark rounded-2xl border border-white/6 p-8 flex flex-col justify-between relative overflow-hidden">
-              {/* Background dots grid */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div
-                  className="w-full h-full"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, rgba(250,110,67,0.15) 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-card-dark/0 via-card-dark/50 to-card-dark" />
-              </div>
-
-              <div className="relative  z-10">
-                <div className="w-10 h-10 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-5">
-                  <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5">
-                    <circle
-                      cx="10"
-                      cy="10"
-                      r="7.5"
-                      stroke="#FA6E43"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M10 7v4M10 13v.5"
-                      stroke="#FA6E43"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <h4 className="text-[18px] font-bold text-white mb-2">
-                  Still have questions?
-                </h4>
-                <p className="text-[13px] text-secondary-text leading-relaxed">
-                  Our support team is here to help you get the most out of
-                  Learnova's adaptive learning system.
-                </p>
-              </div>
-
-              <div className="relative z-10 flex flex-col gap-3 mt-8">
-                <button className="w-full py-3 rounded-xl bg-brand text-black text-[13px] font-bold hover:brightness-110 transition-all">
-                  Visit Help Center →
-                </button>
-                <button className="w-full py-3 rounded-xl bg-white/5 border border-white/[0.06] text-white text-[13px] font-semibold hover:bg-white/8 transition-all">
-                  Contact Support
-                </button>
-              </div>
-            </div>
-
-            {/* Quick stat card-dark */}
-            <div className="bg-card-dark rounded-2xl border border-white/[0.06] px-6 py-5 flex items-center justify-between">
-              {[
-                ["99.9%", "Uptime SLA"],
-                ["&lt;30s", "Avg Response"],
-                ["24/7", "Support"],
-              ].map(([num, label]) => (
-                <div key={label} className="text-center">
-                  <p
-                    className="text-[20px] font-black text-brand leading-none"
-                    dangerouslySetInnerHTML={{ __html: num }}
-                  />
-                  <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mt-1">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* ── SECTION HEADING ── */}
+      <div className="relative z-10 mb-12 md:mb-16">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-px w-8 bg-white/20" />
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/35">
+            009 — Common Questions
+          </span>
         </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-end">
+          <h2 className="font-bebas uppercase text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9em] text-white">
+            Simple answers to help you
+            <br />
+            <span className="text-brand">get started</span> faster.
+          </h2>
+          <p className="text-[11px] font-mono uppercase tracking-[0.15em] text-white/35 leading-relaxed lg:text-right pb-1">
+            Everything you need to know before uploading your first document.
+          </p>
+        </div>
+
+        <div className="w-full h-px bg-white/10 mt-8" />
       </div>
 
+      {/* ── ACCORDION — full width ── */}
+      <div className="relative z-10 flex flex-col gap-2">
+        {faqs.map((faq, i) => (
+          <div
+            key={i}
+            className={`border rounded-sm overflow-hidden transition-colors duration-300 ${
+              open === i
+                ? "border-brand/20 bg-brand/[0.03]"
+                : "border-white/[0.06] bg-[#0f0f0f] hover:border-white/10"
+            }`}
+          >
+            <button
+              onClick={() => setOpen(open === i ? -1 : i)}
+              className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer"
+            >
+              <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-white/60 leading-relaxed">
+                {faq.q}
+              </span>
+
+              <div
+                className={`w-6 h-6 shrink-0 border rounded-sm flex items-center justify-center transition-all duration-300 ${
+                  open === i
+                    ? "border-brand/40 bg-brand/10 rotate-45"
+                    : "border-white/10 bg-transparent"
+                }`}
+              >
+                <svg viewBox="0 0 14 14" fill="none" className="w-2.5 h-2.5">
+                  <path
+                    d="M7 2v10M2 7h10"
+                    stroke={open === i ? "#E8500A" : "rgba(255,255,255,0.3)"}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+            </button>
+
+            <div
+              className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                open === i ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="px-5 pb-5">
+                <div className="w-full h-px bg-white/[0.05] mb-4" />
+                <p className="text-[11px] font-mono uppercase tracking-[0.1em] text-white/30 leading-relaxed">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
-  );
+  )
 }

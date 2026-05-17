@@ -8,11 +8,10 @@ const Manifesto = () => {
       
 
         <TextAnimation>
-          <div className="  text-[clamp(2.488rem,8vw,8.5rem)] uppercase font-semibold leading-none">
+          <div className="  text-[clamp(2.488rem,12vw,13.5rem)] uppercase font-bebas text-center leading-[.85em]">
             <div>Stop Re-reading.</div>
-
             <div>Start Mastering.</div>
-            <div className="mt-[.2em]" >Know Exactly What</div>
+            <div>Know Exactly What</div>
             <div>You Don't Know.</div>
           </div>
         </TextAnimation>

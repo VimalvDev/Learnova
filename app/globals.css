@@ -35,7 +35,7 @@
   --font-bebas: var(--font-bebas);
   --font-manrope: var(--font-manrope);
   --font-space: "Space", monospace;
-  --font-mono: "MonoRegular", monospace;
+  /* --font-mono: "MonoRegular", monospace; */
   --font-oswald: "Oswald", sans-serif;
 
 
@@ -82,7 +82,7 @@
 /* Global styles */
 body {
   color:#f4f3f6 ;
-  font-family: var(--font-manrope), sans-serif;
+  /* font-family: var(--font-mono), sans-serif; */
 
 }
 html {

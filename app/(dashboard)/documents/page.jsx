@@ -1,146 +1,334 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { createClient } from "@/utils/supabase/client"
 import {
-  RiFileTextLine, RiUploadCloud2Line, RiFilterLine,
-  RiSearchLine, RiCheckLine, RiTimeLine,
-  RiAlertLine, RiDeleteBinLine, RiEyeLine, RiRefreshLine,
+  RiFileTextLine, RiUploadCloud2Line, RiSearchLine,
+  RiCheckLine, RiTimeLine, RiAlertLine,
+  RiDeleteBinLine, RiEyeLine, RiCloseLine,
+  RiArrowRightLine,
 } from "react-icons/ri"
-import UploadArea      from "@/components/dashboard/courses/UploadArea"
-import ProcessingQueue from "@/components/dashboard/courses/ProcessingQueue"
-
-const allDocs = [
-  { id: 1, name: "DBMS_Complete_Notes.pdf",   course: "Database Management Systems", type: "PDF",  size: "3.2 MB", pages: 42, words: 8400,  chunks: 84,  status: "complete",   uploaded: "2h ago"    },
-  { id: 2, name: "Intro_Slides.pdf",           course: "Database Management Systems", type: "PDF",  size: "1.1 MB", pages: 18, words: 2200,  chunks: 34,  status: "processing", uploaded: "1h ago"    },
-  { id: 3, name: "ER_Diagrams_Notes.docx",     course: "Database Management Systems", type: "DOCX", size: "0.8 MB", pages: 12, words: 3100,  chunks: 31,  status: "complete",   uploaded: "Yesterday" },
-  { id: 4, name: "OS_Lecture_Notes.pdf",       course: "Operating Systems",           type: "PDF",  size: "2.4 MB", pages: 31, words: 6800,  chunks: 68,  status: "complete",   uploaded: "Yesterday" },
-  { id: 5, name: "Scanned_Handout.jpg",        course: "Operating Systems",           type: "IMG",  size: "5.1 MB", pages: 8,  words: 0,     chunks: 0,   status: "error",      uploaded: "2d ago"    },
-  { id: 6, name: "DSA_Full_Notes.pdf",         course: "Data Structures & Algorithms",type: "PDF",  size: "4.2 MB", pages: 56, words: 12400, chunks: 124, status: "complete",   uploaded: "3d ago"    },
-  { id: 7, name: "Sorting_Algorithms.pdf",     course: "Data Structures & Algorithms",type: "PDF",  size: "1.8 MB", pages: 22, words: 4100,  chunks: 41,  status: "complete",   uploaded: "3d ago"    },
-  { id: 8, name: "Trees_and_Graphs.pdf",       course: "Data Structures & Algorithms",type: "PDF",  size: "2.1 MB", pages: 28, words: 5600,  chunks: 56,  status: "complete",   uploaded: "4d ago"    },
-]
+import UploadArea from "@/components/dashboard/courses/UploadArea"
 
 const statusConfig = {
-  complete:   { color: "text-[#4ADE80]",  bg: "bg-[#4ADE80]/10",  label: "Complete",    icon: RiCheckLine   },
-  processing: { color: "text-brand",  bg: "bg-brand/10",  label: "Processing",  icon: RiTimeLine    },
-  error:      { color: "text-[#F87171]",  bg: "bg-[#F87171]/10",  label: "Error",       icon: RiAlertLine   },
+  complete:   { color: "text-[#4ADE80]", bg: "bg-[#4ADE80]/10", label: "Complete",   icon: RiCheckLine  },
+  processing: { color: "text-brand",     bg: "bg-brand/10",     label: "Processing", icon: RiTimeLine   },
+  error:      { color: "text-[#F87171]", bg: "bg-[#F87171]/10", label: "Error",      icon: RiAlertLine  },
 }
 
 const typeColors = {
-  PDF:  "bg-[#F87171]/15 text-[#F87171]",
-  DOCX: "bg-brand/15 text-brand",
-  IMG:  "bg-[#4ADE80]/15 text-[#4ADE80]",
+  pdf:  "bg-[#F87171]/15 text-[#F87171]",
+  docx: "bg-brand/15 text-brand",
+  txt:  "bg-[#4ADE80]/15 text-[#4ADE80]",
 }
 
-function DocRow({ doc }) {
-  const [confirmDelete, setConfirmDelete] = useState(false)
-  const s = statusConfig[doc.status]
-  const Icon = s.icon
-
+// ── Text Preview Modal ──────────────────────────────────────────
+function TextPreviewModal({ doc, onClose }) {
   return (
-    <div className="flex items-center gap-4 py-3 border-b border-white/[0.04] last:border-0 group">
-      {/* Type badge */}
-      <div className={`w-9 h-9 rounded-xl flex items-center justify-center   ${typeColors[doc.type] ?? "bg-white/[0.06] text-white"}`}>
-        <RiFileTextLine className="text-[14px]" />
-      </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-2xl mx-4 bg-[#141414] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
 
-      {/* Name + meta */}
-      <div className="flex-1 min-w-0">
-        <p className="text-[13px] font-medium text-white truncate">{doc.name}</p>
-        <p className="text-[10px] text-secondary-text mt-0.5">
-          {doc.type} · {doc.size} · {doc.pages} pages
-          {doc.words > 0 && ` · ${doc.words.toLocaleString()} words`}
-          {doc.chunks > 0 && ` · ${doc.chunks} chunks`}
-        </p>
-      </div>
-
-      {/* Course tag */}
-      <div className="hidden md:block  ">
-        <span className="text-[10px] text-secondary-text bg-white/[0.04] px-2 py-1 rounded-lg truncate max-w-[140px] block">
-          {doc.course}
-        </span>
-      </div>
-
-      {/* Status */}
-      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg   ${s.bg}`}>
-        <Icon className={`text-[11px] ${s.color}`} />
-        <span className={`text-[10px] font-medium ${s.color}`}>{s.label}</span>
-      </div>
-
-      {/* Uploaded */}
-      <span className="text-[11px] text-[#444]   hidden lg:block">{doc.uploaded}</span>
-
-      {/* Actions */}
-      <div className="flex items-center gap-2   opacity-0 group-hover:opacity-100 transition-opacity">
-        {confirmDelete ? (
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] text-[#888]">Delete?</span>
-            <button className="text-[10px] text-[#F87171] hover:underline">Yes</button>
-            <button onClick={() => setConfirmDelete(false)} className="text-[10px] text-secondary-text hover:underline">No</button>
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.06] shrink-0">
+          <div className="min-w-0">
+            <h2 className="text-[14px] font-semibold text-white truncate">{doc.file_name}</h2>
+            <p className="text-[11px] text-secondary-text mt-0.5">
+              {doc.file_type?.toUpperCase()}
+              {doc.word_count  > 0 && ` · ${doc.word_count.toLocaleString()} words`}
+              {doc.chunk_count > 0 && ` · ${doc.chunk_count} chunks`}
+            </p>
           </div>
-        ) : (
-          <>
-            <button className="text-secondary-text hover:text-white transition-colors">
-              <RiEyeLine className="text-[15px]" />
-            </button>
-            <button className="text-secondary-text hover:text-white transition-colors">
-              <RiRefreshLine className="text-[15px]" />
-            </button>
-            <button onClick={() => setConfirmDelete(true)} className="text-secondary-text hover:text-[#F87171] transition-colors">
-              <RiDeleteBinLine className="text-[15px]" />
-            </button>
-          </>
-        )}
+          <button
+            onClick={onClose}
+            className="w-7 h-7 flex items-center justify-center rounded-lg text-secondary-text hover:text-white hover:bg-white/[0.06] transition-all shrink-0 ml-4"
+          >
+            <RiCloseLine className="text-[16px]" />
+          </button>
+        </div>
+
+        {/* Extracted text */}
+        <div className="flex-1 overflow-y-auto px-6 py-4">
+          {doc.extracted_text ? (
+            <p className="text-[13px] text-secondary-text leading-relaxed whitespace-pre-wrap">
+              {doc.extracted_text}
+            </p>
+          ) : (
+            <p className="text-[13px] text-secondary-text text-center py-8">
+              No extracted text available.
+            </p>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="px-6 py-3 border-t border-white/[0.06] shrink-0">
+          <p className="text-[11px] text-[#444]">
+            This is the text Learnova extracted and uses for AI chat and quiz generation.
+          </p>
+        </div>
       </div>
     </div>
   )
 }
 
+// ── Doc Row ─────────────────────────────────────────────────────
+function DocRow({ doc, onDelete }) {
+  const [confirmDelete, setConfirmDelete] = useState(false)
+  const [showPreview,   setShowPreview]   = useState(false)
+  const [fullDoc,       setFullDoc]       = useState(null)
+  const s    = statusConfig[doc.status] ?? statusConfig.complete
+  const Icon = s.icon
+  const supabase = createClient()
+
+  async function handleView() {
+    // Fetch full doc including extracted_text (not included in list query)
+    const { data } = await supabase
+      .from("documents")
+      .select("*")
+      .eq("id", doc.id)
+      .single()
+    if (data) { setFullDoc(data); setShowPreview(true) }
+  }
+
+  return (
+    <>
+      {showPreview && fullDoc && (
+        <TextPreviewModal doc={fullDoc} onClose={() => setShowPreview(false)} />
+      )}
+
+      <div className="flex items-center gap-4 py-3 border-b border-white/[0.04] last:border-0 group">
+        <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${typeColors[doc.file_type] ?? "bg-white/[0.06] text-white"}`}>
+          <RiFileTextLine className="text-[14px]" />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <p className="text-[13px] font-medium text-white truncate">{doc.file_name}</p>
+          <p className="text-[10px] text-secondary-text mt-0.5">
+            {doc.file_type?.toUpperCase()}
+            {doc.page_count  > 0 && ` · ${doc.page_count} pages`}
+            {doc.word_count  > 0 && ` · ${doc.word_count.toLocaleString()} words`}
+            {doc.chunk_count > 0 && ` · ${doc.chunk_count} chunks`}
+          </p>
+        </div>
+
+        <div className="hidden md:block shrink-0">
+          <span className="text-[10px] text-secondary-text bg-white/[0.04] px-2 py-1 rounded-lg truncate max-w-[160px] block">
+            {doc.courses?.course_name ?? "—"}
+          </span>
+        </div>
+
+        <div className="hidden sm:block text-[10px] text-secondary-text shrink-0 max-w-[120px] truncate">
+          {doc.units?.unit_name ?? "—"}
+        </div>
+
+        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg shrink-0 ${s.bg}`}>
+          <Icon className={`text-[11px] ${s.color}`} />
+          <span className={`text-[10px] font-medium ${s.color}`}>{s.label}</span>
+        </div>
+
+        <span className="text-[11px] text-[#444] hidden lg:block shrink-0">
+          {new Date(doc.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+        </span>
+
+        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+          {confirmDelete ? (
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-[#888]">Delete?</span>
+              <button onClick={() => onDelete(doc.id)} className="text-[10px] text-[#F87171] hover:underline">Yes</button>
+              <button onClick={() => setConfirmDelete(false)} className="text-[10px] text-secondary-text hover:underline">No</button>
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={handleView}
+                className="text-secondary-text hover:text-white transition-colors"
+                title="View extracted text"
+              >
+                <RiEyeLine className="text-[15px]" />
+              </button>
+              <button
+                onClick={() => setConfirmDelete(true)}
+                className="text-secondary-text hover:text-[#F87171] transition-colors"
+                title="Delete document"
+              >
+                <RiDeleteBinLine className="text-[15px]" />
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    </>
+  )
+}
+
+// ── Upload Modal ─────────────────────────────────────────────────
+function UploadModal({ courses, onClose, onComplete }) {
+  const [selectedCourseId, setSelectedCourseId] = useState(null)
+  const selected = courses.find((c) => c.id === selectedCourseId)
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-2xl mx-4 bg-[#141414] rounded-2xl shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.06]">
+          <div>
+            <h2 className="text-[15px] font-semibold text-white">Upload Document</h2>
+            <p className="text-[11px] text-secondary-text mt-0.5">
+              {selectedCourseId ? `Uploading to: ${selected?.course_name}` : "Select a course first"}
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-7 h-7 flex items-center justify-center rounded-lg text-secondary-text hover:text-white hover:bg-white/[0.06] transition-all"
+          >
+            <RiCloseLine className="text-[16px]" />
+          </button>
+        </div>
+
+        <div className="p-6 max-h-[80vh] overflow-y-auto">
+          {!selectedCourseId ? (
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-brand/70 mb-3">Select Course</p>
+              {courses.length === 0 ? (
+                <p className="text-[13px] text-secondary-text py-6 text-center">No courses yet. Create a course first.</p>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  {courses.map((course) => (
+                    <button
+                      key={course.id}
+                      onClick={() => setSelectedCourseId(course.id)}
+                      className="flex items-center justify-between px-4 py-3.5 bg-[#1a1a1a] hover:bg-white/[0.06] rounded-xl transition-all group text-left"
+                    >
+                      <div>
+                        <p className="text-[13px] font-medium text-white">{course.course_name}</p>
+                        <p className="text-[11px] text-secondary-text mt-0.5">
+                          {course.subject_category ?? "General"} · {course.difficulty_level}
+                        </p>
+                      </div>
+                      <RiArrowRightLine className="text-secondary-text group-hover:text-brand transition-colors text-[15px] shrink-0" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={() => setSelectedCourseId(null)}
+                className="text-[11px] text-secondary-text hover:text-white transition-colors mb-4 flex items-center gap-1"
+              >
+                ← Change course
+              </button>
+              <UploadArea
+                courseId={selectedCourseId}
+                onUploadComplete={() => { onComplete(); onClose() }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── Skeleton ─────────────────────────────────────────────────────
+function SkeletonRow() {
+  return (
+    <div className="flex items-center gap-4 py-3 border-b border-white/[0.04] animate-pulse">
+      <div className="w-9 h-9 rounded-xl bg-white/[0.06] shrink-0" />
+      <div className="flex-1 space-y-1.5">
+        <div className="h-3 w-48 bg-white/[0.06] rounded" />
+        <div className="h-2.5 w-32 bg-white/[0.06] rounded" />
+      </div>
+      <div className="h-3 w-24 bg-white/[0.06] rounded hidden md:block" />
+      <div className="h-6 w-20 bg-white/[0.06] rounded" />
+    </div>
+  )
+}
+
+// ── Page ─────────────────────────────────────────────────────────
 export default function DocumentsPage() {
-  const [search,     setSearch]     = useState("")
-  const [statusFilter, setStatus]   = useState("all")
-  const [courseFilter, setCourse]   = useState("all")
-  const [showUpload, setShowUpload] = useState(false)
+  const [docs,          setDocs]          = useState([])
+  const [courses,       setCourses]       = useState([])
+  const [loading,       setLoading]       = useState(true)
+  const [search,        setSearch]        = useState("")
+  const [statusFilter,  setStatusFilter]  = useState("all")
+  const [courseFilter,  setCourseFilter]  = useState("all")
+  const [showModal,     setShowModal]     = useState(false)
+  const supabase = createClient()
 
-  const courses = [...new Set(allDocs.map((d) => d.course))]
+  useEffect(() => { fetchAll() }, [])
 
-  const filtered = allDocs.filter((d) => {
-    const matchSearch = d.name.toLowerCase().includes(search.toLowerCase())
+  async function fetchAll() {
+    setLoading(true)
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
+
+    const [docsRes, coursesRes] = await Promise.all([
+      supabase
+        .from("documents")
+        .select("id, file_name, file_type, page_count, word_count, chunk_count, status, course_id, unit_id, created_at, courses(course_name), units(unit_name)")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("courses")
+        .select("id, course_name, subject_category, difficulty_level")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false }),
+    ])
+
+    if (docsRes.data)    setDocs(docsRes.data)
+    if (coursesRes.data) setCourses(coursesRes.data)
+    setLoading(false)
+  }
+
+  async function handleDelete(docId) {
+    const { error } = await supabase.from("documents").delete().eq("id", docId)
+    if (!error) setDocs((prev) => prev.filter((d) => d.id !== docId))
+  }
+
+  const filtered = docs.filter((d) => {
+    const matchSearch = d.file_name.toLowerCase().includes(search.toLowerCase())
     const matchStatus = statusFilter === "all" || d.status === statusFilter
-    const matchCourse = courseFilter === "all" || d.course === courseFilter
+    const matchCourse = courseFilter === "all" || d.course_id === courseFilter
     return matchSearch && matchStatus && matchCourse
   })
 
-  const totalWords  = allDocs.filter(d => d.status === "complete").reduce((a, d) => a + d.words, 0)
-  const totalChunks = allDocs.filter(d => d.status === "complete").reduce((a, d) => a + d.chunks, 0)
+  const total      = docs.length
+  const complete   = docs.filter((d) => d.status === "complete").length
+  const processing = docs.filter((d) => d.status === "processing").length
+  const errors     = docs.filter((d) => d.status === "error").length
 
   return (
-    <div >
+    <div>
+      {showModal && (
+        <UploadModal
+          courses={courses}
+          onClose={() => setShowModal(false)}
+          onComplete={fetchAll}
+        />
+      )}
 
-      {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
           <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Knowledge Base</p>
           <h1 className="text-[22px] font-bold text-white">Documents</h1>
-          <p className="text-[13px] text-secondary-text mt-0.5">
-            {allDocs.length} documents 
-          </p>
+          <p className="text-[13px] text-secondary-text mt-0.5">{total} documents indexed</p>
         </div>
         <button
-          onClick={() => setShowUpload(!showUpload)}
+          onClick={() => setShowModal(true)}
           className="flex items-center gap-2 px-4 py-2.5 bg-brand text-white text-[12px] font-bold rounded-xl hover:brightness-110 transition-all"
         >
           <RiUploadCloud2Line className="text-[15px]" />
-          Upload Documents
+          Upload Document
         </button>
       </div>
 
-      {/* Stats strip */}
       <div className="grid grid-cols-4 gap-3 mb-6">
         {[
-          { label: "Total Documents", value: allDocs.length,                                         color: "text-white"      },
-          { label: "Complete",        value: allDocs.filter(d => d.status === "complete").length,    color: "text-[#4ADE80]"  },
-          { label: "Processing",      value: allDocs.filter(d => d.status === "processing").length,  color: "text-brand"  },
-          { label: "Errors",          value: allDocs.filter(d => d.status === "error").length,       color: "text-[#F87171]"  },
+          { label: "Total Documents", value: total,      color: "text-white"     },
+          { label: "Complete",        value: complete,   color: "text-[#4ADE80]" },
+          { label: "Processing",      value: processing, color: "text-brand"     },
+          { label: "Errors",          value: errors,     color: "text-[#F87171]" },
         ].map(({ label, value, color }) => (
           <div key={label} className="bg-card-dark rounded-xl px-4 py-3">
             <p className={`text-[18px] font-bold ${color}`}>{value}</p>
@@ -149,19 +337,9 @@ export default function DocumentsPage() {
         ))}
       </div>
 
-      {/* Upload area — collapsible */}
-      {showUpload && (
-        <div className="mb-6">
-          <UploadArea />
-          <ProcessingQueue />
-        </div>
-      )}
-
-      {/* Filters + search */}
       <div className="flex items-center gap-3 mb-4 flex-wrap">
-        {/* Search */}
-        <div className="flex items-center gap-2 flex-1 min-w-[200px] h-9 px-3 bg-card-dark rounded-xl border border-white/[0.06] focus-within:border-brand/40 transition-colors">
-          <RiSearchLine className="text-[#444] text-[14px]  " />
+        <div className="flex items-center gap-2 flex-1 min-w-[200px] h-9 px-3 bg-card-dark rounded-xl focus-within:ring-1 focus-within:ring-brand/40 transition-all">
+          <RiSearchLine className="text-[#444] text-[14px] shrink-0" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -170,16 +348,13 @@ export default function DocumentsPage() {
           />
         </div>
 
-        {/* Status filter */}
         <div className="flex items-center gap-1 p-1 bg-card-dark rounded-xl">
           {["all", "complete", "processing", "error"].map((s) => (
             <button
               key={s}
-              onClick={() => setStatus(s)}
+              onClick={() => setStatusFilter(s)}
               className={`px-3 py-1 text-[11px] font-medium rounded-lg capitalize transition-all ${
-                statusFilter === s
-                  ? "bg-[#2A2B2F] text-white"
-                  : "text-secondary-text hover:text-white"
+                statusFilter === s ? "bg-[#2A2B2F] text-white" : "text-secondary-text hover:text-white"
               }`}
             >
               {s}
@@ -187,50 +362,49 @@ export default function DocumentsPage() {
           ))}
         </div>
 
-        {/* Course filter */}
         <select
           value={courseFilter}
-          onChange={(e) => setCourse(e.target.value)}
-          className="h-9 px-3 bg-card-dark text-[12px] text-white rounded-xl border border-white/[0.06] outline-none cursor-pointer"
+          onChange={(e) => setCourseFilter(e.target.value)}
+          className="h-9 px-3 bg-card-dark text-[12px] text-white rounded-xl outline-none cursor-pointer"
         >
           <option value="all">All Courses</option>
           {courses.map((c) => (
-            <option key={c} value={c}>{c}</option>
+            <option key={c.id} value={c.id}>{c.course_name}</option>
           ))}
         </select>
       </div>
 
-      {/* Documents table */}
       <div className="bg-card-dark rounded-2xl overflow-hidden">
-        {/* Table header */}
         <div className="flex items-center gap-4 px-4 py-2.5 border-b border-white/[0.06]">
-          <div className="w-9  " />
+          <div className="w-9 shrink-0" />
           <span className="flex-1 text-[10px] font-bold uppercase tracking-widest text-[#444]">Document</span>
-          <span className="hidden md:block w-[140px] text-[10px] font-bold uppercase tracking-widest text-[#444]">Course</span>
+          <span className="hidden md:block w-[160px] text-[10px] font-bold uppercase tracking-widest text-[#444]">Course</span>
+          <span className="hidden sm:block w-[120px] text-[10px] font-bold uppercase tracking-widest text-[#444]">Unit</span>
           <span className="w-24 text-[10px] font-bold uppercase tracking-widest text-[#444]">Status</span>
-          <span className="hidden lg:block w-16 text-[10px] font-bold uppercase tracking-widest text-[#444]">Uploaded</span>
-          <div className="w-20  " />
+          <span className="hidden lg:block w-16 text-[10px] font-bold uppercase tracking-widest text-[#444]">Added</span>
+          <div className="w-16 shrink-0" />
         </div>
 
-        {/* Rows */}
         <div className="px-4">
-          {filtered.length > 0 ? (
-            filtered.map((doc) => <DocRow key={doc.id} doc={doc} />)
+          {loading ? (
+            [1,2,3,4].map((i) => <SkeletonRow key={i} />)
+          ) : filtered.length > 0 ? (
+            filtered.map((doc) => (
+              <DocRow key={doc.id} doc={doc} onDelete={handleDelete} />
+            ))
           ) : (
             <div className="py-12 text-center">
-              <p className="text-[13px] text-secondary-text">No documents match your filters.</p>
+              <p className="text-[13px] text-secondary-text">
+                {docs.length === 0 ? "No documents yet. Upload your first document." : "No documents match your filters."}
+              </p>
             </div>
           )}
         </div>
       </div>
 
-      {/* Bottom summary */}
-      <div className="flex items-center justify-between mt-4 px-1">
-        <p className="text-[11px] text-[#444]">
-          Showing {filtered.length} of {allDocs.length} documents
-        </p>
+      <div className="mt-4 px-1">
+        <p className="text-[11px] text-[#444]">Showing {filtered.length} of {total} documents</p>
       </div>
-
     </div>
   )
 }

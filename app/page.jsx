@@ -14,6 +14,7 @@ import RevisionScheduler from "@/components/home/deep-dives/RevisionScheduler";
 import PerformanceInsights from "@/components/home/deep-dives/PerformanceInghts";
 import FAQ from "@/components/home/FAQ";
 import Footer from "@/components/common/Footer";
+import CTA from "@/components/home/CTA";
 
 export default function Page() {
   return (
@@ -28,12 +29,13 @@ export default function Page() {
           <Features />
           <HowItWorks />
           <MasteryScoring />
-          <WeaknessIntelligence />
-          <AskFromNotes />
-          <AdaptiveQuiz />
-          <RevisionScheduler />
-          <PerformanceInsights />
+          {/* <WeaknessIntelligence /> */}
+          {/* <AskFromNotes /> */}
+          {/* <AdaptiveQuiz /> */}
+          {/* <RevisionScheduler /> */}
+          {/* <PerformanceInsights /> */}
           <FAQ />
+          <CTA/>
         </main>
         <Footer />
       </div>

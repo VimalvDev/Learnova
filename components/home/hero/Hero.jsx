@@ -54,7 +54,7 @@ function RuleLabel({ label, className = "" }) {
 function StatItem({ value, label }) {
   return (
     <div className="flex flex-col gap-1 border border-white/10 p-4 rounded-sm">
-      <span className="text-2xl font-bebas text-white tracking-wide">
+      <span className="text-2xl text-white tracking-wide">
         {value}
       </span>
       <span className="text-[11px] uppercase tracking-[0.15em] text-white/40 font-mono leading-tight">
@@ -68,7 +68,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-dark overflow-hidden flex flex-col"
+      className="relative min-h-screen bg-dark  flex flex-col"
     >
       <DotGrid />
 
@@ -84,7 +84,7 @@ export default function Hero() {
       <div className="absolute top-0 left-0 w-full h-px bg-white/10" />
 
       {/* ── CONTENT WRAPPER — fills full height below navbar ── */}
-      <div className="relative z-10 flex flex-col flex-1 pt-24 md:pt-28 px-5 sm:px-8 md:px-12 lg:px-16">
+      <div className="relative z-10 flex flex-col flex-1 pt-24 md:pt-[5vw] px-5 sm:px-8 md:px-12 lg:px-16">
         {/* Top label row */}
         <div className="flex items-center justify-end mb-6 md:mb-8">
           <RuleLabel label="Adaptive Learning Intelligence" />
@@ -146,7 +146,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — stat panel, full height */}
-          <div className="hidden lg:flex flex-col justify-between gap-3 border border-white/10 p-5 rounded-sm relative self-stretch">
+          <div className="hidden lg:flex flex-col justify-between gap-3 border border-white/10 p-5 mb-[5em] rounded-sm relative self-stretch">
             <Crosshair className="absolute -top-2 -left-2" />
             <Crosshair className="absolute -top-2 -right-2" />
             <Crosshair className="absolute -bottom-2 -left-2" />
@@ -191,7 +191,7 @@ export default function Hero() {
         </div>
 
         {/* ── TICKER STRIP — pinned to very bottom ── */}
-        <div className="relative mt-6 border-t border-white/10 overflow-hidden">
+        <div className="absolute mt-6 bottom-[-2.5em] left-0 border-t border-white/10 overflow-hidden">
           <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none" />
           <div className="flex animate-ticker whitespace-nowrap py-3">
