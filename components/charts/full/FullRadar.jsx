@@ -2,29 +2,24 @@
 import { ResponsiveRadar } from "@nivo/radar"
 import nivoTheme from "@/lib/nivo"
 
-const defaultData = [
-  { skill: "Accuracy",    score: 78 },
-  { skill: "Speed",       score: 62 },
-  { skill: "Consistency", score: 85 },
-  { skill: "Retention",   score: 54 },
-  { skill: "Improvement", score: 91 },
-  { skill: "Engagement",  score: 70 },
+const emptyData = [
+  { skill: "Accuracy",    score: 0 },
+  { skill: "Speed",       score: 0 },
+  { skill: "Consistency", score: 0 },
+  { skill: "Retention",   score: 0 },
+  { skill: "Improvement", score: 0 },
+  { skill: "Engagement",  score: 0 },
 ]
 
-export default function FullRadar({ data = defaultData, onClick }) {
+export default function FullRadar({ data = emptyData }) {
   return (
     <ResponsiveRadar
-      data={data}
+      data={data.length > 0 ? data : emptyData}
       keys={["score"]}
       indexBy="skill"
       theme={{
         ...nivoTheme,
-        grid: {
-          line: {
-            stroke: "rgba(255,255,255,0.08)",
-            strokeWidth: 1,
-          },
-        },
+        grid: { line: { stroke: "rgba(255,255,255,0.08)", strokeWidth: 1 } },
       }}
       maxValue={100}
       margin={{ top: 32, right: 80, bottom: 32, left: 80 }}

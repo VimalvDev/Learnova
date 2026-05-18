@@ -2,18 +2,9 @@
 import Link from "next/link"
 import FullHeatmap from "@/components/charts/full/FullHeatmap"
 
-const revisionItems = [
-  { name: "Normalization",    due: "Today",     dot: "#F87171" },
-  { name: "B-Trees",          due: "Tomorrow",  dot: "#FBBF24" },
-  { name: "Transaction Logs", due: "In 2 days", dot: "#FA6E43" },
-  { name: "Join Algorithms",  due: "In 3 days", dot: "#4ADE80" },
-]
-
-export default function HeatmapRow() {
+export default function HeatmapRow({ heatmapData = [], revisionItems = [] }) {
   return (
     <div className="grid grid-cols-12 gap-4">
-
-      {/* Heatmap */}
       <Link
         href="/dashboard/analytics"
         className="col-span-6 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
@@ -28,7 +19,7 @@ export default function HeatmapRow() {
           </span>
         </div>
         <div className="flex-1 min-h-[200px]">
-          <FullHeatmap />
+          <FullHeatmap data={heatmapData} />
         </div>
         <div className="flex items-center justify-between mt-3 pt-2">
           <span className="text-[10px] text-[#444]">Less Intense</span>
@@ -41,7 +32,6 @@ export default function HeatmapRow() {
         </div>
       </Link>
 
-      {/* Revision Planner */}
       <div className="col-span-6 bg-[#171717] rounded-2xl p-5 flex flex-col">
         <div className="flex items-center justify-between mb-3">
           <p className="text-[14px] font-medium text-white/70">Revision Planner</p>
@@ -49,26 +39,35 @@ export default function HeatmapRow() {
             View All →
           </Link>
         </div>
-        <div className="flex flex-col gap-2 flex-1">
-          {revisionItems.map(({ name, due, dot }) => (
-            <Link
-              key={name}
-              href="/dashboard/revision"
-              className="flex items-center gap-3 p-3 bg-[#111] rounded-xl hover:bg-[#151515] transition-all group"
-            >
-              <div className="w-2 h-2 rounded-full  " style={{ background: dot }} />
-              <div className="flex-1 min-w-0">
-                <p className="text-[12px] font-medium text-white truncate">{name}</p>
-                <p className="text-[10px] text-secondary-text mt-0.5">{due}</p>
-              </div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#555"
-                className="w-3.5 h-3.5   group-hover:stroke-brand transition-colors"
-                strokeWidth="2">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
+
+        {revisionItems.length === 0 ? (
+          <div className="flex-1 flex flex-col items-center justify-center py-6">
+            <p className="text-[13px] text-secondary-text">No revisions scheduled.</p>
+            <Link href="/dashboard/quizzes" className="text-[12px] text-brand hover:underline mt-2">
+              Take a quiz to schedule revisions →
             </Link>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2 flex-1">
+            {revisionItems.map(({ name, due, dot }) => (
+              <Link
+                key={name}
+                href="/dashboard/revision"
+                className="flex items-center gap-3 p-3 bg-[#111] rounded-xl hover:bg-[#151515] transition-all group"
+              >
+                <div className="w-2 h-2 rounded-full" style={{ background: dot }} />
+                <div className="flex-1 min-w-0">
+                  <p className="text-[12px] font-medium text-white truncate">{name}</p>
+                  <p className="text-[10px] text-secondary-text mt-0.5">{due}</p>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#555" className="w-3.5 h-3.5 group-hover:stroke-brand transition-colors" strokeWidth="2">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </Link>
+            ))}
+          </div>
+        )}
+
         <Link
           href="/dashboard/revision"
           className="w-full h-9 mt-3 bg-[#111] text-[#666] text-[11px] font-medium rounded-xl flex items-center justify-center hover:text-white transition-all"
@@ -76,9 +75,6 @@ export default function HeatmapRow() {
           + Schedule Reminder
         </Link>
       </div>
-
-     
-
     </div>
   )
 }

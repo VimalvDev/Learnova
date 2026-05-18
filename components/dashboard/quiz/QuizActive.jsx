@@ -1,137 +1,195 @@
 "use client"
-import { useState, useEffect } from "react"
-import { RiPauseLine, RiCloseLine } from "react-icons/ri"
+import { useState, useEffect, useRef } from "react"
+import { RiCloseLine, RiPauseLine } from "react-icons/ri"
 import QuizProgressBar    from "./active/QuizProgressBar"
 import AdaptiveStatusCard from "./active/AdaptiveStatusCard"
-import QuestionCard   from "./active/QuestionCard"
+import QuestionCard       from "./active/QuestionCard"
+import EvaluatingOverlay from "@/components/dashboard/quiz/EvaluatingOverlay"
 
-const questions = [
-  {
-    id: 1, concept: "Normalization", difficulty: "Medium", type: "mcq",
-    text: "Which of the following conditions must be satisfied for a relation to be in Second Normal Form (2NF)?",
-    options: [
-      { id: "a", text: "Every non-prime attribute is fully functionally dependent on the entire primary key." },
-      { id: "b", text: "Eliminate all transitive dependencies from non-prime attributes." },
-      { id: "c", text: "Every attribute must be atomic and there are no repeating groups." },
-      { id: "d", text: "All candidate keys must be identified and recorded." },
-    ],
-    correct: "a",
-    explanation: "2NF builds on 1NF by eliminating partial dependencies. A partial dependency occurs when a non-prime attribute depends on only part of a composite primary key, not the whole key.",
-    source: "DBMS_Notes.pdf · Chapter 4 · Page 67",
-    mastery: 42,
-  },
-  {
-    id: 2, concept: "ER Model", difficulty: "Easy", type: "truefalse",
-    text: "An entity can participate in more than one relationship type in an ER diagram.",
-    correct: "true",
-    explanation: "In ER modeling, entities can participate in multiple relationship types simultaneously.",
-    source: "ER_Diagrams_Notes.docx · Page 8",
-    mastery: 79,
-  },
-]
+export default function QuizActive({ quizData, onFinish }) {
+  const { quizId, questions, smarts } = quizData
 
-export default function QuizActive({ onFinish }) {
-  const [qIndex,   setQIndex]   = useState(0)
-  const [selected, setSelected] = useState(null)
-  const [revealed, setRevealed] = useState(false)
-  const [elapsed,  setElapsed]  = useState(0)
-  const [answers,  setAnswers]  = useState([])
+  const [qIndex,    setQIndex]    = useState(0)
+  const [selected,  setSelected]  = useState(null)
+  const [textAnswer, setTextAnswer] = useState("")
+  const [revealed,  setRevealed]  = useState(false)
+  const [elapsed,   setElapsed]   = useState(0)
+  const [qElapsed,  setQElapsed]  = useState(0)
+  const [answers,   setAnswers]   = useState([])
+  const [evaluating, setEvaluating] = useState(false)
+  const [evalResult, setEvalResult] = useState(null)
 
-  const total = questions.length
   const q     = questions[qIndex]
+  const total = questions.length
 
   useEffect(() => {
-    const t = setInterval(() => setElapsed((e) => e + 1), 1000)
+    const t = setInterval(() => {
+      setElapsed((e) => e + 1)
+      setQElapsed((e) => e + 1)
+    }, 1000)
     return () => clearInterval(t)
   }, [])
 
+  // Reset question timer on new question
+  useEffect(() => { setQElapsed(0) }, [qIndex])
+
   const mm         = String(Math.floor(elapsed / 60)).padStart(2, "0")
   const ss         = String(elapsed % 60).padStart(2, "0")
-  const timerColor = elapsed > 90 ? "text-[#F87171]" : elapsed > 60 ? "text-[#FBBF24]" : "text-[#888]"
+  const timerColor = elapsed > 120 ? "text-[#F87171]" : elapsed > 60 ? "text-[#FBBF24]" : "text-[#888]"
 
-  const handleSubmit = () => {
-    if (!selected) return
-    setRevealed(true)
-    setAnswers((p) => [...p, { qId: q.id, selected, correct: q.correct }])
+  const isTextType = q?.type === "short" || q?.type === "fill"
+  const canSubmit  = isTextType ? textAnswer.trim().length > 0 : !!selected
+
+  const handleSubmit = async () => {
+    if (!canSubmit || revealed) return
+
+    const userAnswer = isTextType ? textAnswer.trim() : selected
+    setEvaluating(true)
+
+    try {
+      // For MCQ/TF — evaluate locally, no API call needed
+      if (!isTextType) {
+        const isCorrect = userAnswer.charAt(0).toUpperCase() === q.correct.charAt(0).toUpperCase()
+        setEvalResult({
+          score: isCorrect ? 100 : 0,
+          isCorrect,
+          conceptualFeedback: q.explanation ?? "",
+          grammarIssues: [],
+          missingPoints: [],
+        })
+        setAnswers((prev) => [...prev, {
+          questionId: q.id,
+          conceptId:  q.conceptId ?? null,
+          userAnswer,
+          isCorrect,
+          score:      isCorrect ? 100 : 0,
+          timeTaken:  qElapsed,
+        }])
+      } else {
+        // Short answer / fill — call Gemini evaluate API
+        const res  = await fetch("/api/quiz/evaluate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            questionText:  q.text,
+            questionType:  q.type,
+            correctAnswer: q.correct,
+            userAnswer,
+            concept:       q.concept,
+            explanation:   q.explanation,
+          }),
+        })
+        const result = await res.json()
+        setEvalResult(result)
+        setAnswers((prev) => [...prev, {
+          questionId: q.id,
+          conceptId:  q.conceptId ?? null,
+          userAnswer,
+          isCorrect:  result.isCorrect,
+          score:      result.score,
+          timeTaken:  qElapsed,
+        }])
+      }
+    } catch {
+      setEvalResult({
+        score: 0, isCorrect: false,
+        conceptualFeedback: "Evaluation failed. Moving on.",
+        grammarIssues: [], missingPoints: [],
+      })
+      setAnswers((prev) => [...prev, {
+        questionId: q.id, conceptId: q.conceptId ?? null,
+        userAnswer, isCorrect: false, score: 0, timeTaken: qElapsed,
+      }])
+    } finally {
+      setEvaluating(false)
+      setRevealed(true)
+    }
   }
 
   const handleNext = () => {
-    if (qIndex + 1 >= total) { onFinish(); return }
+    if (qIndex + 1 >= total) {
+      onFinish({ quizId, answers: [...answers], timeTakenSeconds: elapsed })
+      return
+    }
     setQIndex((i) => i + 1)
     setSelected(null)
+    setTextAnswer("")
     setRevealed(false)
+    setEvalResult(null)
   }
 
-  const handlePrev = () => {
-    if (qIndex === 0) return
-    setQIndex((i) => i - 1)
-    setSelected(null)
-    setRevealed(false)
+  const handleSkip = () => {
+    setAnswers((prev) => [...prev, {
+      questionId: q.id, conceptId: q.conceptId ?? null,
+      userAnswer: "", isCorrect: false, score: 0, timeTaken: qElapsed,
+    }])
+    handleNext()
   }
 
   return (
-    <div className="w-full">
+    <>
 
-      {/* Session bar — full width */}
-      <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/6">
+    {evaluating && <EvaluatingOverlay />}
+    <div className="w-full">
+      {/* Session bar */}
+      <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
         <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-[13px] font-semibold text-white">DBMS Quiz</span>
+          <span className="text-[13px] font-semibold text-white">Quiz</span>
           <span className="text-tertiary-text">·</span>
           <span className="text-[12px] text-secondary-text">Question {qIndex + 1} of {total}</span>
           <span className="text-tertiary-text">·</span>
           <span className="text-[9px] font-bold uppercase tracking-widest text-brand bg-brand/10 px-2 py-0.5 rounded-full">
-            Auto Mode
+            Adaptive Mode
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <span className={`text-[13px] font-semibold tabular-nums ${timerColor}`}>
-            ⏱ {mm}:{ss}
-          </span>
-          <button className="w-8 h-8 flex items-center justify-center rounded-xl bg-card-dark text-secondary-text hover:text-white border border-white/6 transition-colors">
-            <RiPauseLine className="text-[14px]" />
-          </button>
-          <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[#F87171] text-[11px] border border-[#F87171]/20 hover:border-[#F87171]/50 transition-colors">
-            <RiCloseLine className="text-[13px]" /> Exit
+          <span className={`text-[13px] font-semibold tabular-nums ${timerColor}`}>⏱ {mm}:{ss}</span>
+          <button
+            onClick={() => onFinish({ quizId, answers, timeTakenSeconds: elapsed })}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[#F87171] text-[11px] border border-[#F87171]/20 hover:border-[#F87171]/50 transition-colors"
+          >
+            <RiCloseLine className="text-[13px]" /> End Quiz
           </button>
         </div>
       </div>
 
-      {/* Main grid */}
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-5">
-
-        {/* Left — question */}
         <div className="flex flex-col gap-4">
           <QuizProgressBar current={qIndex + 1} total={total} answers={answers} questions={questions} />
-          <AdaptiveStatusCard qIndex={qIndex} answers={answers} />
+          <AdaptiveStatusCard answers={answers} />
           <QuestionCard
             question={q}
             selected={selected}
             onSelect={setSelected}
+            textAnswer={textAnswer}
+            onTextAnswer={setTextAnswer}
             revealed={revealed}
+            evaluating={evaluating}
+            evalResult={evalResult}
             onSubmit={handleSubmit}
             onNext={handleNext}
-            onPrev={handlePrev}
+            onSkip={handleSkip}
             isFirst={qIndex === 0}
             isLast={qIndex + 1 >= total}
+            canSubmit={canSubmit}
           />
         </div>
 
-        {/* Right — session sidebar */}
+        {/* Sidebar */}
         <div className="flex flex-col gap-4">
-
-          {/* Progress summary */}
-          <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-4">
-              Session Progress
-            </p>
+          <div className="bg-card-dark rounded-2xl p-5 border border-white/[0.04]">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-4">Session Progress</p>
             <div className="grid grid-cols-2 gap-3 mb-4">
               {[
-                { label: "Correct",   value: answers.filter((a) => a.selected === a.correct).length,  color: "text-[#4ADE80]" },
-                { label: "Incorrect", value: answers.filter((a) => a.selected !== a.correct).length,  color: "text-[#F87171]" },
-                { label: "Remaining", value: total - answers.length,                                  color: "text-white"     },
-                { label: "Accuracy",  value: answers.length ? `${Math.round(answers.filter((a) => a.selected === a.correct).length / answers.length * 100)}%` : "—", color: "text-brand" },
+                { label: "Correct",   value: answers.filter((a) => a.isCorrect).length,             color: "text-[#4ADE80]" },
+                { label: "Incorrect", value: answers.filter((a) => !a.isCorrect && a.userAnswer !== "").length, color: "text-[#F87171]" },
+                { label: "Skipped",   value: answers.filter((a) => a.userAnswer === "").length,      color: "text-[#888]"    },
+                { label: "Accuracy",  value: answers.filter((a) => a.userAnswer !== "").length
+                    ? `${Math.round(answers.filter((a) => a.isCorrect).length / answers.filter((a) => a.userAnswer !== "").length * 100)}%`
+                    : "—",
+                  color: "text-brand" },
               ].map(({ label, value, color }) => (
-                <div key={label} className="bg-[#141414] rounded-xl px-3 py-2.5 border border-white/4">
+                <div key={label} className="bg-[#141414] rounded-xl px-3 py-2.5 border border-white/[0.04]">
                   <p className={`text-[16px] font-bold ${color}`}>{value}</p>
                   <p className="text-[10px] text-[#444] mt-0.5">{label}</p>
                 </div>
@@ -139,14 +197,12 @@ export default function QuizActive({ onFinish }) {
             </div>
           </div>
 
-          {/* Q map */}
-          <div className="bg-card-dark rounded-2xl p-5 border border-white/4">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">
-              Question Map
-            </p>
+          {/* Question map */}
+          <div className="bg-card-dark rounded-2xl p-5 border border-white/[0.04]">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">Question Map</p>
             <div className="flex flex-wrap gap-1.5">
               {questions.map((question, i) => {
-                const ans     = answers.find((a) => a.qId === question.id)
+                const ans     = answers.find((a) => a.questionId === question.id)
                 const current = i === qIndex
                 return (
                   <div
@@ -156,10 +212,12 @@ export default function QuizActive({ onFinish }) {
                       current
                         ? "bg-brand border-brand text-white"
                         : ans
-                        ? ans.selected === ans.correct
+                        ? ans.userAnswer === ""
+                          ? "bg-white/[0.04] border-white/[0.08] text-[#555]"
+                          : ans.isCorrect
                           ? "bg-[#4ADE80]/10 border-[#4ADE80]/40 text-[#4ADE80]"
                           : "bg-[#F87171]/10 border-[#F87171]/40 text-[#F87171]"
-                        : "bg-[#141414] border-white/6 text-secondary-text"
+                        : "bg-[#141414] border-white/[0.06] text-secondary-text"
                     }`}
                   >
                     {i + 1}
@@ -168,9 +226,10 @@ export default function QuizActive({ onFinish }) {
               })}
             </div>
           </div>
-
         </div>
       </div>
     </div>
+        </>
+
   )
 }

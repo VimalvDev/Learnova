@@ -1,87 +1,68 @@
 import { RiAlertLine } from "react-icons/ri"
 import RevisionItem from "./RevisionItem"
 
-const todayItems = [
-  {
-    id: 1, type: "overdue",
-    name: "Normalization",
-    lastReviewed: "9 days ago",
-    mastery: 34, decay: -12,
-    estimatedTime: "15–20 min",
-  },
-  {
-    id: 2, type: "due",
-    name: "Functional Dependency",
-    lastReviewed: "5 days ago",
-    mastery: 61, decay: -6,
-    estimatedTime: "10–15 min",
-  },
-  {
-    id: 3, type: "scheduled",
-    name: "ER Diagrams",
-    lastReviewed: "4 days ago",
-    mastery: 74, decay: -4,
-    estimatedTime: "10 min",
-  },
-  {
-    id: 4, type: "completed",
-    name: "SQL Joins",
-    completedTime: "Completed 9:14 AM",
-    masteryBefore: 85,
-    masteryAfter: 91,
-  },
-]
+export default function TodayFocus({ items, loading, onComplete, courseId }) {
+  const today = new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })
+  const overdue = items.filter((i) => i.status === "overdue")
 
-export default function TodayFocus() {
   return (
     <div className="bg-card-dark rounded-2xl overflow-hidden">
-      {/* Header */}
       <div className="px-6 py-5">
         <div className="flex items-start justify-between flex-wrap gap-2">
           <div>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-1">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">
               Today's Priority
             </p>
             <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white">
-              Recommended Revision for Today
+              Revision for Today
             </h2>
-            <p className="text-[12px] text-[--color-tertiary-text] mt-0.5">
-              Ordered by urgency: overdue first, then by mastery score and retention decay.
+            <p className="text-[12px] text-tertiary-text mt-0.5">
+              Overdue first, then by mastery score.
             </p>
           </div>
-          <div className="text-right  ">
-            <p className="text-[12px] text-[--color-tertiary-text]">Tuesday, February 24</p>
-            <p className="text-[12px] text-[#FBBF24] font-semibold mt-0.5">4 items due</p>
+          <div className="text-right">
+            <p className="text-[12px] text-tertiary-text">{today}</p>
+            {!loading && (
+              <p className="text-[12px] text-[#FBBF24] font-semibold mt-0.5">
+                {items.length} item{items.length !== 1 ? "s" : ""} due
+              </p>
+            )}
           </div>
         </div>
       </div>
 
-      <div className="p-5 flex flex-col gap-3">
-        {/* Overdue banner */}
-        <div className="flex items-start gap-3 px-4 py-3 bg-[var(--color-red)]/[0.05] rounded-xl border border-[var(--color-red)]/15">
-          <RiAlertLine className="text-[var(--color-red)] text-[15px]   mt-0.5" />
-          <p className="text-[11px] text-[--color-secondary-text] leading-relaxed">
-            <span className="text-[var(--color-red)] font-semibold">3 revision sessions are overdue.</span>{" "}
-            Delaying further will accelerate knowledge decay. These have been moved to top priority.
-          </p>
-        </div>
-
-        {/* Items */}
-        {todayItems.map((item) => (
-          <RevisionItem key={item.id} item={item} />
-        ))}
-
-        {/* Batch action */}
-        <div className="mt-1">
-          <button className="w-full flex flex-col items-center justify-center py-3.5 bg-[--color-card-dark] rounded-xl border border-[--color-brand]/20 hover:border-[--color-brand]/50 transition-all">
-            <span className="text-[13px] font-semibold text-[--color-brand]">
-              Start All Due Sessions in Sequence →
-            </span>
-            <span className="text-[10px] text-[--color-tertiary-text] mt-0.5">
-              Estimated total time: ~45–60 min
-            </span>
-          </button>
-        </div>
+      <div className="px-5 pb-5 flex flex-col gap-3">
+        {loading ? (
+          <div className="py-8 text-center">
+            <p className="text-[12px] text-tertiary-text">Loading…</p>
+          </div>
+        ) : items.length === 0 ? (
+          <div className="py-10 text-center">
+            <p className="text-[28px] mb-3">✓</p>
+            <p className="text-[14px] font-semibold text-[#4ADE80]">All caught up!</p>
+            <p className="text-[12px] text-tertiary-text mt-1">No revisions due today.</p>
+          </div>
+        ) : (
+          <>
+            {overdue.length > 0 && (
+              <div className="flex items-start gap-3 px-4 py-3 bg-[#F87171]/[0.05] rounded-xl border border-[#F87171]/15">
+                <RiAlertLine className="text-[#F87171] text-[15px] shrink-0 mt-0.5" />
+                <p className="text-[11px] text-secondary-text leading-relaxed">
+                  <span className="text-[#F87171] font-semibold">{overdue.length} revision{overdue.length !== 1 ? "s" : ""} overdue.</span>{" "}
+                  Delaying further will increase knowledge decay.
+                </p>
+              </div>
+            )}
+            {items.map((item) => (
+              <RevisionItem
+                key={item.id}
+                item={item}
+                onComplete={onComplete}
+                courseId={courseId}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   )

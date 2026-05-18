@@ -1,186 +1,159 @@
 "use client"
 import { useState } from "react"
-import { RiSearchLine, RiArrowUpDownLine } from "react-icons/ri"
+import { useRouter } from "next/navigation"
+import { RiSearchLine } from "react-icons/ri"
 
-const concepts = [
-  {
-    name: "Normalization", source: "Chapter 4 · DBMS_Notes.pdf",
-    mastery: 34, accuracy: 45, timeFlag: "+22%", errors: 5, repeated: 4,
-    status: "critical", statusLabel: "Critical",
-    action: "Practice →",
-  },
-  {
-    name: "Functional Dep.", source: "Chapter 3 · DBMS_Notes.pdf",
-    mastery: 61, accuracy: 67, timeFlag: "+8%", errors: 2, repeated: 1,
-    status: "revision", statusLabel: "Revision",
-    action: "Review →",
-  },
-  {
-    name: "ER Diagrams", source: "Chapter 2 · DBMS_Notes.pdf",
-    mastery: 74, accuracy: 79, timeFlag: "On pace", errors: 1, repeated: 0,
-    status: "good", statusLabel: "Good",
-    action: "Continue →",
-  },
-  {
-    name: "SQL Joins", source: "Chapter 5 · DBMS_Notes.pdf",
-    mastery: 91, accuracy: 94, timeFlag: "−12%", errors: 0, repeated: 0,
-    status: "mastered", statusLabel: "Mastered",
-    action: "Reinforce →",
-  },
-  {
-    name: "Graph Traversal", source: "Chapter 7 · DBMS_Notes.pdf",
-    mastery: 68, accuracy: 51, timeFlag: "−28%", errors: 6, repeated: 3,
-    status: "speed", statusLabel: "Speed Risk",
-    action: "Investigate →",
-  },
-]
-
-const statusStyles = {
-  critical: { pill: "bg-[var(--color-red)]/10 text-[var(--color-red)] border-[var(--color-red)]/20", bar: "bg-[var(--color-red)]", text: "text-[var(--color-red)]" },
-  revision: { pill: "bg-[#FBBF24]/10 text-[#FBBF24] border-[#FBBF24]/20",  bar: "bg-[#FBBF24]",  text: "text-[#FBBF24]"  },
-  good:     { pill: "bg-[--color-brand]/10 text-[--color-brand] border-[--color-brand]/20", bar: "bg-[--color-brand]", text: "text-[--color-brand]" },
-  mastered: { pill: "bg-[#4ADE80]/10 text-[#4ADE80] border-[#4ADE80]/20",  bar: "bg-[#4ADE80]",  text: "text-[#4ADE80]"  },
-  speed:    { pill: "bg-[#FBBF24]/10 text-[#FBBF24] border-[#FBBF24]/20",  bar: "bg-[#FBBF24]",  text: "text-[#FBBF24]"  },
+function Skeleton() {
+  return (
+    <div className="flex flex-col gap-2 p-5">
+      {[1,2,3,4,5].map((i) => (
+        <div key={i} className="h-10 bg-white/[0.04] rounded-xl animate-pulse" />
+      ))}
+    </div>
+  )
 }
 
-const filters = ["All", "Critical", "Needs Revision", "Mastered"]
+const statusStyles = {
+  critical:     { pill: "bg-[#F87171]/10 text-[#F87171]",  bar: "bg-[#F87171]",  text: "text-[#F87171]",  label: "Critical"     },
+  needs_revision: { pill: "bg-[#FBBF24]/10 text-[#FBBF24]", bar: "bg-[#FBBF24]", text: "text-[#FBBF24]",  label: "Needs Revision" },
+  good:         { pill: "bg-brand/10 text-brand",           bar: "bg-brand",      text: "text-brand",      label: "Good"         },
+  mastered:     { pill: "bg-[#4ADE80]/10 text-[#4ADE80]",   bar: "bg-[#4ADE80]",  text: "text-[#4ADE80]",  label: "Mastered"     },
+  not_started:  { pill: "bg-white/[0.06] text-[#555]",      bar: "bg-[#555]",     text: "text-[#555]",     label: "Not Started"  },
+}
 
-export default function ConceptTable() {
-  const [search, setSearch]   = useState("")
-  const [filter, setFilter]   = useState("All")
+const filters = ["All", "Critical", "Needs Revision", "Good", "Mastered"]
 
-  const filtered = concepts.filter((c) => {
-    const matchSearch = c.name.toLowerCase().includes(search.toLowerCase())
+export default function ConceptTable({ rows, loading, courseId }) {
+  const [search,  setSearch]  = useState("")
+  const [filter,  setFilter]  = useState("All")
+  const [showAll, setShowAll] = useState(false)
+  const router = useRouter()
+
+  const allRows = rows ?? []
+  const filtered = allRows.filter((r) => {
+    const matchSearch = r.name.toLowerCase().includes(search.toLowerCase())
     const matchFilter =
-      filter === "All" ? true
-      : filter === "Critical" ? c.status === "critical"
-      : filter === "Needs Revision" ? c.status === "revision"
-      : filter === "Mastered" ? c.status === "mastered"
-      : true
+      filter === "All"            ? true :
+      filter === "Critical"       ? r.status === "critical" :
+      filter === "Needs Revision" ? r.status === "needs_revision" :
+      filter === "Good"           ? r.status === "good" :
+      filter === "Mastered"       ? r.status === "mastered" :
+      true
     return matchSearch && matchFilter
   })
 
+  const displayed = showAll ? filtered : filtered.slice(0, 8)
+
   return (
     <div className="bg-card-dark rounded-2xl overflow-hidden">
-      {/* Header */}
       <div className="px-6 py-5 border-b border-white/[0.06]">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[--color-brand]/70 mb-1">
-          Concept Intelligence
-        </p>
-        <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white">
-          Concept-Level Performance
-        </h2>
-        <p className="text-[12px] text-[--color-tertiary-text] mt-0.5">
-          Every concept scored across accuracy, speed, error patterns, and recency.
-        </p>
+        <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-1">Concept Intelligence</p>
+        <h2 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-white">Concept-Level Performance</h2>
+        <p className="text-[12px] text-tertiary-text mt-0.5">Every concept scored across accuracy, speed, and error patterns.</p>
       </div>
 
-      {/* Controls */}
-      <div className="flex items-center gap-3 px-6 py-3.5 border-b border-white/[0.04] flex-wrap bg-[--color-card-dark]">
-        <div className="flex items-center gap-2 h-9 px-3 bg-[#111] rounded-xl border border-white/[0.06] w-48 focus-within:border-[--color-brand]/40 transition-colors">
-          <RiSearchLine className="text-[--color-dark-gray] text-[14px]  " />
+      <div className="flex items-center gap-3 px-5 py-3.5 border-b border-white/[0.04] flex-wrap bg-[#111]">
+        <div className="flex items-center gap-2 h-9 px-3 bg-card-dark rounded-xl border border-white/[0.06] w-44 focus-within:border-brand/40 transition-colors">
+          <RiSearchLine className="text-[#444] text-[14px] shrink-0" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Filter concepts..."
-            className="flex-1 bg-transparent text-[12px] text-white placeholder:text-[--color-dark-gray] outline-none"
+            placeholder="Search concepts..."
+            className="flex-1 bg-transparent text-[12px] text-white placeholder:text-[#444] outline-none"
           />
         </div>
-        <div className="flex items-center gap-1 p-1 bg-[--color-card-mid-dark] rounded-xl border border-white/[0.06]">
+        <div className="flex items-center gap-1 p-1 bg-card-dark rounded-xl flex-wrap">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
               className={`px-3 py-1 text-[10px] font-medium rounded-lg transition-all whitespace-nowrap ${
-                filter === f
-                  ? "bg-[--color-brand] text-white"
-                  : "text-[--color-secondary-text] hover:text-white"
+                filter === f ? "bg-brand text-white" : "text-tertiary-text hover:text-white"
               }`}
             >
               {f}
             </button>
           ))}
         </div>
-        <button className="ml-auto flex items-center gap-1.5 h-9 px-3 bg-[#111] text-[--color-secondary-text] text-[12px] rounded-xl  hover:text-white hover:border-white/[0.1] transition-all">
-          <RiArrowUpDownLine className="text-[13px]" /> Sort: Mastery ↑
-        </button>
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-[#111]">
-              {["Concept", "Mastery", "Accuracy", "Avg Time", "Errors", "Status", "Action"].map((h) => (
-                <th
-                  key={h}
-                  className="text-left text-[9px] font-bold uppercase tracking-widest text-[--color-dark-gray] px-5 py-3 whitespace-nowrap"
-                >
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((c, i) => {
-              const s = statusStyles[c.status]
-              return (
-                <tr
-                  key={c.name}
-                  className={`border-b border-white/[0.03] hover:bg-white/[0.015] transition-colors ${
-                    i === filtered.length - 1 ? "border-0" : ""
-                  }`}
-                >
-                  <td className="px-5 py-4">
-                    <p className="text-[13px] font-medium text-white">{c.name}</p>
-                    <p className="text-[10px] text-[--color-tertiary-text] mt-0.5">{c.source}</p>
-                  </td>
-                  <td className="px-5 py-4">
-                    <p className={`text-[13px] font-semibold ${s.text}`}>{c.mastery}%</p>
-                    <div className="mt-1 h-[3px] w-20 bg-white/[0.05] rounded-full overflow-hidden">
-                      <div className={`h-full rounded-full ${s.bar}`} style={{ width: `${c.mastery}%` }} />
-                    </div>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className={`text-[13px] font-semibold ${s.text}`}>{c.accuracy}%</span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className={`text-[12px] font-medium ${
-                      c.timeFlag.startsWith("+") ? "text-[var(--color-red)]"
-                      : c.timeFlag.startsWith("−") ? "text-[#4ADE80]"
-                      : "text-[--color-secondary-text]"
-                    }`}>
-                      {c.timeFlag}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className={`text-[13px] font-semibold ${s.text}`}>{c.errors}</span>
-                    {c.repeated > 0 && (
-                      <p className="text-[10px] text-[--color-tertiary-text] mt-0.5">{c.repeated} repeated</p>
-                    )}
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border ${s.pill}`}>
-                      {c.statusLabel}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <button className="text-[12px] text-[--color-brand] hover:underline whitespace-nowrap">
-                      {c.action}
-                    </button>
-                  </td>
+      {loading ? <Skeleton /> : filtered.length === 0 ? (
+        <div className="py-12 text-center">
+          <p className="text-[13px] text-tertiary-text">No concepts match your filter.</p>
+        </div>
+      ) : (
+        <>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-[#111]">
+                  {["Concept", "Mastery", "Accuracy", "Speed", "Errors", "Status"].map((h) => (
+                    <th key={h} className="text-left text-[9px] font-bold uppercase tracking-widest text-[#444] px-5 py-3 whitespace-nowrap">
+                      {h}
+                    </th>
+                  ))}
                 </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                {displayed.map((r, i) => {
+                  const s = statusStyles[r.status] ?? statusStyles.not_started
+                  return (
+                    <tr
+                      key={r.id ?? i}
+                      className="border-b border-white/[0.03] hover:bg-white/[0.015] transition-colors last:border-0"
+                    >
+                      <td className="px-5 py-4">
+                        <p className="text-[13px] font-medium text-white">{r.name}</p>
+                        {r.lastPracticed && (
+                          <p className="text-[10px] text-tertiary-text mt-0.5">
+                            Last: {new Date(r.lastPracticed).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                          </p>
+                        )}
+                      </td>
+                      <td className="px-5 py-4">
+                        <p className={`text-[13px] font-semibold ${s.text}`}>{r.mastery}%</p>
+                        <div className="mt-1 h-[3px] w-16 bg-white/[0.05] rounded-full overflow-hidden">
+                          <div className={`h-full rounded-full ${s.bar}`} style={{ width: `${r.mastery}%` }} />
+                        </div>
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className={`text-[13px] font-semibold ${s.text}`}>{r.accuracy}%</span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className="text-[12px] text-secondary-text">{r.speedScore}/100</span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className={`text-[13px] font-semibold ${r.errorPenalty > 10 ? "text-[#F87171]" : "text-secondary-text"}`}>
+                          {r.errorPenalty > 0 ? `-${r.errorPenalty}` : "0"}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className={`text-[10px] font-bold px-2.5 py-1 rounded-lg ${s.pill}`}>
+                          {s.label}
+                        </span>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
 
-      {/* Footer */}
-      <div className="flex items-center justify-between px-5 py-3.5 bg-[--color-card-dark] border-t border-white/[0.04]">
-        <span className="text-[11px] text-[--color-tertiary-text]">Showing {filtered.length} of 58 concepts</span>
-        <button className="text-[12px] text-[--color-brand] hover:underline">Load More</button>
-      </div>
+          <div className="flex items-center justify-between px-5 py-3.5 bg-[#111] border-t border-white/[0.04]">
+            <span className="text-[11px] text-tertiary-text">
+              Showing {displayed.length} of {filtered.length} concepts
+            </span>
+            {filtered.length > 8 && (
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="text-[12px] text-brand hover:underline"
+              >
+                {showAll ? "Show Less" : `Load More (${filtered.length - 8} more)`}
+              </button>
+            )}
+          </div>
+        </>
+      )}
     </div>
   )
 }

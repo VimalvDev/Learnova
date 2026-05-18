@@ -4,7 +4,7 @@ import Link from "next/link"
 import FullBarChart  from "@/components/charts/full/FullBarChart"
 import FullLineChart from "@/components/charts/full/FullLineChart"
 
-export default function ChartsRow() {
+export default function ChartsRow({ barData = [], lineData = [] }) {
   const [trendRange,   setTrendRange]   = useState("30D")
   const [visibleLines, setVisibleLines] = useState(["Overall Mastery", "Quiz Accuracy"])
 
@@ -20,8 +20,6 @@ export default function ChartsRow() {
 
   return (
     <div className="grid grid-cols-12 gap-4">
-
-      {/* Bar chart */}
       <Link
         href="/dashboard/analytics"
         className="col-span-5 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
@@ -36,11 +34,10 @@ export default function ChartsRow() {
           </span>
         </div>
         <div className="flex-1 min-h-[260px] mt-2">
-          <FullBarChart />
+          <FullBarChart data={barData} />
         </div>
       </Link>
 
-      {/* Line chart */}
       <Link
         href="/dashboard/analytics"
         className="col-span-7 bg-[#171717] rounded-2xl p-5 flex flex-col hover:bg-[#1c1c1c] transition-all group"
@@ -81,10 +78,9 @@ export default function ChartsRow() {
           </div>
         </div>
         <div className="flex-1 min-h-[240px]">
-          <FullLineChart visibleLines={visibleLines} />
+          <FullLineChart data={lineData} visibleLines={visibleLines} />
         </div>
       </Link>
-
     </div>
   )
 }
