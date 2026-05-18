@@ -37,7 +37,6 @@ const navSections = [
       { icon: RiBrainLine,        label: "Quiz Center",    href: "/quizzes"        },
       { icon: RiTaskLine,         label: "Study Plan",     href: "/plan"           },
       { icon: RiCalendarTodoLine, label: "Revision",       href: "/revision"       },
-      { icon: RiMapLine,          label: "Knowledge Map",  href: "/knowledge-map", badge: "Soon" },
     ],
   },
   {
@@ -87,33 +86,6 @@ function SidebarContent({ pathname, onClose, isAdmin }) {
           >
             <RiCloseLine className="text-[18px]" />
           </button>
-        )}
-      </div>
-
-      {/* Active course */}
-      <div className="px-4 mb-3  ">
-        <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] px-1 mb-1.5">
-          Current Course
-        </p>
-        <div className="flex items-center gap-2 px-3 py-2.5 bg-brand/10 rounded-xl cursor-pointer hover:bg-brand/15 transition-all">
-          <RiBookOpenLine className="text-brand text-[14px]  " />
-          <span className="text-[12px] text-white font-medium truncate flex-1">
-            DBMS — Sem 4
-          </span>
-          <RiArrowDownSLine className="text-[#888] text-[14px]  " />
-        </div>
-
-        {/* Course context actions */}
-        {isInCourseView && (
-          <Link
-            href={`/courses/${courseId}/concepts`}
-            onClick={onClose ?? undefined}
-            className="flex items-center gap-2 px-3 py-2.5 rounded-xl mt-2 transition-all text-secondary-text hover:text-white hover:bg-white/[0.04] group"
-          >
-            <RiBrainLine className="text-[16px]   group-hover:text-brand" />
-            <span className="text-[13px] font-medium">View Concepts</span>
-            <RiArrowRightSLine className="text-[14px]   ml-auto opacity-0 group-hover:opacity-100 transition" />
-          </Link>
         )}
       </div>
 
@@ -199,14 +171,7 @@ function SidebarContent({ pathname, onClose, isAdmin }) {
           <MdOutlineUploadFile className="text-[15px]" />
           Upload Document
         </Link>
-        <div className="flex items-center justify-between mb-1.5">
-          <span className="text-[11px] text-secondary-text">Storage</span>
-          <span className="text-[11px] text-secondary-text">3.2 / 5 GB</span>
-        </div>
-        <div className="h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
-          <div className="h-full bg-brand rounded-full" style={{ width: "64%" }} />
-        </div>
-        <p className="text-[10px] text-[#444] mt-1">1.8 GB remaining</p>
+       
       </div>
     </>
   )
