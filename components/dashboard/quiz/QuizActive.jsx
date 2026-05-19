@@ -1,36 +1,42 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
-import { RiCloseLine, RiPauseLine } from "react-icons/ri"
+import { RiCloseLine } from "react-icons/ri"
 import QuizProgressBar    from "./active/QuizProgressBar"
 import AdaptiveStatusCard from "./active/AdaptiveStatusCard"
 import QuestionCard       from "./active/QuestionCard"
-import EvaluatingOverlay from "@/components/dashboard/quiz/EvaluatingOverlay"
+import EvaluatingOverlay  from "./EvaluatingOverlay"
 
 export default function QuizActive({ quizData, onFinish }) {
   const { quizId, questions, smarts } = quizData
 
-  const [qIndex,    setQIndex]    = useState(0)
-  const [selected,  setSelected]  = useState(null)
+  const [qIndex,     setQIndex]     = useState(0)
+  const [selected,   setSelected]   = useState(null)
   const [textAnswer, setTextAnswer] = useState("")
-  const [revealed,  setRevealed]  = useState(false)
-  const [elapsed,   setElapsed]   = useState(0)
-  const [qElapsed,  setQElapsed]  = useState(0)
-  const [answers,   setAnswers]   = useState([])
+  const [revealed,   setRevealed]   = useState(false)
+  const [elapsed,    setElapsed]    = useState(0)
+  const [qElapsed,   setQElapsed]   = useState(0)
+  const [answers,    setAnswers]     = useState([])
   const [evaluating, setEvaluating] = useState(false)
   const [evalResult, setEvalResult] = useState(null)
+  const [finished,   setFinished]   = useState(false)
+
+  // Use ref to always have latest answers without stale closure
+  const answersRef = useRef([])
 
   const q     = questions[qIndex]
   const total = questions.length
+  const isLast = qIndex + 1 >= total
 
-  useEffect(() => {
-    const t = setInterval(() => {
-      setElapsed((e) => e + 1)
-      setQElapsed((e) => e + 1)
-    }, 1000)
-    return () => clearInterval(t)
-  }, [])
+useEffect(() => {
+  if (finished || (isLast && revealed)) return
+  const t = setInterval(() => {
+    setElapsed((e) => e + 1)
+    setQElapsed((e) => e + 1)
+  }, 1000)
+  return () => clearInterval(t)
+}, [finished, isLast, revealed])
 
-  // Reset question timer on new question
+
   useEffect(() => { setQElapsed(0) }, [qIndex])
 
   const mm         = String(Math.floor(elapsed / 60)).padStart(2, "0")
@@ -46,10 +52,18 @@ export default function QuizActive({ quizData, onFinish }) {
     const userAnswer = isTextType ? textAnswer.trim() : selected
     setEvaluating(true)
 
+    let newAnswer
     try {
-      // For MCQ/TF — evaluate locally, no API call needed
       if (!isTextType) {
         const isCorrect = userAnswer.charAt(0).toUpperCase() === q.correct.charAt(0).toUpperCase()
+        newAnswer = {
+          questionId: q.id,
+          conceptId:  q.conceptId ?? null,
+          userAnswer,
+          isCorrect,
+          score:      isCorrect ? 100 : 0,
+          timeTaken:  qElapsed,
+        }
         setEvalResult({
           score: isCorrect ? 100 : 0,
           isCorrect,
@@ -57,20 +71,11 @@ export default function QuizActive({ quizData, onFinish }) {
           grammarIssues: [],
           missingPoints: [],
         })
-        setAnswers((prev) => [...prev, {
-          questionId: q.id,
-          conceptId:  q.conceptId ?? null,
-          userAnswer,
-          isCorrect,
-          score:      isCorrect ? 100 : 0,
-          timeTaken:  qElapsed,
-        }])
       } else {
-        // Short answer / fill — call Gemini evaluate API
-        const res  = await fetch("/api/quiz/evaluate", {
-          method: "POST",
+        const res    = await fetch("/api/quiz/evaluate", {
+          method:  "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
+          body:    JSON.stringify({
             questionText:  q.text,
             questionType:  q.type,
             correctAnswer: q.correct,
@@ -81,34 +86,40 @@ export default function QuizActive({ quizData, onFinish }) {
         })
         const result = await res.json()
         setEvalResult(result)
-        setAnswers((prev) => [...prev, {
+        newAnswer = {
           questionId: q.id,
           conceptId:  q.conceptId ?? null,
           userAnswer,
           isCorrect:  result.isCorrect,
           score:      result.score,
           timeTaken:  qElapsed,
-        }])
+        }
       }
     } catch {
-      setEvalResult({
-        score: 0, isCorrect: false,
-        conceptualFeedback: "Evaluation failed. Moving on.",
-        grammarIssues: [], missingPoints: [],
-      })
-      setAnswers((prev) => [...prev, {
+      newAnswer = {
         questionId: q.id, conceptId: q.conceptId ?? null,
         userAnswer, isCorrect: false, score: 0, timeTaken: qElapsed,
-      }])
+      }
+      setEvalResult({
+        score: 0, isCorrect: false,
+        conceptualFeedback: "Evaluation failed.",
+        grammarIssues: [], missingPoints: [],
+      })
     } finally {
       setEvaluating(false)
       setRevealed(true)
+      // Update both state and ref immediately
+      const updated = [...answersRef.current, newAnswer]
+      answersRef.current = updated
+      setAnswers(updated)
     }
   }
 
   const handleNext = () => {
     if (qIndex + 1 >= total) {
-      onFinish({ quizId, answers: [...answers], timeTakenSeconds: elapsed })
+      // Use ref — guaranteed to have all answers including the last one
+      setFinished(true)
+      onFinish({ quizId, answers: answersRef.current, timeTakenSeconds: elapsed })
       return
     }
     setQIndex((i) => i + 1)
@@ -119,18 +130,35 @@ export default function QuizActive({ quizData, onFinish }) {
   }
 
   const handleSkip = () => {
-    setAnswers((prev) => [...prev, {
+    const skipped = {
       questionId: q.id, conceptId: q.conceptId ?? null,
       userAnswer: "", isCorrect: false, score: 0, timeTaken: qElapsed,
-    }])
-    handleNext()
+    }
+    const updated = [...answersRef.current, skipped]
+    answersRef.current = updated
+    setAnswers(updated)
+
+    if (qIndex + 1 >= total) {
+      setFinished(true)
+      onFinish({ quizId, answers: updated, timeTakenSeconds: elapsed })
+      return
+    }
+    setQIndex((i) => i + 1)
+    setSelected(null)
+    setTextAnswer("")
+    setRevealed(false)
+    setEvalResult(null)
+  }
+
+  const handleEndQuiz = () => {
+    setFinished(true)
+    onFinish({ quizId, answers: answersRef.current, timeTakenSeconds: elapsed })
   }
 
   return (
-    <>
-
-    {evaluating && <EvaluatingOverlay />}
     <div className="w-full">
+      {evaluating && <EvaluatingOverlay />}
+
       {/* Session bar */}
       <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
         <div className="flex items-center gap-3 flex-wrap">
@@ -143,9 +171,11 @@ export default function QuizActive({ quizData, onFinish }) {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <span className={`text-[13px] font-semibold tabular-nums ${timerColor}`}>⏱ {mm}:{ss}</span>
+          <span className={`text-[13px] font-semibold tabular-nums ${timerColor}`}>
+            ⏱ {mm}:{ss}
+          </span>
           <button
-            onClick={() => onFinish({ quizId, answers, timeTakenSeconds: elapsed })}
+            onClick={handleEndQuiz}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[#F87171] text-[11px] border border-[#F87171]/20 hover:border-[#F87171]/50 transition-colors"
           >
             <RiCloseLine className="text-[13px]" /> End Quiz
@@ -170,7 +200,7 @@ export default function QuizActive({ quizData, onFinish }) {
             onNext={handleNext}
             onSkip={handleSkip}
             isFirst={qIndex === 0}
-            isLast={qIndex + 1 >= total}
+            isLast={isLast}
             canSubmit={canSubmit}
           />
         </div>
@@ -179,11 +209,11 @@ export default function QuizActive({ quizData, onFinish }) {
         <div className="flex flex-col gap-4">
           <div className="bg-card-dark rounded-2xl p-5 border border-white/[0.04]">
             <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-4">Session Progress</p>
-            <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="grid grid-cols-2 gap-3">
               {[
-                { label: "Correct",   value: answers.filter((a) => a.isCorrect).length,             color: "text-[#4ADE80]" },
-                { label: "Incorrect", value: answers.filter((a) => !a.isCorrect && a.userAnswer !== "").length, color: "text-[#F87171]" },
-                { label: "Skipped",   value: answers.filter((a) => a.userAnswer === "").length,      color: "text-[#888]"    },
+                { label: "Correct",   value: answers.filter((a) => a.isCorrect).length,                                           color: "text-[#4ADE80]" },
+                { label: "Incorrect", value: answers.filter((a) => !a.isCorrect && a.userAnswer !== "").length,                    color: "text-[#F87171]" },
+                { label: "Skipped",   value: answers.filter((a) => a.userAnswer === "").length,                                    color: "text-[#888]"    },
                 { label: "Accuracy",  value: answers.filter((a) => a.userAnswer !== "").length
                     ? `${Math.round(answers.filter((a) => a.isCorrect).length / answers.filter((a) => a.userAnswer !== "").length * 100)}%`
                     : "—",
@@ -197,7 +227,6 @@ export default function QuizActive({ quizData, onFinish }) {
             </div>
           </div>
 
-          {/* Question map */}
           <div className="bg-card-dark rounded-2xl p-5 border border-white/[0.04]">
             <p className="text-[9px] font-bold uppercase tracking-widest text-brand/70 mb-3">Question Map</p>
             <div className="flex flex-wrap gap-1.5">
@@ -229,7 +258,5 @@ export default function QuizActive({ quizData, onFinish }) {
         </div>
       </div>
     </div>
-        </>
-
   )
 }

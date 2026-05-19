@@ -47,7 +47,7 @@ export default function ResultsActions({ onRestart, masteryDeltas }) {
           Take Another Quiz
         </button>
         <Link
-          href="/dashboard/revision"
+          href="/revision"
           className="w-full py-2.5 text-center bg-card text-white text-[12px] font-medium rounded-xl hover:bg-[#1c1c1c] transition-all"
         >
           View Revision Schedule

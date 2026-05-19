@@ -35,7 +35,7 @@ export default function HeatmapRow({ heatmapData = [], revisionItems = [] }) {
       <div className="col-span-6 bg-[#171717] rounded-2xl p-5 flex flex-col">
         <div className="flex items-center justify-between mb-3">
           <p className="text-[14px] font-medium text-white/70">Revision Planner</p>
-          <Link href="/dashboard/revision" className="text-[11px] text-brand hover:underline">
+          <Link href="/revision" className="text-[11px] text-brand hover:underline">
             View All →
           </Link>
         </div>
@@ -52,7 +52,7 @@ export default function HeatmapRow({ heatmapData = [], revisionItems = [] }) {
             {revisionItems.map(({ name, due, dot }) => (
               <Link
                 key={name}
-                href="/dashboard/revision"
+                href="/revision"
                 className="flex items-center gap-3 p-3 bg-[#111] rounded-xl hover:bg-[#151515] transition-all group"
               >
                 <div className="w-2 h-2 rounded-full" style={{ background: dot }} />
@@ -69,7 +69,7 @@ export default function HeatmapRow({ heatmapData = [], revisionItems = [] }) {
         )}
 
         <Link
-          href="/dashboard/revision"
+          href="/revision"
           className="w-full h-9 mt-3 bg-[#111] text-[#666] text-[11px] font-medium rounded-xl flex items-center justify-center hover:text-white transition-all"
         >
           + Schedule Reminder

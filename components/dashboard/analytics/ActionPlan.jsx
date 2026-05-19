@@ -37,7 +37,7 @@ export default function ActionPlan({ patterns, overview, loading, courseId }) {
       body:        `${needsRev} concept${needsRev !== 1 ? "s" : ""} flagged for revision. Regular review prevents knowledge decay.`,
       concepts:    [],
       actionColor: "text-[#FBBF24] border-[#FBBF24]/30",
-      href:        "/dashboard/revision",
+      href:        "/revision",
       action:      "View Revision Planner →",
     })
   }
@@ -53,7 +53,7 @@ export default function ActionPlan({ patterns, overview, loading, courseId }) {
       body:        `${mastered} mastered concept${mastered !== 1 ? "s" : ""}. Periodic revision prevents decay and keeps scores high.`,
       concepts:    [],
       actionColor: "text-brand border-brand/30",
-      href:        "/dashboard/revision",
+      href:        "/revision",
       action:      "Schedule Revision →",
     })
   }

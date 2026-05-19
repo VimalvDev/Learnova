@@ -151,7 +151,7 @@ export default function DashboardTopBar({ user }) {
 
         {/* Due today */}
         <Link
-          href="/dashboard/revision"
+          href="/revision"
           className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FBBF24]/10 rounded-lg hover:bg-[#FBBF24]/15 transition-all"
         >
           <RiCalendarTodoLine className="text-[#FBBF24] text-[13px]" />

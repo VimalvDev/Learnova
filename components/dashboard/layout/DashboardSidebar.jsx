@@ -35,7 +35,6 @@ const navSections = [
     items: [
       { icon: RiChat3Line, label: "Ask Your Notes", href: "/chat" },
       { icon: RiBrainLine, label: "Quiz Center", href: "/quizzes" },
-      { icon: RiTaskLine, label: "Study Plan", href: "/plan" },
       { icon: RiCalendarTodoLine, label: "Revision", href: "/revision" },
     ],
   },

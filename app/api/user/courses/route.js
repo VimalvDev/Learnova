@@ -8,9 +8,8 @@ export async function GET() {
 
     const { data: courses } = await supabase
       .from("courses")
-      .select("id, course_name, subject_category")
+      .select("id, course_name, subject_category, status")
       .eq("user_id", user.id)
-      .eq("status", "published")
       .order("created_at", { ascending: false })
 
     return Response.json({ courses: courses ?? [] })

@@ -38,7 +38,7 @@ export default function CourseInfoCard({ onSaved, saving, setSaving }) {
         description:        description.trim() || null,
         target_exam:        goal.trim() || null,
         estimated_duration: duration,
-        status:             "draft",
+        status:             "published",
       })
       .select()
       .single()

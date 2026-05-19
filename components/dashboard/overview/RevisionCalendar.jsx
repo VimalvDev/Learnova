@@ -43,7 +43,7 @@ export default function RevisionCalendar() {
           </div>
 
           <Link
-            href="/dashboard/revision"
+            href="/revision"
             className="flex items-center gap-1 text-[11px] text-brand hover:underline"
           >
             View Planner <RiArrowRightSLine className="text-[13px]" />
