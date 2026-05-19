@@ -1,7 +1,7 @@
-"use client"
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   RiDashboardLine,
   RiFileTextLine,
@@ -18,63 +18,64 @@ import {
   RiMenuLine,
   RiCloseLine,
   RiArrowRightSLine,
-} from "react-icons/ri"
-import { MdOutlineUploadFile } from "react-icons/md"
+} from "react-icons/ri";
+import { MdOutlineUploadFile } from "react-icons/md";
 
 const navSections = [
   {
     label: "Main",
     items: [
-      { icon: RiDashboardLine,    label: "Dashboard",      href: "/dashboard"                },
-      { icon: RiBookOpenLine,     label: "My Courses",     href: "/courses"        },
-      { icon: RiFileTextLine,     label: "Documents",      href: "/documents"        },
+      { icon: RiDashboardLine, label: "Dashboard", href: "/dashboard" },
+      { icon: RiBookOpenLine, label: "My Courses", href: "/courses" },
+      { icon: RiFileTextLine, label: "Documents", href: "/documents" },
     ],
   },
   {
     label: "Learning",
     items: [
-      { icon: RiChat3Line,        label: "Ask Your Notes", href: "/chat"           },
-      { icon: RiBrainLine,        label: "Quiz Center",    href: "/quizzes"        },
-      { icon: RiTaskLine,         label: "Study Plan",     href: "/plan"           },
-      { icon: RiCalendarTodoLine, label: "Revision",       href: "/revision"       },
+      { icon: RiChat3Line, label: "Ask Your Notes", href: "/chat" },
+      { icon: RiBrainLine, label: "Quiz Center", href: "/quizzes" },
+      { icon: RiTaskLine, label: "Study Plan", href: "/plan" },
+      { icon: RiCalendarTodoLine, label: "Revision", href: "/revision" },
     ],
   },
   {
     label: "Analytics",
-    items: [
-      { icon: RiBarChart2Line,    label: "Analytics",      href: "/analytics"      },
-    ],
+    items: [{ icon: RiBarChart2Line, label: "Analytics", href: "/analytics" }],
   },
   {
     label: "Account",
-    items: [
-      { icon: RiSettingsLine,     label: "Settings",       href: "/settings"       },
-    ],
-  }
-]
+    items: [{ icon: RiSettingsLine, label: "Settings", href: "/settings" }],
+  },
+];
 
 // ── SHARED NAV CONTENT ────────────────────────────────────
 function SidebarContent({ pathname, onClose, isAdmin }) {
   // Extract courseId from pathname if viewing a course
-  const courseMatch = pathname.match(/\/courses\/(\d+)/)
-  const courseId = courseMatch ? courseMatch[1] : null
-  const isInCourseView = pathname.startsWith("/courses/") && courseId
+  const courseMatch = pathname.match(/\/courses\/(\d+)/);
+  const courseId = courseMatch ? courseMatch[1] : null;
+  const isInCourseView = pathname.startsWith("/courses/") && courseId;
 
   return (
     <>
       {/* Logo */}
       <div className="px-5 py-5 flex items-center justify-between  ">
         <div className="flex items-center gap-2.5">
-
-          <Link href="/" className="w-7 h-7 bg-brand rounded-lg flex items-center justify-center  ">
-            <svg viewBox="0 0 10 10" fill="none" className="w-3.5 h-3.5">
-              <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <div className="w-9 h-8">
+              <img
+                className=" object-cover h-full w-full "
+                src="/logo.png"
+                alt=""
+              />
+            </div>
           </Link>
 
           <div>
-            <p className="text-[14px] font-bold text-white leading-none">Learnova</p>
-            <p className="text-[9px] text-brand font-bold uppercase tracking-wider mt-0.5">
+            <p className="text-[14px] font-semibold text-white leading-none">
+              Learnova
+            </p>
+            <p className="text-[9px] text-brand font-semibold uppercase tracking-wider mt-0.5">
               Student Portal
             </p>
           </div>
@@ -97,7 +98,8 @@ function SidebarContent({ pathname, onClose, isAdmin }) {
               {label}
             </p>
             {items.map(({ icon: Icon, label: itemLabel, href, badge }) => {
-              const active = pathname === href || pathname.startsWith(href + "/")
+              const active =
+                pathname === href || pathname.startsWith(href + "/");
               return (
                 <Link
                   key={itemLabel}
@@ -114,7 +116,9 @@ function SidebarContent({ pathname, onClose, isAdmin }) {
                       active ? "text-brand" : "group-hover:text-white"
                     }`}
                   />
-                  <span className="text-[13px] font-medium flex-1">{itemLabel}</span>
+                  <span className="text-[13px] font-medium flex-1">
+                    {itemLabel}
+                  </span>
                   {badge && (
                     <span
                       className={`text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full   ${
@@ -130,35 +134,40 @@ function SidebarContent({ pathname, onClose, isAdmin }) {
                     <RiArrowRightSLine className="text-brand text-[14px]  " />
                   )}
                 </Link>
-              )
+              );
             })}
           </div>
         ))}
-{isAdmin && (
-  <div className="mb-4">
-    <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] px-2 mb-1">
-      Admin
-    </p>
-    <Link
-      href="/admin"
-      onClick={onClose ?? undefined}
-      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-150 group ${
-        pathname === "/admin" || pathname.startsWith("/admin/")
-          ? "bg-brand/15 text-white"
-          : "text-secondary-text hover:text-white hover:bg-white/[0.04]"
-      }`}
-    >
-      <RiAdminLine className={`text-[16px] transition-colors ${
-        pathname === "/admin" || pathname.startsWith("/admin/") ? "text-brand" : "group-hover:text-white"
-      }`} />
-      <span className="text-[13px] font-medium flex-1">Admin Panel</span>
-      {(pathname === "/admin" || pathname.startsWith("/admin/")) && (
-        <RiArrowRightSLine className="text-brand text-[14px]" />
-      )}
-    </Link>
-  </div>
-)}
-
+        {isAdmin && (
+          <div className="mb-4">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] px-2 mb-1">
+              Admin
+            </p>
+            <Link
+              href="/admin"
+              onClick={onClose ?? undefined}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-150 group ${
+                pathname === "/admin" || pathname.startsWith("/admin/")
+                  ? "bg-brand/15 text-white"
+                  : "text-secondary-text hover:text-white hover:bg-white/[0.04]"
+              }`}
+            >
+              <RiAdminLine
+                className={`text-[16px] transition-colors ${
+                  pathname === "/admin" || pathname.startsWith("/admin/")
+                    ? "text-brand"
+                    : "group-hover:text-white"
+                }`}
+              />
+              <span className="text-[13px] font-medium flex-1">
+                Admin Panel
+              </span>
+              {(pathname === "/admin" || pathname.startsWith("/admin/")) && (
+                <RiArrowRightSLine className="text-brand text-[14px]" />
+              )}
+            </Link>
+          </div>
+        )}
       </nav>
 
       {/* Storage + Upload */}
@@ -171,55 +180,57 @@ function SidebarContent({ pathname, onClose, isAdmin }) {
           <MdOutlineUploadFile className="text-[15px]" />
           Upload Document
         </Link>
-       
       </div>
     </>
-  )
+  );
 }
 
 // ── DESKTOP SIDEBAR ───────────────────────────────────────
-export function DashboardSidebar({isAdmin}) {
-  const pathname = usePathname()
+export function DashboardSidebar({ isAdmin }) {
+  const pathname = usePathname();
 
   return (
-   <aside className="hidden lg:flex w-[300px]   flex-col h-screen sticky top-0 z-40 bg-dark">
-
+    <aside className="hidden lg:flex w-[300px]   flex-col h-screen sticky top-0 z-40 bg-dark">
       <SidebarContent pathname={pathname} onClose={null} isAdmin={isAdmin} />
     </aside>
-  )
+  );
 }
 
 // ── MOBILE NAV ────────────────────────────────────────────
-export function DashboardMobileNav({isAdmin}) {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const [visible, setVisible] = useState(false)
+export function DashboardMobileNav({ isAdmin }) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   // Close on route change
-  useEffect(() => { setOpen(false) }, [pathname])
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   // Prevent body scroll when open
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
-  }, [open])
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   const handleOpen = () => {
-    setMounted(true)
+    setMounted(true);
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => setVisible(true))
-    })
-    setOpen(true)
-  }
+      requestAnimationFrame(() => setVisible(true));
+    });
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setVisible(false)
+    setVisible(false);
     setTimeout(() => {
-      setOpen(false)
-      setMounted(false)
-    }, 300)
-  }
+      setOpen(false);
+      setMounted(false);
+    }, 300);
+  };
 
   return (
     <>
@@ -228,7 +239,12 @@ export function DashboardMobileNav({isAdmin}) {
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center  ">
             <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
-              <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+              <path
+                d="M2 8V4M5 8V2M8 8V5"
+                stroke="white"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
             </svg>
           </div>
           <span className="text-[14px] font-bold text-white">Learnova</span>
@@ -244,7 +260,9 @@ export function DashboardMobileNav({isAdmin}) {
             className="text-[18px] absolute transition-all duration-300"
             style={{
               opacity: open ? 0 : 1,
-              transform: open ? "translateY(-6px) rotate(45deg)" : "translateY(0) rotate(0deg)",
+              transform: open
+                ? "translateY(-6px) rotate(45deg)"
+                : "translateY(0) rotate(0deg)",
             }}
           />
           {/* X — slides down in */}
@@ -252,7 +270,9 @@ export function DashboardMobileNav({isAdmin}) {
             className="text-[18px] absolute transition-all duration-300"
             style={{
               opacity: open ? 1 : 0,
-              transform: open ? "translateY(0) rotate(0deg)" : "translateY(6px) rotate(-45deg)",
+              transform: open
+                ? "translateY(0) rotate(0deg)"
+                : "translateY(6px) rotate(-45deg)",
             }}
           />
         </button>
@@ -261,7 +281,6 @@ export function DashboardMobileNav({isAdmin}) {
       {/* Drawer + backdrop */}
       {mounted && (
         <div className="lg:hidden fixed inset-0 z-50">
-
           {/* Backdrop — fades in */}
           <div
             className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300"
@@ -272,23 +291,28 @@ export function DashboardMobileNav({isAdmin}) {
           {/* Drawer — slides in from left */}
           <div
             className="absolute left-0 top-0 h-full w-[270px] bg-dark flex flex-col shadow-2xl transition-transform duration-300 ease-out"
-            style={{ transform: visible ? "translateX(0)" : "translateX(-100%)" }}
+            style={{
+              transform: visible ? "translateX(0)" : "translateX(-100%)",
+            }}
           >
-            <SidebarContent pathname={pathname} onClose={handleClose} isAdmin={isAdmin} />
+            <SidebarContent
+              pathname={pathname}
+              onClose={handleClose}
+              isAdmin={isAdmin}
+            />
           </div>
-
         </div>
       )}
     </>
-  )
+  );
 }
 
 // ── DEFAULT EXPORT (combined — used by layout) ────────────
-export default function DashboardSidebarWrapper({isAdmin}) {
+export default function DashboardSidebarWrapper({ isAdmin }) {
   return (
     <>
       <DashboardSidebar isAdmin={isAdmin} />
       <DashboardMobileNav isAdmin={isAdmin} />
     </>
-  )
+  );
 }

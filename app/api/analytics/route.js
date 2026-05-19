@@ -49,16 +49,23 @@ export async function GET(req) {
     const { data: quizzes } = await quizQuery
 
     // 4. Fetch quiz questions for avg response time + error patterns
-    const quizIds = (quizzes ?? []).map((q) => q.id)
-    let questions = []
-    if (quizIds.length > 0) {
-      const { data: qs } = await supabase
-        .from("quiz_questions")
-        .select("quiz_id, concept_id, is_correct, time_taken_seconds, question_type, user_answer, correct_answer")
-        .in("quiz_id", quizIds)
-      questions = qs ?? []
-    }
+let questionsQuery = supabase
+  .from("quiz_questions")
+  .select("quiz_id, concept_id, is_correct, time_taken_seconds, question_type, user_answer, correct_answer")
+  .eq("user_id", user.id)
+  .not("time_taken_seconds", "is", null)
 
+if (courseId) {
+  const quizIds = (quizzes ?? []).map((q) => q.id)
+  if (quizIds.length > 0) {
+    questionsQuery = questionsQuery.in("quiz_id", quizIds)
+  } else {
+    questionsQuery = questionsQuery.limit(0)
+  }
+}
+
+const { data: qs } = await questionsQuery.limit(500)
+const questions = qs ?? []
     // 5. Improvement rate — compare last 7 days vs previous 7 days
     const now      = new Date()
     const day7     = new Date(now); day7.setDate(now.getDate() - 7)

@@ -1,21 +1,38 @@
-"use client"
-import { useState } from "react"
-import Link from "next/link"
+"use client";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function OnboardingHeader({ step, totalSteps }) {
-  const [showSkip, setShowSkip] = useState(false)
+  const [showSkip, setShowSkip] = useState(false);
 
   return (
     <header className="h-[52px] flex items-center justify-between px-6 md:px-8 border-b border-white/[0.06]  ">
-
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2">
+      {/* <Link href="/" className="flex items-center gap-2">
         <div className="w-6 h-6 bg-brand rounded-md flex items-center justify-center">
           <svg viewBox="0 0 10 10" fill="none" className="w-3 h-3">
-            <path d="M2 8V4M5 8V2M8 8V5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+            <path
+              d="M2 8V4M5 8V2M8 8V5"
+              stroke="white"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
         <span className="text-[15px] font-semibold text-white">Learnova</span>
+      </Link> */}
+
+      <Link href="/" className="flex items-center gap-2.5 shrink-0">
+        <div className="w-8 h-8">
+          <img
+            className=" object-cover h-full w-full "
+            src="/logo.png"
+            alt=""
+          />
+        </div>
+        <span className="font-bold text-[17px] text-white tracking-tight">
+          Learnova
+        </span>
       </Link>
 
       {/* Mobile step count */}
@@ -60,7 +77,6 @@ export default function OnboardingHeader({ step, totalSteps }) {
       )}
 
       {(step === 0 || step >= 6) && <div />}
-
     </header>
-  )
+  );
 }
